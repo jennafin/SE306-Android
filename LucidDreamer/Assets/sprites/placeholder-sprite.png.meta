@@ -1,0 +1,223 @@
+fileFormatVersion: 2
+guid: 1593115dd6845417b8923500e8b6b597
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: placeholder-sprite_0
+    21300002: placeholder-sprite_1
+    21300004: placeholder-sprite_2
+    21300006: placeholder-sprite_3
+    21300008: placeholder-sprite_4
+    21300010: placeholder-sprite_5
+    21300012: placeholder-sprite_6
+    21300014: placeholder-sprite_7
+    21300016: placeholder-sprite_8
+    21300018: placeholder-sprite_9
+    21300020: placeholder-sprite_10
+    21300022: placeholder-sprite_11
+    21300024: placeholder-sprite_12
+    21300026: placeholder-sprite_13
+    21300028: placeholder-sprite_14
+    21300030: placeholder-sprite_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: placeholder-sprite_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 290
+        width: 21
+        height: 40
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 289
+        width: 21
+        height: 41
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_2
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 290
+        width: 21
+        height: 41
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_3
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 290
+        width: 21
+        height: 40
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_4
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 194
+        width: 25
+        height: 44
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_5
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 194
+        width: 28
+        height: 43
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_6
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 195
+        width: 28
+        height: 43
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_7
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 194
+        width: 28
+        height: 43
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_8
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 98
+        width: 25
+        height: 44
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_9
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 98
+        width: 28
+        height: 43
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_10
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 99
+        width: 28
+        height: 43
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_11
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 98
+        width: 28
+        height: 43
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_12
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 3
+        width: 21
+        height: 40
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_13
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 2
+        width: 21
+        height: 40
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_14
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 2
+        width: 21
+        height: 40
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: placeholder-sprite_15
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 3
+        width: 21
+        height: 40
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
