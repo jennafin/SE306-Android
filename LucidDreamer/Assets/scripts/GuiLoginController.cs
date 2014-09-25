@@ -16,46 +16,69 @@ public class GuiLoginController : MonoBehaviour {
 		// Make a background box
 
 		GUI.Box (new Rect (40, 40, (Screen.width - 60), (Screen.height - 60)), "Login Menu");
-
-		if (loginBool) 
+			
+		if (ParseUser.CurrentUser != null) {
+			GUI.TextArea(new Rect(100,100,50,50), "You are logged in!");
+			if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 100), 70, 30), "Logout")) {
+				ParseUser.LogOut();
+				var currentUser = ParseUser.CurrentUser;
+			}
+		} else 
 		{
+			if (loginBool) {
+				
+				stringToEditUsername = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), (Screen.height / 2), (Screen.width / 8), 25), stringToEditUsername, 25);
+				
+				stringToEditPassword = GUI.PasswordField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), ((Screen.height / 2) + 35), (Screen.width / 8), 25), stringToEditPassword, "*" [0], 25);
 
-			stringToEditUsername = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), (Screen.height / 2), (Screen.width / 8), 25), stringToEditUsername, 25);
+				stringToEditPassword = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), (Screen.height / 2)+70, (Screen.width / 8), 25), stringToEditPassword, 25);
 
-			stringToEditPassword = GUI.PasswordField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), ((Screen.height / 2) + 35), (Screen.width / 8), 25), stringToEditPassword, "*" [0], 25);
-
-			// Make the second button.
-			if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 100), 70, 30), "Login")) {
-					//respond
-			}
-
-			// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
-			if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 140), 70, 30), "Sign Up")) {
+				
+				// Make the second button.
+				if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 100), 70, 30), "Login")) {
+					ParseUser.LogInAsync(stringToEditUsername, stringToEditPassword).ContinueWith(t =>
+					                                                      {
+						if (t.IsFaulted || t.IsCanceled)
+						{
+							// The login failed. Check the error to see why.
+						}
+						else
+						{
+							// Login was successful.
+						}
+					});
+				}
+				
+				// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
+				if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 140), 70, 30), "Sign Up")) {
 					loginBool = false;
-			}
-		} else {
-
-			stringToEditNewUsername = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), (Screen.height / 2 - 35), (Screen.width / 8), 25), stringToEditNewUsername, 25);
-			stringToEditEmail = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), (Screen.height / 2), (Screen.width / 8), 25), stringToEditEmail, 25);
-			stringToEditNewPassword = GUI.PasswordField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), ((Screen.height / 2) + 35), (Screen.width / 8), 25), stringToEditPassword, "*" [0], 25);
+				}
+			} else {
 				
-			// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
-			if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 140), 70, 30), "Sign Up")) {
-				var user = new ParseUser()
-				{
-					Username = stringToEditNewUsername,
-					Password = stringToEditNewPassword,
-					Email = stringToEditEmail
-				};
+				stringToEditNewUsername = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), (Screen.height / 2 - 35), (Screen.width / 8), 25), stringToEditNewUsername, 25);
+				stringToEditEmail = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), (Screen.height / 2), (Screen.width / 8), 25), stringToEditEmail, 25);
+				stringToEditNewPassword = GUI.PasswordField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), ((Screen.height / 2) + 35), (Screen.width / 8), 25), stringToEditPassword, "*" [0], 25);
 				
-				Task signUpTask = user.SignUpAsync();
-			}
-
-			// Make the second button.
-			if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 100), 70, 30), "Cancel")) {
-				loginBool = true;
-			}
+				// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
+				if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 140), 70, 30), "Sign Up")) {
+					var user = new ParseUser ()
+					{
+						Username = stringToEditNewUsername,
+						Password = stringToEditNewPassword,
+						Email = stringToEditEmail
+					};
+					
+					Task signUpTask = user.SignUpAsync ();
+				}
+				
+				// Make the second button.
+				if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 100), 70, 30), "Cancel")) {
+					loginBool = true;
+				}
+			} 
 		}
+
+
 
 	}
 }
