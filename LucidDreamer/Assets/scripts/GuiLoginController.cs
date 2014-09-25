@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Parse;
+using System.Threading.Tasks;
 
 public class GuiLoginController : MonoBehaviour {
 	public string stringToEditUsername = "Username";
@@ -39,7 +41,14 @@ public class GuiLoginController : MonoBehaviour {
 				
 			// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
 			if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 140), 70, 30), "Sign Up")) {
-				//respond
+				var user = new ParseUser()
+				{
+					Username = stringToEditNewUsername,
+					Password = stringToEditNewPassword,
+					Email = stringToEditEmail
+				};
+				
+				Task signUpTask = user.SignUpAsync();
 			}
 
 			// Make the second button.
