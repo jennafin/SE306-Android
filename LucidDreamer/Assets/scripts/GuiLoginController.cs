@@ -18,7 +18,7 @@ public class GuiLoginController : MonoBehaviour {
 		GUI.Box (new Rect (40, 40, (Screen.width - 60), (Screen.height - 60)), "Login Menu");
 			
 		if (ParseUser.CurrentUser != null) {
-			GUI.TextArea(new Rect(100,100,50,50), "You are logged in!");
+			GUI.TextArea(new Rect(100,100,Screen.width-100,50), "You are logged in! Eventually customised high scores will be shown here! Wooop!");
 			if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 100), 70, 30), "Logout")) {
 				ParseUser.LogOut();
 				var currentUser = ParseUser.CurrentUser;
@@ -57,7 +57,7 @@ public class GuiLoginController : MonoBehaviour {
 				
 				stringToEditNewUsername = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), (Screen.height / 2 - 35), (Screen.width / 8), 25), stringToEditNewUsername, 25);
 				stringToEditEmail = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), (Screen.height / 2), (Screen.width / 8), 25), stringToEditEmail, 25);
-				stringToEditNewPassword = GUI.PasswordField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), ((Screen.height / 2) + 35), (Screen.width / 8), 25), stringToEditPassword, "*" [0], 25);
+				stringToEditNewPassword = GUI.PasswordField (new Rect ((Screen.width / 2 - ((Screen.width / 8) / 2)), ((Screen.height / 2) + 35), (Screen.width / 8), 25), stringToEditNewPassword, "*" [0], 25);
 				
 				// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
 				if (GUI.Button (new Rect ((Screen.width / 2 - 35), (Screen.height - 140), 70, 30), "Sign Up")) {
