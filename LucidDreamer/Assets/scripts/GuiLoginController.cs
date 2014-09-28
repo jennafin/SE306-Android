@@ -10,6 +10,7 @@ public class GuiLoginController : MonoBehaviour {
 	public string stringToEditEmail = "Email";
 	private string stringToEditPassword = "pass";
 	private string stringToEditNewPassword = "pass";
+	private string stringToEditHighScore = "20";
 	//Make private later after testing
 	public bool loginBool = true;
 	
@@ -19,7 +20,18 @@ public class GuiLoginController : MonoBehaviour {
 		GUI.Box (new Rect (40, 40, (Screen.width - 60), (Screen.height - 60)), "Login Menu");
 			
 		if (ParseUser.CurrentUser != null) {
+			//The following for the logged in page
 			GUI.TextArea(new Rect(100,100,Screen.width-100,50), "You are logged in! Eventually customised high scores will be shown here! Wooop!");
+
+			stringToEditHighScore = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 4) / 2)), (Screen.height / 2), (Screen.width / 4), 45), stringToEditHighScore, 25);
+			//Submit high score button
+			if (GUI.Button (new Rect ((Screen.width / 2 - 70), (Screen.height/2 + 100), 140, 60), "Submit")) {
+				ParseObject gameObject = new ParseObject("GameScore");
+				gameObject["user"] = ParseUser.CurrentUser; 
+				gameObject["score"] = float.Parse(stringToEditHighScore);
+				gameObject.SaveAsync();
+			}
+			//Logout button
 			if (GUI.Button (new Rect ((Screen.width / 2 - 70), (Screen.height - 100), 140, 60), "Logout")) {
 				ParseUser.LogOut();
 				var currentUser = ParseUser.CurrentUser;
@@ -27,7 +39,7 @@ public class GuiLoginController : MonoBehaviour {
 		} else 
 		{
 			if (loginBool) {
-				
+				//The following for the login page
 				stringToEditUsername = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 4) / 2)), (Screen.height / 2), (Screen.width / 4), 45), stringToEditUsername, 25);
 				
 				stringToEditPassword = GUI.PasswordField (new Rect ((Screen.width / 2 - ((Screen.width / 4) / 2)), ((Screen.height / 2) + 55), (Screen.width / 4), 45), stringToEditPassword, "*" [0], 25);
@@ -37,7 +49,7 @@ public class GuiLoginController : MonoBehaviour {
 				// Make the second button.
 				if (GUI.Button (new Rect ((Screen.width / 2 - 70), (Screen.height - 170), 140, 60), "Login")) {
 					ParseUser.LogInAsync(stringToEditUsername, stringToEditPassword).ContinueWith(t =>
-					                                                      {
+					{
 						if (t.IsFaulted || t.IsCanceled)
 						{
 							// The login failed. Check the error to see why.
@@ -54,6 +66,7 @@ public class GuiLoginController : MonoBehaviour {
 					loginBool = false;
 				}
 			} else {
+				//The folloowing for a signup page
 				
 				stringToEditNewUsername = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 4) / 2)), (Screen.height / 2 - 55), (Screen.width / 4), 45), stringToEditNewUsername, 25);
 				stringToEditEmail = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 4) / 2)), (Screen.height / 2), (Screen.width / 4), 45), stringToEditEmail, 25);
