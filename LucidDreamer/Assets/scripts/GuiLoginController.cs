@@ -25,7 +25,7 @@ public class GuiLoginController : MonoBehaviour {
 
 			stringToEditHighScore = GUI.TextField (new Rect ((Screen.width / 2 - ((Screen.width / 4) / 2)), (Screen.height / 2), (Screen.width / 4), 45), stringToEditHighScore, 25);
 			//Submit high score button
-			if (GUI.Button (new Rect ((Screen.width / 2 - 70), (Screen.height/2 + 100), 140, 60), "Submit")) {
+			if (GUI.Button (new Rect ((Screen.width / 2 - 70), (Screen.height/2 + 50), 140, 60), "Submit")) {
 				ParseObject gameObject = new ParseObject("GameScore");
 				gameObject["user"] = ParseUser.CurrentUser; 
 				gameObject["score"] = float.Parse(stringToEditHighScore);
@@ -33,7 +33,7 @@ public class GuiLoginController : MonoBehaviour {
 			}
 
 			//List high scores
-			if (GUI.Button (new Rect ((Screen.width / 2 - 70), (Screen.height - 100), 140, 60), "Scores")) {
+			if (GUI.Button (new Rect ((Screen.width / 2 - 70), (Screen.height - 155), 140, 60), "Scores")) {
 				Application.LoadLevel("HighScores");
 			}
 

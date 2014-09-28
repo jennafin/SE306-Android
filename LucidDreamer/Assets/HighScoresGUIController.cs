@@ -29,9 +29,14 @@ public class HighScoresGUIController : MonoBehaviour {
 		int iter = 0;
 		foreach (ParseObject score in highScores)
 		{
-			GUI.TextArea(new Rect(100+iter,100,100,50), "Score");
-			GUI.TextArea(new Rect(100+iter,100,100,50), (score.Get<float>("score")).ToString("0.00"));
-			iter += 100;
+			GUI.TextArea(new Rect(100,100+iter,100,30), "Score");
+			GUI.TextArea(new Rect(200,100+iter,100,30), (score.Get<float>("score")).ToString("0.00"));
+			iter += 50;
+		}
+
+		//List high scores
+		if (GUI.Button (new Rect ((Screen.width / 2 - 70), (Screen.height - 100), 140, 60), "Back")) {
+			Application.LoadLevel("Login");
 		}
 
 	}
