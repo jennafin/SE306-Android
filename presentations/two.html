@@ -38,15 +38,21 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <section>
-                <img src="./images/logo-horizontal.png" style="border-style:none;box-shadow:none">
+                <img src="./images/logo-horizontal.png" style="border-style:none;box-shadow:none;width:60%;">
                 <h3>Presentation Two</h3>
                 <h4>Week 9</h4>
             </section>
             <section>
-                <a href="./images/Low-fi%20Prototypes.pdf"><h2>Low-fi Interactive Prototypes</h2></a>
+                <a href="./images/Low-fi%20Prototypes.pdf" target="_blank"><h2>Low-fi Interactive Prototypes</h2></a>
             </section>
             <section>
-                <a href="images/domainmodel.pdf"><h2>Domain Model</h2></a>
+                <iframe src="./images/Low-fi%20Prototypes.pdf" width="1000px" height="1000px"></iframe>
+            </section>
+            <section>
+                <a href="./images/domainmodel.pdf" target="_blank"><h2>Domain Model</h2></a>                
+            </section>
+            <section>
+                <img src="./images/domainmodel.png" alt="Domain Model" style="border-style:none;box-shadow:none">
             </section>
             <section>
                 <h2>Week 9 Features</h2>
@@ -60,7 +66,8 @@
             </section>
             <section>
                 <h2>Thanks for listening!</h2>
-                <img src="./images/logo-horizontal.png" style="border-style:none;box-shadow:none">
+                <br>
+                <img src="./images/logo-horizontal.png" style="border-style:none;box-shadow:none;width: 60%;">
             </section>
         </div>
     </div>
@@ -76,6 +83,8 @@
             progress: true,
             history: true,
             center: true,
+            height: '100%',
+            width: '100%',
 
             theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
             transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
