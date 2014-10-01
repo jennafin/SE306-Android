@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{F4FD10EB-6062-EDF3-333F-9882F8DBC93C}") = "LucidDreamer", "Assembly-CSharp.csproj", "{EAC2F452-9BBB-E3F0-37D1-982B33A03512}"
 EndProject
+Project("{F4FD10EB-6062-EDF3-333F-9882F8DBC93C}") = "LucidDreamer", "Assembly-CSharp-Editor.csproj", "{B7E9483A-6997-6777-88F8-DF3EE6C17DCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,11 +15,15 @@ Global
 		{EAC2F452-9BBB-E3F0-37D1-982B33A03512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAC2F452-9BBB-E3F0-37D1-982B33A03512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAC2F452-9BBB-E3F0-37D1-982B33A03512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7E9483A-6997-6777-88F8-DF3EE6C17DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7E9483A-6997-6777-88F8-DF3EE6C17DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7E9483A-6997-6777-88F8-DF3EE6C17DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7E9483A-6997-6777-88F8-DF3EE6C17DCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-		GlobalSection(MonoDevelopProperties) = preSolution
+											GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
