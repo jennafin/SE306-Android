@@ -3,24 +3,29 @@ using System.Collections;
 
 public class MainCharacterScript : MonoBehaviour {
 
-	public float jumpForce = 75f;
+	public float jumpForce = 10f;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+
+	public float speed = 1f; // meters per second
+
+	bool grounded = false;   // Whether the character is on the ground or not.
+	public Transform groundCheck;
+	float groundRadius = 0.2f;
+	public LayerMask ground;
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update() {
+		if (grounded && Input.GetButton ("Jump")) {
+			rigidbody2D.AddForce(new Vector2(0, jumpForce));
+		}
 	}
 
 	void FixedUpdate(){
-			bool jumpActive = (Input.GetButton ("Fire1") || Input.GetButton ("Jump"));
-	
-			if (jumpActive) {
-					rigidbody2D.AddForce (new Vector2 (0, jumpForce));
-			}
+		grounded = IsGrounded ();
+		rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
+	}
 
+	bool IsGrounded() {
+		return Physics2D.OverlapCircle (groundCheck.position, groundRadius, ground);
 	}
 }
