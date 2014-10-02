@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\scripts\CameraMoveScript.cs" />
+     <Compile Include="Assets\scripts\Character.cs" />
      <Compile Include="Assets\scripts\DestroyerScript.cs" />
      <Compile Include="Assets\scripts\GroundGeneratorScript.cs" />
      <Compile Include="Assets\scripts\MainCharacterScript.cs" />
