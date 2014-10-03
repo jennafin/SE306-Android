@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MainCharacterScript : MonoBehaviour {
 
-	public float jumpForce = 10f;
+	public float jumpForce = 300f;
 
 
 	public float speed = 1f; // meters per second
@@ -12,16 +12,12 @@ public class MainCharacterScript : MonoBehaviour {
 	public Transform groundCheck;
 	float groundRadius = 0.2f;
 	public LayerMask ground;
-	
-	// Update is called once per frame
-	void Update() {
-		if (grounded && Input.GetButton ("Jump")) {
-			rigidbody2D.AddForce(new Vector2(0, jumpForce));
-		}
-	}
 
 	void FixedUpdate(){
 		grounded = IsGrounded ();
+		if (grounded && Input.GetButton ("Jump")) {
+			rigidbody2D.AddForce(new Vector2(0, jumpForce));
+		}
 		rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
 	}
 
