@@ -1,3 +1,5 @@
+![](http://jennafin.github.io/SE306-Android/presentations/images/logo-horizontal.png)
+
 SE306-Android
 =============
 
