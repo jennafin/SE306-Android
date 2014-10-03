@@ -3,13 +3,49 @@ using System.Collections;
 
 public class ScoreSystem : MonoBehaviour {
 
+	public int currentScorePoints;
+	public int currentMultiplier =1;
+
+	private int pointsToBeAdded = 0;
+
 	// Use this for initialization
 	void Start () {
-	
+		currentScorePoints = 0;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void ResetScore()
+	{
+		currentScorePoints = 0;
+	}
+
+	public void AddPoints(int addMe)
+	{
+		pointsToBeAdded = pointsToBeAdded + addMe;
+	}
+
+	public void AddMultiplier(int multi)
+	{
+		currentMultiplier = currentMultiplier * multi;
+	}
+
+	public void ResetMultiplier()
+	{
+		currentMultiplier = 1;
+	}
+
+	public int UpdateScore(int distance)
+	{
+		currentScorePoints = currentScorePoints + (pointsToBeAdded * currentMultiplier);
+		return distance + currentScorePoints;
+	}
+
+	public int GetScore()
+	{
+		return currentScorePoints;
+	}
+
+	public void persistScore()
+	{
+		//TODO: Implement this
 	}
 }
