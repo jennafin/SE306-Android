@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
 
 public class ScoreSystem : MonoBehaviour {
 
@@ -23,7 +25,7 @@ public class ScoreSystem : MonoBehaviour {
 		pointsToBeAdded = pointsToBeAdded + addMe;
 	}
 
-	public void AddMultiplier(int multi)
+	public void AddMultiplier(int multi, int time)
 	{
 		currentMultiplier = currentMultiplier * multi;
 	}
@@ -35,6 +37,7 @@ public class ScoreSystem : MonoBehaviour {
 
 	public int UpdateScore(int distance)
 	{
+		//TODO: have a timer for multiplier to stop
 		currentScorePoints = currentScorePoints + (pointsToBeAdded * currentMultiplier);
 		return distance + currentScorePoints;
 	}
@@ -44,8 +47,12 @@ public class ScoreSystem : MonoBehaviour {
 		return currentScorePoints;
 	}
 
-	public void persistScore()
+	public int gameOver()
 	{
-		//TODO: Implement this
+		int finalScore = currentScorePoints + (pointsToBeAdded * currentMultiplier);
+		Social.ReportScore (finalScore, "CgkIj8PyxKwKEAIQAQ", (bool success) => {
+			//TODO: handle success or failure
+		});
+
 	}
 }
