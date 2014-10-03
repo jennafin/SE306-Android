@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
 
 public class ScoreSystem : MonoBehaviour {
 
 	public int currentScorePoints;
-	public int currentMultiplier =1;
 
+
+	private List<Multiplier> multipliers = new List<Multiplier> ();
 	private int pointsToBeAdded = 0;
 
 	// Use this for initialization
@@ -18,6 +20,7 @@ public class ScoreSystem : MonoBehaviour {
 	public void ResetScore()
 	{
 		currentScorePoints = 0;
+		multipliers.RemoveAll();
 	}
 
 	public void AddPoints(int addMe)
@@ -27,18 +30,26 @@ public class ScoreSystem : MonoBehaviour {
 
 	public void AddMultiplier(int multi, int time)
 	{
-		currentMultiplier = currentMultiplier * multi;
+		multipliers.Add (new Multiplier (multi, time));
 	}
 
 	public void ResetMultiplier()
 	{
-		currentMultiplier = 1;
+		multipliers.RemoveAll();
 	}
 
 	public int UpdateScore(int distance)
 	{
-		//TODO: have a timer for multiplier to stop
-		currentScorePoints = currentScorePoints + (pointsToBeAdded * currentMultiplier);
+		int totalMultiplier = 1;
+
+		for (int i = multipliers.Count - 1; i >= 0; i--)
+		{
+			totalMultiplier = totalMultiplier * multipliers[i].getMultiplier();
+			if (multipliers[i].checkExpired())
+				multipliers.RemoveAt(i);
+		}
+
+		currentScorePoints = currentScorePoints + (pointsToBeAdded * totalMultiplier);
 		return distance + currentScorePoints;
 	}
 
@@ -49,10 +60,46 @@ public class ScoreSystem : MonoBehaviour {
 
 	public int gameOver()
 	{
-		int finalScore = currentScorePoints + (pointsToBeAdded * currentMultiplier);
+		int finalScore = UpdateScore ();
 		Social.ReportScore (finalScore, "CgkIj8PyxKwKEAIQAQ", (bool success) => {
 			//TODO: handle success or failure
 		});
 
 	}
+}
+
+class Multiplier
+{
+	private int multiplier = 1;
+	private int timer = 0;
+
+	public Multiplier(int multi, int time)
+	{
+		this.multiplier = multi;
+		this.timer = time
+	}
+
+	public bool checkExpired()
+	{
+		if (timer < 0) 
+		{
+			return true;
+		} 
+		return false;
+	}
+
+	public int getMultiplier()
+	{
+
+		if (timer > 0)
+		{
+			timer = timer -1;
+			return multiplier;
+		} else {
+			return 1;
+		}
+
+
+	}
+
 }
