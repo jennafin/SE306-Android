@@ -20,7 +20,7 @@ public class ScoreSystem : MonoBehaviour {
 	public void ResetScore()
 	{
 		currentScorePoints = 0;
-		multipliers.RemoveAll();
+		multipliers.Clear();
 	}
 
 	public void AddPoints(int addMe)
@@ -35,7 +35,7 @@ public class ScoreSystem : MonoBehaviour {
 
 	public void ResetMultiplier()
 	{
-		multipliers.RemoveAll();
+		multipliers.Clear();
 	}
 
 	public int UpdateScore(int distance)
@@ -58,12 +58,13 @@ public class ScoreSystem : MonoBehaviour {
 		return currentScorePoints;
 	}
 
-	public int gameOver()
+	public int gameOver(int distance)
 	{
-		int finalScore = UpdateScore ();
+		int finalScore = UpdateScore (distance);
 		Social.ReportScore (finalScore, "CgkIj8PyxKwKEAIQAQ", (bool success) => {
 			//TODO: handle success or failure
 		});
+		return finalScore;
 
 	}
 }
@@ -76,7 +77,7 @@ class Multiplier
 	public Multiplier(int multi, int time)
 	{
 		this.multiplier = multi;
-		this.timer = time
+		this.timer = time;
 	}
 
 	public bool checkExpired()
