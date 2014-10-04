@@ -10,19 +10,15 @@ public class MainMenuScript : MonoBehaviour {
 
 	private bool isLoggedIn = false;
 
-
-
 	// Use this for initialization
 	void Start () {
 		Debug.Log("MainMenuScript: Start");
+
 		// setup google play
-		// recommended for debugging:
 		PlayGamesPlatform.DebugLogEnabled = true;
-		
-		// Activate the Google Play Games platform
 		PlayGamesPlatform.Activate();
 
-		// authenticate user:
+		// authenticate user
 		Social.localUser.Authenticate((bool success) => {
 			if (success) {
 				Debug.Log("Google Play Login Success");
@@ -38,46 +34,43 @@ public class MainMenuScript : MonoBehaviour {
 			// make log in button visisble
 			// TODO:
 		}
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		// detect touch and select respective menu option
+		DetectAndHandleInput ();
 
+	}
+
+	private void DetectAndHandleInput() {
 		// exit game on escape/back button
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Debug.Log("MainMenuScript: Escape key pressed");
 			Application.Quit();
 		}
 
-		// detect touch and select respective menu option
-		DetectAndHandleTouch ();
-
-	}
-
-	private void DetectAndHandleTouch() {
-		// check for touch on screen
-//		if (Input.touches.Length > 0) {
-//			// analyse only a single touch per call
-//			ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-//			if (Physics.Raycast(ray, out hit)) {
-//				if (hit.transform.name == "TrophyModel") {
-//					Social.ShowAchievementsUI();
-//				}
-//			}
-//		}
-
+		// select menu option
 		if (Input.GetMouseButtonDown(0)) {
 			Debug.Log("MainMenuScript: Touch input received");
-			// analyse only a single touch per call
+
+			// check intersection of touch and objects of interest
 			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out hit)) {
 				if (hit.transform.name == "TrophyModel") {
 					Debug.Log("MainMenuScript: Achievement model hit");
 					Social.ShowAchievementsUI();
+				} else if (hit.transform.name == "PlayModel") {
+					Debug.Log("MainMenuScript: Play model hit");
+					//TODO: Application.LoadLevel("<scene name">);
+				} else if (hit.transform.name == "HighscoresModel") {
+					Debug.Log("MainMenuScript: Highscores model hit");
+					// TODO
+				} else if (hit.transform.name == "LeaderboardsModel") {
+					Debug.Log("MainMenuScript: Leaderboards model hit");
+					Social.ShowLeaderboardUI();
 				}
 			}
 		}
-
 	}
 }
