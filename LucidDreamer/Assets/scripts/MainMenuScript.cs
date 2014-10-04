@@ -42,7 +42,7 @@ public class MainMenuScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 
 		// exit game on escape/back button
 		if (Input.GetKeyDown (KeyCode.Escape)) {
@@ -68,10 +68,12 @@ public class MainMenuScript : MonoBehaviour {
 //		}
 
 		if (Input.GetMouseButtonDown(0)) {
+			Debug.Log("MainMenuScript: Touch input received");
 			// analyse only a single touch per call
 			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out hit)) {
 				if (hit.transform.name == "TrophyModel") {
+					Debug.Log("MainMenuScript: Achievement model hit");
 					Social.ShowAchievementsUI();
 				}
 			}
