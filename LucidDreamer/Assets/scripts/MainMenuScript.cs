@@ -66,6 +66,9 @@ public class MainMenuScript : MonoBehaviour {
 				} else if (hit.transform.name == "HighscoresModel") {
 					Debug.Log("MainMenuScript: Highscores model hit");
 					// TODO
+				} else if (hit.transform.name == "SettingsModel") {
+					Debug.Log("MainMenuScript: Settings model hit");
+					// TODO
 				} else if (hit.transform.name == "LeaderboardsModel") {
 					Debug.Log("MainMenuScript: Leaderboards model hit");
 					Social.ShowLeaderboardUI();
