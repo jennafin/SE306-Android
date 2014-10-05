@@ -56,7 +56,7 @@ public class GameControllerScript : MonoBehaviour {
 			// I think it's instantiate stuff, but level factory stuff needs to be done for that.
 		}
 
-		scoreSystem.UpdateScore (alexPosition);
+		scoreSystem.UpdateScore ((int)Math.Floor(alexPosition.x));
 	}
 
 	void Destroy (GameObject gameObject) {
