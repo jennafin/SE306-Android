@@ -84,6 +84,11 @@ public class GameControllerScript : MonoBehaviour {
 		scoreSystem.ResetMultiplier ();
 	}
 
+	public int GetScore()
+	{
+		return scoreSystem.GetScore ();
+	}
+
 	// Uses the LevelFactory to create the next level segment
 	GameObject GetNextLevelSegment () {
 		LevelFactory factory = new LevelFactory ();
