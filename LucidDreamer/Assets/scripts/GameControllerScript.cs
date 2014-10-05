@@ -55,6 +55,8 @@ public class GameControllerScript : MonoBehaviour {
 			// Do the fancy stuff to actually get the next prefab on the screen
 			// I think it's instantiate stuff, but level factory stuff needs to be done for that.
 		}
+
+		scoreSystem.UpdateScore (alexPosition);
 	}
 
 	void Destroy (GameObject gameObject) {
@@ -65,6 +67,21 @@ public class GameControllerScript : MonoBehaviour {
 				Destroy (gameObject.gameObject);
 			}
 		}
+	}
+
+	public void AddPoints(int points)
+	{
+		scoreSystem.AddPoints (points);
+	}
+
+	public void AddMultiplier(int multi, int time)
+	{
+		scoreSystem.AddMultiplier (multi, time);
+	}
+
+	public void ResetMultiplier()
+	{
+		scoreSystem.ResetMultiplier ();
 	}
 
 	// Uses the LevelFactory to create the next level segment
