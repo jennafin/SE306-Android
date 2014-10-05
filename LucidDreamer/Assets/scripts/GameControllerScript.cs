@@ -3,6 +3,9 @@ using System;
 
 public class GameControllerScript : MonoBehaviour {
 
+	// Keep track of how many lives the player has
+	private int	lives;
+
 	// Main Character
 	public GameObject alexDreamer;
 
@@ -21,6 +24,9 @@ public class GameControllerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		// Player starts with 3 lives
+		lives = 3;
+
 		// Load bedroom scene
 	}
 
@@ -90,5 +96,14 @@ public class GameControllerScript : MonoBehaviour {
 	GameObject GetNextPrefab () {
 		System.Random random = new System.Random ();
 		return levelSegments[random.Next (levelSegments.Length)];
+	}
+
+		public void characterCollisionWith(Collision col) {
+				if (col.gameObject.name == "enemy") { //TODO this is the incorrect check, currently there are not enemies in this branch
+						lives--;
+				}
+				if (lives < 0) {
+						// Game over, TODO move to game over screen
+				}
 	}
 }

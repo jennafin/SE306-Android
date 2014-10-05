@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MainCharacterScript : MonoBehaviour {
 
+	private GameControllerScript gameControllerScript;
+
 	public float jumpForce = 300f;
 
 
@@ -23,5 +25,9 @@ public class MainCharacterScript : MonoBehaviour {
 
 	bool IsGrounded() {
 		return Physics2D.OverlapCircle (groundCheck.position, groundRadius, ground);
+	}
+
+	void OnCollisionEnter(Collision col) {
+		gameControllerScript.characterCollisionWith (col);
 	}
 }
