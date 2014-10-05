@@ -6,6 +6,9 @@ public class GameControllerScript : MonoBehaviour {
 	// Keep track of how many lives the player has
 	private int	lives;
 
+	//Keep track of scoring
+	private ScoreSystem scoreSystem;
+
 	// Main Character
 	public GameObject alexDreamer;
 
@@ -26,6 +29,8 @@ public class GameControllerScript : MonoBehaviour {
 	void Start () {
 		// Player starts with 3 lives
 		lives = 3;
+
+		scoreSystem = new ScoreSystem ();
 
 		// Load bedroom scene
 	}

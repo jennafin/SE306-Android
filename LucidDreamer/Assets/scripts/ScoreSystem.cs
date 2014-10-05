@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
 
-public class ScoreSystem : MonoBehaviour {
+public class ScoreSystem {
 
 	public int currentScorePoints;
 
@@ -12,8 +12,8 @@ public class ScoreSystem : MonoBehaviour {
 	private List<Multiplier> multipliers = new List<Multiplier> ();
 	private int pointsToBeAdded = 0;
 
-	// Use this for initialization
-	void Start () {
+	public ScoreSystem()
+	{
 		currentScorePoints = 0;
 	}
 
