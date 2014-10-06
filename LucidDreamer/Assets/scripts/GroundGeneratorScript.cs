@@ -16,7 +16,7 @@ public class GroundGeneratorScript : MonoBehaviour {
 	}
 	
 	void Update () {
-		transform.position = new Vector3(player.position.x + playerXOffset, -3, 0);
+		transform.position = new Vector3(player.position.x + playerXOffset, 0, 0);
 	}
 	
 	void Spawn () {

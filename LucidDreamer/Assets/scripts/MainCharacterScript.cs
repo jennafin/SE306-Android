@@ -5,13 +5,14 @@ public class MainCharacterScript : MonoBehaviour {
 
 	private GameControllerScript gameControllerScript;
 
-	public float jumpForce = 75f;
+	public float jumpForce = 100f;
+
 
 	public float speed = 1f; // meters per second
 
 	bool grounded = false;   // Whether the character is on the ground or not.
 	public Transform groundCheck;
-	float groundRadius = 2f;
+	float groundRadius = 0.2f;
 	public LayerMask ground;
 
 	void FixedUpdate(){
