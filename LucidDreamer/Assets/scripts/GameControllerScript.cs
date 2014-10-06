@@ -7,7 +7,7 @@ public class GameControllerScript : MonoBehaviour {
 	private int	lives;
 
 	// Main Character
-	public GameObject alexDreamer;
+	public Transform alexDreamer;
 
 	// The Prefab level segments that can be chosen from
 	public GameObject[] levelSegments;
@@ -27,32 +27,34 @@ public class GameControllerScript : MonoBehaviour {
 		// Player starts with 3 lives
 		lives = 3;
 
-		// Load bedroom scene
+		// TODO: Load bedroom scene
+
+		// Below here is temp stuff until there is a bedroom scene
+		this.currentPrefab = GetNextPrefab ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (true) {
-			// Just while some shit hasn't been done.
-			return;
-		}
-
-		Vector3 alexPosition = alexDreamer.renderer.bounds.center;
+		Vector3 alexPosition = alexDreamer.position;
 
 		Bounds currentBounds = currentPrefab.renderer.bounds;
 		float currentWidth = currentBounds.max.x - currentBounds.min.x;
+		print (currentWidth);
 
 		if (alexPosition.x > currentBounds.min.x + currentWidth * 0.8) {
-			Destroy(previousPrefab);
+			DestroyObject(previousPrefab);
 			previousPrefab = currentPrefab;
 			currentPrefab = GetNextLevelSegment();
 
-			// Do the fancy stuff to actually get the next prefab on the screen
-			// I think it's instantiate stuff, but level factory stuff needs to be done for that.
+			Vector3 levelSegmentSpawnPosition = alexPosition;
+			levelSegmentSpawnPosition.x += 15;
+			levelSegmentSpawnPosition.y = currentBounds.max.y - currentBounds.min.y;
+
+			Instantiate(currentPrefab, levelSegmentSpawnPosition, Quaternion.identity);
 		}
 	}
 
-	void Destroy (GameObject gameObject) {
+	void DestroyObject (GameObject gameObject) {
 		if (gameObject != null && gameObject.renderer.bounds.max.x < -10) {
 			if (gameObject.gameObject.transform.parent) {
 				Destroy (gameObject.gameObject.transform.parent.gameObject);
@@ -68,7 +70,8 @@ public class GameControllerScript : MonoBehaviour {
 		factory.setTheme (GetNextTheme ());
 		factory.setLevelSegment (GetNextPrefab ());
 
-		return factory.build ();
+		return GetNextPrefab ();
+		//return factory.build ();
 	}
 
 	// Returns the theme for the next level segment
@@ -98,12 +101,12 @@ public class GameControllerScript : MonoBehaviour {
 		return levelSegments[random.Next (levelSegments.Length)];
 	}
 
-		public void characterCollisionWith(Collision col) {
-				if (col.gameObject.name == "enemy") { //TODO this is the incorrect check, currently there are not enemies in this branch
-						lives--;
-				}
-				if (lives < 0) {
-						// Game over, TODO move to game over screen
-				}
+	public void characterCollisionWith(Collision col) {
+		if (col.gameObject.name == "enemy") { //TODO this is the incorrect check, currently there are not enemies in this branch
+			lives--;
+		}
+		if (lives < 0) {
+			// Game over, TODO move to game over screen
+		}
 	}
 }
