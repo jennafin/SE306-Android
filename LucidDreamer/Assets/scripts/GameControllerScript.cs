@@ -98,12 +98,14 @@ public class GameControllerScript : MonoBehaviour {
 		return levelSegments[random.Next (levelSegments.Length)];
 	}
 
-		public void characterCollisionWith(Collision col) {
-				if (col.gameObject.name == "enemy") { //TODO this is the incorrect check, currently there are not enemies in this branch
+	public void characterCollisionWith(Collision2D col) {
+				if (col.gameObject.name == "StationaryEnemy(Clone)" ||
+						col.gameObject.name == "MovingEnemy(Clone)") { //TODO this is the incorrect check, currently there are not enemies in this branch
 						lives--;
 				}
 				if (lives < 0) {
 						// Game over, TODO move to game over screen
+						Debug.Log ("Game over");
 				}
 	}
 }
