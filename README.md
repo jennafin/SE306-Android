@@ -5,22 +5,23 @@ SE306-Android
 
 Second group project for SE306 paper - an Android based 'platformer' game.
 
-### Building project with your own keystore
+# Building project with your own keystore
 
+## 1. Setup a Google Play developer account
 First you must register for a Google Play developers account and [setup your game] (https://developers.google.com/games/services/console/enabling) in the developers console. You may need to change the package name so it does not clash with the already existing game.
 
-## Creating a keystore
+## 2. Creating a keystore
+
+Run the following command in a unix based terminal:  
 
 `keytool -genkey -v -keystore mykey.keystore -alias coffee -keyalg RSA -keysize 2048 -validity 10000`
 
-replacing “mykey” and “coffee” with you app names/key name.
-
-Answer the questions about your name etc…
-
-You’re done.  The .keystore text file is now on your computer.
+Replacing “mykey” and “coffee” with your app names/key name.  
+Answer the questions about your name etc.  
+The .keystore text file is now on your computer.
 
 
-## Android Setup
+## 3. Android Setup
 
 To configure your Unity game to run with Google Play Games on Android, first
 open the Android SDK manager and verify that you have downloaded the **Google
