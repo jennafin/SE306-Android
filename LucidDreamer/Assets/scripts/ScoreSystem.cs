@@ -26,6 +26,7 @@ public class ScoreSystem {
 	public void AddPoints(int addMe)
 	{
 		pointsToBeAdded = pointsToBeAdded + addMe;
+		Debug.Log ("Added points");
 	}
 
 	public void AddMultiplier(int multi, int time)
@@ -53,9 +54,9 @@ public class ScoreSystem {
 		return distance + currentScorePoints;
 	}
 
-	public int GetScore()
+	public int GetScore(int distance)
 	{
-		return currentScorePoints;
+		return UpdateScore(distance);
 	}
 
 	public int gameOver(int distance)

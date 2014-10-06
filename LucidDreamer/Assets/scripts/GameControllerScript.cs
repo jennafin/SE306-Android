@@ -7,6 +7,8 @@ public class GameControllerScript : MonoBehaviour {
 	private int	lives;
 	private int coinsCollected = 0;
 
+	private Vector3 alexPosition;
+
 	//Keep track of scoring
 	private ScoreSystem scoreSystem;
 
@@ -43,7 +45,7 @@ public class GameControllerScript : MonoBehaviour {
 			return;
 		}
 
-		Vector3 alexPosition = alexDreamer.renderer.bounds.center;
+		alexPosition = alexDreamer.renderer.bounds.center;
 
 		Bounds currentBounds = currentPrefab.renderer.bounds;
 		float currentWidth = currentBounds.max.x - currentBounds.min.x;
@@ -87,7 +89,7 @@ public class GameControllerScript : MonoBehaviour {
 
 	public int GetScore()
 	{
-		return scoreSystem.GetScore ();
+		return scoreSystem.GetScore ((int)Math.Floor(alexPosition.x));
 	}
 
 	// Uses the LevelFactory to create the next level segment
