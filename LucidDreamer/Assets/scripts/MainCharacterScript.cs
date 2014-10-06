@@ -5,7 +5,7 @@ public class MainCharacterScript : MonoBehaviour {
 
 	private GameControllerScript gameControllerScript;
 
-	public float jumpForce = 300f;
+	public float jumpForce = 100f;
 
 
 	public float speed = 1f; // meters per second
