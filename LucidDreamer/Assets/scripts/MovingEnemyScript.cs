@@ -30,6 +30,5 @@ public class MovingEnemyScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Player")
 			Debug.Log("Collision Detected on mover");
-		
 	}
 }
