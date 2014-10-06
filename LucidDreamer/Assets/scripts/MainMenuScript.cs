@@ -62,7 +62,7 @@ public class MainMenuScript : MonoBehaviour {
 					Social.ShowAchievementsUI();
 				} else if (hit.transform.name == "PlayModel") {
 					Debug.Log("MainMenuScript: Play model hit");
-					//TODO: Application.LoadLevel("<scene name">);
+					Application.LoadLevel("main");
 				} else if (hit.transform.name == "HighscoresModel") {
 					Debug.Log("MainMenuScript: Highscores model hit");
 					// TODO

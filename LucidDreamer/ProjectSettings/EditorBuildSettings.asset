@@ -51,3 +51,5 @@ EditorBuildSettings:
     path: Assets/Sample Assets/Sample Scenes/Scenes/2D Character.unity
   - enabled: 1
     path: Assets/scenes/MainMenu.unity
+  - enabled: 1
+    path: Assets/scenes/main.unity
