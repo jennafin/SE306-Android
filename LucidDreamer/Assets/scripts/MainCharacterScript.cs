@@ -3,8 +3,7 @@ using System.Collections;
 
 public class MainCharacterScript : MonoBehaviour {
 
-	public float jumpForce = 300f;
-
+	public float jumpForce = 100f;
 
 	public float speed = 1f; // meters per second
 
