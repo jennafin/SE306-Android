@@ -410,6 +410,47 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d90a8faf6fb9540b084ef2825cc3a5dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &553539446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 553539448}
+  - 114: {fileID: 553539447}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &553539447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 553539446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c1d5cf4f434408c8c452bc3c80d04f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alexDreamer: {fileID: 0}
+  levelSegments: []
+--- !u!4 &553539448
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 553539446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.52381468, y: -3.96207309, z: 8.30265999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1160922490}
+  m_RootOrder: 3
 --- !u!1 &622666886
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,10 +733,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectableTypes:
-  - {fileID: 100000, guid: 9d625d99d3da34fc99eb32d55d68682b, type: 2}
-  - {fileID: 100000, guid: fd5520f79a5cc4712a751b2effa27ce8, type: 2}
+  - {fileID: 11400000, guid: 9d625d99d3da34fc99eb32d55d68682b, type: 2}
+  - {fileID: 11400000, guid: fd5520f79a5cc4712a751b2effa27ce8, type: 2}
   spawnMin: 2
-  spawnMax: 5
+  spawnMax: 3
+  gameController: {fileID: 553539447}
 --- !u!23 &1157324183
 Renderer:
   m_ObjectHideFlags: 0
@@ -834,6 +876,7 @@ Transform:
   - {fileID: 2014871316}
   - {fileID: 1299893912}
   - {fileID: 1157324186}
+  - {fileID: 553539448}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!114 &1160922491
@@ -1024,7 +1067,7 @@ GameObject:
   - 95: {fileID: 1564446672}
   m_Layer: 11
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

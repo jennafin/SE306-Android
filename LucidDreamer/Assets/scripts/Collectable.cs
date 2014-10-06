@@ -3,9 +3,13 @@ using System.Collections;
 
 public abstract class Collectable : MonoBehaviour {
 
+	public GameControllerScript gameController;
+
 	void OnTriggerEnter2D(Collider2D other) {
-		this.CollectedBehaviour ();
-		Destroy (gameObject);
+		if (other.tag == "Player") {
+			this.CollectedBehaviour ();
+			Destroy (gameObject);
+		}
 	}
 
 	public abstract void CollectedBehaviour();

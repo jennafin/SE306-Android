@@ -5,6 +5,7 @@ public class GameControllerScript : MonoBehaviour {
 
 	// Keep track of how many lives the player has
 	private int	lives;
+	private int coinsCollected = 0;
 
 	// Main Character
 	public GameObject alexDreamer;
@@ -105,5 +106,11 @@ public class GameControllerScript : MonoBehaviour {
 				if (lives < 0) {
 						// Game over, TODO move to game over screen
 				}
+	}
+
+	// Increments the number of collected coins by the specified amount
+	public void IncrementCoins(int amount) {
+		this.coinsCollected += amount;
+		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
 	}
 }
