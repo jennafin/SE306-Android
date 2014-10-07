@@ -6,8 +6,8 @@ public class PathedProjectile : MonoBehaviour {
 	private Transform destination;
 	private float speed;
 
-	public void Initialize(Transform _destination, float _speed){
-		destination = _destination;
+	public void Initialize(float _speed){
+		destination = GameObject.Find ("Target").transform;
 		speed = _speed;
 	}
 	
@@ -22,15 +22,9 @@ public class PathedProjectile : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
-	/*void OnCollisionEnter2D(Collision2D coll) {
-		Debug.Log ("Projectile Collision Detected on mover");
-		if (coll.gameObject.tag == "Player")
-			Debug.Log("Projectile Collision Detected on mover");
-	}*/
-
-	void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.gameObject.tag == "Player") {
-			Debug.Log("Projectile Collision Detected on mover");
+	void OnTriggerEnter2D(Collider2D col) {
+		Debug.Log ("Here");
+		if (col.gameObject.name == "Alex") {
 			Destroy (gameObject);
 		}
 	}

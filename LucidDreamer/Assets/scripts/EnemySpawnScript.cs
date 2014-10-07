@@ -4,8 +4,8 @@ using System.Collections;
 public class EnemySpawnScript : MonoBehaviour {
 
 	public GameObject[] obj;
-	public float spawnMax = 1f;
-	public float spawnMin = 2f;
+	public float spawnMax = 5f;
+	public float spawnMin = 4f;
 
 	void Start () {
 
