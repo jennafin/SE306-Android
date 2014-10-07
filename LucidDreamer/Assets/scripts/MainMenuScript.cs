@@ -34,6 +34,15 @@ public class MainMenuScript : MonoBehaviour {
 			// make log in button visisble
 			// TODO:
 		}
+
+//		GUIText playText = GameObject.Find("PlayText").guiText;
+//		playText.fontSize = Screen.height / 13;
+		int updatedFontSize = Screen.height / 16;
+		GameObject.Find ("PlayText").guiText.fontSize = updatedFontSize;
+		GameObject.Find("AchievementsText").guiText.fontSize = updatedFontSize;
+		GameObject.Find("HighscoresText").guiText.fontSize = updatedFontSize;
+		GameObject.Find("SettingsText").guiText.fontSize = updatedFontSize;
+		GameObject.Find("LeaderboardsText").guiText.fontSize = updatedFontSize;
 	}
 	
 	// Update is called once per frame
