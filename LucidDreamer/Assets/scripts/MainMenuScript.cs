@@ -7,10 +7,8 @@ public class MainMenuScript : MonoBehaviour {
 	
 	private Ray ray;
 	private RaycastHit hit;
-
 	private bool isLoggedIn = false;
-
-	// Use this for initialization
+	
 	void Start () {
 		Debug.Log("MainMenuScript: Start");
 
@@ -34,13 +32,19 @@ public class MainMenuScript : MonoBehaviour {
 			// make log in button visisble
 			// TODO:
 		}
+
+		// set font size relative to screen height
+		int updatedFontSize = Screen.height / 16;
+		GameObject.Find ("PlayText").guiText.fontSize = updatedFontSize;
+		GameObject.Find("AchievementsText").guiText.fontSize = updatedFontSize;
+		GameObject.Find("HighscoresText").guiText.fontSize = updatedFontSize;
+		GameObject.Find("SettingsText").guiText.fontSize = updatedFontSize;
+		GameObject.Find("LeaderboardsText").guiText.fontSize = updatedFontSize;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		// detect touch and select respective menu option
 		DetectAndHandleInput ();
-
 	}
 
 	private void DetectAndHandleInput() {
@@ -66,9 +70,11 @@ public class MainMenuScript : MonoBehaviour {
 				} else if (hit.transform.name == "HighscoresModel") {
 					Debug.Log("MainMenuScript: Highscores model hit");
 					// TODO
+					Application.LoadLevel("GameOver");
 				} else if (hit.transform.name == "SettingsModel") {
 					Debug.Log("MainMenuScript: Settings model hit");
 					// TODO
+					Application.LoadLevel("HeroPose");
 				} else if (hit.transform.name == "LeaderboardsModel") {
 					Debug.Log("MainMenuScript: Leaderboards model hit");
 					Social.ShowLeaderboardUI();
