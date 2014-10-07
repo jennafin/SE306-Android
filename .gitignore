@@ -70,3 +70,6 @@ obj/
 *.booproj
 *.sln
 *.csproj
+
+# Don't want to track the keystore
+*.keystore
