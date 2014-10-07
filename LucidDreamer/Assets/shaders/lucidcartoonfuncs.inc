@@ -20,8 +20,8 @@ float perpReflect(float3 vector, float3 norm)
 
 float calcSpecFactorCartoon(float albedo, float3 norm, float3 lVec, float3 vVec, float attenuation)
 {
-	float rimLight	 = 1.f - saturate(dot(vVec, norm));
-	rimLight		*= lerp(0.5f, 1.f, dot(lVec, norm));
+	float rimLight	 = lerp(1.f, albedo, saturate(dot(vVec, norm)));
+	rimLight		*= lerp(0.5f, 1.f, dot(reflect(-lVec, norm), vVec));
 	rimLight		*= attenuation;
 	return posterise2(rimLight, 0.3333f, 0.6667f);
 }

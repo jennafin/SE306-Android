@@ -43,7 +43,7 @@
 			#include "lucidcartoonfuncs.inc"
 			
 			uniform sampler2D _MainTex;
-			fixed4 _LightColor0; 
+			fixed4 _LightColor0;
 			
 			#include "lucidcartooncommon.inc"
 			
