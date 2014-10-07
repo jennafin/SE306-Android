@@ -17,14 +17,15 @@ public class PathedProjectile : MonoBehaviour {
 		transform.position = Vector3.MoveTowards (transform.position, destination.position, Time.deltaTime * speed);
 
 		var distanceSquared = (destination.transform.position - transform.position).sqrMagnitude;
-		if (distanceSquared > .01f * .01f)
+		if (distanceSquared > .01f * .01f) {
 			return;
+		}
 		Destroy (gameObject);
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		Debug.Log ("Here");
 		if (col.gameObject.name == "Alex") {
+			Debug.Log ("Here");
 			Destroy (gameObject);
 		}
 	}

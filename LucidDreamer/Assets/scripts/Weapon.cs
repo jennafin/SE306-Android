@@ -23,17 +23,8 @@ public class Weapon : MonoBehaviour {
 		if ((timeToFire -= Time.deltaTime) > 0)
 			return;
 
-		//destination = GameObject.Find ("Alex").transform;
-
 		timeToFire = fireRate;
 		var Projectile = (PathedProjectile)Instantiate(projectile, transform.position, transform.rotation);
 		Projectile.Initialize(speed);
 	}
-
-	/*public void OnDrawGizmos() {
-		if (destination == null)
-			return;
-		Gizmos.color = Color.red;
-		Gizmos.DrawLine (transform.position, destination.position);
-	}*/
 }
