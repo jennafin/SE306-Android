@@ -151,6 +151,32 @@ public class GameControllerScript : MonoBehaviour
 						Application.LoadLevel ("GameOver");
 				}
 		}
+	// Duplicate method to allow loss of life with Collider object, should change later
+	public void characterColliderWith (Collider2D col)
+	{
+		int delta = 500;
+		
+		String objectTag = col.gameObject.tag;
+		print (objectTag);
+		
+		// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
+		if (objectTag == "Dangerous") {
+			int difference = Math.Abs(Environment.TickCount - lastCollision);
+			print (difference);
+			if (difference > delta) {
+				lives--;
+				lastCollision = Environment.TickCount;
+				LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
+			}
+		} else if (objectTag.StartsWith ("Collectable")) {
+			Debug.Log ("Collided with collectable");
+			col.gameObject.GetComponent<Collectable> ().OnCollection (this);
+		}
+		
+		if (lives < 0) {
+			Application.LoadLevel ("GameOver");
+		}
+	}
 
 		// Increments the number of collected coins by the specified amount
 		public void IncrementCoins (int amount)
