@@ -5,6 +5,9 @@ public class GameControllerScript : MonoBehaviour {
 
 	// Keep track of how many lives the player has
 	private int	lives;
+	
+	// Keep track of the last collision with an enemy
+	private int lastCollision = 0;
 
 	// Main Character
 	public GameObject alexDreamer;
@@ -99,14 +102,17 @@ public class GameControllerScript : MonoBehaviour {
 	}
 
 	public void characterCollisionWith(Collision2D col) {
-				//Debug.Log ("GameController: Collision with: " + col.gameObject.name);
-				if (col.gameObject.name == "StationaryEnemy(Clone)" ||
-						col.gameObject.name == "MovingEnemy(Clone)") { //TODO this is the incorrect check, currently there are not enemies in this branch
-						lives--;
+				int delta = 500;
+
+				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
+				if (col.gameObject.name == "StationaryEnemy(Clone)" || col.gameObject.name == "MovingEnemy(Clone)") { //TODO this is the incorrect check, currently there are not enemies in this branch
+						int difference = Environment.TickCount - lastCollision;
+						if (difference > delta) {
+								lives--;
+								lastCollision = Environment.TickCount;
+						}
 				}
 				if (lives < 0) {
-						// Game over, TODO move to game over screen
-						Debug.Log ("Game over");
 						Application.LoadLevel ("GameOver");
 				}
 	}
