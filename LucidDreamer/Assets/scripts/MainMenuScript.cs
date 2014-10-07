@@ -7,10 +7,8 @@ public class MainMenuScript : MonoBehaviour {
 	
 	private Ray ray;
 	private RaycastHit hit;
-
 	private bool isLoggedIn = false;
-
-	// Use this for initialization
+	
 	void Start () {
 		Debug.Log("MainMenuScript: Start");
 
@@ -35,8 +33,7 @@ public class MainMenuScript : MonoBehaviour {
 			// TODO:
 		}
 
-//		GUIText playText = GameObject.Find("PlayText").guiText;
-//		playText.fontSize = Screen.height / 13;
+		// set font size relative to screen height
 		int updatedFontSize = Screen.height / 16;
 		GameObject.Find ("PlayText").guiText.fontSize = updatedFontSize;
 		GameObject.Find("AchievementsText").guiText.fontSize = updatedFontSize;
@@ -44,12 +41,10 @@ public class MainMenuScript : MonoBehaviour {
 		GameObject.Find("SettingsText").guiText.fontSize = updatedFontSize;
 		GameObject.Find("LeaderboardsText").guiText.fontSize = updatedFontSize;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		// detect touch and select respective menu option
 		DetectAndHandleInput ();
-
 	}
 
 	private void DetectAndHandleInput() {
