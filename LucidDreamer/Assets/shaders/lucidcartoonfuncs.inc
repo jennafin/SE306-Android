@@ -18,12 +18,12 @@ float perpReflect(float3 vector, float3 norm)
 	return vector - norm * dot(vector, norm);
 }
 
-float calcSpecFactorCartoon(float albedo, float3 norm, float3 lVec, float3 vVec, float attenuation)
+float2 calcSpecFactorsCartoon(float albedo, float3 norm, float3 lVec, float3 vVec, float attenuation)
 {
 	float rimLight	 = lerp(1.f, albedo, saturate(dot(vVec, norm)));
 	rimLight		*= lerp(0.5f, 1.f, dot(reflect(-lVec, norm), vVec));
 	rimLight		*= attenuation;
-	return posterise2(rimLight, 0.3333f, 0.6667f);
+	return float2(step(0.3333f, rimLight), step(0.6667f, rimLight));
 }
 
 float calcDiffuseFactor(float3 norm, float3 lVec, float attenuation)
@@ -42,10 +42,12 @@ float4 shadeDiff(float3 diff, float3 norm, float3 lVec, float attenuation)
 	return float4(diffOut, 1.0);
 }
 
-float shadeSpec(float albedo, float3 norm, float3 lVec, float3 vVec, float attenuation)
+float4 shadeSpec(float3 diff, float albedo, float3 norm, float3 lVec, float3 vVec, float attenuation)
 {
-	float specOut = calcSpecFactorCartoon(albedo, norm, lVec, vVec, attenuation);
-	return specOut;
+	float2 specOut = calcSpecFactorsCartoon(albedo, norm, lVec, vVec, attenuation);
+	float3 outCol = lerp(diff, 1.f, specOut.y) * specOut.x;
+	
+	return float4(outCol, 1.0);
 }
 
 float calcAttenuationCartoon(float3 lVec)

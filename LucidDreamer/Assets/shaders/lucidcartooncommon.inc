@@ -40,7 +40,7 @@ fixed4 frag(PS_IN psInput) : COLOR
 	 
 	// Get component parts
 	float4 outDiff = _LightColor0 * shadeDiff(texCol.xyz, normal, lVector, attenuation);
-	float4 outSpec = _LightColor0 * shadeSpec(0.f, normal, lVector, vVector, attenuation);
+	float4 outSpec = _LightColor0 * shadeSpec(texCol.xyz, 0.f, normal, lVector, vVector, attenuation);
 	
 	#ifdef LUCID_HAS_AMBIENT
 		outDiff.xyz += UNITY_LIGHTMODEL_AMBIENT.xyz * texCol.xyz;
