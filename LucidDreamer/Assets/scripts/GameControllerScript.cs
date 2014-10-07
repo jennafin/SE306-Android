@@ -99,6 +99,7 @@ public class GameControllerScript : MonoBehaviour {
 	}
 
 	public void characterCollisionWith(Collision2D col) {
+				//Debug.Log ("GameController: Collision with: " + col.gameObject.name);
 				if (col.gameObject.name == "StationaryEnemy(Clone)" ||
 						col.gameObject.name == "MovingEnemy(Clone)") { //TODO this is the incorrect check, currently there are not enemies in this branch
 						lives--;
@@ -106,6 +107,7 @@ public class GameControllerScript : MonoBehaviour {
 				if (lives < 0) {
 						// Game over, TODO move to game over screen
 						Debug.Log ("Game over");
+						Application.LoadLevel ("GameOver");
 				}
 	}
 }

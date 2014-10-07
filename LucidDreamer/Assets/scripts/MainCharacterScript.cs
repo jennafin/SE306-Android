@@ -25,6 +25,7 @@ public class MainCharacterScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
+				//Debug.Log ("MainCharacter: Collsision with: " + col.gameObject.name);
 				GameControllerScript gameControllerScript = GameObject.FindWithTag ("GameController").GetComponent<GameControllerScript>();
 				gameControllerScript.characterCollisionWith (col);
 	}
