@@ -4,9 +4,6 @@ using System;
 public class GameControllerScript : MonoBehaviour
 {
 
-		// Where the bottom of the levels will be
-		public float minYLevelPosition = -3f;
-	
 		// Keep track of how many lives the player has
 		private int	lives;
 		private int coinsCollected = 0;
@@ -14,10 +11,10 @@ public class GameControllerScript : MonoBehaviour
 		// Keep track of the last collision with an enemy
 		private int lastCollision = 0;
 
-	//Scoring system
-	private ScoreTrackingSystem scoreTracker;
+		//Scoring system
+		private ScoreTrackingSystem scoreTracker;
 
-	private Vector3 alexPosition;
+		private Vector3 alexPosition;
 
 		// Life HUD
 		public GameObject LifeHUD;
@@ -49,19 +46,19 @@ public class GameControllerScript : MonoBehaviour
 				lives = 3;
 
 
-		//Instantiate score tracker
-		scoreTracker = new ScoreTrackingSystem ();
+				//Instantiate score tracker
+				scoreTracker = new ScoreTrackingSystem ();
 
 
-		// Player starts with 3 lives
-		lives = 3;
+				// Player starts with 3 lives
+				lives = 3;
 
-		// TODO: Load bedroom scene
+				// TODO: Load bedroom scene
 
-		// Below here is temp stuff until there is a bedroom scene
-		this.previousLevel = GetNextLevel (new Vector3(0f, 0f, 0f), Quaternion.identity);
-		this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
-	}
+				// Below here is temp stuff until there is a bedroom scene
+				this.previousLevel = GetNextLevel (new Vector3(0f, 0f, 0f), Quaternion.identity);
+				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
+		}
 
 
 	
@@ -69,9 +66,11 @@ public class GameControllerScript : MonoBehaviour
 		void Update ()
 		{
 				alexPosition = alexDreamer.position;
-				//print ("Alex: " + alexPosition);
-				//print ("Min: " + currentLevel.MinX ());
-				//print ("Max: " + currentLevel.MaxX ());
+				
+				if (alexPosition.y < -5) {
+					// Alex has fallen to his death
+					GameOver ();
+				}
 
 				float tmpPos = Camera.main.WorldToScreenPoint (new Vector3 (previousLevel.MaxX (), 0, 0)).x;
 				if (tmpPos < 0) {
@@ -85,21 +84,7 @@ public class GameControllerScript : MonoBehaviour
 						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
 				}
 
-		LifeHUD.GetComponent<LifeHUDScript>().SetScore(scoreTracker.GetCurrentScore ((int)Math.Floor(alexPosition.x)));
-
-
-//		if (alexPosition.x - currentLevel.MinX() > currentLevel.Width() * 0.8) {
-//
-//			Vector3 levelSegmentSpawnPosition = alexPosition;
-//			levelSegmentSpawnPosition.x += currentLevel.MaxX(); // TODO: Figure out
-//			levelSegmentSpawnPosition.y = -3f; // Ground position
-//
-//			if (previousLevel != null) {
-//				Destroy(previousLevel.Prefab());
-//			}
-//			previousLevel = currentLevel;
-//			currentLevel = GetNextLevel(levelSegmentSpawnPosition, Quaternion.identity);
-//		}
+				LifeHUD.GetComponent<LifeHUDScript>().SetScore(scoreTracker.GetCurrentScore ((int)Math.Floor(alexPosition.x)));
 
 		}
 
@@ -154,7 +139,7 @@ public class GameControllerScript : MonoBehaviour
 
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
-						int difference = Math.Abs(Environment.TickCount - lastCollision);
+						int difference = Math.Abs (Environment.TickCount - lastCollision);
 						print (difference);
 						if (difference > delta) {
 								lives--;
@@ -167,17 +152,21 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 				if (lives < 0) {
-					scoreTracker.gameOver((int)Math.Floor(alexPosition.x));
-					Application.LoadLevel ("GameOver");
+						GameOver ();
 				}
+		}
 
-	}
+		void GameOver() 
+		{
+				scoreTracker.gameOver((int)Math.Floor(alexPosition.x));
+				Application.LoadLevel ("GameOver");
+		}
 
-	// Increments the number of collected coins by the specified amount
-	public void IncrementCoins(int amount) {
-//		this.coinsCollected += amount;
-//		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
-		scoreTracker.AddPoints (amount);
-	}
+		// Increments the number of collected coins by the specified amount
+		public void IncrementCoins(int amount) {
+		//		this.coinsCollected += amount;
+		//		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
+				scoreTracker.AddPoints (amount);
+		}
 }
 
