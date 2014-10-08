@@ -13,6 +13,9 @@ public class GameControllerScript : MonoBehaviour {
 	// Keep track of the last collision with an enemy
 	private int lastCollision = 0;
 
+	//Scoring system
+	private ScoreTrackingSystem scoreTracker;
+
 	// Life HUD
 	public GameObject LifeHUD;
 
@@ -28,6 +31,9 @@ public class GameControllerScript : MonoBehaviour {
 	// The number of level segments for this theme
 	int currentThemeSegmentCount = 0;
 
+	//Alex's position
+	private Vector3 alexPosition;
+
 	// Prefabs that the player run play on.
 	Level currentLevel;
 	Level previousLevel;
@@ -35,6 +41,9 @@ public class GameControllerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// Calculate the screen width
+
+		//Instantiate score tracker
+		scoreTracker = new ScoreTrackingSystem ();
 
 
 		// Player starts with 3 lives
@@ -49,7 +58,7 @@ public class GameControllerScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Vector3 alexPosition = alexDreamer.position;
+		alexPosition = alexDreamer.position;
 		//print ("Alex: " + alexPosition);
 		//print ("Min: " + currentLevel.MinX ());
 		//print ("Max: " + currentLevel.MaxX ());
@@ -65,6 +74,8 @@ public class GameControllerScript : MonoBehaviour {
 			previousLevel = currentLevel;
 			currentLevel = GetNextLevel(levelSpawnPostion, Quaternion.identity);
 		}
+
+		LifeHUD.GetComponent<LifeHUDScript>().SetScore(scoreTracker.GetCurrentScore ((int)Math.Floor(alexPosition.x)));
 
 
 //		if (alexPosition.x - currentLevel.MinX() > currentLevel.Width() * 0.8) {
@@ -139,13 +150,15 @@ public class GameControllerScript : MonoBehaviour {
 				}
 
 				if (lives < 0) {
-						Application.LoadLevel ("GameOver");
+					scoreTracker.gameOver((int)Math.Floor(alexPosition.x));
+					Application.LoadLevel ("GameOver");
 				}
 	}
 
 	// Increments the number of collected coins by the specified amount
 	public void IncrementCoins(int amount) {
-		this.coinsCollected += amount;
-		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
+//		this.coinsCollected += amount;
+//		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
+		scoreTracker.AddPoints (amount);
 	}
 }
