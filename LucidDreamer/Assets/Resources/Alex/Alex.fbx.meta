@@ -61,6 +61,8 @@ ModelImporter:
     400052: Sun.001
     400054: Sun.002
     400056: Alex
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Plane
     4300002: Alex
     7400000: Armature|GoofyRun
@@ -163,7 +165,7 @@ ModelImporter:
       name: Armature|Run
       takeName: Armature|Run
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 14
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -174,7 +176,7 @@ ModelImporter:
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
