@@ -13,6 +13,9 @@ public class GameControllerScript : MonoBehaviour {
 	// Keep track of the last collision with an enemy
 	private int lastCollision = 0;
 
+	//Scoring system
+	private ScoreTrackingSystem scoreTracker;
+
 	// Life HUD
 	public GameObject LifeHUD;
 
@@ -35,6 +38,9 @@ public class GameControllerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// Calculate the screen width
+
+		//Instantiate score tracker
+		scoreTracker = new ScoreTrackingSystem ();
 
 
 		// Player starts with 3 lives
@@ -65,6 +71,8 @@ public class GameControllerScript : MonoBehaviour {
 			previousLevel = currentLevel;
 			currentLevel = GetNextLevel(levelSpawnPostion, Quaternion.identity);
 		}
+
+		LifeHUD.SetScore(scoreTracker.GetCurrentScore ((int)Math.Floor(alexPosition.x)));
 
 
 //		if (alexPosition.x - currentLevel.MinX() > currentLevel.Width() * 0.8) {
@@ -145,7 +153,8 @@ public class GameControllerScript : MonoBehaviour {
 
 	// Increments the number of collected coins by the specified amount
 	public void IncrementCoins(int amount) {
-		this.coinsCollected += amount;
-		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
+//		this.coinsCollected += amount;
+//		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
+		scoreTracker.AddPoints (amount);
 	}
 }
