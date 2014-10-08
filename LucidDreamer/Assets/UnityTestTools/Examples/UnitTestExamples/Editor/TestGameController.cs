@@ -16,17 +16,17 @@ namespace UnityTest
 		public void TestIncrementCoins()
 		{
 			GameControllerScript gameController = Substitute.For<GameControllerScript>();
-
+			
 			// Check that coin count initially starts at 0
 			Assert.AreEqual (0, gameController.GetCoinsCollected());
-
+			
 			// Increment by a positive amount
 			gameController.IncrementCoins (5);
-
+			
 			// Check that the change has been stored in the game controller
 			Assert.AreEqual (5, gameController.GetCoinsCollected());
 		}
-
+		
 		[Test]
 		// Test that the game controller's coin count can be "incremented" by a negative amount
 		public void TestDecrementCoins()
