@@ -4,9 +4,6 @@ using System;
 public class GameControllerScript : MonoBehaviour
 {
 
-		// Where the bottom of the levels will be
-		public float minYLevelPosition = -3f;
-	
 		// Keep track of how many lives the player has
 		private int	lives;
 		private int coinsCollected = 0;
@@ -52,9 +49,6 @@ public class GameControllerScript : MonoBehaviour
 		void Update ()
 		{
 				Vector3 alexPosition = alexDreamer.position;
-				//print ("Alex: " + alexPosition);
-				//print ("Min: " + currentLevel.MinX ());
-				//print ("Max: " + currentLevel.MaxX ());
 
 				float tmpPos = Camera.main.WorldToScreenPoint (new Vector3 (previousLevel.MaxX (), 0, 0)).x;
 				if (tmpPos < 0) {
@@ -67,21 +61,6 @@ public class GameControllerScript : MonoBehaviour
 						previousLevel = currentLevel;
 						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
 				}
-
-
-//		if (alexPosition.x - currentLevel.MinX() > currentLevel.Width() * 0.8) {
-//
-//			Vector3 levelSegmentSpawnPosition = alexPosition;
-//			levelSegmentSpawnPosition.x += currentLevel.MaxX(); // TODO: Figure out
-//			levelSegmentSpawnPosition.y = -3f; // Ground position
-//
-//			if (previousLevel != null) {
-//				Destroy(previousLevel.Prefab());
-//			}
-//			previousLevel = currentLevel;
-//			currentLevel = GetNextLevel(levelSegmentSpawnPosition, Quaternion.identity);
-//		}
-
 		}
 
 		// Uses the LevelFactory to create the next level segment
