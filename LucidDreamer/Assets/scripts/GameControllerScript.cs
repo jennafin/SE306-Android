@@ -143,6 +143,10 @@ public class GameControllerScript : MonoBehaviour {
 				}
 	}
 
+	public int GetCoinsCollected() {
+		return this.coinsCollected;
+	}
+
 	// Increments the number of collected coins by the specified amount
 	public void IncrementCoins(int amount) {
 		this.coinsCollected += amount;
