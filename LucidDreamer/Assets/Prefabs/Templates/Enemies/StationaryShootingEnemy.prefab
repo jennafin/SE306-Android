@@ -109,8 +109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: a50aa2384b6b72f439ad0ae7963924e0, type: 2}
-  fireRate: 1
-  speed: 4
+  target: {fileID: 0}
+  fireRate: 4
+  speed: 2
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

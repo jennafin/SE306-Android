@@ -1,30 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Weapon : MonoBehaviour {
+public class Weapon : MonoBehaviour
+{
 
-	//Transform destination;
-	public PathedProjectile projectile;
+		public PathedProjectile projectile;
+		public Transform target;
+		public float fireRate;
+		public float speed = 1;
 
-	public float fireRate;
-	public float speed = 1;
-	//public float weaponDamage = 1;
+		float timeToFire = 0;
 
-	float timeToFire = 0;
-	//Transform firePoint;
-
-	public void start() {
-		timeToFire = fireRate;
-	}
+		// Set fire rate
+		public void start ()
+		{
+				timeToFire = fireRate;
+		}
 	
-	// Update is called once per frame
-	void Update () {
+		// If it's time top fire, instantiate and initialize a projectile
+		void Update ()
+		{
 
-		if ((timeToFire -= Time.deltaTime) > 0)
-			return;
+				if ((timeToFire -= Time.deltaTime) > 0)
+						return;
 
-		timeToFire = fireRate;
-		var Projectile = (PathedProjectile)Instantiate(projectile, transform.position, transform.rotation);
-		Projectile.Initialize(speed);
-	}
+				timeToFire = fireRate;
+				var Projectile = (PathedProjectile)Instantiate (projectile, transform.position, transform.rotation);
+				Projectile.Initialize (speed, target);
+		}
 }

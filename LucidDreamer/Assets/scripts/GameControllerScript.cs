@@ -1,70 +1,72 @@
 ﻿using UnityEngine;
 using System;
 
-public class GameControllerScript : MonoBehaviour {
+public class GameControllerScript : MonoBehaviour
+{
 
-	// Where the bottom of the levels will be
-	public float minYLevelPosition = -3f;
+		// Where the bottom of the levels will be
+		public float minYLevelPosition = -3f;
+	
+		// Keep track of how many lives the player has
+		private int	lives;
+		private int coinsCollected = 0;
 
-	// Keep track of how many lives the player has
-	private int	lives;
-	private int coinsCollected = 0;
+		// Keep track of the last collision with an enemy
+		private int lastCollision = 0;
 
-	// Keep track of the last collision with an enemy
-	private int lastCollision = 0;
+		// Life HUD
+		public GameObject LifeHUD;
 
-	// Life HUD
-	public GameObject LifeHUD;
+		// Main Character
+		public Transform alexDreamer;
 
-	// Main Character
-	public Transform alexDreamer;
+		// The Prefab level segments that can be chosen from
+		public GameObject[] levelSegments;
 
-	// The Prefab level segments that can be chosen from
-	public GameObject[] levelSegments;
+		// Current Theme
+		Theme currentTheme = Theme.Bedroom;
 
-	// Current Theme
-	Theme currentTheme = Theme.Bedroom;
+		// The number of level segments for this theme
+		int currentThemeSegmentCount = 0;
 
-	// The number of level segments for this theme
-	int currentThemeSegmentCount = 0;
+		// Prefabs that the player run play on.
+		Level currentLevel;
+		Level previousLevel;
 
-	// Prefabs that the player run play on.
-	Level currentLevel;
-	Level previousLevel;
+		// Use this for initialization
+		void Start ()
+		{
+				// Calculate the screen width
 
-	// Use this for initialization
-	void Start () {
-		// Calculate the screen width
+				// Player starts with 3 lives
+				lives = 3;
 
+				// TODO: Load bedroom scene
 
-		// Player starts with 3 lives
-		lives = 3;
-
-		// TODO: Load bedroom scene
-
-		// Below here is temp stuff until there is a bedroom scene
-		this.previousLevel = GetNextLevel (new Vector3(0f, 0f, 0f), Quaternion.identity);
-		this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
-	}
-
-	// Update is called once per frame
-	void Update () {
-		Vector3 alexPosition = alexDreamer.position;
-		//print ("Alex: " + alexPosition);
-		//print ("Min: " + currentLevel.MinX ());
-		//print ("Max: " + currentLevel.MaxX ());
-
-		float tmpPos = Camera.main.WorldToScreenPoint (new Vector3(previousLevel.MaxX(), 0, 0)).x;
-		if (tmpPos < 0) {
-
-			Vector3 levelSpawnPostion = new Vector3(currentLevel.MaxX (), 0, 0);
-
-			if (previousLevel != null) {
-				Destroy(previousLevel.Prefab());
-			}
-			previousLevel = currentLevel;
-			currentLevel = GetNextLevel(levelSpawnPostion, Quaternion.identity);
+				// Below here is temp stuff until there is a bedroom scene
+				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity);
+				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
 		}
+	
+		// Update is called once per frame
+		void Update ()
+		{
+				Vector3 alexPosition = alexDreamer.position;
+				//print ("Alex: " + alexPosition);
+				//print ("Min: " + currentLevel.MinX ());
+				//print ("Max: " + currentLevel.MaxX ());
+
+				float tmpPos = Camera.main.WorldToScreenPoint (new Vector3 (previousLevel.MaxX (), 0, 0)).x;
+				if (tmpPos < 0) {
+
+						Vector3 levelSpawnPosition = new Vector3 (currentLevel.MaxX (), 0, 0);
+
+						if (previousLevel != null) {
+								Destroy (previousLevel.Prefab ());
+						}
+						previousLevel = currentLevel;
+						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
+				}
 
 
 //		if (alexPosition.x - currentLevel.MinX() > currentLevel.Width() * 0.8) {
@@ -79,47 +81,53 @@ public class GameControllerScript : MonoBehaviour {
 //			previousLevel = currentLevel;
 //			currentLevel = GetNextLevel(levelSegmentSpawnPosition, Quaternion.identity);
 //		}
-	}
 
-	// Uses the LevelFactory to create the next level segment
-	Level GetNextLevel (Vector3 position, Quaternion rotation) {
-		LevelFactory factory = new LevelFactory ();
-		factory.setTheme (GetNextTheme ());
-		factory.setLevelSegment (GetNextPrefab ());
-		factory.setPosition (position);
-		factory.setRotation (rotation);
-
-		return factory.build ();
-	}
-
-	// Returns the theme for the next level segment
-	Theme GetNextTheme () {
-		if (currentThemeSegmentCount >= 5) {
-			currentThemeSegmentCount = 0;
-			currentTheme = GetNewTheme();
 		}
 
-		return currentTheme;
-	}
+		// Uses the LevelFactory to create the next level segment
+		Level GetNextLevel (Vector3 position, Quaternion rotation)
+		{
+				LevelFactory factory = new LevelFactory ();
+				factory.setTheme (GetNextTheme ());
+				factory.setLevelSegment (GetNextPrefab ());
+				factory.setPosition (position);
+				factory.setRotation (rotation);
 
-	// Chooses and returns a new theme. The returned theme will be different from the current theme.
-	Theme GetNewTheme () {
-		Array themes = Enum.GetValues(typeof(Theme));
-		System.Random random = new System.Random ();
-		Theme nextTheme;
-		do {
-			nextTheme = (Theme) themes.GetValue (random.Next (themes.Length));
-		} while (nextTheme != currentTheme);
-		return nextTheme;
-	}
+				return factory.build ();
+		}
 
-	// Chooses and returns a new level segment.
-	GameObject GetNextPrefab () {
-		System.Random random = new System.Random ();
-		return levelSegments[random.Next (levelSegments.Length)];
-	}
+		// Returns the theme for the next level segment
+		Theme GetNextTheme ()
+		{
+				if (currentThemeSegmentCount >= 5) {
+						currentThemeSegmentCount = 0;
+						currentTheme = GetNewTheme ();
+				}
 
-	public void characterCollisionWith(Collision2D col) {
+				return currentTheme;
+		}
+
+		// Chooses and returns a new theme. The returned theme will be different from the current theme.
+		Theme GetNewTheme ()
+		{
+				Array themes = Enum.GetValues (typeof(Theme));
+				System.Random random = new System.Random ();
+				Theme nextTheme;
+				do {
+						nextTheme = (Theme)themes.GetValue (random.Next (themes.Length));
+				} while (nextTheme != currentTheme);
+				return nextTheme;
+		}
+
+		// Chooses and returns a new level segment.
+		GameObject GetNextPrefab ()
+		{
+				System.Random random = new System.Random ();
+				return levelSegments [random.Next (levelSegments.Length)];
+		}
+
+		public void characterCollisionWith (Collision2D col)
+		{
 				int delta = 500;
 
 				String objectTag = col.gameObject.tag;
@@ -127,25 +135,27 @@ public class GameControllerScript : MonoBehaviour {
 
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
-						int difference = Environment.TickCount - lastCollision;
+						int difference = Math.Abs(Environment.TickCount - lastCollision);
+						print (difference);
 						if (difference > delta) {
 								lives--;
 								lastCollision = Environment.TickCount;
-								LifeHUD.GetComponent<LifeHUDScript>().SetLives(lives);
+								LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
 						}
-				} else if (objectTag.StartsWith("Collectable")) {
-					Debug.Log ("Collided with collectable");
-					col.gameObject.GetComponent<Collectable>().OnCollection(this);
+				} else if (objectTag.StartsWith ("Collectable")) {
+						Debug.Log ("Collided with collectable");
+						col.gameObject.GetComponent<Collectable> ().OnCollection (this);
 				}
 
 				if (lives < 0) {
 						Application.LoadLevel ("GameOver");
 				}
-	}
+		}
 
-	// Increments the number of collected coins by the specified amount
-	public void IncrementCoins(int amount) {
-		this.coinsCollected += amount;
-		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
-	}
+		// Increments the number of collected coins by the specified amount
+		public void IncrementCoins (int amount)
+		{
+				this.coinsCollected += amount;
+				Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
+		}
 }

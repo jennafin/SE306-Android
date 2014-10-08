@@ -1,32 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PathedProjectile : MonoBehaviour {
+public class PathedProjectile : MonoBehaviour
+{
+		private float initialXPosition;
+		private Transform target;
+		private float speed;
+		private Vector3 targetPosition;
 
-	private Transform destination;
-	private float speed;
-
-	public void Initialize(float _speed){
-		destination = GameObject.Find ("Target").transform;
-		speed = _speed;
-	}
-	
-	// Update is called once per frame
-	public void Update () {
-	
-		transform.position = Vector3.MoveTowards (transform.position, destination.position, Time.deltaTime * speed);
-
-		var distanceSquared = (destination.transform.position - transform.position).sqrMagnitude;
-		if (distanceSquared > .01f * .01f) {
-			return;
+		// Set target and speed of projectile
+		public void Initialize (float _speed, Transform _target)
+		{
+				initialXPosition = transform.position.x;
+				target = _target;
+				speed = _speed;
+				targetPosition = new Vector3 ((transform.position.x - 10f), transform.position.y, 0f);
+				
 		}
-		Destroy (gameObject);
-	}
+	
+		// Move projectile to its next position, If it's reached it's destination, destroy it.
+		public void Update ()
+		{
+	
+				transform.position = Vector3.MoveTowards (transform.position, targetPosition, Time.deltaTime * speed);
 
-	void OnTriggerEnter2D(Collider2D col) {
-		if (col.gameObject.name == "Alex") {
-			Debug.Log ("Here");
-			Destroy (gameObject);
+				float distanceTravelled = initialXPosition - transform.position.x;
+				if (distanceTravelled < 10f) {
+						return;
+				}
+				Destroy (gameObject);
 		}
-	}
+
+		// On collision, destroy projectile
+		void OnTriggerEnter2D (Collider2D col)
+		{
+				if (col.gameObject.name == "Alex") {
+						Destroy (gameObject);
+				}
+		}
 }
