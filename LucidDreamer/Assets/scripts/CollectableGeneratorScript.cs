@@ -14,8 +14,7 @@ public class CollectableGeneratorScript : MonoBehaviour {
 	}
 	
 	void Spawn () {
-		Collectable collectable = (Collectable) Instantiate(collectableTypes [Random.Range (0, collectableTypes.Length)], transform.position, Quaternion.identity);
-		collectable.gameController = this.gameController;
+		Instantiate(collectableTypes [Random.Range (0, collectableTypes.Length)], transform.position, Quaternion.identity);
 		Invoke ("Spawn", Random.Range (spawnMin, spawnMax));
 	}
 }
