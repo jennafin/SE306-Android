@@ -52,14 +52,12 @@ public class ScoreTrackingSystem {
 
 		currentScorePoints = currentScorePoints + (pointsToBeAdded * totalMultiplier);
 		pointsToBeAdded = 0;
-		Debug.Log ("HI");
-		Debug.Log ((distance + currentScorePoints).ToString());
+		Debug.Log (currentScorePoints.ToString());
 		return distance + currentScorePoints;
 	}
 
 	public int GetCurrentScore(int distance)
 	{
-		Debug.Log ("Called Method");
 		return UpdateScore(distance);
 	}
 

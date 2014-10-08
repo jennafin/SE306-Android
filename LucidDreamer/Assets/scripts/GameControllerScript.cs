@@ -72,7 +72,7 @@ public class GameControllerScript : MonoBehaviour {
 			currentLevel = GetNextLevel(levelSpawnPostion, Quaternion.identity);
 		}
 
-		LifeHUD.SetScore(scoreTracker.GetCurrentScore ((int)Math.Floor(alexPosition.x)));
+		LifeHUD.GetComponent<LifeHUDScript>().SetScore(scoreTracker.GetCurrentScore ((int)Math.Floor(alexPosition.x)));
 
 
 //		if (alexPosition.x - currentLevel.MinX() > currentLevel.Width() * 0.8) {
