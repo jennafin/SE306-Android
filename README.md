@@ -1,9 +1,12 @@
 ![](http://jennafin.github.io/SE306-Android/presentations/images/logo-horizontal.png)
 
-SE306-Android
-=============
+# Lucid Runner
+Lucid Runner is an infinite runner, platformer game with a lucid dreaming theme.
 
-Second group project for SE306 paper - an Android based 'platformer' game.
+# Getting the game
+1. Download the apk file from here
+2. Transfer the apk file to your android mobile device
+3. Open the apk file on your phone through a file explorer
 
 # Building project with your own keystore
 
