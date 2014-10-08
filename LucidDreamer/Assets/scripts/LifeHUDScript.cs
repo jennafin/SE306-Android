@@ -13,10 +13,10 @@ public class LifeHUDScript : MonoBehaviour {
 		lifeStyle.fontSize = (int)(0.06 * Screen.height);
 		lifeStyle.normal.textColor = Color.red;
 		//Life HUD
-		GUI.TextArea(new Rect(20, 20, 50, 50), lives, lifeStyle);
+		GUI.TextArea(new Rect(30, 20, 50, 50), lives, lifeStyle);
 
 		//ScoreHUD
-		GUI.TextArea(new Rect(Screen.width-90, 20, 50, 20), score.ToString(), lifeStyle);
+		GUI.TextArea(new Rect(Screen.width-200, 20, 50, 20), score.ToString(), lifeStyle);
 
 
 	}

@@ -67,6 +67,7 @@ public class ScoreTrackingSystem {
 		Social.ReportScore (finalScore, "CgkIj8PyxKwKEAIQAQ", (bool success) => {
 			//TODO: handle success or failure
 		});
+		PlayerPrefs.SetInt ("Score", finalScore);
 		return finalScore;
 
 	}
