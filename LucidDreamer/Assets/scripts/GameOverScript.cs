@@ -13,8 +13,7 @@ public class GameOverScript : MonoBehaviour
 	
 		void Start ()
 		{
-				//TODO score = PlayerPrefs.GetInt ("Score");
-				score = 12345;
+				score = PlayerPrefs.GetInt ("Score");
 
 				screenHeight = Screen.height;
 				screenWidth = Screen.width;
