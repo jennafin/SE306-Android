@@ -18,6 +18,8 @@ public class GameControllerScript : MonoBehaviour
 		// Life HUD
 		public GameObject LifeHUD;
 
+	private AchievementsList achievementsList = new AchievementsList();
+
 		// Main Character
 		public Transform alexDreamer;
 
@@ -83,9 +85,31 @@ public class GameControllerScript : MonoBehaviour
 						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
 				}
 
+		checkAchievements (alexPosition.x);
+
 				LifeHUD.GetComponent<LifeHUDScript> ().SetScore (scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x)));
 
 		}
+
+		void checkAchievements(float x)
+	{
+		if (x >= 10){
+			achievementsList.GetRan10Meters();
+		}
+		if (x >= 20){
+			achievementsList.GetRan20Meters();
+		}
+		if (x >= 30){
+			achievementsList.GetRan30Meters();
+		}
+		if (x >= 40){
+			achievementsList.GetRan40Meters();
+		}
+		if (x >= 50){
+			achievementsList.GetRan50Meters();
+		}
+
+	}
 
 		// Uses the LevelFactory to create the next level segment
 		Level GetNextLevel (Vector3 position, Quaternion rotation)
@@ -178,6 +202,7 @@ public class GameControllerScript : MonoBehaviour
 				}
 		
 				if (lives < 0) {
+						scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
 						Application.LoadLevel ("GameOver");
 				}
 		}
