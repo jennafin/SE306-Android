@@ -14,11 +14,17 @@ public class GameControllerScript : MonoBehaviour
 		// Keep track of the last collision with an enemy
 		private int lastCollision = 0;
 
+		//Scoring system
+		private ScoreTrackingSystem scoreTracker;
+
+		private Vector3 alexPosition;
+
 		// Life HUD
 		public GameObject LifeHUD;
 
 		// Main Character
 		public Transform alexDreamer;
+
 
 		// The Prefab level segments that can be chosen from
 		public GameObject[] levelSegments;
@@ -38,20 +44,31 @@ public class GameControllerScript : MonoBehaviour
 		{
 				// Calculate the screen width
 
+
 				// Player starts with 3 lives
 				lives = 3;
 
-				// TODO: Load bedroom scene
 
-				// Below here is temp stuff until there is a bedroom scene
-				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity);
-				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
-		}
+		//Instantiate score tracker
+		scoreTracker = new ScoreTrackingSystem ();
+
+
+		// Player starts with 3 lives
+		lives = 3;
+
+		// TODO: Load bedroom scene
+
+		// Below here is temp stuff until there is a bedroom scene
+		this.previousLevel = GetNextLevel (new Vector3(0f, 0f, 0f), Quaternion.identity);
+		this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
+	}
+
+
 	
 		// Update is called once per frame
 		void Update ()
 		{
-				Vector3 alexPosition = alexDreamer.position;
+				alexPosition = alexDreamer.position;
 				//print ("Alex: " + alexPosition);
 				//print ("Min: " + currentLevel.MinX ());
 				//print ("Max: " + currentLevel.MaxX ());
@@ -67,6 +84,8 @@ public class GameControllerScript : MonoBehaviour
 						previousLevel = currentLevel;
 						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
 				}
+
+		LifeHUD.GetComponent<LifeHUDScript>().SetScore(scoreTracker.GetCurrentScore ((int)Math.Floor(alexPosition.x)));
 
 
 //		if (alexPosition.x - currentLevel.MinX() > currentLevel.Width() * 0.8) {
@@ -148,7 +167,8 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 				if (lives < 0) {
-						Application.LoadLevel ("GameOver");
+					scoreTracker.gameOver((int)Math.Floor(alexPosition.x));
+					Application.LoadLevel ("GameOver");
 				}
 		}
 	// Duplicate method to allow loss of life with Collider object, should change later
@@ -178,10 +198,11 @@ public class GameControllerScript : MonoBehaviour
 		}
 	}
 
-		// Increments the number of collected coins by the specified amount
-		public void IncrementCoins (int amount)
-		{
-				this.coinsCollected += amount;
-				Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
-		}
+	// Increments the number of collected coins by the specified amount
+	public void IncrementCoins(int amount) {
+//		this.coinsCollected += amount;
+//		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
+		scoreTracker.AddPoints (amount);
+	}
 }
+
