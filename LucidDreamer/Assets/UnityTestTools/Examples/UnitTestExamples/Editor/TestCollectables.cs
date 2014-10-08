@@ -26,7 +26,7 @@ namespace UnityTest
 			collectable.CollectedBehaviour (gameController);
 			
 			// Check that the change has been stored in the game controller
-			Assert.AreEqual (1, gameController.GetCoinsCollected());
+			Assert.AreEqual (10, gameController.GetCoinsCollected());
 		}
 	}
 }
