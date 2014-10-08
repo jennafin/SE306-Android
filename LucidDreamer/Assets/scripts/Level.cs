@@ -1,64 +1,70 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Level {
+public class Level
+{
 
-	GameObject prefab;
-	Bounds bounds;
+		GameObject prefab;
+		Bounds bounds;
+		float maxX;
+		float minX;
+		float maxY;
+		float minY;
+		float width;
+		float height;
 
-	float maxX;
-	float minX; 
-	float maxY;
-	float minY;
+		public Level (GameObject prefab, Theme theme, Vector3 position, Quaternion rotation)
+		{
+				this.prefab = MonoBehaviour.Instantiate (prefab, position, rotation) as GameObject;
 
-	float width;
-	float height;
+				// Calculate width and height
+				this.bounds = this.prefab.renderer.bounds;
 
+				foreach (var r in this.prefab.GetComponentsInChildren<Renderer>()) {
+						this.bounds.Encapsulate (r.bounds);
+				}
 
-	public Level(GameObject prefab, Theme theme, Vector3 position, Quaternion rotation) {
-		this.prefab = MonoBehaviour.Instantiate (prefab, position, rotation) as GameObject;
+				this.maxX = bounds.max.x;
+				this.minX = bounds.min.x;
+				this.maxY = bounds.max.y;
+				this.minY = bounds.min.y;
 
-		// Calculate width and height
-		this.bounds = this.prefab.renderer.bounds;
-
-		foreach(var r in this.prefab.GetComponentsInChildren<Renderer>()) {
-			this.bounds.Encapsulate(r.bounds);
+				this.width = maxX - minX;
+				this.height = maxY - minY;
 		}
 
-		this.maxX = bounds.max.x;
-		this.minX = bounds.min.x;
-		this.maxY = bounds.max.y;
-		this.minY = bounds.min.y;
+		public GameObject Prefab ()
+		{
+				return prefab;
+		}
 
-		this.width = maxX - minX;
-		this.height = maxY - minY;
-	}
+		public float Width ()
+		{
+				return width;
+		}
 
-	public GameObject Prefab() {
-		return prefab;
-	}
+		public float Height ()
+		{
+				return height;
+		}
 
-	public float Width() {
-		return width;
-	}
+		public float MaxX ()
+		{
+				return maxX;
+		}
 
-	public float Height() {
-		return height;
-	}
+		public float MinX ()
+		{
+				return minX;
+		}
 
-	public float MaxX() {
-		return maxX;
-	}
+		public float MaxY ()
+		{
+				return maxY;
+		}
 
-	public float MinX() {
-		return minX;
-	}
-
-	public float MaxY() {
-		return maxY;
-	}
-
-	public float MinY() {
-		return minY;
-	}
+		public float MinY ()
+		{
+				return minY;
+		}
 }
