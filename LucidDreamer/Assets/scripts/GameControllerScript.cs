@@ -49,6 +49,11 @@ public class GameControllerScript : MonoBehaviour
 		void Update ()
 		{
 				Vector3 alexPosition = alexDreamer.position;
+				
+				if (alexPosition.y < -5) {
+					// Alex has fallen to his death
+					GameOver ();
+				}
 
 				float tmpPos = Camera.main.WorldToScreenPoint (new Vector3 (previousLevel.MaxX (), 0, 0)).x;
 				if (tmpPos < 0) {
@@ -127,8 +132,12 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 				if (lives < 0) {
-						Application.LoadLevel ("GameOver");
+					GameOver();
 				}
+		}
+
+		void GameOver() {
+			Application.LoadLevel ("GameOver");
 		}
 
 		// Increments the number of collected coins by the specified amount
