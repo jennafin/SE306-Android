@@ -113,7 +113,7 @@ public class GameControllerScript : MonoBehaviour {
 	}
 
 	public void characterCollisionWith(Collision col) {
-		if (col.gameObject.name == "enemy") { //TODO this is the incorrect check, currently there are not enemies in this branch
+		if (col.gameObject.tag == "Dangerous") { //TODO this is the incorrect check, currently there are not enemies in this branch
 			lives--;
 		}
 		if (lives < 0) {
