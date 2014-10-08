@@ -10,6 +10,12 @@ public class GameControllerScript : MonoBehaviour {
 	private int	lives;
 	private int coinsCollected = 0;
 
+	// Keep track of the last collision with an enemy
+	private int lastCollision = 0;
+
+	// Life HUD
+	public GameObject LifeHUD;
+
 	// Main Character
 	public Transform alexDreamer;
 
@@ -52,7 +58,7 @@ public class GameControllerScript : MonoBehaviour {
 		if (tmpPos < 0) {
 
 			Vector3 levelSpawnPostion = new Vector3(currentLevel.MaxX (), 0, 0);
-			
+
 			if (previousLevel != null) {
 				Destroy(previousLevel.Prefab());
 			}
@@ -91,7 +97,7 @@ public class GameControllerScript : MonoBehaviour {
 		if (currentThemeSegmentCount >= 5) {
 			currentThemeSegmentCount = 0;
 			currentTheme = GetNewTheme();
-		} 
+		}
 
 		return currentTheme;
 	}
@@ -114,20 +120,27 @@ public class GameControllerScript : MonoBehaviour {
 	}
 
 	public void characterCollisionWith(Collision2D col) {
+				int delta = 500;
 
-		String objectTag = col.gameObject.tag;
-		print (objectTag);
+				String objectTag = col.gameObject.tag;
+				print (objectTag);
 
-		if (objectTag == "Dangerous") { //TODO this is the incorrect check, currently there are not enemies in this branch
-			lives--;
-		} else if (objectTag.StartsWith("Collectable")) {
-			Debug.Log ("Collided with collectable");
-			col.gameObject.GetComponent<Collectable>().OnCollection(this);
-		}
+				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
+				if (objectTag == "Dangerous") {
+						int difference = Environment.TickCount - lastCollision;
+						if (difference > delta) {
+								lives--;
+								lastCollision = Environment.TickCount;
+								LifeHUD.GetComponent<LifeHUDScript>().SetLives(lives);
+						}
+				} else if (objectTag.StartsWith("Collectable")) {
+					Debug.Log ("Collided with collectable");
+					col.gameObject.GetComponent<Collectable>().OnCollection(this);
+				}
 
-		if (lives < 0) {
-			// Game over, TODO move to game over screen
-		}
+				if (lives < 0) {
+						Application.LoadLevel ("GameOver");
+				}
 	}
 
 	// Increments the number of collected coins by the specified amount

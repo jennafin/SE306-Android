@@ -7,8 +7,10 @@ public class MainCharacterScript : MonoBehaviour {
 
 	public float jumpForce = 100f;
 
-
 	public float speed = 1f; // meters per second
+
+	public GameObject GameController;
+
 
 	bool grounded = false;   // Whether the character is on the ground or not.
 	public Transform groundCheck;
@@ -28,7 +30,7 @@ public class MainCharacterScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		Debug.Log (col.gameObject.tag);
-		gameControllerScript.characterCollisionWith (col);
+				GameControllerScript gameControllerScript = GameController.GetComponent<GameControllerScript>();
+				gameControllerScript.characterCollisionWith (col);
 	}
 }
