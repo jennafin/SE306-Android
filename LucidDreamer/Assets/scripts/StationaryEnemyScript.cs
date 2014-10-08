@@ -1,21 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StationaryEnemyScript : MonoBehaviour {
+public class StationaryEnemyScript : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
+		// Use this for initialization
+		void Start ()
+		{
 	
-	}
+		}
 	
-	// Update is called once per frame
-	void Update () {
+		// Update is called once per frame
+		void Update ()
+		{
 	
-	}
+		}
 
-	void OnCollisionEnter2D(Collision2D coll) {
-		if (coll.gameObject.tag == "Player")
-			Debug.Log("Collision Detected");
+		// Detect collisions
+		void OnCollisionEnter2D (Collision2D coll)
+		{
+				if (coll.gameObject.tag == "Player")
+						Debug.Log ("Collision Detected");
 		
-	}
+		}
 }
