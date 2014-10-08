@@ -23,6 +23,7 @@ public class MainCharacterScript : MonoBehaviour {
 		if (grounded && (Input.GetButton ("Jump") || Input.GetButton("Fire1"))) {
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
 		}
+		rigidbody2D.velocity = new Vector2 (speed, rigidbody2D.velocity.y);
 	}
 
 	bool IsGrounded ()

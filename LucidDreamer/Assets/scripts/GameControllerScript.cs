@@ -59,13 +59,13 @@ public class GameControllerScript : MonoBehaviour
 				float tmpPos = Camera.main.WorldToScreenPoint (new Vector3 (previousLevel.MaxX (), 0, 0)).x;
 				if (tmpPos < 0) {
 
-						Vector3 levelSpawnPostion = new Vector3 (currentLevel.MaxX (), 0, 0);
+						Vector3 levelSpawnPosition = new Vector3 (currentLevel.MaxX (), 0, 0);
 
 						if (previousLevel != null) {
 								Destroy (previousLevel.Prefab ());
 						}
 						previousLevel = currentLevel;
-						currentLevel = GetNextLevel (levelSpawnPostion, Quaternion.identity);
+						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
 				}
 
 
@@ -135,7 +135,8 @@ public class GameControllerScript : MonoBehaviour
 
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
-						int difference = Environment.TickCount - lastCollision;
+						int difference = Math.Abs(Environment.TickCount - lastCollision);
+						print (difference);
 						if (difference > delta) {
 								lives--;
 								lastCollision = Environment.TickCount;
