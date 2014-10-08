@@ -2114,6 +2114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c1d5cf4f434408c8c452bc3c80d04f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LifeHUD: {fileID: 0}
   alexDreamer: {fileID: 1286769714}
   levelSegments: []
 --- !u!23 &1897705300

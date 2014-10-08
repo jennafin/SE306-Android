@@ -5,9 +5,12 @@ public class GameControllerScript : MonoBehaviour {
 
 	// Keep track of how many lives the player has
 	private int	lives;
-	
+
 	// Keep track of the last collision with an enemy
 	private int lastCollision = 0;
+
+	// Life HUD
+	public GameObject LifeHUD;
 
 	// Main Character
 	public GameObject alexDreamer;
@@ -79,7 +82,7 @@ public class GameControllerScript : MonoBehaviour {
 		if (currentThemeSegmentCount >= 5) {
 			currentThemeSegmentCount = 0;
 			currentTheme = GetNewTheme();
-		} 
+		}
 
 		return currentTheme;
 	}
@@ -110,6 +113,7 @@ public class GameControllerScript : MonoBehaviour {
 						if (difference > delta) {
 								lives--;
 								lastCollision = Environment.TickCount;
+								LifeHUD.GetComponent<LifeHUDScript>().SetLives(lives);
 						}
 				}
 				if (lives < 0) {
