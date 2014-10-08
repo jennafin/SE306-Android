@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MainCharacterScript : MonoBehaviour {
 
-	private GameControllerScript gameControllerScript;
+	public GameControllerScript gameControllerScript;
 
 	public float jumpForce = 100f;
 
@@ -17,7 +17,7 @@ public class MainCharacterScript : MonoBehaviour {
 
 	void FixedUpdate(){
 		grounded = IsGrounded ();
-		if (grounded && Input.GetButton ("Jump")) {
+		if (grounded && (Input.GetButton ("Jump") || Input.GetButton("Fire1"))) {
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
 		}
 		rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
@@ -27,7 +27,8 @@ public class MainCharacterScript : MonoBehaviour {
 		return Physics2D.OverlapCircle (groundCheck.position, groundRadius, ground);
 	}
 
-	void OnCollisionEnter(Collision col) {
+	void OnCollisionEnter2D(Collision2D col) {
+		Debug.Log (col.gameObject.tag);
 		gameControllerScript.characterCollisionWith (col);
 	}
 }
