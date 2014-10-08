@@ -10,8 +10,8 @@ PlayerSettings:
   targetGlesGraphics: 1
   targetResolution: 0
   accelerometerFrequency: 60
-  companyName: Unity
-  productName: Sample Assets
+  companyName: Madcap Labs
+  productName: Lucid Runner
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   defaultScreenWidth: 1024
@@ -99,13 +99,13 @@ PlayerSettings:
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: E:/User/Documents/dev/uni/lucidrunner.keystore
+  AndroidKeystoreName: /Users/akshaykalyan/Documents/dev/lucidrunner.keystore
   AndroidKeyaliasName: lucidrunner
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
-    - m_Icon: {fileID: 0}
+    - m_Icon: {fileID: 2800000, guid: b51bcabdca3acfb4bb3b39e68aa2f852, type: 3}
       m_Size: 128
   m_BuildTargetBatching:
   - m_BuildTarget: Web
