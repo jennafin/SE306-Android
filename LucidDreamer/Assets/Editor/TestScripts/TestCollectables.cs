@@ -16,7 +16,9 @@ namespace UnityTest
 		// when asked to perform its "collected behaviour"
 		public void TestCoinCollectable()
 		{
-			GameControllerScript gameController = new GameControllerScript ();
+			GameControllerScript gameController = Substitute.For<GameControllerScript>();
+			ScoreTrackingSystem scoreTracker = Substitute.For<ScoreTrackingSystem> ();
+			gameController.setScoreTrackingSystem (scoreTracker);
 			Collectable collectable = new CoinCollectable ();
 			
 			// Check that coin count initially starts at 0

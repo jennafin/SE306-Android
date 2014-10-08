@@ -226,8 +226,13 @@ public class GameControllerScript : MonoBehaviour
 		// Increments the number of collected coins by the specified amount
 		public void IncrementCoins (int amount)
 		{
-				//		this.coinsCollected += amount;
+				this.coinsCollected += amount;
 				//		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
 				scoreTracker.AddPoints (amount);
+		}
+
+		public void setScoreTrackingSystem(ScoreTrackingSystem sts) 
+		{
+			this.scoreTracker = sts;
 		}
 }

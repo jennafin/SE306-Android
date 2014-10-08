@@ -16,6 +16,8 @@ namespace UnityTest
 		public void TestIncrementCoins()
 		{
 			GameControllerScript gameController = Substitute.For<GameControllerScript>();
+			ScoreTrackingSystem scoreTracker = Substitute.For<ScoreTrackingSystem> ();
+			gameController.setScoreTrackingSystem (scoreTracker);
 			
 			// Check that coin count initially starts at 0
 			Assert.AreEqual (0, gameController.GetCoinsCollected());
@@ -32,7 +34,9 @@ namespace UnityTest
 		public void TestDecrementCoins()
 		{
 			GameControllerScript gameController = Substitute.For<GameControllerScript>();
-			
+			ScoreTrackingSystem scoreTracker = Substitute.For<ScoreTrackingSystem> ();
+			gameController.setScoreTrackingSystem (scoreTracker);
+
 			// Check that coin count initially starts at 0
 			Assert.AreEqual (0, gameController.GetCoinsCollected());
 			
