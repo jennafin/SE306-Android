@@ -8,7 +8,7 @@ public class MainMenuScript : MonoBehaviour {
 	private Ray ray;
 	private RaycastHit hit;
 	private bool isLoggedIn = false;
-	
+
 	void Start () {
 		Debug.Log("MainMenuScript: Start");
 
