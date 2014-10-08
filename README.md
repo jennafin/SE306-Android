@@ -4,7 +4,7 @@
 Lucid Runner is an Endless Runner, Action/Adventure platformer game with a Lucid Dreaming theme. Checkout the [Game Overview](https://github.com/jennafin/SE306-Android/wiki/Game-Overview) page in our wiki for more information.
 
 # Getting the game
-1. Download the `LucidRunner.apk` file from [here]()
+1. Download the `LucidRunner.apk` file from [here](https://github.com/jennafin/SE306-Android/releases/download/prototype/LucidRunner.apk)
 2. Transfer the file from your downloads location to your Android mobile device
 3. Open the apk file on your phone through a file explorer to install
 4. Run!
