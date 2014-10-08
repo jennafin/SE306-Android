@@ -13,9 +13,9 @@ float calcFresnelFactorCartoon(float3 norm, float3 vVec)
 	return step(-0.5f, -dot(norm, vVec));
 }
 
-float perpReflect(float3 vector, float3 norm)
+float perpReflect(float3 v, float3 norm)
 {
-	return vector - norm * dot(vector, norm);
+	return v - norm * dot(v, norm);
 }
 
 float2 calcSpecFactorsCartoon(float albedo, float3 norm, float3 lVec, float3 vVec, float attenuation)
