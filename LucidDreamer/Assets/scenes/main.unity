@@ -1214,6 +1214,7 @@ MonoBehaviour:
   alexDreamer: {fileID: 1286769715}
   levelSegments:
   - {fileID: 100020, guid: 67d565e42eacd464381f5c30ae750772, type: 2}
+  - {fileID: 100018, guid: 1de47883763e105469b9e949bc515515, type: 2}
 --- !u!23 &1897705300
 Renderer:
   m_ObjectHideFlags: 0
