@@ -66,6 +66,12 @@ public class GameControllerScript : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
+				// exit game on escape/back button
+				if (Input.GetKeyDown (KeyCode.Escape)) {
+					Debug.Log ("GameControllerScript: Escape key pressed");
+					Application.LoadLevel ("MainMenu");
+				}
+
 				alexPosition = alexDreamer.position;
 				
 				if (alexPosition.y < -5) {
