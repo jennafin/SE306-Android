@@ -8,7 +8,7 @@ public class MainMenuScript : MonoBehaviour {
 	private Ray ray;
 	private RaycastHit hit;
 	private bool isLoggedIn = false;
-	
+
 	void Start () {
 		Debug.Log("MainMenuScript: Start");
 
@@ -74,6 +74,7 @@ public class MainMenuScript : MonoBehaviour {
 				} else if (hit.transform.name == "SettingsModel") {
 					Debug.Log("MainMenuScript: Settings model hit");
 					// TODO
+					Application.LoadLevel("HeroPose");
 				} else if (hit.transform.name == "LeaderboardsModel") {
 					Debug.Log("MainMenuScript: Leaderboards model hit");
 					Social.ShowLeaderboardUI();

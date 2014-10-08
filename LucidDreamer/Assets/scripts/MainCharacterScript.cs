@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MainCharacterScript : MonoBehaviour {
 
+	public GameControllerScript gameControllerScript;
+
 	public float jumpForce = 100f;
 
 	public float speed = 1f; // meters per second
@@ -17,7 +19,7 @@ public class MainCharacterScript : MonoBehaviour {
 
 	void FixedUpdate(){
 		grounded = IsGrounded ();
-		if (grounded && Input.GetButton ("Jump")) {
+		if (grounded && (Input.GetButton ("Jump") || Input.GetButton("Fire1"))) {
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
 		}
 		rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
