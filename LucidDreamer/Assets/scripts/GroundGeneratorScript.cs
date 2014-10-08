@@ -6,7 +6,7 @@ public class GroundGeneratorScript : MonoBehaviour {
 	public GameObject groundObject;
 	public Transform player;
 	private float playerXOffset;
-	float spawnRate = 0.5f;
+	float spawnRate = 10.5f;
 	
 	// Use this for initialization
 	void Start () {
@@ -16,7 +16,7 @@ public class GroundGeneratorScript : MonoBehaviour {
 	}
 	
 	void Update () {
-		transform.position = new Vector3(player.position.x + playerXOffset, 0, 0);
+		transform.position = new Vector3(player.position.x + playerXOffset, 2.409591f, -0.05384827f);
 	}
 	
 	void Spawn () {
