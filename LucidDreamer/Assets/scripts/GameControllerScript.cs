@@ -8,6 +8,7 @@ public class GameControllerScript : MonoBehaviour {
 
 	// Keep track of how many lives the player has
 	private int	lives;
+	private int coinsCollected = 0;
 
 	// Main Character
 	public Transform alexDreamer;
@@ -43,9 +44,9 @@ public class GameControllerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 alexPosition = alexDreamer.position;
-		print ("Alex: " + alexPosition);
-		print ("Min: " + currentLevel.MinX ());
-		print ("Max: " + currentLevel.MaxX ());
+		//print ("Alex: " + alexPosition);
+		//print ("Min: " + currentLevel.MinX ());
+		//print ("Max: " + currentLevel.MaxX ());
 
 		float tmpPos = Camera.main.WorldToScreenPoint (new Vector3(previousLevel.MaxX(), 0, 0)).x;
 		if (tmpPos < 0) {
@@ -112,12 +113,26 @@ public class GameControllerScript : MonoBehaviour {
 		return levelSegments[random.Next (levelSegments.Length)];
 	}
 
-	public void characterCollisionWith(Collision col) {
-		if (col.gameObject.tag == "Dangerous") { //TODO this is the incorrect check, currently there are not enemies in this branch
+	public void characterCollisionWith(Collision2D col) {
+
+		String objectTag = col.gameObject.tag;
+		print (objectTag);
+
+		if (objectTag == "Dangerous") { //TODO this is the incorrect check, currently there are not enemies in this branch
 			lives--;
+		} else if (objectTag.StartsWith("Collectable")) {
+			Debug.Log ("Collided with collectable");
+			col.gameObject.GetComponent<Collectable>().OnCollection(this);
 		}
+
 		if (lives < 0) {
 			// Game over, TODO move to game over screen
 		}
+	}
+
+	// Increments the number of collected coins by the specified amount
+	public void IncrementCoins(int amount) {
+		this.coinsCollected += amount;
+		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
 	}
 }
