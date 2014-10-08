@@ -13,7 +13,6 @@ public class GameControllerScript : MonoBehaviour
 
 		//Scoring system
 		private ScoreTrackingSystem scoreTracker;
-
 		private Vector3 alexPosition;
 
 		// Life HUD
@@ -56,7 +55,7 @@ public class GameControllerScript : MonoBehaviour
 				// TODO: Load bedroom scene
 
 				// Below here is temp stuff until there is a bedroom scene
-				this.previousLevel = GetNextLevel (new Vector3(0f, 0f, 0f), Quaternion.identity);
+				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity);
 				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
 		}
 
@@ -68,8 +67,8 @@ public class GameControllerScript : MonoBehaviour
 				alexPosition = alexDreamer.position;
 				
 				if (alexPosition.y < -5) {
-					// Alex has fallen to his death
-					GameOver ();
+						// Alex has fallen to his death
+						GameOver ();
 				}
 
 				float tmpPos = Camera.main.WorldToScreenPoint (new Vector3 (previousLevel.MaxX (), 0, 0)).x;
@@ -84,7 +83,7 @@ public class GameControllerScript : MonoBehaviour
 						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
 				}
 
-				LifeHUD.GetComponent<LifeHUDScript>().SetScore(scoreTracker.GetCurrentScore ((int)Math.Floor(alexPosition.x)));
+				LifeHUD.GetComponent<LifeHUDScript> ().SetScore (scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x)));
 
 		}
 
@@ -155,17 +154,45 @@ public class GameControllerScript : MonoBehaviour
 						GameOver ();
 				}
 		}
-
-		void GameOver() 
+		
+		// Duplicate method to allow loss of life with Collider object, should change later
+		public void characterColliderWith (Collider2D col)
 		{
-				scoreTracker.gameOver((int)Math.Floor(alexPosition.x));
+				int delta = 500;
+		
+				String objectTag = col.gameObject.tag;
+				print (objectTag);
+		
+				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
+				if (objectTag == "Dangerous") {
+						int difference = Math.Abs (Environment.TickCount - lastCollision);
+						print (difference);
+						if (difference > delta) {
+								lives--;
+								lastCollision = Environment.TickCount;
+								LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
+						}
+				} else if (objectTag.StartsWith ("Collectable")) {
+						Debug.Log ("Collided with collectable");
+						col.gameObject.GetComponent<Collectable> ().OnCollection (this);
+				}
+		
+				if (lives < 0) {
+						Application.LoadLevel ("GameOver");
+				}
+		}
+
+		void GameOver ()
+		{
+				scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
 				Application.LoadLevel ("GameOver");
 		}
 
 		// Increments the number of collected coins by the specified amount
-		public void IncrementCoins(int amount) {
-		//		this.coinsCollected += amount;
-		//		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
+		public void IncrementCoins (int amount)
+		{
+				//		this.coinsCollected += amount;
+				//		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
 				scoreTracker.AddPoints (amount);
 		}
 }
