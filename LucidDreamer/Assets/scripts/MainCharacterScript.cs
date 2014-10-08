@@ -30,6 +30,15 @@ public class MainCharacterScript : MonoBehaviour {
 	{
 		return Physics2D.OverlapCircle (groundCheck.position, groundRadius, ground);
 	}
+
+	// Ugly hack used to get projectiles to reduce life points
+	void OnTriggerEnter2D (Collider2D col)
+	{
+		if (col.gameObject.tag == "Dangerous") {
+			GameControllerScript gameControllerScript = GameController.GetComponent<GameControllerScript>();
+			gameControllerScript.characterColliderWith (col);
+		}
+	}
 	
 
 	void OnCollisionEnter2D(Collision2D col) {
