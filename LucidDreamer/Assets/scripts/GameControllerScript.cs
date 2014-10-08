@@ -31,6 +31,9 @@ public class GameControllerScript : MonoBehaviour {
 	// The number of level segments for this theme
 	int currentThemeSegmentCount = 0;
 
+	//Alex's position
+	private Vector3 alexPosition;
+
 	// Prefabs that the player run play on.
 	Level currentLevel;
 	Level previousLevel;
@@ -55,7 +58,7 @@ public class GameControllerScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Vector3 alexPosition = alexDreamer.position;
+		alexPosition = alexDreamer.position;
 		//print ("Alex: " + alexPosition);
 		//print ("Min: " + currentLevel.MinX ());
 		//print ("Max: " + currentLevel.MaxX ());
@@ -147,7 +150,8 @@ public class GameControllerScript : MonoBehaviour {
 				}
 
 				if (lives < 0) {
-						Application.LoadLevel ("GameOver");
+					scoreTracker.gameOver((int)Math.Floor(alexPosition.x));
+					Application.LoadLevel ("GameOver");
 				}
 	}
 
