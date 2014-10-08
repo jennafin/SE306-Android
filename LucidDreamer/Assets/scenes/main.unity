@@ -1680,7 +1680,7 @@ GameObject:
   - 4: {fileID: 1524770915}
   - 114: {fileID: 1524770914}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: LifeHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2114,7 +2114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c1d5cf4f434408c8c452bc3c80d04f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeHUD: {fileID: 0}
+  LifeHUD: {fileID: 1524770913}
   alexDreamer: {fileID: 1286769714}
   levelSegments: []
 --- !u!23 &1897705300
