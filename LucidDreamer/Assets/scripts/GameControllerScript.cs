@@ -202,6 +202,7 @@ public class GameControllerScript : MonoBehaviour
 				}
 		
 				if (lives < 0) {
+						scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
 						Application.LoadLevel ("GameOver");
 				}
 		}
