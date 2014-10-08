@@ -6,9 +6,16 @@ public class GameControllerScript : MonoBehaviour
 
 		// Where the bottom of the levels will be
 		public float minYLevelPosition = -3f;
-
+	
 		// Keep track of how many lives the player has
 		private int	lives;
+		private int coinsCollected = 0;
+
+		// Keep track of the last collision with an enemy
+		private int lastCollision = 0;
+
+		// Life HUD
+		public GameObject LifeHUD;
 
 		// Main Character
 		public Transform alexDreamer;
@@ -31,7 +38,6 @@ public class GameControllerScript : MonoBehaviour
 		{
 				// Calculate the screen width
 
-
 				// Player starts with 3 lives
 				lives = 3;
 
@@ -41,20 +47,20 @@ public class GameControllerScript : MonoBehaviour
 				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity);
 				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
 		}
-
+	
 		// Update is called once per frame
 		void Update ()
 		{
 				Vector3 alexPosition = alexDreamer.position;
-				print ("Alex: " + alexPosition);
-				print ("Min: " + currentLevel.MinX ());
-				print ("Max: " + currentLevel.MaxX ());
+				//print ("Alex: " + alexPosition);
+				//print ("Min: " + currentLevel.MinX ());
+				//print ("Max: " + currentLevel.MaxX ());
 
 				float tmpPos = Camera.main.WorldToScreenPoint (new Vector3 (previousLevel.MaxX (), 0, 0)).x;
 				if (tmpPos < 0) {
 
 						Vector3 levelSpawnPostion = new Vector3 (currentLevel.MaxX (), 0, 0);
-			
+
 						if (previousLevel != null) {
 								Destroy (previousLevel.Prefab ());
 						}
@@ -75,6 +81,7 @@ public class GameControllerScript : MonoBehaviour
 //			previousLevel = currentLevel;
 //			currentLevel = GetNextLevel(levelSegmentSpawnPosition, Quaternion.identity);
 //		}
+
 		}
 
 		// Uses the LevelFactory to create the next level segment
@@ -95,7 +102,7 @@ public class GameControllerScript : MonoBehaviour
 				if (currentThemeSegmentCount >= 5) {
 						currentThemeSegmentCount = 0;
 						currentTheme = GetNewTheme ();
-				} 
+				}
 
 				return currentTheme;
 		}
@@ -119,13 +126,35 @@ public class GameControllerScript : MonoBehaviour
 				return levelSegments [random.Next (levelSegments.Length)];
 		}
 
-		public void characterCollisionWith (Collision col)
+		public void characterCollisionWith (Collision2D col)
 		{
-				if (col.gameObject.tag == "Dangerous") { //TODO this is the incorrect check, currently there are not enemies in this branch
-						lives--;
+				int delta = 500;
+
+				String objectTag = col.gameObject.tag;
+				print (objectTag);
+
+				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
+				if (objectTag == "Dangerous") {
+						int difference = Environment.TickCount - lastCollision;
+						if (difference > delta) {
+								lives--;
+								lastCollision = Environment.TickCount;
+								LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
+						}
+				} else if (objectTag.StartsWith ("Collectable")) {
+						Debug.Log ("Collided with collectable");
+						col.gameObject.GetComponent<Collectable> ().OnCollection (this);
 				}
+
 				if (lives < 0) {
-						// Game over, TODO move to game over screen
+						Application.LoadLevel ("GameOver");
 				}
+		}
+
+		// Increments the number of collected coins by the specified amount
+		public void IncrementCoins (int amount)
+		{
+				this.coinsCollected += amount;
+				Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
 		}
 }
