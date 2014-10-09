@@ -575,7 +575,7 @@ Camera:
     height: 1
   near clip plane: .300000012
   far clip plane: 1000
-  field of view: 50
+  field of view: 30
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -613,6 +613,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1286769715}
+  distanceAhead: 16
+  distanceBehind: 8
+  yOffset: 3
+  minHeight: 10
 --- !u!1 &1165287227
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,7 +832,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameControllerScript: {fileID: 1897705299}
-  jumpForce: 750
   speed: 10
   GameController: {fileID: 1897705298}
   groundCheck: {fileID: 2016434741}
