@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameControllerScript: {fileID: 1897705299}
-  jumpForce: 250
+  jumpForce: 750
   speed: 10
   GameController: {fileID: 1897705298}
   groundCheck: {fileID: 2016434741}
