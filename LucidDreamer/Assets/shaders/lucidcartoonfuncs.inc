@@ -50,6 +50,31 @@ float4 shadeSpec(float3 diff, float albedo, float3 norm, float3 lVec, float3 vVe
 	return float4(outCol, 1.0);
 }
 
+float2 calcParallaxOffset(float3 vVecTS)
+{
+	float eyeHorizon = 0.1;
+	float2 baseOffset = vVecTS.xy * _BumpSzZ;
+	baseOffset /= float2(_BumpSzX, _BumpSzY) * max(vVecTS.z, eyeHorizon);
+	return baseOffset;
+}
+
+float2 calcOffsetTexCoord(float3 vVecTS, float heightSample)
+{
+	return calcParallaxOffset(vVecTS) * (heightSample - 1.f);
+}
+
+float3 sampleNormal(float2 sampleAtCoord)
+{
+	float2 texOffX = float2(1.f / _BumpSzX, 0.f);
+	float2 texOffY = float2(0.f, 1.f / _BumpSzY);
+	
+	float3 fuck = float3(_BumpSzX, _BumpSzY, 1.f / _BumpSzZ);
+	fuck.x *= tex2D(_BumpTex, sampleAtCoord + texOffX).x - tex2D(_BumpTex, sampleAtCoord - texOffX).x;
+	fuck.y *= tex2D(_BumpTex, sampleAtCoord + texOffY).x - tex2D(_BumpTex, sampleAtCoord - texOffY).x;
+
+	return normalize(fuck);
+}
+
 float calcAttenuationCartoon(float3 lVec)
 {
 	#ifdef USING_DIRECTIONAL_LIGHT
