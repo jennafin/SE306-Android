@@ -1,3 +1,5 @@
+#define LUCID_STYLE_ATTENUATION 1
+
 float posterise2(float rawValue, float step0, float step1)
 {
 	return 0.5f * (step(step0, rawValue) + step(step1, rawValue));
@@ -21,9 +23,9 @@ float perpReflect(float3 v, float3 norm)
 float2 calcSpecFactorsCartoon(float albedo, float3 norm, float3 lVec, float3 vVec, float attenuation)
 {
 	float rimLight	 = lerp(1.f, albedo, saturate(dot(vVec, norm)));
-	rimLight		*= lerp(0.5f, 1.f, dot(reflect(-lVec, norm), vVec));
+	rimLight		*= lerp(0.f, 1.f, dot(reflect(-lVec, norm), vVec));
 	rimLight		*= attenuation;
-	return float2(step(0.3333f, rimLight), step(0.6667f, rimLight));
+	return step(float2(0.3333f, 0.6667f), rimLight);//float2(step(0.3333f, rimLight), step(0.6667f, rimLight));
 }
 
 float calcDiffuseFactor(float3 norm, float3 lVec, float attenuation)
@@ -33,7 +35,11 @@ float calcDiffuseFactor(float3 norm, float3 lVec, float attenuation)
 
 float calcDiffuseFactorCartoon(float3 norm, float3 lVec, float attenuation)
 {
-	return posterise2(dot(norm, lVec) * attenuation, 0.01f, 0.5f);
+	#if LUCID_STYLE_ATTENUATION == 0
+		return posterise2(dot(norm, lVec) * attenuation, 0.01f, 0.5f);
+	#elif LUCID_STYLE_ATTENUATION == 1
+		return posterise2(dot(norm, lVec), 0.01f, 0.5f) * attenuation;
+	#endif
 }
 
 float4 shadeDiff(float3 diff, float3 norm, float3 lVec, float attenuation)
@@ -83,8 +89,9 @@ float calcAttenuationCartoon(float3 lVec)
 	#else
 		//return tex2D(_LightTexture0, dot(lVec,lVec).rr / unity_4LightAtten0.w).UNITY_ATTEN_CHANNEL;
 		//float rawAtten = dot(unity_4LightAtten0.w, unity_4LightAtten0.w) / dot(lVec, lVec);
-		lVec = mul(_LightMatrix0, float4(lVec, 0.f)).xyz;
-		float rawAtten = dot(unity_4LightAtten0.w, unity_4LightAtten0.w) / dot(lVec, lVec);
+		lVec = mul(float3x3(_LightMatrix0), lVec);// * unity_4LightAtten0.w;
+		
+		float rawAtten = 1.f / dot(lVec, lVec);
 		return max(0.f, rawAtten - 1.f);
 	#endif
 }

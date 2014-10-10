@@ -52,7 +52,6 @@
 			#include "AutoLight.cginc"
 			
 			#define LUCID_HAS_BUMPTEX
-			#define LUCID_HAS_AMBIENT
 			uniform sampler2D _MainTex;
 			uniform sampler2D _BumpTex;
 			uniform half _BumpSzX;

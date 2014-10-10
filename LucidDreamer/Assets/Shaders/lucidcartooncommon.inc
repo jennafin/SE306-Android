@@ -11,8 +11,9 @@ struct PS_IN
 	float4 pos : SV_POSITION;
 	float4 tex0 : TEXCOORD0;
 	float3 nrm : TEXCOORD1;
-	float4 lVec : TEXCOORD2;
-	float3 vVec : TEXCOORD3;
+	float3 vVec : TEXCOORD2;
+	float3 lVecObj : TEXCOORD3;
+	float3 lVecTan : TEXCOORD4;
 };
 
 PS_IN vert(VS_IN vsInput)
@@ -30,8 +31,8 @@ PS_IN vert(VS_IN vsInput)
 	float3 vertVecB	= cross(vertVecN, vertVecT) * vsInput.tan.w;
 	float3x3 obj2tan= float3x3(vertVecT, vertVecB, vertVecN);
 	
-	vsOutput.lVec.xyz = mul(obj2tan, ObjSpaceLightDir(vsInput.pos));
-	vsOutput.lVec.w = calcAttenuationCartoon(vsOutput.lVec.xyz);
+	vsOutput.lVecObj = ObjSpaceLightDir(vsInput.pos);
+	vsOutput.lVecTan = mul(obj2tan, vsOutput.lVecObj);
 	
 	vsOutput.vVec = mul(obj2tan, ObjSpaceViewDir(vsInput.pos));
 	
@@ -41,7 +42,7 @@ PS_IN vert(VS_IN vsInput)
 fixed4 frag(PS_IN psInput) : COLOR
 {
 	// Normalise input vectors
-	float3 lVector = normalize(psInput.lVec.xyz);
+	float3 lVector = normalize(psInput.lVecTan);
 	float3 vVector = normalize(psInput.vVec);
 
 	// Sample textures
@@ -69,8 +70,9 @@ fixed4 frag(PS_IN psInput) : COLOR
 	#endif
 	 
 	// Get component parts
-	float4 outDiff = _LightColor0 * shadeDiff(texCol.xyz, normal, lVector, psInput.lVec.w);
-	float4 outSpec = _LightColor0 * shadeSpec(texCol.xyz, specularity, normal, lVector, vVector, psInput.lVec.w);
+	float attenuation = calcAttenuationCartoon(psInput.lVecObj);
+	float4 outDiff = _LightColor0 * shadeDiff(texCol.xyz, normal, lVector, attenuation);
+	float4 outSpec = _LightColor0 * shadeSpec(texCol.xyz, specularity, normal, lVector, vVector, attenuation);
 	
 	#ifdef LUCID_HAS_AMBIENT
 		outDiff.xyz += UNITY_LIGHTMODEL_AMBIENT.xyz * texCol.xyz;
@@ -91,5 +93,6 @@ fixed4 frag(PS_IN psInput) : COLOR
 	#else
 		finalColour.a = 1.f;
 	#endif
+	
 	return finalColour;
 }

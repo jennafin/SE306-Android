@@ -42,7 +42,6 @@
 			#include "UnityCG.cginc"
 			#include "AutoLight.cginc"
 			
-			#define LUCID_HAS_AMBIENT
 			uniform sampler2D _MainTex;
 			fixed4 _LightColor0;
 			#include "lucidcartoonfuncs.inc"
