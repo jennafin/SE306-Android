@@ -68,11 +68,12 @@ float3 sampleNormal(float2 sampleAtCoord)
 	float2 texOffX = float2(1.f / _BumpSzX, 0.f);
 	float2 texOffY = float2(0.f, 1.f / _BumpSzY);
 	
-	float3 fuck = float3(_BumpSzX, _BumpSzY, 1.f / _BumpSzZ);
-	fuck.x *= tex2D(_BumpTex, sampleAtCoord + texOffX).x - tex2D(_BumpTex, sampleAtCoord - texOffX).x;
-	fuck.y *= tex2D(_BumpTex, sampleAtCoord + texOffY).x - tex2D(_BumpTex, sampleAtCoord - texOffY).x;
-
-	return normalize(fuck);
+	float3 outNormal = float3(_BumpSzZ, _BumpSzZ, 1.f);
+	
+	outNormal.x *= tex2D(_BumpTex, sampleAtCoord + texOffX).y - tex2D(_BumpTex, sampleAtCoord - texOffX).y;
+	outNormal.y *= tex2D(_BumpTex, sampleAtCoord + texOffY).y - tex2D(_BumpTex, sampleAtCoord - texOffY).y;
+	
+	return normalize(outNormal);
 }
 
 float calcAttenuationCartoon(float3 lVec)

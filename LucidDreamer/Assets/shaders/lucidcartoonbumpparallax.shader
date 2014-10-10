@@ -1,4 +1,4 @@
-﻿Shader "Custom/lucidcartoonbump"
+﻿Shader "Custom/lucidcartoonbumpparallax"
 {
 	Properties
 	{
@@ -26,6 +26,7 @@
 			#define LUCID_HAS_BUMPTEX
 			#define LUCID_HAS_AMBIENT
 			#define LUCID_USE_BASE
+			#define LUCID_USE_PARALLAX
 			uniform sampler2D _MainTex;
 			uniform sampler2D _BumpTex;
 			uniform half _BumpSzX;
@@ -53,6 +54,7 @@
 			
 			#define LUCID_HAS_BUMPTEX
 			#define LUCID_HAS_AMBIENT
+			#define LUCID_USE_PARALLAX
 			uniform sampler2D _MainTex;
 			uniform sampler2D _BumpTex;
 			uniform half _BumpSzX;
