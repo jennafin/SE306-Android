@@ -342,7 +342,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 278581934}
-  m_LocalRotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
+  m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
   m_LocalPosition: {x: -1.26370169e-16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -752,6 +752,8 @@ GameObject:
   - 61: {fileID: 1286769716}
   - 58: {fileID: 1286769720}
   - 114: {fileID: 1286769719}
+  - 61: {fileID: 1286769722}
+  - 58: {fileID: 1286769721}
   m_Layer: 11
   m_Name: Alex
   m_TagString: Untagged
@@ -828,9 +830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameControllerScript: {fileID: 1897705299}
-  jumpForce: 750
   speed: 10
-  GameController: {fileID: 1897705298}
   groundCheck: {fileID: 2016434741}
   ground:
     serializedVersion: 2
@@ -846,6 +846,28 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_Radius: .25
   m_Center: {x: 0, y: .25}
+--- !u!58 &1286769721
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1286769714}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Radius: .25
+  m_Center: {x: 0, y: .25}
+--- !u!61 &1286769722
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1286769714}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: .5, y: 1.45000005}
+  m_Center: {x: 0, y: .975000024}
 --- !u!1 &1301159738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,8 +1139,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 1728986873}
   m_AABB:
-    m_Center: {x: 0, y: .326439083, z: .0427111983}
-    m_Extent: {x: .563277006, y: .84456569, z: .559841871}
+    m_Center: {x: 5.96046448e-08, y: .326438844, z: .0427111387}
+    m_Extent: {x: .563276827, y: .844565451, z: .559841812}
   m_DirtyAABB: 0
 --- !u!1 &1728986872
 GameObject:

@@ -10,8 +10,6 @@ public class MainCharacterScript : MonoBehaviour {
 
 	public float speed = 1f; // meters per second
 
-	public GameObject GameController;
-
 	bool hasJumped = false;
 	bool hasDoubleJumped = false;
 	bool isGrounded = false;   // Whether the character is on the ground or not.
@@ -59,19 +57,10 @@ public class MainCharacterScript : MonoBehaviour {
 			hasDoubleJumped = false;
 		}
 	}
-
-	// Ugly hack used to get projectiles to reduce life points
+	
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		if (col.gameObject.tag == "Dangerous") {
-			GameControllerScript gameControllerScript = GameController.GetComponent<GameControllerScript>();
-			gameControllerScript.characterColliderWith (col);
-		}
+		this.gameControllerScript.characterColliderWith (col);
 	}
-	
 
-	void OnCollisionEnter2D(Collision2D col) {
-				GameControllerScript gameControllerScript = GameController.GetComponent<GameControllerScript>();
-				gameControllerScript.characterCollisionWith (col);
-	}
 }
