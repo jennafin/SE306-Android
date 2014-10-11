@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
 public class HighScoreGUI : MonoBehaviour {
@@ -34,21 +35,30 @@ public class HighScoreGUI : MonoBehaviour {
 		           , gameOverStyle);
 
 		if (topScores.Count == 0) {
-				} else {
 						GUI.Label (new Rect ((screenWidth / 2 - 50), screenHeight / 4, 80, 30)
-			          		 , "No high scores yet"
-			           			, gameOverStyle);
-						foreach (ScoreEntry score in topScores) {
-								GUI.Label (new Rect ((screenWidth / 2 - 50), screenHeight / 4, 80, 30)
-			           , score.name + score.score
-			           		, gameOverStyle);
+						           , "No high scores yet"
+						           , gameOverStyle);
+				} else {
+						
+						int height = 0;
+						int i = 1;
+						foreach (ScoreEntry score in Enumerable.Reverse(topScores)) {
+								GUI.Label (new Rect((screenWidth / 4), (screenHeight / 4)+height, 80, 30), i.ToString(), gameOverStyle);
+								GUI.Label (new Rect ((screenWidth / 2 - 90), (screenHeight / 4)+height, 80, 30)
+			           				, score.name
+			           				, gameOverStyle);
+								GUI.Label (new Rect ((screenWidth / 2 + 30), (screenHeight / 4)+height, 80, 30)
+								           , score.score.ToString()
+								           , gameOverStyle);
+								height = height + screenHeight/15;
+								i = i + 1;
 						}
 				}
 		
 		GUIStyle customButton = new GUIStyle ("button");
 		customButton.fontSize = screenHeight / 13;
 		
-		if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 3 * screenHeight / 4, buttonWidth * 2, buttonHeight)
+		if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, screenHeight - buttonHeight - 20, buttonWidth * 2, buttonHeight)
 		                , "Exit to Menu"
 		                , customButton)) {
 			Application.LoadLevel ("MainMenu");

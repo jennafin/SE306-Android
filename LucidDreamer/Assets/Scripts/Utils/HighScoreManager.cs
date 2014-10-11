@@ -48,7 +48,7 @@ public class HighScoreManager {
 				}
 	}
 
-	void SaveScores()
+	public void SaveScores()
 	{
 		//Get a binary formatter
 		BinaryFormatter bf = new BinaryFormatter();
