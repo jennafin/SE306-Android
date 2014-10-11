@@ -8,22 +8,21 @@ using System.Linq;
 public class HighScoreManager {
 
 	private List<ScoreEntry> highScores = new List<ScoreEntry>();
+	
 
-
-	public HighScoreManager()
+	public void Load()
 	{
 		//If not blank then load it
 		if(File.Exists(Application.persistentDataPath + "/highscores.dat"))
 		{
 			//Binary formatter for loading back
-			var b = new BinaryFormatter();
+			BinaryFormatter bf = new BinaryFormatter();
 			//Get the file
-			var f = File.Open(Application.persistentDataPath + "/highscores.dat", FileMode.Open);
+			FileStream f = File.Open(Application.persistentDataPath + "/highscores.dat", FileMode.Open);
 			//Load back the scores
-			highScores = (List<ScoreEntry>)b.Deserialize(f);
+			highScores = (List<ScoreEntry>)bf.Deserialize(f);
 			f.Close();
 		}
-
 	}
 
 	public void AddScore(string name, int score)
@@ -52,11 +51,11 @@ public class HighScoreManager {
 	void SaveScores()
 	{
 		//Get a binary formatter
-		var b = new BinaryFormatter();
+		BinaryFormatter bf = new BinaryFormatter();
 		//Create a file
-		var f = File.Create(Application.persistentDataPath + "/highscores.dat");
+		FileStream f = File.Open(Application.persistentDataPath + "/highscores.dat", FileMode.OpenOrCreate);
 		//Save the scores
-		b.Serialize(f, highScores);
+		bf.Serialize(f, highScores);
 		f.Close();
 	}
 

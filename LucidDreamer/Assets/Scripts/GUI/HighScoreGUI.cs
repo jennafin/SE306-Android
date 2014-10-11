@@ -22,7 +22,7 @@ public class HighScoreGUI : MonoBehaviour {
 		gameOverStyle.alignment = TextAnchor.MiddleCenter;
 		buttonWidth = screenWidth / 5;
 		buttonHeight = screenHeight / 10;
-
+		highScores.Load ();
 		topScores.AddRange (highScores.GetTopTenScores ());
 
 	}
