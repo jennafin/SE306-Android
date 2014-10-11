@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HighScoreGUI : MonoBehaviour {
 
 	public GUIStyle gameOverStyle;
-	private int score = 0;
 	private int screenHeight;
 	private int screenWidth;
 	private int buttonWidth;
 	private int buttonHeight;
-	
+	private HighScoreManager highScores = new HighScoreManager();
+	private List<ScoreEntry> topScores = new List<ScoreEntry>();
+
 	void Start ()
 	{
-		score = PlayerPrefs.GetInt ("Score");
-		
+
 		screenHeight = Screen.height;
 		screenWidth = Screen.width;
 		
@@ -21,26 +22,31 @@ public class HighScoreGUI : MonoBehaviour {
 		gameOverStyle.alignment = TextAnchor.MiddleCenter;
 		buttonWidth = screenWidth / 5;
 		buttonHeight = screenHeight / 10;
+
+		topScores.AddRange (highScores.GetTopTenScores ());
+
 	}
 
 	void OnGUI ()
 	{
 		GUI.Label (new Rect ((screenWidth / 2 - 50), 50, 80, 30)
-		           , "Alex woke up!"
+		           , "High Scores"
 		           , gameOverStyle);
-		GUI.Label (new Rect ((screenWidth / 2 - 50), screenHeight / 4, 80, 30)
-		           , "Score: " + score
-		           , gameOverStyle);
-		
+
+		if (topScores.Count == 0) {
+				} else {
+						GUI.Label (new Rect ((screenWidth / 2 - 50), screenHeight / 4, 80, 30)
+			          		 , "No high scores yet"
+			           			, gameOverStyle);
+						foreach (ScoreEntry score in topScores) {
+								GUI.Label (new Rect ((screenWidth / 2 - 50), screenHeight / 4, 80, 30)
+			           , score.name + score.score
+			           		, gameOverStyle);
+						}
+				}
 		
 		GUIStyle customButton = new GUIStyle ("button");
 		customButton.fontSize = screenHeight / 13;
-		
-		if (GUI.Button (new Rect ((screenWidth / 2 - (buttonWidth / 2)), 2 * screenHeight / 4, buttonWidth, buttonHeight)
-		                , "Retry?"
-		                , customButton)) {
-			Application.LoadLevel ("main");
-		}
 		
 		if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 3 * screenHeight / 4, buttonWidth * 2, buttonHeight)
 		                , "Exit to Menu"

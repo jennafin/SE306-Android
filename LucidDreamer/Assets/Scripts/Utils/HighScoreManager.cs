@@ -42,6 +42,8 @@ public class HighScoreManager {
 		int length = SortedList.Count;
 		if (length > 10) {
 						return SortedList.GetRange (0, 9);				
+				} else if (length == 0) {
+						return new List<ScoreEntry>();
 				} else {
 						return SortedList.GetRange(0,length-1);
 				}
