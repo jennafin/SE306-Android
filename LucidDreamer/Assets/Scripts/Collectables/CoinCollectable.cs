@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CoinCollectable : Collectable {
 
-	protected override void ApplyCollectableBehaviour (GameControllerScript gameController) {
+	protected override void InitiateCollectableBehaviour (GameControllerScript gameController) {
 		gameController.IncrementCoins (10);
 	}
 

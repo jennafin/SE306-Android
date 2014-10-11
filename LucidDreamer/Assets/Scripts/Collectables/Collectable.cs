@@ -28,30 +28,48 @@ public abstract class Collectable : MonoBehaviour {
 	 *         false if this collectable has been used up
 	 */
 	public bool UseOneFrame(GameControllerScript gameController) {
-		if (framesOfLifeRemaining > 0)
+		if (framesOfLifeRemaining == LifeSpan)
 		{
-			this.ApplyCollectableBehaviour(gameController);
+			InitiateCollectableBehaviour(gameController);
+			framesOfLifeRemaining -= 1;
+			return true;
+		}
+		else if (framesOfLifeRemaining > 0)
+		{
+			UpdateCollectableBehaviour(gameController, framesOfLifeRemaining);
 			framesOfLifeRemaining -= 1;
 			return true;
 		}
 		else
 		{
-			this.RevokeCollectableBehaviour(gameController);
+			RevokeCollectableBehaviour(gameController);
 			return false;
 		}
 	}
 
 	/**
+	 * Make any changes to the game controller that will introduce this collectable's behaviour
+	 * into gameplay.
 	 * 
+	 * This must be implemented in subclasses.
 	 */
-	protected abstract void ApplyCollectableBehaviour (GameControllerScript gameController);
+	protected abstract void InitiateCollectableBehaviour (GameControllerScript gameController);
+
+	/**
+	 * Make any changes to the game controller, dependent on this collectables remaining life.
+	 * 
+	 * This does not have to be overriden by subclasses. By default it does nothing.
+	 */
+	protected virtual void UpdateCollectableBehaviour (GameControllerScript gameController, int framesOfLifeRemaining)
+	{
+	}
 
 	/**
 	 * Make any changes necessary to revoke this collectable from gameplay
-	 * By default this method does nothing.
+	 * 
+	 * This does not have to be overriden by subclasses. By default it does nothing.
 	 */ 
 	protected virtual void RevokeCollectableBehaviour (GameControllerScript gameController)
 	{
-
 	}
 }

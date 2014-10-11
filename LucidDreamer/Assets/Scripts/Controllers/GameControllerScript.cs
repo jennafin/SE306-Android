@@ -215,6 +215,12 @@ public class GameControllerScript : MonoBehaviour
 				scoreTracker.AddPoints (amount);
 		}
 
+		
+		public ScoreTrackingSystem getScoreTrackingSystem()
+		{
+			return this.scoreTracker;
+		}
+
 		public void setScoreTrackingSystem(ScoreTrackingSystem sts) 
 		{
 			this.scoreTracker = sts;
@@ -239,7 +245,7 @@ public class GameControllerScript : MonoBehaviour
 		// Remove any expired collectables
 		for (int i = 0; i < expiredCollectableIndexes.Count; i++) 
 		{
-			this.currentCollectables.RemoveAt(i);
+			this.currentCollectables.RemoveAt(expiredCollectableIndexes[i]);
 		}
 	}
 }
