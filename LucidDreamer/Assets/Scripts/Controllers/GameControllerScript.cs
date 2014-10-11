@@ -158,32 +158,6 @@ public class GameControllerScript : MonoBehaviour
 				System.Random random = new System.Random ();
 				return levelSegments [random.Next (levelSegments.Length)];
 		}
-
-		public void characterCollisionWith (Collision2D col)
-		{
-				int delta = 500;
-
-				String objectTag = col.gameObject.tag;
-				print (objectTag);
-
-				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
-				if (objectTag == "Dangerous") {
-						int difference = Math.Abs (Environment.TickCount - lastCollision);
-						print (difference);
-						if (difference > delta) {
-								lives--;
-								lastCollision = Environment.TickCount;
-								LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
-						}
-				} else if (objectTag.StartsWith ("Collectable")) {
-						Debug.Log ("Collided with collectable");
-						col.gameObject.GetComponent<Collectable> ().OnCollection (this);
-				}
-
-				if (lives < 0) {
-						GameOver ();
-				}
-		}
 		
 		// Duplicate method to allow loss of life with Collider object, should change later
 		public void characterColliderWith (Collider2D col)
@@ -191,7 +165,6 @@ public class GameControllerScript : MonoBehaviour
 				int delta = 500;
 		
 				String objectTag = col.gameObject.tag;
-				print (objectTag);
 		
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {

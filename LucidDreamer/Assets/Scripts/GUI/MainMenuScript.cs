@@ -74,7 +74,7 @@ public class MainMenuScript : MonoBehaviour
 								} else if (hit.transform.name == "HighscoresModel") {
 										Debug.Log ("MainMenuScript: Highscores model hit");
 										// TODO
-										Application.LoadLevel ("GameOver");
+										Application.LoadLevel ("HighScores");
 								} else if (hit.transform.name == "SettingsModel") {
 										Debug.Log ("MainMenuScript: Settings model hit");
 										// TODO
