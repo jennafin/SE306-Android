@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CoinCollectable : Collectable {
 
-	public override void CollectedBehaviour (GameControllerScript gameController) {
+	public override void CollectableBehaviour (GameControllerScript gameController) {
 		gameController.IncrementCoins (10);
 	}
 

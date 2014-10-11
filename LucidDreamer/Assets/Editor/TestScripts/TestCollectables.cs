@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
@@ -25,7 +25,7 @@ namespace UnityTest
 			Assert.AreEqual (0, gameController.GetCoinsCollected());
 			
 			// Inform the collectable that it has been collected.
-			collectable.CollectedBehaviour (gameController);
+			collectable.CollectableBehaviour (gameController);
 			
 			// Check that the change has been stored in the game controller
 			Assert.AreEqual (10, gameController.GetCoinsCollected());

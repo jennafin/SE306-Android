@@ -37,6 +37,9 @@ public class GameControllerScript : MonoBehaviour
 		Level currentLevel;
 		Level previousLevel;
 
+		// Current power-up (or could be a coin)
+		Collectable currentCollectable;
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -177,7 +180,7 @@ public class GameControllerScript : MonoBehaviour
 						}
 				} else if (objectTag.StartsWith ("Collectable")) {
 						Debug.Log ("Collided with collectable");
-						col.gameObject.GetComponent<Collectable> ().OnCollection (this);
+						this.currentCollectable = col.gameObject.GetComponent<Collectable> ();
 				}
 		
 				if (lives < 0) {
