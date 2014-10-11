@@ -1,10 +1,14 @@
 /Resources/Languages/
 
 
-HelloWorld2 = Hola de nuevo mundo!
+GameOverScreenMessage = Alex despertó !
 
 
-HelloWorld = ¡Hola Mundo!
+Score = Puntuación: 
+
+Retry = Vuelva a intentarlo?
+
+ExitToMenu = Salir al Menú
 
 
 english = Inglés #n (English)

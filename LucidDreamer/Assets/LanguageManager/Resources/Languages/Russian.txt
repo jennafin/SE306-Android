@@ -1,10 +1,14 @@
 /Resources/Languages/
 
 
-HelloWorld2 = Здравствуйте еще раз мир!
+GameOverScreenMessage = Алекс проснулся !
 
 
-HelloWorld = Привет мир!
+Score = счет: 
+
+Retry = Повторить ?
+
+ExitToMenu = Выход в меню
 
 
 english = Английский #n (English)

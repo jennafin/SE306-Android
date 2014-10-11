@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameOverScript : MonoBehaviour
 {
-
+		public Language defaultLanguage = Language.English;
 		public GUIStyle gameOverStyle;
 		private int score = 0;
 		private int screenHeight;
@@ -22,15 +22,18 @@ public class GameOverScript : MonoBehaviour
 				gameOverStyle.alignment = TextAnchor.MiddleCenter;
 				buttonWidth = screenWidth / 5;
 				buttonHeight = screenHeight / 10;
+
+				// Initialize the language manager with English language
+				LanguageManager.LoadLanguageFile(defaultLanguage);
 		}
 	
 		void OnGUI ()
 		{
 				GUI.Label (new Rect ((screenWidth / 2 - 50), 50, 80, 30)
-		           , "Alex woke up!"
+		           , LanguageManager.GetText ("GameOverScreenMessage")
 		           , gameOverStyle);
 				GUI.Label (new Rect ((screenWidth / 2 - 50), screenHeight / 4, 80, 30)
-		           , "Score: " + score
+		           , LanguageManager.GetText ("Score") + score
 		           , gameOverStyle);
 
 
@@ -38,13 +41,13 @@ public class GameOverScript : MonoBehaviour
 				customButton.fontSize = screenHeight / 13;
 
 				if (GUI.Button (new Rect ((screenWidth / 2 - (buttonWidth / 2)), 2 * screenHeight / 4, buttonWidth, buttonHeight)
-		                , "Retry?"
+		                , LanguageManager.GetText ("Retry")
 		                , customButton)) {
 						Application.LoadLevel ("main");
 				}
 
 				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 3 * screenHeight / 4, buttonWidth * 2, buttonHeight)
-		                , "Exit to Menu"
+		                , LanguageManager.GetText ("ExitToMenu")
 		                , customButton)) {
 						Application.LoadLevel ("MainMenu");
 				}
