@@ -81,6 +81,7 @@ public class GameOverScript : MonoBehaviour
 				// go to main menu on escape/back button
 				if (Input.GetKeyDown (KeyCode.Escape)) {
 						Debug.Log ("GameOverScript: Escape key pressed");
+						SaveScore();
 						Application.LoadLevel ("MainMenu");
 				}
 		}	
