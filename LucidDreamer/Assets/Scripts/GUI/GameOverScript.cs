@@ -23,7 +23,7 @@ public class GameOverScript : MonoBehaviour
 				buttonWidth = screenWidth / 5;
 				buttonHeight = screenHeight / 10;
 
-				// Initialize the language manager with English language
+				// TODO: get the users set lanugage from somewhere
 				LanguageManager.LoadLanguageFile(defaultLanguage);
 		}
 	

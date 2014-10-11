@@ -10,7 +10,6 @@ Retry = Riprovare ?
 
 ExitToMenu = Uscita Menu
 
-
 english = inglese #n (English)
 
 
