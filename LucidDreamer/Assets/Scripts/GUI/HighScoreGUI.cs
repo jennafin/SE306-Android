@@ -42,12 +42,12 @@ public class HighScoreGUI : MonoBehaviour {
 						
 						int height = 0;
 						int i = 1;
-						foreach (ScoreEntry score in Enumerable.Reverse(topScores)) {
-								GUI.Label (new Rect((screenWidth / 4), (screenHeight / 4)+height, 80, 30), i.ToString(), gameOverStyle);
-								GUI.Label (new Rect ((screenWidth / 2 - 90), (screenHeight / 4)+height, 80, 30)
+						foreach (ScoreEntry score in topScores) {
+								GUI.Label (new Rect((screenWidth / 4), (screenHeight / 4)-30+height, 80, 30), i.ToString(), gameOverStyle);
+								GUI.Label (new Rect ((screenWidth / 2 - 60), (screenHeight / 4)-30+height, 80, 30)
 			           				, score.name
 			           				, gameOverStyle);
-								GUI.Label (new Rect ((screenWidth / 2 + 30), (screenHeight / 4)+height, 80, 30)
+								GUI.Label (new Rect ((screenWidth / 2 + 70), (screenHeight / 4)-30+height, 80, 30)
 								           , score.score.ToString()
 								           , gameOverStyle);
 								height = height + screenHeight/15;

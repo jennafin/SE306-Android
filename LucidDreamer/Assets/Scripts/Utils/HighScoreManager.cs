@@ -37,10 +37,10 @@ public class HighScoreManager {
 
 	public List<ScoreEntry> GetTopTenScores()
 	{
-		List<ScoreEntry> SortedList = highScores.OrderBy(o=>o.score).ToList();
+		List<ScoreEntry> SortedList = Enumerable.Reverse (highScores.OrderBy(o=>o.score).ToList()).ToList();
 		int length = SortedList.Count;
 		if (length > 10) {
-						return SortedList.GetRange (0, 9);				
+						return SortedList.GetRange (0, 10);				
 				} else if (length == 0) {
 						return new List<ScoreEntry>();
 				} else {

@@ -55,7 +55,7 @@ public class GameOverScript : MonoBehaviour
 					highScores.Load();
 					highScores.AddScore(userName, score);
 					highScores.SaveScores();
-					Application.LoadLevel ("HighScores");
+					Application.LoadLevel ("MainMenu");
 				}
 
 				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 3 * screenHeight / 4, buttonWidth * 2, buttonHeight)
