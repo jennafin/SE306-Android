@@ -1,0 +1,27 @@
+/Resources/Languages/
+
+
+HelloWorld2 = Hello AGAIN World!
+
+
+HelloWorld = Hello World!
+
+
+english = English
+
+
+spanish = Spanish
+
+
+french = French
+
+
+russian = Russian
+
+
+italian = Italian
+
+
+chinese = Chinese
+
+
