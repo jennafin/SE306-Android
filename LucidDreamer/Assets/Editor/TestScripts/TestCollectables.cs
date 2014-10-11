@@ -25,7 +25,7 @@ namespace UnityTest
 			Assert.AreEqual (0, gameController.GetCoinsCollected());
 			
 			// Inform the collectable that it has been collected.
-			collectable.CollectableBehaviour (gameController);
+			collectable.UseOneFrame (gameController);
 			
 			// Check that the change has been stored in the game controller
 			Assert.AreEqual (10, gameController.GetCoinsCollected());

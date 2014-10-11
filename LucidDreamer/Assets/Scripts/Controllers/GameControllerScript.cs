@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class GameControllerScript : MonoBehaviour
 {
@@ -37,8 +38,8 @@ public class GameControllerScript : MonoBehaviour
 		Level currentLevel;
 		Level previousLevel;
 
-		// Current power-up (or could be a coin)
-		Collectable currentCollectable;
+		// Current power-ups (or could be coins)
+		private List<Collectable> currentCollectables = new List<Collectable> ();
 
 		// Use this for initialization
 		void Start ()
@@ -74,6 +75,9 @@ public class GameControllerScript : MonoBehaviour
 					Debug.Log ("GameControllerScript: Escape key pressed");
 					Application.LoadLevel ("MainMenu");
 				}
+
+				applyCollectableBehaviours ();
+				
 
 				alexPosition = alexDreamer.position;
 				
@@ -180,7 +184,11 @@ public class GameControllerScript : MonoBehaviour
 						}
 				} else if (objectTag.StartsWith ("Collectable")) {
 						Debug.Log ("Collided with collectable");
-						this.currentCollectable = col.gameObject.GetComponent<Collectable> ();
+						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
+						this.currentCollectables.Add (collectable);
+						
+						// We keep the Collectable instance around, but remove its game object from the scene
+						Destroy (collectable.gameObject);
 				}
 		
 				if (lives < 0) {
@@ -211,4 +219,27 @@ public class GameControllerScript : MonoBehaviour
 		{
 			this.scoreTracker = sts;
 		}
+
+	// Iterate through any current collectables and apply their behaviours
+	private void applyCollectableBehaviours()
+	{
+		List<int> expiredCollectableIndexes = new List<int> ();
+
+		for (int i = 0; i < this.currentCollectables.Count; i++) 
+		{
+			Collectable collectable = this.currentCollectables[i];
+			bool stillHasLife = collectable.UseOneFrame(this);
+
+			if (!stillHasLife)
+			{
+				expiredCollectableIndexes.Add(i);
+			}
+		}
+
+		// Remove any expired collectables
+		for (int i = 0; i < expiredCollectableIndexes.Count; i++) 
+		{
+			this.currentCollectables.RemoveAt(i);
+		}
+	}
 }
