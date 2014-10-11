@@ -10,6 +10,14 @@ Retry = 重试吗？
 
 ExitToMenu = 退出菜单
 
+Name = 产品名称
+
+TopScore = 最高分：
+
+HighScores = 高分
+
+NoHighScores = 没有高分又
+
 
 english = 英 #n (English)
 

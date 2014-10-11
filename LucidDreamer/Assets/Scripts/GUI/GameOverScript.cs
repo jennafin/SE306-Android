@@ -10,10 +10,16 @@ public class GameOverScript : MonoBehaviour
 		private int screenWidth;
 		private int buttonWidth;
 		private int buttonHeight;
+		private string userName;
+		private HighScoreManager highScores = new HighScoreManager();
 	
 		void Start ()
 		{
 				score = PlayerPrefs.GetInt ("Score");
+				userName = PlayerPrefs.GetString ("CurrentUserName");
+				if (userName == "") {
+					userName = LanguageManager.GetText ("Name");
+				}
 
 				screenHeight = Screen.height;
 				screenWidth = Screen.width;
@@ -25,6 +31,8 @@ public class GameOverScript : MonoBehaviour
 
 				// TODO: get the users set lanugage from somewhere
 				LanguageManager.LoadLanguageFile(defaultLanguage);
+
+				highScores.Load();
 		}
 	
 		void OnGUI ()
@@ -36,6 +44,10 @@ public class GameOverScript : MonoBehaviour
 		           , LanguageManager.GetText ("Score") + score
 		           , gameOverStyle);
 
+		GUI.Label (new Rect ((screenWidth / 2 - 50), 1.5f * screenHeight / 4, 80, 30)
+		          , LanguageManager.GetText ("TopScore") + highScores.GetTopScore().name + "  " + highScores.GetTopScore().score
+		          , gameOverStyle);
+
 
 				GUIStyle customButton = new GUIStyle ("button");
 				customButton.fontSize = screenHeight / 13;
@@ -43,21 +55,36 @@ public class GameOverScript : MonoBehaviour
 				if (GUI.Button (new Rect ((screenWidth / 2 - (buttonWidth / 2)), 2 * screenHeight / 4, buttonWidth, buttonHeight)
 		                , LanguageManager.GetText ("Retry")
 		                , customButton)) {
+						SaveScore();
 						Application.LoadLevel ("main");
 				}
+
+				userName = GUI.TextField(new Rect ((screenWidth / 2 - (buttonWidth / 2)), 2 * screenHeight / 4, buttonWidth, buttonHeight)
+				              , userName, customButton);
+
 
 				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 3 * screenHeight / 4, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("ExitToMenu")
 		                , customButton)) {
+						SaveScore();
 						Application.LoadLevel ("MainMenu");
 				}
 		}
+
+	void SaveScore()
+	{
+		PlayerPrefs.SetString ("CurrentUserName", userName);
+		highScores.AddScore(userName, score);
+		highScores.SaveScores();
+
+	}
 	
 		void Update ()
 		{
 				// go to main menu on escape/back button
 				if (Input.GetKeyDown (KeyCode.Escape)) {
 						Debug.Log ("GameOverScript: Escape key pressed");
+						SaveScore();
 						Application.LoadLevel ("MainMenu");
 				}
 		}	

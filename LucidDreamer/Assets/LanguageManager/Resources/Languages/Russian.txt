@@ -10,6 +10,13 @@ Retry = Повторить ?
 
 ExitToMenu = Выход в меню
 
+Name = Имя
+
+TopScore = Рекорды: 
+
+HighScores = Лучшие результаты
+
+NoHighScores = Нет высокие баллы еще
 
 english = Английский #n (English)
 

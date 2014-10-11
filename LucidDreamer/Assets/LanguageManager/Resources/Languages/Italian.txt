@@ -10,6 +10,14 @@ Retry = Riprovare ?
 
 ExitToMenu = Uscita Menu
 
+Name = nome
+
+TopScore = Top Score: 
+
+HighScores = punteggi più alti
+
+NoHighScores = Ancora nessuna punteggi più alti
+
 english = inglese #n (English)
 
 

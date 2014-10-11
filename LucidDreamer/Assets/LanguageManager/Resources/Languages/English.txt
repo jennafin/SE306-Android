@@ -10,6 +10,13 @@ Retry = Retry?
 
 ExitToMenu = Exit to Menu
 
+Name = Name
+
+TopScore = Top Score:  
+
+HighScores = High Scores
+
+NoHighScores = No high scores yet
 
 english = English
 
