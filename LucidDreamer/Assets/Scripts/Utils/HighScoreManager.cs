@@ -35,6 +35,16 @@ public class HighScoreManager {
 		return highScores;
 	}
 
+	public ScoreEntry GetTopScore()
+	{
+		List<ScoreEntry> SortedList = Enumerable.Reverse (highScores.OrderBy(o=>o.score).ToList()).ToList();
+		if (SortedList.Count < 1) 
+		{
+			return new ScoreEntry("none", 0);
+		}
+		return SortedList.First ();
+	}
+
 	public List<ScoreEntry> GetTopTenScores()
 	{
 		List<ScoreEntry> SortedList = Enumerable.Reverse (highScores.OrderBy(o=>o.score).ToList()).ToList();
