@@ -18,6 +18,8 @@ public class MainCharacterScript : MonoBehaviour {
 	bool hasDoubleJumped = false;
 	bool isGrounded = false;   // Whether the character is on the ground or not.
 
+	public bool isInvincible = false; // Whether collisions should be ignored
+
 	public Transform groundCheck;
 	float groundRadius = 0.2f;
 	public LayerMask ground;

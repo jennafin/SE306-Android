@@ -174,6 +174,9 @@ public class GameControllerScript : MonoBehaviour
 		
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
+						if (this.mainCharacterScript.isInvincible) {
+							return;
+						}
 						int difference = Math.Abs (Environment.TickCount - lastCollision);
 						print (difference);
 						if (difference > delta) {
