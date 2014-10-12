@@ -64,14 +64,14 @@ public class GameOverScript : MonoBehaviour
 				GUIStyle customButton = new GUIStyle ("button");
 				customButton.fontSize = screenHeight / 13;
 
-				if (GUI.Button (new Rect ((screenWidth / 2 - (buttonWidth / 2)), 2 * screenHeight / 4, buttonWidth, buttonHeight)
+				if (GUI.Button (new Rect ((screenWidth / 2 - (buttonWidth / 2)), 2.5f * screenHeight / 4, buttonWidth, buttonHeight)
 		                , LanguageManager.GetText ("Retry")
 		                , customButton)) {
 						SaveScore();
 						Application.LoadLevel ("main");
 				}
 
-				userName = GUI.TextField(new Rect ((screenWidth / 2 - (buttonWidth / 2)), 2.5f * screenHeight / 4, buttonWidth, buttonHeight)
+				userName = GUI.TextField(new Rect ((screenWidth / 2 - (buttonWidth / 2)), 2 * screenHeight / 4, buttonWidth, buttonHeight)
 				              , userName, customButton);
 
 
