@@ -1,3 +1,4 @@
+[System.Serializable]
 public enum Language {
 Chinese
 ,English

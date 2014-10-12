@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class GameOverScript : MonoBehaviour
 {
-		public Language defaultLanguage = Language.English;
+		public Language language = Language.English;
 		public GUIStyle gameOverStyle;
 		private int score = 0;
 		private int screenHeight;
@@ -29,8 +31,18 @@ public class GameOverScript : MonoBehaviour
 				buttonWidth = screenWidth / 5;
 				buttonHeight = screenHeight / 10;
 
-				// TODO: get the users set lanugage from somewhere
-				LanguageManager.LoadLanguageFile(defaultLanguage);
+				// Load language
+				if(File.Exists(Application.persistentDataPath + "/language.dat"))
+				{
+					//Binary formatter for loading back
+					BinaryFormatter bf = new BinaryFormatter();
+					//Get the file
+					FileStream f = File.Open(Application.persistentDataPath + "/language.dat", FileMode.Open);
+					//Load the language
+					language = (Language)bf.Deserialize(f);
+					f.Close();
+				}
+				LanguageManager.LoadLanguageFile(language);
 
 				highScores.Load();
 		}
