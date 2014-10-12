@@ -17,8 +17,7 @@ public class GameControllerScript : MonoBehaviour
 
 		// Life HUD
 		public GameObject LifeHUD;
-
-	private AchievementsList achievementsList = new AchievementsList();
+		private AchievementsList achievementsList = new AchievementsList ();
 
 		// Main Character
 		public Transform alexDreamer;
@@ -68,8 +67,8 @@ public class GameControllerScript : MonoBehaviour
 		{
 				// exit game on escape/back button
 				if (Input.GetKeyDown (KeyCode.Escape)) {
-					Debug.Log ("GameControllerScript: Escape key pressed");
-					Application.LoadLevel ("MainMenu");
+						Debug.Log ("GameControllerScript: Escape key pressed");
+						Application.LoadLevel ("MainMenu");
 				}
 
 				alexPosition = alexDreamer.position;
@@ -91,31 +90,31 @@ public class GameControllerScript : MonoBehaviour
 						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
 				}
 
-		checkAchievements (alexPosition.x);
+				checkAchievements (alexPosition.x);
 
 				LifeHUD.GetComponent<LifeHUDScript> ().SetScore (scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x)));
 
 		}
 
-		void checkAchievements(float x)
-	{
-		if (x >= 10){
-			achievementsList.GetRan10Meters();
-		}
-		if (x >= 20){
-			achievementsList.GetRan20Meters();
-		}
-		if (x >= 30){
-			achievementsList.GetRan30Meters();
-		}
-		if (x >= 40){
-			achievementsList.GetRan40Meters();
-		}
-		if (x >= 50){
-			achievementsList.GetRan50Meters();
-		}
+		void checkAchievements (float x)
+		{
+				if (x >= 10) {
+						achievementsList.GetRan10Meters ();
+				}
+				if (x >= 20) {
+						achievementsList.GetRan20Meters ();
+				}
+				if (x >= 30) {
+						achievementsList.GetRan30Meters ();
+				}
+				if (x >= 40) {
+						achievementsList.GetRan40Meters ();
+				}
+				if (x >= 50) {
+						achievementsList.GetRan50Meters ();
+				}
 
-	}
+		}
 
 		// Uses the LevelFactory to create the next level segment
 		Level GetNextLevel (Vector3 position, Quaternion rotation)
@@ -165,15 +164,19 @@ public class GameControllerScript : MonoBehaviour
 				int delta = 500;
 		
 				String objectTag = col.gameObject.tag;
+				String objectName = col.gameObject.name;
 		
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
 						int difference = Math.Abs (Environment.TickCount - lastCollision);
-						print (difference);
 						if (difference > delta) {
 								lives--;
 								lastCollision = Environment.TickCount;
 								LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
+						}
+						if (objectName.Contains ("Enemy")) {
+								Debug.Log ("Collided with enemy");
+								col.gameObject.GetComponent<Enemy> ().OnCollision (this);
 						}
 				} else if (objectTag.StartsWith ("Collectable")) {
 						Debug.Log ("Collided with collectable");
@@ -186,8 +189,9 @@ public class GameControllerScript : MonoBehaviour
 				}
 		}
 
-		public int GetCoinsCollected() {
-			return this.coinsCollected;
+		public int GetCoinsCollected ()
+		{
+				return this.coinsCollected;
 		}
 
 		void GameOver ()
@@ -204,8 +208,8 @@ public class GameControllerScript : MonoBehaviour
 				scoreTracker.AddPoints (amount);
 		}
 
-		public void setScoreTrackingSystem(ScoreTrackingSystem sts) 
+		public void setScoreTrackingSystem (ScoreTrackingSystem sts)
 		{
-			this.scoreTracker = sts;
+				this.scoreTracker = sts;
 		}
 }
