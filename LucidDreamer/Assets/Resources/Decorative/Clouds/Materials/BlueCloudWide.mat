@@ -59,7 +59,7 @@ Material:
       data:
         first:
           name: _Colour
-        second: {r: .277627587, g: .378475159, b: .477941155, a: 1}
+        second: {r: .166198105, g: .329541564, b: .426470578, a: 1}
       data:
         first:
           name: _Breeze
