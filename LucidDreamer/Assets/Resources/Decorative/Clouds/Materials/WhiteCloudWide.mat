@@ -17,21 +17,21 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: b8d40ad7584266b4aa8c74de7324b13c, type: 3}
-          m_Scale: {x: 3, y: .75}
+          m_Texture: {fileID: 2800000, guid: bc81819caae904a4b895acaa8d090fe0, type: 3}
+          m_Scale: {x: 4, y: .5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _MoveTex
         second:
-          m_Texture: {fileID: 2800000, guid: 589d21cc3c7d25a4f93a1c59d93f30a3, type: 3}
-          m_Scale: {x: 2, y: .5}
+          m_Texture: {fileID: 2800000, guid: ed3442896c3cf8f48a8f306db8de41d7, type: 3}
+          m_Scale: {x: 4, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _MoveBigTex
         second:
-          m_Texture: {fileID: 2800000, guid: d3775fdd4b152e64c9a6f80aace30a35, type: 3}
+          m_Texture: {fileID: 2800000, guid: 72cb47a09a7ebf64f8fc37e915c376a8, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -50,7 +50,7 @@ Material:
       data:
         first:
           name: _MoveBigRate
-        second: 5
+        second: 3
     m_Colors:
       data:
         first:
@@ -59,8 +59,8 @@ Material:
       data:
         first:
           name: _Colour
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 1, g: 1, b: 1, a: .564705908}
       data:
         first:
           name: _Breeze
-        second: {r: .300000012, g: .300000012, b: 0, a: 0}
+        second: {r: 3, g: 0, b: 0, a: 0}

@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: WhiteCloudWide
+  m_Name: DryIce
   m_Shader: {fileID: 4800000, guid: d2b89a6ca0c85cc4890e8f1a65a48a68, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
