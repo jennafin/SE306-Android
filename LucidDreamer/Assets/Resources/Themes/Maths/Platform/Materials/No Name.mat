@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: No Name
-  m_Shader: {fileID: 4800000, guid: c36a613131275eb47a24e971ca6ea274, type: 3}
+  m_Shader: {fileID: 4800000, guid: fdc747ed0c83b5e488f64d43391f91b2, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,28 +17,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: d5c5f478a63202543ae9833a7f31d619, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _BumpMap
-        second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 5c1fe3b8aefabf74693d3cefe70ff4df, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpTex
         second:
-          m_Texture: {fileID: 2800000, guid: 5bdd8abd1a7b7f04fb22413ebb1ac5b9, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Illum
-        second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 4ac7ee3f81a07bb48bac55023b0999b0, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -53,15 +39,7 @@ Material:
       data:
         first:
           name: _BumpSzZ
-        second: 1
-      data:
-        first:
-          name: _EmissionLM
-        second: 0
-      data:
-        first:
-          name: _AlphaThres
-        second: .5
+        second: 2
     m_Colors:
       data:
         first:
