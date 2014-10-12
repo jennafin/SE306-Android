@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms;
 public  class AchievementsList {
 
 // Yes the default value is false, http://msdn.microsoft.com/en-us/library/c8f5xwh7.aspx
-private bool[] executed = new bool[6];
+private bool[] executed = new bool[     12];
 
 	public void GetUnityWorks() {
 		if (!executed[0]) {
@@ -60,6 +60,60 @@ private bool[] executed = new bool[6];
 				// handle success or failure
 			});
 			executed[5] = true;
+		}
+	}
+	
+	public void GetRan250Meters() {
+		if (!executed[6]) {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQCA", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[6] = true;
+		}
+	}
+	
+	public void GetRan500Meters() {
+		if (!executed[7]) {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQCQ", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[7] = true;
+		}
+	}
+	
+	public void GetRan750Meters() {
+		if (!executed[8]) {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQCg", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[8] = true;
+		}
+	}
+	
+	public void GetRan1000Meters() {
+		if (!executed[9]) {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQCw", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[9] = true;
+		}
+	}
+	
+	public void GetRan1250Meters() {
+		if (!executed[10]) {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQDA", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[10] = true;
+		}
+	}
+	
+	public void GetRan1500Meters() {
+		if (!executed[11]) {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQDQ", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[11] = true;
 		}
 	}
 	
