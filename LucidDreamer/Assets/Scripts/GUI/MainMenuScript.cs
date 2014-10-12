@@ -8,8 +8,8 @@ using System.IO;
 public class MainMenuScript : MonoBehaviour
 {
 	
-		private Ray ray;
-		private RaycastHit hit;
+		private Ray ray;								// triggered by touch/click of screen
+		private RaycastHit hit;							// used to detect a hit between ray and object
 		private bool isLoggedIn = false;
 		public Language language = Language.English;
 
@@ -19,17 +19,16 @@ public class MainMenuScript : MonoBehaviour
 
 				// Initialise language file
 				// If not blank then load it
-				if(File.Exists(Application.persistentDataPath + "/language.dat"))
-				{
-					//Binary formatter for loading back
-					BinaryFormatter bf = new BinaryFormatter();
-					//Get the file
-					FileStream f = File.Open(Application.persistentDataPath + "/language.dat", FileMode.Open);
-					//Load the language
-					language = (Language)bf.Deserialize(f);
-					f.Close();
+				if (File.Exists (Application.persistentDataPath + "/language.dat")) {
+						//Binary formatter for loading back
+						BinaryFormatter bf = new BinaryFormatter ();
+						//Get the file
+						FileStream f = File.Open (Application.persistentDataPath + "/language.dat", FileMode.Open);
+						//Load the language
+						language = (Language)bf.Deserialize (f);
+						f.Close ();
 				}
-				LanguageManager.LoadLanguageFile(language);
+				LanguageManager.LoadLanguageFile (language);
 
 				// setup google play
 				PlayGamesPlatform.DebugLogEnabled = true;
@@ -38,11 +37,11 @@ public class MainMenuScript : MonoBehaviour
 				// authenticate user
 				Social.localUser.Authenticate ((bool success) => {
 						if (success) {
-								Debug.Log ("Google Play Login Success");
+								Debug.Log ("MainMenuScript: Google Play Login Success");
 								isLoggedIn = true;
 						} else {
 								((PlayGamesPlatform)Social.Active).SignOut ();
-								Debug.Log ("Google Play Login Failed");
+								Debug.Log ("MainMenuScript: Google Play Login Failed");
 						}
 				});
 
@@ -79,7 +78,7 @@ public class MainMenuScript : MonoBehaviour
 				if (Input.GetMouseButtonDown (0)) {
 						Debug.Log ("MainMenuScript: Touch input received");
 
-						// check intersection of touch and objects of interest
+						// check intersection of touch with objects of interest
 						ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 						if (Physics.Raycast (ray, out hit)) {
 								if (hit.transform.name == "TrophyModel") {
@@ -87,14 +86,12 @@ public class MainMenuScript : MonoBehaviour
 										Social.ShowAchievementsUI ();
 								} else if (hit.transform.name == "PlayModel") {
 										Debug.Log ("MainMenuScript: Play model hit");
-										Application.LoadLevel ("main");
+										StartCoroutine (loadSceneWithFade ("main"));
 								} else if (hit.transform.name == "HighscoresModel") {
 										Debug.Log ("MainMenuScript: Highscores model hit");
-										// TODO
 										Application.LoadLevel ("HighScores");
 								} else if (hit.transform.name == "SettingsModel") {
 										Debug.Log ("MainMenuScript: Settings model hit");
-										// TODO
 										Application.LoadLevel ("Options");
 								} else if (hit.transform.name == "LeaderboardsModel") {
 										Debug.Log ("MainMenuScript: Leaderboards model hit");
@@ -102,5 +99,13 @@ public class MainMenuScript : MonoBehaviour
 								}
 						}
 				}
+		}
+
+		private IEnumerator loadSceneWithFade (string sceneLabel)
+		{
+				// fade out the game and load the scene as per the parameter sceneLabel
+				float fadeTime = GameObject.Find ("MainMenuController").GetComponent<SceneFader> ().BeginFade (1);
+				yield return new WaitForSeconds (fadeTime);
+				Application.LoadLevel (sceneLabel);
 		}
 }
