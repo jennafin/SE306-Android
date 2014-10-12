@@ -2,6 +2,8 @@
 using System.Collections;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -9,10 +11,25 @@ public class MainMenuScript : MonoBehaviour
 		private Ray ray;
 		private RaycastHit hit;
 		private bool isLoggedIn = false;
+		public Language language = Language.English;
 
 		void Start ()
 		{
 				Debug.Log ("MainMenuScript: Start");
+
+				// Initialise language file
+				// If not blank then load it
+				if(File.Exists(Application.persistentDataPath + "/language.dat"))
+				{
+					//Binary formatter for loading back
+					BinaryFormatter bf = new BinaryFormatter();
+					//Get the file
+					FileStream f = File.Open(Application.persistentDataPath + "/language.dat", FileMode.Open);
+					//Load the language
+					language = (Language)bf.Deserialize(f);
+					f.Close();
+				}
+				LanguageManager.LoadLanguageFile(language);
 
 				// setup google play
 				PlayGamesPlatform.DebugLogEnabled = true;
@@ -42,6 +59,7 @@ public class MainMenuScript : MonoBehaviour
 				GameObject.Find ("HighscoresText").guiText.fontSize = updatedFontSize;
 				GameObject.Find ("SettingsText").guiText.fontSize = updatedFontSize;
 				GameObject.Find ("LeaderboardsText").guiText.fontSize = updatedFontSize;
+
 		}
 
 		void Update ()
@@ -78,7 +96,7 @@ public class MainMenuScript : MonoBehaviour
 								} else if (hit.transform.name == "SettingsModel") {
 										Debug.Log ("MainMenuScript: Settings model hit");
 										// TODO
-										Application.LoadLevel ("HeroPose");
+										Application.LoadLevel ("Options");
 								} else if (hit.transform.name == "LeaderboardsModel") {
 										Debug.Log ("MainMenuScript: Leaderboards model hit");
 										Social.ShowLeaderboardUI ();
