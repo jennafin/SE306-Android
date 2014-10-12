@@ -83,7 +83,7 @@ public class MainMenuScript : MonoBehaviour
 								if (hit.transform.name == "TrophyModel") {
 										Debug.Log ("MainMenuScript: Achievement model hit");
 										Social.ShowAchievementsUI ();
-								} else if (hit.transform.name == "AlexModel") {
+								} else if (hit.transform.name == "PlayModel") {
 										Debug.Log ("MainMenuScript: Play model hit");
 										MakeAlexRun();
 										StartCoroutine (LoadSceneWithFade ("main"));
@@ -113,7 +113,6 @@ public class MainMenuScript : MonoBehaviour
 				Animator anim = GameObject.Find ("AlexModel").GetComponent<Animator> ();
 				anim.SetBool ("Running", true);	
 				Rotator rotatorScript = GameObject.Find ("AlexModel").GetComponent<Rotator> ();
-				rotatorScript.speed = 0;
 				// TODO: Make Alex face to the right and run off screen
 		}
 }
