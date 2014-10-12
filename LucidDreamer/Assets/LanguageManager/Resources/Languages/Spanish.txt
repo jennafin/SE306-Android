@@ -1,0 +1,40 @@
+/Resources/Languages/
+
+
+GameOverScreenMessage = Alex despertó !
+
+
+Score = Puntuación: 
+
+Retry = Reintentar?
+
+ExitToMenu = Salir al Menú
+
+SelectLanguage = Selecciona Idioma
+
+Name = Nombre
+
+TopScore = Mejor Puntuación: 
+
+HighScores = puntuaciones más altas
+
+NoHighScores = No hay altos puntajes todavía
+
+english = Inglés (English)
+
+
+spanish = Español (Spanish)
+
+
+french = Francés (French)
+
+
+russian = Ruso (Russian)
+
+
+italian = Italiano (Italian)
+
+
+chinese = Chino (Chinese)
+
+

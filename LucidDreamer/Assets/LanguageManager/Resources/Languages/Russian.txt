@@ -1,0 +1,40 @@
+/Resources/Languages/
+
+
+GameOverScreenMessage = Алекс проснулся !
+
+
+Score = счет: 
+
+Retry = Повторить ?
+
+ExitToMenu = Выход в меню
+
+SelectLanguage = Выбор языка
+
+Name = Имя
+
+TopScore = Рекорды: 
+
+HighScores = Лучшие результаты
+
+NoHighScores = Нет высокие баллы еще
+
+english = Английский (English)
+
+
+spanish = Испанский (Spanish)
+
+
+french = Французский (French)
+
+
+russian = Русский (Russian)
+
+
+italian = Итальянский (Italian)
+
+
+chinese = Китайский (Chinese)
+
+

@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class HighScoreGUI : MonoBehaviour {
 
@@ -12,6 +14,7 @@ public class HighScoreGUI : MonoBehaviour {
 	private int buttonHeight;
 	private HighScoreManager highScores = new HighScoreManager();
 	private List<ScoreEntry> topScores = new List<ScoreEntry>();
+	public Language language = Language.English;
 
 	void Start ()
 	{
@@ -26,17 +29,30 @@ public class HighScoreGUI : MonoBehaviour {
 		highScores.Load ();
 		topScores.AddRange (highScores.GetTopTenScores ());
 
+		// Load language
+		if(File.Exists(Application.persistentDataPath + "/language.dat"))
+		{
+			//Binary formatter for loading back
+			BinaryFormatter bf = new BinaryFormatter();
+			//Get the file
+			FileStream f = File.Open(Application.persistentDataPath + "/language.dat", FileMode.Open);
+			//Load the language
+			language = (Language)bf.Deserialize(f);
+			f.Close();
+		}
+		LanguageManager.LoadLanguageFile(language);
+
 	}
 
 	void OnGUI ()
 	{
 		GUI.Label (new Rect ((screenWidth / 2 - 50), 50, 80, 30)
-		           , "High Scores"
+		           , LanguageManager.GetText ("HighScores")
 		           , gameOverStyle);
 
 		if (topScores.Count == 0) {
 						GUI.Label (new Rect ((screenWidth / 2 - 50), screenHeight / 4, 80, 30)
-						           , "No high scores yet"
+						           , LanguageManager.GetText ("NoHighScores")
 						           , gameOverStyle);
 				} else {
 						
@@ -59,7 +75,7 @@ public class HighScoreGUI : MonoBehaviour {
 		customButton.fontSize = screenHeight / 13;
 		
 		if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, screenHeight - buttonHeight - 20, buttonWidth * 2, buttonHeight)
-		                , "Exit to Menu"
+		                , LanguageManager.GetText ("ExitToMenu")
 		                , customButton)) {
 			Application.LoadLevel ("MainMenu");
 		}
