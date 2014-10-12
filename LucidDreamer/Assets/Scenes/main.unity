@@ -1238,6 +1238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifeHUD: {fileID: 1165287227}
   alexDreamer: {fileID: 1286769715}
+  mainCharacterScript: {fileID: 1286769719}
   levelSegments:
   - {fileID: 100020, guid: 67d565e42eacd464381f5c30ae750772, type: 2}
 --- !u!23 &1897705300

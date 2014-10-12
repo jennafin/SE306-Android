@@ -6,7 +6,11 @@ public class MainCharacterScript : MonoBehaviour {
 
 	public GameControllerScript gameControllerScript;
 
-	private float jumpForce = 750f;
+	float jumpForce = 600f;
+	float doubleJumpForce = 600f;
+	float superJumpForce = 800f;
+
+	float currentJumpForce;
 
 	public float speed = 1f; // meters per second
 
@@ -17,6 +21,10 @@ public class MainCharacterScript : MonoBehaviour {
 	public Transform groundCheck;
 	float groundRadius = 0.2f;
 	public LayerMask ground;
+
+	void Start() {
+		this.currentJumpForce = jumpForce;
+	}
 
 	void Update() {
 		updateIsGrounded ();
@@ -33,13 +41,13 @@ public class MainCharacterScript : MonoBehaviour {
 
 	// Jumps
 	void Jump() {
-		addJumpForce (jumpForce);
+		addJumpForce (currentJumpForce);
 	}
 
 	// Performs a double jump
 	void DoubleJump() {
 		hasDoubleJumped = true;
-		addJumpForce (jumpForce);
+		addJumpForce (doubleJumpForce);
 	}
 
 	// Adds a upwards jump force
@@ -61,6 +69,14 @@ public class MainCharacterScript : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D col)
 	{
 		this.gameControllerScript.CharacterColliderWith (col);
+	}
+
+	public void startSuperJump() {
+		this.currentJumpForce = superJumpForce;
+	}
+
+	public void endSuperJump() {
+		this.currentJumpForce = jumpForce;
 	}
 
 }

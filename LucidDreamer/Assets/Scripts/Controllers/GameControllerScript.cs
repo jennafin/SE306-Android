@@ -21,11 +21,12 @@ public class GameControllerScript : MonoBehaviour
 		// Life HUD
 		public GameObject LifeHUD;
 
-	private AchievementsList achievementsList = new AchievementsList();
+		private AchievementsList achievementsList = new AchievementsList();
 
 		// Main Character
 		public Transform alexDreamer;
-
+		public MainCharacterScript mainCharacterScript;
+		
 
 		// The Prefab level segments that can be chosen from
 		public GameObject[] levelSegments;
@@ -235,26 +236,30 @@ public class GameControllerScript : MonoBehaviour
 			this.scoreTracker = sts;
 		}
 
-	// Iterate through any current collectables and apply their behaviours
-	private void ApplyCollectableBehaviours()
-	{
-		List<int> expiredCollectableIndexes = new List<int> ();
+		public MainCharacterScript getMainCharacter() {
+			return mainCharacterScript;
+		}
 
-		for (int i = 0; i < this.currentCollectables.Count; i++) 
+		// Iterate through any current collectables and apply their behaviours
+		private void ApplyCollectableBehaviours()
 		{
-			Collectable collectable = this.currentCollectables[i];
-			bool stillHasLife = collectable.UseOneFrame(this);
+			List<int> expiredCollectableIndexes = new List<int> ();
 
-			if (!stillHasLife)
+			for (int i = 0; i < this.currentCollectables.Count; i++) 
 			{
-				expiredCollectableIndexes.Add(i);
+				Collectable collectable = this.currentCollectables[i];
+				bool stillHasLife = collectable.UseOneFrame(this);
+
+				if (!stillHasLife)
+				{
+					expiredCollectableIndexes.Add(i);
+				}
+			}
+
+			// Remove any expired collectables
+			for (int i = 0; i < expiredCollectableIndexes.Count; i++) 
+			{
+				this.currentCollectables.RemoveAt(expiredCollectableIndexes[i]);
 			}
 		}
-
-		// Remove any expired collectables
-		for (int i = 0; i < expiredCollectableIndexes.Count; i++) 
-		{
-			this.currentCollectables.RemoveAt(expiredCollectableIndexes[i]);
-		}
-	}
 }
