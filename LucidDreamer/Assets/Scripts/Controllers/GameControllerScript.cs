@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class GameControllerScript : MonoBehaviour
 {
 
+		private const int MAX_NUMBER_OF_LIVES = 3;
+
 		// Keep track of how many lives the player has
 		private int	lives;
 		private int coinsCollected = 0;
@@ -48,15 +50,11 @@ public class GameControllerScript : MonoBehaviour
 
 
 				// Player starts with 3 lives
-				lives = 3;
+				lives = MAX_NUMBER_OF_LIVES;
 
 
 				//Instantiate score tracker
 				scoreTracker = new ScoreTrackingSystem ();
-
-
-				// Player starts with 3 lives
-				lives = 3;
 
 				// TODO: Load bedroom scene
 
@@ -213,6 +211,17 @@ public class GameControllerScript : MonoBehaviour
 				this.coinsCollected += amount;
 				//		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
 				scoreTracker.AddPoints (amount);
+		}
+
+		public void IncrementLives(int livesToGive)
+		{
+				this.lives += livesToGive;
+
+				if (this.lives > MAX_NUMBER_OF_LIVES) {
+						this.lives = MAX_NUMBER_OF_LIVES;
+				}
+
+				LifeHUD.GetComponent<LifeHUDScript> ().SetLives (this.lives);
 		}
 
 		
