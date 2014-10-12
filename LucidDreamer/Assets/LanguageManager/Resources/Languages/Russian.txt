@@ -10,6 +10,8 @@ Retry = Повторить ?
 
 ExitToMenu = Выход в меню
 
+SelectLanguage = Выбор языка
+
 Name = Имя
 
 TopScore = Рекорды: 

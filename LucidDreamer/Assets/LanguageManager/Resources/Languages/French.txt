@@ -10,6 +10,8 @@ Retry = Réessayer?
 
 ExitToMenu = Sortie au menu
 
+SelectLanguage = Sélectionnez la langue
+
 Name = nom
 
 TopScore = Top Score: 

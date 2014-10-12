@@ -10,6 +10,8 @@ Retry = 重试吗？
 
 ExitToMenu = 退出菜单
 
+SelectLanguage = 选择语言
+
 Name = 产品名称
 
 TopScore = 最高分：
