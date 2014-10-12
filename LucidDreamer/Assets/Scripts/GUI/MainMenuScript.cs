@@ -7,7 +7,6 @@ using System.IO;
 
 public class MainMenuScript : MonoBehaviour
 {
-	
 		private Ray ray;								// triggered by touch/click of screen
 		private RaycastHit hit;							// used to detect a hit between ray and object
 		private bool isLoggedIn = false;
@@ -84,9 +83,10 @@ public class MainMenuScript : MonoBehaviour
 								if (hit.transform.name == "TrophyModel") {
 										Debug.Log ("MainMenuScript: Achievement model hit");
 										Social.ShowAchievementsUI ();
-								} else if (hit.transform.name == "PlayModel") {
+								} else if (hit.transform.name == "AlexModel") {
 										Debug.Log ("MainMenuScript: Play model hit");
-										StartCoroutine (loadSceneWithFade ("main"));
+										MakeAlexRun();
+										StartCoroutine (LoadSceneWithFade ("main"));
 								} else if (hit.transform.name == "HighscoresModel") {
 										Debug.Log ("MainMenuScript: Highscores model hit");
 										Application.LoadLevel ("HighScores");
@@ -101,11 +101,19 @@ public class MainMenuScript : MonoBehaviour
 				}
 		}
 
-		private IEnumerator loadSceneWithFade (string sceneLabel)
+		private IEnumerator LoadSceneWithFade (string sceneLabel)
 		{
 				// fade out the game and load the scene as per the parameter sceneLabel
 				float fadeTime = GameObject.Find ("MainMenuController").GetComponent<SceneFader> ().BeginFade (1);
 				yield return new WaitForSeconds (fadeTime);
 				Application.LoadLevel (sceneLabel);
+		}
+
+		private void MakeAlexRun() {
+				Animator anim = GameObject.Find ("AlexModel").GetComponent<Animator> ();
+				anim.SetBool ("Running", true);	
+				Rotator rotatorScript = GameObject.Find ("AlexModel").GetComponent<Rotator> ();
+				rotatorScript.speed = 0;
+				// TODO: Make Alex face to the right and run off screen
 		}
 }
