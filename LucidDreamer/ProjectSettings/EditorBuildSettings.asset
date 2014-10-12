@@ -59,3 +59,7 @@ EditorBuildSettings:
     path: Assets/Scenes/HeroPose.unity
   - enabled: 1
     path: Assets/scenes/HighScores.unity
+  - enabled: 1
+    path: Assets/Scenes/Options.unity
+  - enabled: 1
+    path: Assets/Scenes/SelectLanguage.unity
