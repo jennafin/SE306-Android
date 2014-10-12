@@ -1,0 +1,41 @@
+/Resources/Languages/
+
+
+GameOverScreenMessage = 亚历克斯醒了！
+
+
+Score = 评分: 
+
+Retry = 重试吗？
+
+ExitToMenu = 退出菜单
+
+SelectLanguage = 选择语言
+
+Name = 产品名称
+
+TopScore = 最高分：
+
+HighScores = 高分
+
+NoHighScores = 没有高分又
+
+
+english = 英 (English)
+
+
+spanish = 西班牙語 (Spanish)
+
+
+french = 法國 (French)
+
+
+russian = 俄語 (Russian)
+
+
+italian = 意大利 (Italian)
+
+
+chinese = 中國 (Chinese)
+
+
