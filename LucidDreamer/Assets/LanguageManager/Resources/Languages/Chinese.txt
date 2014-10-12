@@ -21,21 +21,21 @@ HighScores = 高分
 NoHighScores = 没有高分又
 
 
-english = 英 #n (English)
+english = 英 (English)
 
 
-spanish = 西班牙語 #n (Spanish)
+spanish = 西班牙語 (Spanish)
 
 
-french = 法國 #n (French)
+french = 法國 (French)
 
 
-russian = 俄語 #n (Russian)
+russian = 俄語 (Russian)
 
 
-italian = 意大利 #n (Italian)
+italian = 意大利 (Italian)
 
 
-chinese = 中國 #n (Chinese)
+chinese = 中國 (Chinese)
 
 

@@ -49,37 +49,37 @@ public class SelectLanguageScript : MonoBehaviour {
 		if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), screenHeight / 8, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("english")
 		                , customButton)) {
-			Application.LoadLevel ("SelectLanguage");
+			ChangeLanguage (Language.English);
 		}
 
 		if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 2 * screenHeight / 8, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("spanish")
 		                , customButton)) {
-			Application.LoadLevel ("SelectLanguage");
+			ChangeLanguage (Language.Spanish);
 		}
 
 		if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 3 * screenHeight / 8, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("french")
 		                , customButton)) {
-			Application.LoadLevel ("SelectLanguage");
+			ChangeLanguage (Language.French);
 		}
 
 		if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 4 * screenHeight / 8, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("russian")
 		                , customButton)) {
-			Application.LoadLevel ("SelectLanguage");
+			ChangeLanguage (Language.Russian);
 		}
 
 		if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 5 * screenHeight / 8, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("italian")
 		                , customButton)) {
-			Application.LoadLevel ("SelectLanguage");
+			ChangeLanguage (Language.Italian);
 		}
 
 		if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 6 * screenHeight / 8, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("chinese")
 		                , customButton)) {
-			Application.LoadLevel ("SelectLanguage");
+			ChangeLanguage (Language.Chinese);
 		}
 		
 		if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 7 * screenHeight / 8, buttonWidth * 2, buttonHeight)
@@ -87,6 +87,16 @@ public class SelectLanguageScript : MonoBehaviour {
 		                , customButton)) {
 			Application.LoadLevel ("MainMenu");
 		}
+	}
+
+	void ChangeLanguage(Language l)
+	{
+		language = l;
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream f = File.Open(Application.persistentDataPath + "/language.dat", FileMode.OpenOrCreate);
+		bf.Serialize(f, l);
+		f.Close();
+		Application.LoadLevel ("Options");
 	}
 	
 	// Update is called once per frame

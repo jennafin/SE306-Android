@@ -20,21 +20,21 @@ HighScores = puntuaciones más altas
 
 NoHighScores = No hay altos puntajes todavía
 
-english = Inglés #n (English)
+english = Inglés (English)
 
 
-spanish = Español #n (Spanish)
+spanish = Español (Spanish)
 
 
-french = Francés #n (French)
+french = Francés (French)
 
 
-russian = Ruso #n (Russian)
+russian = Ruso (Russian)
 
 
-italian = Italiano #n (Italian)
+italian = Italiano (Italian)
 
 
-chinese = Chino #n (Chinese)
+chinese = Chino (Chinese)
 
 

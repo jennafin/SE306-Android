@@ -20,21 +20,21 @@ HighScores = Лучшие результаты
 
 NoHighScores = Нет высокие баллы еще
 
-english = Английский #n (English)
+english = Английский (English)
 
 
-spanish = Испанский #n (Spanish)
+spanish = Испанский (Spanish)
 
 
-french = Французский #n (French)
+french = Французский (French)
 
 
-russian = Русский #n (Russian)
+russian = Русский (Russian)
 
 
-italian = Итальянский #n (Italian)
+italian = Итальянский (Italian)
 
 
-chinese = Китайский #n (Chinese)
+chinese = Китайский (Chinese)
 
 

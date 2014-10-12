@@ -56,7 +56,7 @@ public class GameOverScript : MonoBehaviour
 		           , LanguageManager.GetText ("Score") + score
 		           , gameOverStyle);
 
-		GUI.Label (new Rect ((screenWidth / 2 - 50), 1.5f * screenHeight / 4, 80, 30)
+				GUI.Label (new Rect ((screenWidth / 2 - 50), 1.5f * screenHeight / 4, 80, 30)
 		          , LanguageManager.GetText ("TopScore") + highScores.GetTopScore().name + "  " + highScores.GetTopScore().score
 		          , gameOverStyle);
 
@@ -71,7 +71,7 @@ public class GameOverScript : MonoBehaviour
 						Application.LoadLevel ("main");
 				}
 
-				userName = GUI.TextField(new Rect ((screenWidth / 2 - (buttonWidth / 2)), 2 * screenHeight / 4, buttonWidth, buttonHeight)
+				userName = GUI.TextField(new Rect ((screenWidth / 2 - (buttonWidth / 2)), 2.5f * screenHeight / 4, buttonWidth, buttonHeight)
 				              , userName, customButton);
 
 
