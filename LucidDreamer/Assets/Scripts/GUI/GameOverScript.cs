@@ -83,21 +83,21 @@ public class GameOverScript : MonoBehaviour
 				}
 		}
 
-	void SaveScore()
-	{
-		PlayerPrefs.SetString ("CurrentUserName", userName);
-		highScores.AddScore(userName, score);
-		highScores.SaveScores();
+		void SaveScore()
+		{
+			PlayerPrefs.SetString ("CurrentUserName", userName);
+			highScores.AddScore(userName, score);
+			highScores.SaveScores();
 
-	}
-	
+		}
+		
 		void Update ()
 		{
-				// go to main menu on escape/back button
-				if (Input.GetKeyDown (KeyCode.Escape)) {
-						Debug.Log ("GameOverScript: Escape key pressed");
-						SaveScore();
-						Application.LoadLevel ("MainMenu");
-				}
+			// go to main menu on escape/back button
+			if (Input.GetKeyDown (KeyCode.Escape)) {
+					Debug.Log ("GameOverScript: Escape key pressed");
+					SaveScore();
+					Application.LoadLevel ("MainMenu");
+			}
 		}	
 }
