@@ -108,7 +108,7 @@
 				cloudCol.a = sampleCloud(psIn.tex0.xy * _MainTex_ST.xy + microMov.xy).g * microMW.z;
 				cloudCol.a+= sampleCloud(psIn.tex0.xy * _MainTex_ST.xy + microMov.zw).g * microMW.w;
 				cloudCol.a*= tex2D(_MainTex, psIn.tex0.xy).r;
-				cloudCol.a = processAlpha(cloudCol.a);
+				cloudCol.a = processAlpha(cloudCol.a * _Colour.a);
 				
 				return cloudCol;
 			}
