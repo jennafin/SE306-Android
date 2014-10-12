@@ -37,6 +37,9 @@ public class GameControllerScript : MonoBehaviour
 		Level currentLevel;
 		Level previousLevel;
 
+		// Current acceleration vector
+		private Vector3 acceleration = new Vector3(0f,0f,0f);
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -62,7 +65,7 @@ public class GameControllerScript : MonoBehaviour
 		}
 
 
-	
+
 		// Update is called once per frame
 		void Update ()
 		{
@@ -73,7 +76,7 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 				alexPosition = alexDreamer.position;
-				
+
 				if (alexPosition.y < -5) {
 						// Alex has fallen to his death
 						GameOver ();
@@ -94,6 +97,13 @@ public class GameControllerScript : MonoBehaviour
 		checkAchievements (alexPosition.x);
 
 				LifeHUD.GetComponent<LifeHUDScript> ().SetScore (scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x)));
+
+				// Calculate jerk
+				Vector3 currentAcceleration = new Vector3(Input.acceleration.x, Input.acceleration.y, Input.acceleration.z);
+				if (Math.Abs((currentAcceleration - acceleration).magnitude) > 0.8) {
+					// Do something
+				}
+
 
 		}
 
@@ -158,14 +168,14 @@ public class GameControllerScript : MonoBehaviour
 				System.Random random = new System.Random ();
 				return levelSegments [random.Next (levelSegments.Length)];
 		}
-		
+
 		// Duplicate method to allow loss of life with Collider object, should change later
 		public void characterColliderWith (Collider2D col)
 		{
 				int delta = 500;
-		
+
 				String objectTag = col.gameObject.tag;
-		
+
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
 						int difference = Math.Abs (Environment.TickCount - lastCollision);
@@ -179,7 +189,7 @@ public class GameControllerScript : MonoBehaviour
 						Debug.Log ("Collided with collectable");
 						col.gameObject.GetComponent<Collectable> ().OnCollection (this);
 				}
-		
+
 				if (lives < 0) {
 						scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
 						Application.LoadLevel ("GameOver");
@@ -204,7 +214,7 @@ public class GameControllerScript : MonoBehaviour
 				scoreTracker.AddPoints (amount);
 		}
 
-		public void setScoreTrackingSystem(ScoreTrackingSystem sts) 
+		public void setScoreTrackingSystem(ScoreTrackingSystem sts)
 		{
 			this.scoreTracker = sts;
 		}
