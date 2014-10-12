@@ -12,12 +12,12 @@ public class MultiplierCollectable : Collectable {
 
 	protected override void InitiateCollectableBehaviour (GameControllerScript gameController) 
 	{
-		gameController.getScoreTrackingSystem ().AddMultiplier (this.multiplier);
+		gameController.GetScoreTrackingSystem ().AddMultiplier (this.multiplier);
 	}
 
 	protected override void RevokeCollectableBehaviour (GameControllerScript gameController)
 	{
-		gameController.getScoreTrackingSystem ().RemoveMultiplier (this.multiplier);
+		gameController.GetScoreTrackingSystem ().RemoveMultiplier (this.multiplier);
 	}
 
 }

@@ -18,7 +18,7 @@ namespace UnityTest
 		{
 			GameControllerScript gameController = Substitute.For<GameControllerScript>();
 			ScoreTrackingSystem scoreTracker = Substitute.For<ScoreTrackingSystem> ();
-			gameController.setScoreTrackingSystem (scoreTracker);
+			gameController.SetScoreTrackingSystem (scoreTracker);
 			Collectable collectable = new CoinCollectable ();
 			
 			// Check that coin count initially starts at 0

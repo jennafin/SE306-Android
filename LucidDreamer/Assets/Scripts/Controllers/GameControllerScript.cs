@@ -74,7 +74,7 @@ public class GameControllerScript : MonoBehaviour
 					Application.LoadLevel ("MainMenu");
 				}
 
-				applyCollectableBehaviours ();
+				ApplyCollectableBehaviours ();
 				
 
 				alexPosition = alexDreamer.position;
@@ -165,7 +165,7 @@ public class GameControllerScript : MonoBehaviour
 		}
 		
 		// Duplicate method to allow loss of life with Collider object, should change later
-		public void characterColliderWith (Collider2D col)
+		public void CharacterColliderWith (Collider2D col)
 		{
 				int delta = 500;
 		
@@ -225,18 +225,18 @@ public class GameControllerScript : MonoBehaviour
 		}
 
 		
-		public ScoreTrackingSystem getScoreTrackingSystem()
+		public ScoreTrackingSystem GetScoreTrackingSystem()
 		{
 			return this.scoreTracker;
 		}
 
-		public void setScoreTrackingSystem(ScoreTrackingSystem sts) 
+		public void SetScoreTrackingSystem(ScoreTrackingSystem sts) 
 		{
 			this.scoreTracker = sts;
 		}
 
 	// Iterate through any current collectables and apply their behaviours
-	private void applyCollectableBehaviours()
+	private void ApplyCollectableBehaviours()
 	{
 		List<int> expiredCollectableIndexes = new List<int> ();
 

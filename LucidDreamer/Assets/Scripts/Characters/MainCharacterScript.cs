@@ -60,7 +60,7 @@ public class MainCharacterScript : MonoBehaviour {
 	
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		this.gameControllerScript.characterColliderWith (col);
+		this.gameControllerScript.CharacterColliderWith (col);
 	}
 
 }
