@@ -1,12 +1,16 @@
-﻿Shader "Custom/lucidcartoon"
+﻿Shader "Custom/lucidcartoonbumpparallax"
 {
 	Properties
 	{
 		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_BumpTex ("Bump/Spec/Opacity (RGB)", 2D) = "white"
+		_BumpSzX ("Bump/Spec/Opacity width", Float) = 512
+		_BumpSzY ("Bump/Spec/Opacity height", Float) = 512
+		_BumpSzZ ("Bump/Spec/Opacity depth", Float) = 16
 	}
 	SubShader
 	{
-		Tags {"Queue" = "Geometry" "RenderType" = "Opaque"}
+		Tags {"Queue" = "Geometry" "RenderType" = "Opaque"} // TransparentCutout
 		
 		Pass
 		{
@@ -19,8 +23,10 @@
 			#include "UnityCG.cginc"
 			#include "AutoLight.cginc"
 			
+			#define LUCID_HAS_BUMPTEX
 			#define LUCID_HAS_AMBIENT
 			#define LUCID_USE_BASE
+			#define LUCID_USE_PARALLAX
 			#include "lucidcartoonfuncs.inc"
 			
 			#include "lucidcartooncommon.inc"
@@ -40,6 +46,8 @@
 			#include "UnityCG.cginc"
 			#include "AutoLight.cginc"
 			
+			#define LUCID_HAS_BUMPTEX
+			#define LUCID_USE_PARALLAX
 			#include "lucidcartoonfuncs.inc"
 			
 			#include "lucidcartooncommon.inc"
