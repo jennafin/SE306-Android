@@ -83,8 +83,8 @@ float3 sampleNormal(float2 sampleAtCoord)
 	
 	float3 outNormal = float3(_BumpSzZ, _BumpSzZ, 1.f);
 	
-	outNormal.x *= tex2D(_BumpTex, sampleAtCoord + texOffX).y - tex2D(_BumpTex, sampleAtCoord - texOffX).y;
-	outNormal.y *= tex2D(_BumpTex, sampleAtCoord + texOffY).y - tex2D(_BumpTex, sampleAtCoord - texOffY).y;
+	outNormal.x *= tex2D(_BumpTex, sampleAtCoord - texOffX).y - tex2D(_BumpTex, sampleAtCoord + texOffX).y;
+	outNormal.y *= tex2D(_BumpTex, sampleAtCoord - texOffY).y - tex2D(_BumpTex, sampleAtCoord + texOffY).y;
 	
 	return normalize(outNormal);
 }
