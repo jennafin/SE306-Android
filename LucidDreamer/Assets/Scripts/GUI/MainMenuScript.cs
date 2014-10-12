@@ -37,11 +37,11 @@ public class MainMenuScript : MonoBehaviour
 
 				// set font size relative to screen height
 				int updatedFontSize = Screen.height / 16;
-				GameObject.Find ("PlayText").guiText.fontSize = updatedFontSize;
-				GameObject.Find ("AchievementsText").guiText.fontSize = updatedFontSize;
-				GameObject.Find ("HighscoresText").guiText.fontSize = updatedFontSize;
-				GameObject.Find ("SettingsText").guiText.fontSize = updatedFontSize;
-				GameObject.Find ("LeaderboardsText").guiText.fontSize = updatedFontSize;
+//				GameObject.Find ("PlayText").guiText.fontSize = updatedFontSize;
+//				GameObject.Find ("AchievementsText").guiText.fontSize = updatedFontSize;
+//				GameObject.Find ("HighscoresText").guiText.fontSize = updatedFontSize;
+//				GameObject.Find ("SettingsText").guiText.fontSize = updatedFontSize;
+//				GameObject.Find ("LeaderboardsText").guiText.fontSize = updatedFontSize;
 		}
 
 		void Update ()
