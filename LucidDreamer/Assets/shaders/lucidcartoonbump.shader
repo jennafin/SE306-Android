@@ -26,12 +26,6 @@
 			#define LUCID_HAS_BUMPTEX
 			#define LUCID_HAS_AMBIENT
 			#define LUCID_USE_BASE
-			uniform sampler2D _MainTex;
-			uniform sampler2D _BumpTex;
-			uniform half _BumpSzX;
-			uniform half _BumpSzY;
-			uniform half _BumpSzZ;
-			fixed4 _LightColor0;
 			#include "lucidcartoonfuncs.inc"
 			
 			#include "lucidcartooncommon.inc"
@@ -52,12 +46,6 @@
 			#include "AutoLight.cginc"
 			
 			#define LUCID_HAS_BUMPTEX
-			uniform sampler2D _MainTex;
-			uniform sampler2D _BumpTex;
-			uniform half _BumpSzX;
-			uniform half _BumpSzY;
-			uniform half _BumpSzZ;
-			fixed4 _LightColor0;
 			#include "lucidcartoonfuncs.inc"
 			
 			#include "lucidcartooncommon.inc"

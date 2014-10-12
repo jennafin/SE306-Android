@@ -1,5 +1,12 @@
 #define LUCID_STYLE_ATTENUATION 1
 
+uniform sampler2D _MainTex;
+uniform sampler2D _BumpTex;
+uniform half _BumpSzX;
+uniform half _BumpSzY;
+uniform half _BumpSzZ;
+fixed4 _LightColor0;
+
 float posterise2(float rawValue, float step0, float step1)
 {
 	return 0.5f * (step(step0, rawValue) + step(step1, rawValue));
