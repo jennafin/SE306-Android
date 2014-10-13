@@ -4,7 +4,7 @@ using System.Collections;
 public class Pulsate : MonoBehaviour {
 
 	public float scaleFactor = 2.0f; 		// scale factor
-	public float scaleSpeed = 1f;			// interpolation time
+	public float scaleSmooth = 1f;			// interpolation time
 	
 	private float currentLerpTime = 0; 		// to track linear interpolation time 
 	private Vector3 startSize;				
@@ -21,7 +21,7 @@ public class Pulsate : MonoBehaviour {
 	// linearly interpolate between two sizes
 	void Update () {
 		currentLerpTime += Time.deltaTime;
-		if (currentLerpTime > scaleSpeed) {
+		if (currentLerpTime > scaleSmooth) {
 			currentLerpTime = 0f;
 			
 			// swap start and end sizes
@@ -29,7 +29,7 @@ public class Pulsate : MonoBehaviour {
 			startSize = endSize;
 			endSize = tempSize;
 		}
-		float perc = currentLerpTime / scaleSpeed;
+		float perc = currentLerpTime / scaleSmooth;
 		transform.localScale = Vector3.Lerp (startSize, endSize, perc);		
 	}
 }
