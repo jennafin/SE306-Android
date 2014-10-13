@@ -4,6 +4,12 @@ using System;
 public class GameControllerScript : MonoBehaviour
 {
 
+		private double maxTimeScale;
+		private double minTimeScale;
+		private double timeScaleIncrement;
+
+		private SpeedHandle timeScale;
+	
 		// Keep track of how many lives the player has
 		private int	lives;
 		private int coinsCollected = 0;
@@ -18,7 +24,7 @@ public class GameControllerScript : MonoBehaviour
 		// Life HUD
 		public GameObject LifeHUD;
 
-	private AchievementsList achievementsList = new AchievementsList();
+		private AchievementsList achievementsList = new AchievementsList();
 
 		// Main Character
 		public Transform alexDreamer;
@@ -40,8 +46,11 @@ public class GameControllerScript : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				// Calculate the screen width
-
+				minTimeScale = 1.0f;
+				maxTimeScale = 2.0f;
+				timeScaleIncrement = 0.00001;
+				
+				timeScale = new DefaultSpeedHandle (minTimeScale, minTimeScale, maxTimeScale);
 
 				// Player starts with 3 lives
 				lives = 3;
@@ -60,12 +69,14 @@ public class GameControllerScript : MonoBehaviour
 				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity);
 				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
 		}
-
-
 	
 		// Update is called once per frame
 		void Update ()
 		{
+				// Handles the game speeding up.
+				Time.timeScale = (float) timeScale.getCurrentSpeed();
+				timeScale.incrementSpeed (timeScaleIncrement);
+
 				// exit game on escape/back button
 				if (Input.GetKeyDown (KeyCode.Escape)) {
 					Debug.Log ("GameControllerScript: Escape key pressed");
@@ -91,10 +102,9 @@ public class GameControllerScript : MonoBehaviour
 						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
 				}
 
-		checkAchievements (alexPosition.x);
+				checkAchievements (alexPosition.x);
 
 				LifeHUD.GetComponent<LifeHUDScript> ().SetScore (scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x)));
-
 		}
 
 		void checkAchievements(float x)
@@ -175,6 +185,8 @@ public class GameControllerScript : MonoBehaviour
 								lastCollision = Environment.TickCount;
 								LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
 						}
+						// Resets time scale to normal
+						timeScale.reset();
 				} else if (objectTag.StartsWith ("Collectable")) {
 						Debug.Log ("Collided with collectable");
 						col.gameObject.GetComponent<Collectable> ().OnCollection (this);
