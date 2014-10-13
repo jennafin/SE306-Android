@@ -1,4 +1,4 @@
-﻿Shader "Custom/lucidcartoonbump"
+﻿Shader "Custom/lucidcartoonbumpglow"
 {
 	Properties
 	{
@@ -6,7 +6,7 @@
 		_BumpTex ("Bump/Spec/Opacity (RGB)", 2D) = "white"
 		_BumpSzX ("Bump/Spec/Opacity width", Float) = 512
 		_BumpSzY ("Bump/Spec/Opacity height", Float) = 512
-		_BumpSzZ ("Bump/Spec/Opacity depth", Float) = 1
+		_BumpSzZ ("Bump/Spec/Opacity depth", Float) = 1 
 	}
 	SubShader
 	{
@@ -26,6 +26,7 @@
 			#define LUCID_HAS_BUMPTEX
 			#define LUCID_HAS_AMBIENT
 			#define LUCID_USE_BASE
+			#define LUCID_USE_GLOW
 			#include "lucidcartoonfuncs.inc"
 			
 			#include "lucidcartooncommon.inc"

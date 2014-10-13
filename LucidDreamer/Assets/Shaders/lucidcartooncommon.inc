@@ -71,7 +71,13 @@ fixed4 frag(PS_IN psInput) : COLOR
 	 
 	// Get component parts
 	float attenuation = calcAttenuationCartoon(psInput.lVecObj);
-	float4 outDiff = _LightColor0 * shadeDiff(texCol.xyz, normal, lVector, attenuation);
+	float4 outDiff = _LightColor0;
+	outDiff *= shadeDiff(texCol.xyz, normal, lVector, attenuation);
+	
+	#ifdef LUCID_USE_GLOW
+		outDiff.rgb += texCol.xyz * bmpCol.b;
+	#endif
+	
 	float4 outSpec = _LightColor0 * shadeSpec(texCol.xyz, specularity, normal, lVector, vVector, attenuation);
 	
 	#ifdef LUCID_HAS_AMBIENT
