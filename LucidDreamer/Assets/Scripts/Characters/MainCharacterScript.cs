@@ -7,8 +7,8 @@ public class MainCharacterScript : MonoBehaviour {
 	public GameControllerScript gameControllerScript;
 
 	private float jumpForce = 750f;
-
-	public float speed = 1f; // meters per second
+	
+	float speed = 10f;
 
 	bool hasJumped = false;
 	bool hasDoubleJumped = false;
@@ -27,7 +27,7 @@ public class MainCharacterScript : MonoBehaviour {
 			} else if (!isGrounded && !hasDoubleJumped) {
 				DoubleJump ();
 			}
-		}
+		};
 		rigidbody2D.velocity = new Vector2 (speed, rigidbody2D.velocity.y);
 	}
 
