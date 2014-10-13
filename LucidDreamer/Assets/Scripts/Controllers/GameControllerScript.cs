@@ -37,9 +37,6 @@ public class GameControllerScript : MonoBehaviour
 		Level currentLevel;
 		Level previousLevel;
 
-		// Current acceleration vector
-		private Vector3 acceleration = new Vector3(0f,0f,0f);
-
 		// Use this for initialization
 		void Start ()
 		{
@@ -98,11 +95,6 @@ public class GameControllerScript : MonoBehaviour
 
 				LifeHUD.GetComponent<LifeHUDScript> ().SetScore (scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x)));
 
-				// Calculate jerk
-				Vector3 currentAcceleration = new Vector3(Input.acceleration.x, Input.acceleration.y, Input.acceleration.z);
-				if (Math.Abs((currentAcceleration - acceleration).magnitude) > 0.8) {
-					// Do something
-				}
 
 
 		}

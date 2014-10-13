@@ -99,7 +99,7 @@ PlayerSettings:
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: E:/User/Documents/dev/uni/lucidrunner.keystore
+  AndroidKeystoreName: C:/Users/kurt/workspace/SE306-Android/lucidrunner.keystore
   AndroidKeyaliasName: lucidrunner
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
@@ -112,6 +112,9 @@ PlayerSettings:
     m_StaticBatching: 1
     m_DynamicBatching: 1
   - m_BuildTarget: Android
+    m_StaticBatching: 1
+    m_DynamicBatching: 1
+  - m_BuildTarget: Standalone
     m_StaticBatching: 1
     m_DynamicBatching: 1
   webPlayerTemplate: APPLICATION:Black Background
