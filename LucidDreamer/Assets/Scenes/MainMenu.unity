@@ -781,6 +781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3688f3b2a9254f4aba7dd9e77389583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alexModel: {fileID: 1145878726}
   language: 1
 --- !u!4 &900764447
 Transform:
@@ -1931,8 +1932,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2102941302}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: .10209316, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: .330571413, y: -.54473877, z: 5.67716408}
+  m_LocalScale: {x: 2.65080881, y: 2.65080905, z: 2.65080905}
   m_Children:
   - {fileID: 1100697848}
   m_Father: {fileID: 0}

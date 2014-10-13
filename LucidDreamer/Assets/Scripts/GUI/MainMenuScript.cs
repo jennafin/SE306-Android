@@ -9,9 +9,19 @@ public class MainMenuScript : MonoBehaviour
 {
 		private Ray ray;								// triggered by touch/click of screen
 		private RaycastHit hit;							// used to detect a hit between ray and object
-		private bool isLoggedIn = false;
-		public Language language = Language.English;
-
+		public GameObject alexModel;					// reference alex model
+		private Vector3 alexStartPosition;				// start position of alex
+		private Vector3 alexEndPosition;				// end position of alex
+		private bool isAlexRunning = false;				// boolean to indicate if alex is running off screen
+		float lerpTime = 1f;							// for linearly interpolating alex between start and end positions
+		float currentLerpTime;							// 
+		public Language language = Language.English;	// default language 
+		
+			
+		// Initialisation of script includes:
+		// 		- Loading language file
+		// 		- Logging into Google Play Services
+		//		- Setting Alex's start and end positions for his run
 		void Start ()
 		{
 				Debug.Log ("MainMenuScript: Start");
@@ -37,18 +47,11 @@ public class MainMenuScript : MonoBehaviour
 				Social.localUser.Authenticate ((bool success) => {
 						if (success) {
 								Debug.Log ("MainMenuScript: Google Play Login Success");
-								isLoggedIn = true;
 						} else {
 								((PlayGamesPlatform)Social.Active).SignOut ();
 								Debug.Log ("MainMenuScript: Google Play Login Failed");
 						}
 				});
-
-				// show log in button
-				if (!isLoggedIn) {
-						// make log in button visisble
-						// TODO:
-				}
 
 				// set font size relative to screen height
 				int updatedFontSize = Screen.height / 16;
@@ -57,14 +60,25 @@ public class MainMenuScript : MonoBehaviour
 //				GameObject.Find ("HighscoresText").guiText.fontSize = updatedFontSize;
 //				GameObject.Find ("SettingsText").guiText.fontSize = updatedFontSize;
 //				GameObject.Find ("LeaderboardsText").guiText.fontSize = updatedFontSize;
-		}
 
+				// set alex' start and end position vectors
+				alexStartPosition = alexModel.transform.position;
+				alexEndPosition = new Vector3 (alexStartPosition.x + 5, alexStartPosition.y, alexStartPosition.z);
+		}
+	
 		void Update ()
 		{
 				// detect touch and select respective menu option
 				DetectAndHandleInput ();
-		}
 
+				// if play is triggered, alex is translated across the screen
+				if (isAlexRunning) {
+					TranslateAlex();
+				}				
+		}
+		
+		// Detect key presses and handle logic respective to the menu options
+		// available
 		private void DetectAndHandleInput ()
 		{
 				// exit game on escape/back button
@@ -80,39 +94,64 @@ public class MainMenuScript : MonoBehaviour
 						// check intersection of touch with objects of interest
 						ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 						if (Physics.Raycast (ray, out hit)) {
-								if (hit.transform.name == "TrophyModel") {
-										Debug.Log ("MainMenuScript: Achievement model hit");
-										Social.ShowAchievementsUI ();
-								} else if (hit.transform.name == "PlayModel") {
-										Debug.Log ("MainMenuScript: Play model hit");
-										MakeAlexRun();
-										StartCoroutine (LoadSceneWithFade ("main"));
-								} else if (hit.transform.name == "HighscoresModel") {
-										Debug.Log ("MainMenuScript: Highscores model hit");
-										Application.LoadLevel ("HighScores");
-								} else if (hit.transform.name == "SettingsModel") {
-										Debug.Log ("MainMenuScript: Settings model hit");
-										Application.LoadLevel ("Options");
-								} else if (hit.transform.name == "LeaderboardsModel") {
-										Debug.Log ("MainMenuScript: Leaderboards model hit");
-										Social.ShowLeaderboardUI ();
+								string hitTransformName = hit.transform.name;
+								switch (hitTransformName) {
+										case "TrophyModel":
+											Debug.Log ("MainMenuScript: Achievement model hit");
+											Social.ShowAchievementsUI ();
+											break;
+										case "PlayModel":
+											Debug.Log ("MainMenuScript: Play model hit");
+											MakeAlexRun();
+											StartCoroutine (LoadSceneWithFade ("main", 0.4f));
+											break;
+										case "HighscoresModel":
+											Debug.Log ("MainMenuScript: Highscores model hit");
+											Application.LoadLevel ("HighScores");
+											break;
+										case "SettingsModel":
+											Debug.Log ("MainMenuScript: Settings model hit");
+											Application.LoadLevel ("Options");
+											break;
+										case "LeaderboardsModel":
+											Debug.Log ("MainMenuScript: Leaderboards model hit");
+											Social.ShowLeaderboardUI ();
+											break;
 								}
 						}
 				}
 		}
 
-		private IEnumerator LoadSceneWithFade (string sceneLabel)
+		// fade out the main menu scene and load the scene as per the parameter sceneLabel
+		private IEnumerator LoadSceneWithFade (string sceneLabel, float delay = 0f)
 		{
-				// fade out the game and load the scene as per the parameter sceneLabel
+				yield return new WaitForSeconds (delay);
 				float fadeTime = GameObject.Find ("MainMenuController").GetComponent<SceneFader> ().BeginFade (1);
 				yield return new WaitForSeconds (fadeTime);
 				Application.LoadLevel (sceneLabel);
 		}
 
+		// set alex's model to the running animation, rotates him to face the right and 
+		// sets isAlexRunning boolean to trigger his run
 		private void MakeAlexRun() {
-				Animator anim = GameObject.Find ("AlexModel").GetComponent<Animator> ();
-				anim.SetBool ("Running", true);	
-				Rotator rotatorScript = GameObject.Find ("AlexModel").GetComponent<Rotator> ();
-				// TODO: Make Alex face to the right and run off screen
+				// change animation to alex running
+				Animator anim = alexModel.GetComponent<Animator> ();
+				anim.SetBool ("Running", true);
+
+				// rotate alex to face right of screen
+				alexModel.transform.Rotate (new Vector3 (0, 180, 0));
+
+				// set boolean to translate alex off screen in Update()
+				isAlexRunning = true;
+		}
+
+		// Translates alex between alexStartPosition and alexEndPosition
+		private void TranslateAlex() {
+				currentLerpTime += Time.deltaTime;
+				if (currentLerpTime > lerpTime) {
+					currentLerpTime = lerpTime;
+				}
+				float perc = currentLerpTime / lerpTime;
+				alexModel.transform.position = Vector3.Lerp (alexStartPosition, alexEndPosition, perc * 0.7f);
 		}
 }
