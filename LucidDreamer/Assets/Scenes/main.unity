@@ -342,7 +342,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 278581934}
-  m_LocalRotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
+  m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
   m_LocalPosition: {x: -1.26370169e-16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -898,7 +898,7 @@ MonoBehaviour:
   groundCheck: {fileID: 2016434741}
   ground:
     serializedVersion: 2
-    m_Bits: 4294965247
+    m_Bits: 1024
 --- !u!58 &1286769720
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1203,8 +1203,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 1728986873}
   m_AABB:
-    m_Center: {x: 0, y: .326439083, z: .0427111983}
-    m_Extent: {x: .563277006, y: .84456569, z: .559841871}
+    m_Center: {x: 5.96046448e-08, y: .326438844, z: .0427111387}
+    m_Extent: {x: .563276827, y: .844565451, z: .559841812}
   m_DirtyAABB: 0
 --- !u!1 &1728986872
 GameObject:
@@ -1276,7 +1276,6 @@ GameObject:
   - 4: {fileID: 1897705303}
   - 33: {fileID: 1897705302}
   - 64: {fileID: 1897705301}
-  - 23: {fileID: 1897705300}
   - 114: {fileID: 1897705299}
   m_Layer: 0
   m_Name: GameController
@@ -1301,26 +1300,6 @@ MonoBehaviour:
   mainCharacterScript: {fileID: 1286769719}
   levelSegments:
   - {fileID: 100020, guid: 67d565e42eacd464381f5c30ae750772, type: 2}
---- !u!23 &1897705300
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1897705298}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!64 &1897705301
 MeshCollider:
   m_ObjectHideFlags: 0

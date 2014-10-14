@@ -51,7 +51,7 @@ public class GameControllerScript : MonoBehaviour
 		{
 				minTimeScale = 1.0f;
 				maxTimeScale = 2.0f;
-				timeScaleIncrement = 0.00001;
+				timeScaleIncrement = 0.00005;
 				
 				timeScale = new DefaultSpeedHandle (minTimeScale, minTimeScale, maxTimeScale);
 
