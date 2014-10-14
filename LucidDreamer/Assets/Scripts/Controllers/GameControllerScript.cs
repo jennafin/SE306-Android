@@ -91,7 +91,7 @@ public class GameControllerScript : MonoBehaviour
 						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
 				}
 
-		checkAchievements (alexPosition.x);
+				checkAchievements (alexPosition.x);
 
 				LifeHUD.GetComponent<LifeHUDScript> ().SetScore (scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x)));
 
