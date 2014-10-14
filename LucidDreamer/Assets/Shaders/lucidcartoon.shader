@@ -18,12 +18,11 @@
 			#pragma multi_compile_fwdbase
 			#include "UnityCG.cginc"
 			#include "AutoLight.cginc"
-			#include "lucidcartoonfuncs.inc"
-			
-			uniform sampler2D _MainTex;
-			fixed4 _LightColor0;
 			
 			#define LUCID_HAS_AMBIENT
+			#define LUCID_USE_BASE
+			#include "lucidcartoonfuncs.inc"
+			
 			#include "lucidcartooncommon.inc"
 			
 			ENDCG
@@ -40,10 +39,8 @@
 			#pragma multi_compile_fwdadd
 			#include "UnityCG.cginc"
 			#include "AutoLight.cginc"
-			#include "lucidcartoonfuncs.inc"
 			
-			uniform sampler2D _MainTex;
-			fixed4 _LightColor0;
+			#include "lucidcartoonfuncs.inc"
 			
 			#include "lucidcartooncommon.inc"
 			

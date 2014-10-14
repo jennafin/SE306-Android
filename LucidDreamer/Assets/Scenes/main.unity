@@ -529,6 +529,7 @@ GameObject:
   - 124: {fileID: 1160922487}
   - 81: {fileID: 1160922486}
   - 114: {fileID: 1160922491}
+  - 82: {fileID: 1160922492}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -617,6 +618,64 @@ MonoBehaviour:
   distanceBehind: 8
   yOffset: 3
   minHeight: 10
+--- !u!82 &1160922492
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1160922485}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: b8aa585148f712c4abc731b87e0d579b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1165287227
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +762,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  heart: {fileID: 2800000, guid: 83457376cab964c1bba9a5e112ce7fbd, type: 3}
 --- !u!4 &1165287229
 Transform:
   m_ObjectHideFlags: 0
@@ -834,11 +894,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameControllerScript: {fileID: 1897705299}
-  speed: 10
+  isInvincible: 0
   groundCheck: {fileID: 2016434741}
   ground:
     serializedVersion: 2
-    m_Bits: 4294965247
+    m_Bits: 1024
 --- !u!58 &1286769720
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1216,7 +1276,6 @@ GameObject:
   - 4: {fileID: 1897705303}
   - 33: {fileID: 1897705302}
   - 64: {fileID: 1897705301}
-  - 23: {fileID: 1897705300}
   - 114: {fileID: 1897705299}
   m_Layer: 0
   m_Name: GameController
@@ -1238,28 +1297,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifeHUD: {fileID: 1165287227}
   alexDreamer: {fileID: 1286769715}
+  mainCharacterScript: {fileID: 1286769719}
   levelSegments:
   - {fileID: 100020, guid: 67d565e42eacd464381f5c30ae750772, type: 2}
---- !u!23 &1897705300
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1897705298}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!64 &1897705301
 MeshCollider:
   m_ObjectHideFlags: 0
