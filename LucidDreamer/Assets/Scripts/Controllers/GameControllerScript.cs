@@ -7,7 +7,6 @@ public class GameControllerScript : MonoBehaviour
 		private double maxTimeScale;
 		private double minTimeScale;
 		private double timeScaleIncrement;
-
 		private SpeedHandle timeScale;
 	
 		// Keep track of how many lives the player has
@@ -24,8 +23,7 @@ public class GameControllerScript : MonoBehaviour
 
 		// Life HUD
 		public GameObject LifeHUD;
-
-		private AchievementsList achievementsList = new AchievementsList();
+		private AchievementsList achievementsList = new AchievementsList ();
 
 		// Main Character
 		public Transform alexDreamer;
@@ -75,7 +73,7 @@ public class GameControllerScript : MonoBehaviour
 		void Update ()
 		{
 				// Handles the game speeding up.
-				Time.timeScale = (float) timeScale.getCurrentSpeed();
+				Time.timeScale = (float)timeScale.getCurrentSpeed ();
 				timeScale.incrementSpeed (timeScaleIncrement);
 
 				// exit game on escape/back button
@@ -183,8 +181,12 @@ public class GameControllerScript : MonoBehaviour
 		
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
+						if (objectName.Contains ("Enemy")) {
+								Debug.Log ("Collided with enemy");
+								col.gameObject.GetComponent<Enemy> ().OnCollision (this);
+						}
 						if (this.mainCharacterScript.isInvincible) {
-							return;
+								return;
 						}
 						int difference = Math.Abs (Environment.TickCount - lastCollision);
 						if (difference > delta) {
@@ -192,13 +194,10 @@ public class GameControllerScript : MonoBehaviour
 								lastCollision = Environment.TickCount;
 								LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
 						}
-						if (objectName.Contains ("Enemy")) {
-								Debug.Log ("Collided with enemy");
-								col.gameObject.GetComponent<Enemy> ().OnCollision (this);
-						}
+						
 
 						// Resets time scale to normal
-						timeScale.reset();
+						timeScale.reset ();
 
 				} else if (objectTag.StartsWith ("Collectable")) {
 						Debug.Log ("Collided with collectable");
@@ -234,8 +233,7 @@ public class GameControllerScript : MonoBehaviour
 				scoreTracker.AddPoints (amount);
 		}
 
-
-		public void IncrementLives(int livesToGive)
+		public void IncrementLives (int livesToGive)
 		{
 				this.lives += livesToGive;
 
@@ -245,42 +243,39 @@ public class GameControllerScript : MonoBehaviour
 
 				LifeHUD.GetComponent<LifeHUDScript> ().SetLives (this.lives);
 		}
-
 		
-		public ScoreTrackingSystem GetScoreTrackingSystem()
+		public ScoreTrackingSystem GetScoreTrackingSystem ()
 		{
-			return this.scoreTracker;
+				return this.scoreTracker;
 		}
 
-		public void SetScoreTrackingSystem(ScoreTrackingSystem sts) 
+		public void SetScoreTrackingSystem (ScoreTrackingSystem sts)
 		{
 				this.scoreTracker = sts;
 		}
 
-		public MainCharacterScript getMainCharacter() {
-			return mainCharacterScript;
+		public MainCharacterScript getMainCharacter ()
+		{
+				return mainCharacterScript;
 		}
 
 		// Iterate through any current collectables and apply their behaviours
-		private void ApplyCollectableBehaviours()
+		private void ApplyCollectableBehaviours ()
 		{
-			List<int> expiredCollectableIndexes = new List<int> ();
+				List<int> expiredCollectableIndexes = new List<int> ();
 
-			for (int i = 0; i < this.currentCollectables.Count; i++) 
-			{
-				Collectable collectable = this.currentCollectables[i];
-				bool stillHasLife = collectable.UseOneFrame(this);
+				for (int i = 0; i < this.currentCollectables.Count; i++) {
+						Collectable collectable = this.currentCollectables [i];
+						bool stillHasLife = collectable.UseOneFrame (this);
 
-				if (!stillHasLife)
-				{
-					expiredCollectableIndexes.Add(i);
+						if (!stillHasLife) {
+								expiredCollectableIndexes.Add (i);
+						}
 				}
-			}
 
-			// Remove any expired collectables
-			for (int i = 0; i < expiredCollectableIndexes.Count; i++) 
-			{
-				this.currentCollectables.RemoveAt(expiredCollectableIndexes[i]);
-			}
+				// Remove any expired collectables
+				for (int i = 0; i < expiredCollectableIndexes.Count; i++) {
+						this.currentCollectables.RemoveAt (expiredCollectableIndexes [i]);
+				}
 		}
 }
