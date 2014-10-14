@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class GameControllerScript : MonoBehaviour
 {
+		private double maxTimeScale;
+		private double minTimeScale;
+		private double timeScaleIncrement;
 
+		private SpeedHandle timeScale;
+	
 		// Keep track of how many lives the player has
+		private const int MAX_NUMBER_OF_LIVES = 3;
 		private int	lives;
 		private int coinsCollected = 0;
 
@@ -17,11 +24,13 @@ public class GameControllerScript : MonoBehaviour
 
 		// Life HUD
 		public GameObject LifeHUD;
-		private AchievementsList achievementsList = new AchievementsList ();
+
+		private AchievementsList achievementsList = new AchievementsList();
 
 		// Main Character
 		public Transform alexDreamer;
-
+		public MainCharacterScript mainCharacterScript;
+		
 
 		// The Prefab level segments that can be chosen from
 		public GameObject[] levelSegments;
@@ -36,22 +45,24 @@ public class GameControllerScript : MonoBehaviour
 		Level currentLevel;
 		Level previousLevel;
 
+		// Current power-ups (or could be coins)
+		private List<Collectable> currentCollectables = new List<Collectable> ();
+
 		// Use this for initialization
 		void Start ()
 		{
-				// Calculate the screen width
-
+				minTimeScale = 1.0f;
+				maxTimeScale = 2.0f;
+				timeScaleIncrement = 0.00001;
+				
+				timeScale = new DefaultSpeedHandle (minTimeScale, minTimeScale, maxTimeScale);
 
 				// Player starts with 3 lives
-				lives = 3;
+				lives = MAX_NUMBER_OF_LIVES;
 
 
 				//Instantiate score tracker
 				scoreTracker = new ScoreTrackingSystem ();
-
-
-				// Player starts with 3 lives
-				lives = 3;
 
 				// TODO: Load bedroom scene
 
@@ -59,17 +70,22 @@ public class GameControllerScript : MonoBehaviour
 				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity);
 				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
 		}
-
-
 	
 		// Update is called once per frame
 		void Update ()
 		{
+				// Handles the game speeding up.
+				Time.timeScale = (float) timeScale.getCurrentSpeed();
+				timeScale.incrementSpeed (timeScaleIncrement);
+
 				// exit game on escape/back button
 				if (Input.GetKeyDown (KeyCode.Escape)) {
 						Debug.Log ("GameControllerScript: Escape key pressed");
 						Application.LoadLevel ("MainMenu");
 				}
+
+				ApplyCollectableBehaviours ();
+				
 
 				alexPosition = alexDreamer.position;
 				
@@ -93,7 +109,6 @@ public class GameControllerScript : MonoBehaviour
 				checkAchievements (alexPosition.x);
 
 				LifeHUD.GetComponent<LifeHUDScript> ().SetScore (scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x)));
-
 		}
 
 		void checkAchievements (float x)
@@ -159,7 +174,7 @@ public class GameControllerScript : MonoBehaviour
 		}
 		
 		// Duplicate method to allow loss of life with Collider object, should change later
-		public void characterColliderWith (Collider2D col)
+		public void CharacterColliderWith (Collider2D col)
 		{
 				int delta = 500;
 		
@@ -168,6 +183,9 @@ public class GameControllerScript : MonoBehaviour
 		
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
+						if (this.mainCharacterScript.isInvincible) {
+							return;
+						}
 						int difference = Math.Abs (Environment.TickCount - lastCollision);
 						if (difference > delta) {
 								lives--;
@@ -178,9 +196,17 @@ public class GameControllerScript : MonoBehaviour
 								Debug.Log ("Collided with enemy");
 								col.gameObject.GetComponent<Enemy> ().OnCollision (this);
 						}
+
+						// Resets time scale to normal
+						timeScale.reset();
+
 				} else if (objectTag.StartsWith ("Collectable")) {
 						Debug.Log ("Collided with collectable");
-						col.gameObject.GetComponent<Collectable> ().OnCollection (this);
+						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
+						this.currentCollectables.Add (collectable);
+						
+						// We keep the Collectable instance around, but remove its game object from the scene
+						Destroy (collectable.gameObject);
 				}
 		
 				if (lives < 0) {
@@ -208,8 +234,53 @@ public class GameControllerScript : MonoBehaviour
 				scoreTracker.AddPoints (amount);
 		}
 
-		public void setScoreTrackingSystem (ScoreTrackingSystem sts)
+
+		public void IncrementLives(int livesToGive)
+		{
+				this.lives += livesToGive;
+
+				if (this.lives > MAX_NUMBER_OF_LIVES) {
+						this.lives = MAX_NUMBER_OF_LIVES;
+				}
+
+				LifeHUD.GetComponent<LifeHUDScript> ().SetLives (this.lives);
+		}
+
+		
+		public ScoreTrackingSystem GetScoreTrackingSystem()
+		{
+			return this.scoreTracker;
+		}
+
+		public void SetScoreTrackingSystem(ScoreTrackingSystem sts) 
 		{
 				this.scoreTracker = sts;
+		}
+
+		public MainCharacterScript getMainCharacter() {
+			return mainCharacterScript;
+		}
+
+		// Iterate through any current collectables and apply their behaviours
+		private void ApplyCollectableBehaviours()
+		{
+			List<int> expiredCollectableIndexes = new List<int> ();
+
+			for (int i = 0; i < this.currentCollectables.Count; i++) 
+			{
+				Collectable collectable = this.currentCollectables[i];
+				bool stillHasLife = collectable.UseOneFrame(this);
+
+				if (!stillHasLife)
+				{
+					expiredCollectableIndexes.Add(i);
+				}
+			}
+
+			// Remove any expired collectables
+			for (int i = 0; i < expiredCollectableIndexes.Count; i++) 
+			{
+				this.currentCollectables.RemoveAt(expiredCollectableIndexes[i]);
+			}
 		}
 }
