@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 61: {fileID: 6100000}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeFlatGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - 33: {fileID: 3300002}
   - 23: {fileID: 2300002}
   - 61: {fileID: 6100004}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeFlatGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - 33: {fileID: 3300004}
   - 23: {fileID: 2300004}
   - 61: {fileID: 6100008}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeFlatGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - 33: {fileID: 3300008}
   - 23: {fileID: 2300008}
   - 61: {fileID: 6100010}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeFlatGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - 33: {fileID: 3300010}
   - 23: {fileID: 2300010}
   - 61: {fileID: 6100012}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeFlatGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - 33: {fileID: 3300006}
   - 23: {fileID: 2300006}
   - 61: {fileID: 6100014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeFlatGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1286,7 +1286,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: a50aa2384b6b72f439ad0ae7963924e0, type: 2}
-  target: {fileID: 400024}
   fireRate: 6
   speed: 2
 --- !u!114 &11400002
@@ -1297,7 +1296,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5306e6bfba0e01842a5fc81618f4e531, type: 3}
+  m_Script: {fileID: 11500000, guid: f9afca4327a204a33b525e4f5f3d8577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11400004
@@ -1312,7 +1311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: a50aa2384b6b72f439ad0ae7963924e0, type: 2}
-  target: {fileID: 400004}
   fireRate: 6
   speed: 2
 --- !u!114 &11400006
@@ -1323,7 +1321,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5306e6bfba0e01842a5fc81618f4e531, type: 3}
+  m_Script: {fileID: 11500000, guid: f9afca4327a204a33b525e4f5f3d8577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11400008
@@ -1346,12 +1344,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4365bcf15f39764a8075c62f8e557fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 36d30d95a1f45415ba4c0c3a58cd030e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2
   wallLeft: 0
-  wallRight: 5
+  wallRight: 2
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
