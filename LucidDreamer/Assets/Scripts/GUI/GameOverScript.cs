@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿	using UnityEngine;
 using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -14,6 +14,7 @@ public class GameOverScript : MonoBehaviour
 		private int buttonHeight;
 		private string userName;
 		private HighScoreManager highScores = new HighScoreManager();
+		private TotalScoreManager totalScore = new TotalScoreManager();
 	
 		void Start ()
 		{
@@ -45,6 +46,8 @@ public class GameOverScript : MonoBehaviour
 				LanguageManager.LoadLanguageFile(language);
 
 				highScores.Load();
+				totalScore.Load();
+				SaveTotalScore();
 		}
 	
 		void OnGUI ()
@@ -89,6 +92,13 @@ public class GameOverScript : MonoBehaviour
 			highScores.AddScore(userName, score);
 			highScores.SaveScores();
 
+		}
+
+		void SaveTotalScore()
+		{
+			totalScore.UpdateScore (score);
+			totalScore.SaveTotalScore ();
+			Debug.Log ("Total Score: " + totalScore.GetTotalScore().score);
 		}
 		
 		void Update ()
