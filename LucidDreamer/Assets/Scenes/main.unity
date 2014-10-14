@@ -898,7 +898,7 @@ MonoBehaviour:
   groundCheck: {fileID: 2016434741}
   ground:
     serializedVersion: 2
-    m_Bits: 4294965247
+    m_Bits: 1024
 --- !u!58 &1286769720
 CircleCollider2D:
   m_ObjectHideFlags: 0
