@@ -1,10 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
-public class CoinCollectable : Collectable {
-
+public class ExtraLifeCollectable : Collectable {
+	
 	protected override void InitiateCollectableBehaviour (GameControllerScript gameController) {
-		gameController.IncrementCoins (10);
+		gameController.IncrementLives (1);
 	}
-
+	
 }
