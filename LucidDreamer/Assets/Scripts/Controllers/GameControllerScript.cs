@@ -7,7 +7,6 @@ public class GameControllerScript : MonoBehaviour
 		private double maxTimeScale;
 		private double minTimeScale;
 		private double timeScaleIncrement;
-
 		private SpeedHandle timeScale;
 	
 		// Keep track of how many lives the player has
@@ -24,8 +23,7 @@ public class GameControllerScript : MonoBehaviour
 
 		// Life HUD
 		public GameObject LifeHUD;
-
-		private AchievementsList achievementsList = new AchievementsList();
+		private AchievementsList achievementsList = new AchievementsList ();
 
 		// Main Character
 		public Transform alexDreamer;
@@ -75,13 +73,13 @@ public class GameControllerScript : MonoBehaviour
 		void Update ()
 		{
 				// Handles the game speeding up.
-				Time.timeScale = (float) timeScale.getCurrentSpeed();
+				Time.timeScale = (float)timeScale.getCurrentSpeed ();
 				timeScale.incrementSpeed (timeScaleIncrement);
 
 				// exit game on escape/back button
 				if (Input.GetKeyDown (KeyCode.Escape)) {
-					Debug.Log ("GameControllerScript: Escape key pressed");
-					Application.LoadLevel ("MainMenu");
+						Debug.Log ("GameControllerScript: Escape key pressed");
+						Application.LoadLevel ("MainMenu");
 				}
 
 				ApplyCollectableBehaviours ();
@@ -111,25 +109,25 @@ public class GameControllerScript : MonoBehaviour
 				LifeHUD.GetComponent<LifeHUDScript> ().SetScore (scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x)));
 		}
 
-		void checkAchievements(float x)
-	{
-		if (x >= 10){
-			achievementsList.GetRan10Meters();
-		}
-		if (x >= 20){
-			achievementsList.GetRan20Meters();
-		}
-		if (x >= 30){
-			achievementsList.GetRan30Meters();
-		}
-		if (x >= 40){
-			achievementsList.GetRan40Meters();
-		}
-		if (x >= 50){
-			achievementsList.GetRan50Meters();
-		}
+		void checkAchievements (float x)
+		{
+				if (x >= 10) {
+						achievementsList.GetRan10Meters ();
+				}
+				if (x >= 20) {
+						achievementsList.GetRan20Meters ();
+				}
+				if (x >= 30) {
+						achievementsList.GetRan30Meters ();
+				}
+				if (x >= 40) {
+						achievementsList.GetRan40Meters ();
+				}
+				if (x >= 50) {
+						achievementsList.GetRan50Meters ();
+				}
 
-	}
+		}
 
 		// Uses the LevelFactory to create the next level segment
 		Level GetNextLevel (Vector3 position, Quaternion rotation)
@@ -179,21 +177,28 @@ public class GameControllerScript : MonoBehaviour
 				int delta = 500;
 		
 				String objectTag = col.gameObject.tag;
+				String objectName = col.gameObject.name;
 		
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
+						if (objectName.Contains ("Enemy")) {
+								Debug.Log ("Collided with enemy");
+								col.gameObject.GetComponent<Enemy> ().OnCollision (this);
+						}
 						if (this.mainCharacterScript.isInvincible) {
-							return;
+								return;
 						}
 						int difference = Math.Abs (Environment.TickCount - lastCollision);
-						print (difference);
 						if (difference > delta) {
 								lives--;
 								lastCollision = Environment.TickCount;
 								LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
 						}
+						
+
 						// Resets time scale to normal
-						timeScale.reset();
+						timeScale.reset ();
+
 				} else if (objectTag.StartsWith ("Collectable")) {
 						Debug.Log ("Collided with collectable");
 						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
@@ -209,8 +214,9 @@ public class GameControllerScript : MonoBehaviour
 				}
 		}
 
-		public int GetCoinsCollected() {
-			return this.coinsCollected;
+		public int GetCoinsCollected ()
+		{
+				return this.coinsCollected;
 		}
 
 		void GameOver ()
@@ -227,7 +233,7 @@ public class GameControllerScript : MonoBehaviour
 				scoreTracker.AddPoints (amount);
 		}
 
-		public void IncrementLives(int livesToGive)
+		public void IncrementLives (int livesToGive)
 		{
 				this.lives += livesToGive;
 
@@ -237,42 +243,39 @@ public class GameControllerScript : MonoBehaviour
 
 				LifeHUD.GetComponent<LifeHUDScript> ().SetLives (this.lives);
 		}
-
 		
-		public ScoreTrackingSystem GetScoreTrackingSystem()
+		public ScoreTrackingSystem GetScoreTrackingSystem ()
 		{
-			return this.scoreTracker;
+				return this.scoreTracker;
 		}
 
-		public void SetScoreTrackingSystem(ScoreTrackingSystem sts) 
+		public void SetScoreTrackingSystem (ScoreTrackingSystem sts)
 		{
-			this.scoreTracker = sts;
+				this.scoreTracker = sts;
 		}
 
-		public MainCharacterScript getMainCharacter() {
-			return mainCharacterScript;
+		public MainCharacterScript getMainCharacter ()
+		{
+				return mainCharacterScript;
 		}
 
 		// Iterate through any current collectables and apply their behaviours
-		private void ApplyCollectableBehaviours()
+		private void ApplyCollectableBehaviours ()
 		{
-			List<int> expiredCollectableIndexes = new List<int> ();
+				List<int> expiredCollectableIndexes = new List<int> ();
 
-			for (int i = 0; i < this.currentCollectables.Count; i++) 
-			{
-				Collectable collectable = this.currentCollectables[i];
-				bool stillHasLife = collectable.UseOneFrame(this);
+				for (int i = 0; i < this.currentCollectables.Count; i++) {
+						Collectable collectable = this.currentCollectables [i];
+						bool stillHasLife = collectable.UseOneFrame (this);
 
-				if (!stillHasLife)
-				{
-					expiredCollectableIndexes.Add(i);
+						if (!stillHasLife) {
+								expiredCollectableIndexes.Add (i);
+						}
 				}
-			}
 
-			// Remove any expired collectables
-			for (int i = 0; i < expiredCollectableIndexes.Count; i++) 
-			{
-				this.currentCollectables.RemoveAt(expiredCollectableIndexes[i]);
-			}
+				// Remove any expired collectables
+				for (int i = 0; i < expiredCollectableIndexes.Count; i++) {
+						this.currentCollectables.RemoveAt (expiredCollectableIndexes [i]);
+				}
 		}
 }
