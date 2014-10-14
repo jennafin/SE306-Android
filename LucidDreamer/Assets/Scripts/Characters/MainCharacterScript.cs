@@ -11,8 +11,8 @@ public class MainCharacterScript : MonoBehaviour {
 	float superJumpForce = 800f;
 
 	float currentJumpForce;
-
-	public float speed = 1f; // meters per second
+	
+	float speed = 10f;
 
 	bool hasJumped = false;
 	bool hasDoubleJumped = false;
@@ -37,7 +37,7 @@ public class MainCharacterScript : MonoBehaviour {
 			} else if (!isGrounded && !hasDoubleJumped) {
 				DoubleJump ();
 			}
-		}
+		};
 		rigidbody2D.velocity = new Vector2 (speed, rigidbody2D.velocity.y);
 	}
 
