@@ -8,7 +8,7 @@ public class GameControllerScript : MonoBehaviour
 		private double minTimeScale;
 		private double timeScaleIncrement;
 		private SpeedHandle timeScale;
-	
+
 		// Keep track of how many lives the player has
 		private const int MAX_NUMBER_OF_LIVES = 3;
 		private int	lives;
@@ -28,7 +28,7 @@ public class GameControllerScript : MonoBehaviour
 		// Main Character
 		public Transform alexDreamer;
 		public MainCharacterScript mainCharacterScript;
-		
+
 
 		// The Prefab level segments that can be chosen from
 		public GameObject[] levelSegments;
@@ -52,7 +52,7 @@ public class GameControllerScript : MonoBehaviour
 				minTimeScale = 1.0f;
 				maxTimeScale = 2.0f;
 				timeScaleIncrement = 0.00005;
-				
+
 				timeScale = new DefaultSpeedHandle (minTimeScale, minTimeScale, maxTimeScale);
 
 				// Player starts with 3 lives
@@ -68,7 +68,7 @@ public class GameControllerScript : MonoBehaviour
 				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity);
 				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
 		}
-	
+
 		// Update is called once per frame
 		void Update ()
 		{
@@ -83,10 +83,10 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 				ApplyCollectableBehaviours ();
-				
+
 
 				alexPosition = alexDreamer.position;
-				
+
 				if (alexPosition.y < -5) {
 						// Alex has fallen to his death
 						GameOver ();
@@ -125,6 +125,24 @@ public class GameControllerScript : MonoBehaviour
 				}
 				if (x >= 50) {
 						achievementsList.GetRan50Meters ();
+				}
+				if (x >= 250) {
+						achievementsList.GetRan250Meters ();
+				}
+				if (x >= 500) {
+						achievementsList.GetRan500Meters ();
+				}
+				if (x >= 750) {
+						achievementsList.GetRan750Meters ();
+				}
+				if (x >= 1000) {
+						achievementsList.GetRan1000Meters ();
+				}
+				if (x >= 1250) {
+						achievementsList.GetRan1250Meters ();
+				}
+				if (x >= 1500) {
+						achievementsList.GetRan1500Meters ();
 				}
 
 		}
@@ -170,15 +188,15 @@ public class GameControllerScript : MonoBehaviour
 				System.Random random = new System.Random ();
 				return levelSegments [random.Next (levelSegments.Length)];
 		}
-		
+
 		// Duplicate method to allow loss of life with Collider object, should change later
 		public void CharacterColliderWith (Collider2D col)
 		{
 				int delta = 500;
-		
+
 				String objectTag = col.gameObject.tag;
 				String objectName = col.gameObject.name;
-		
+
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
 						if (objectName.Contains ("Enemy")) {
@@ -194,7 +212,7 @@ public class GameControllerScript : MonoBehaviour
 								lastCollision = Environment.TickCount;
 								LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
 						}
-						
+
 
 						// Resets time scale to normal
 						timeScale.reset ();
@@ -203,11 +221,11 @@ public class GameControllerScript : MonoBehaviour
 						Debug.Log ("Collided with collectable");
 						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
 						this.currentCollectables.Add (collectable);
-						
+
 						// We keep the Collectable instance around, but remove its game object from the scene
 						Destroy (collectable.gameObject);
 				}
-		
+
 				if (lives < 0) {
 						scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
 						Application.LoadLevel ("GameOver");
@@ -243,7 +261,7 @@ public class GameControllerScript : MonoBehaviour
 
 				LifeHUD.GetComponent<LifeHUDScript> ().SetLives (this.lives);
 		}
-		
+
 		public ScoreTrackingSystem GetScoreTrackingSystem ()
 		{
 				return this.scoreTracker;
