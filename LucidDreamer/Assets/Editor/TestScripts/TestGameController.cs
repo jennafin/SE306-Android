@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
@@ -17,7 +17,7 @@ namespace UnityTest
 		{
 			GameControllerScript gameController = Substitute.For<GameControllerScript>();
 			ScoreTrackingSystem scoreTracker = Substitute.For<ScoreTrackingSystem> ();
-			gameController.setScoreTrackingSystem (scoreTracker);
+			gameController.SetScoreTrackingSystem (scoreTracker);
 			
 			// Check that coin count initially starts at 0
 			Assert.AreEqual (0, gameController.GetCoinsCollected());
@@ -35,7 +35,7 @@ namespace UnityTest
 		{
 			GameControllerScript gameController = Substitute.For<GameControllerScript>();
 			ScoreTrackingSystem scoreTracker = Substitute.For<ScoreTrackingSystem> ();
-			gameController.setScoreTrackingSystem (scoreTracker);
+			gameController.SetScoreTrackingSystem (scoreTracker);
 
 			// Check that coin count initially starts at 0
 			Assert.AreEqual (0, gameController.GetCoinsCollected());
