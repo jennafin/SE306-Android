@@ -31,6 +31,7 @@
 		Pass
 		{
 			Tags {"LightMode" = "ForwardAdd"}
+			Fog {Color (0,0,0,0)}
 			Blend One One
 			CGPROGRAM
 			
