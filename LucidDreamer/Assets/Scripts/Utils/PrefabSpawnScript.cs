@@ -7,7 +7,7 @@ public class PrefabSpawnScript : MonoBehaviour {
 
 	// Instantiate a prefab at this object's current location.
 	void Start () {
-		Instantiate (prefab, transform.position, Quaternion.identity);
+		Instantiate (prefab, transform.position, prefab.transform.rotation);
 	}
 
 }
