@@ -894,6 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameControllerScript: {fileID: 1897705299}
+  isInvincible: 0
   groundCheck: {fileID: 2016434741}
   ground:
     serializedVersion: 2
@@ -1297,6 +1298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifeHUD: {fileID: 1165287227}
   alexDreamer: {fileID: 1286769715}
+  mainCharacterScript: {fileID: 1286769719}
   levelSegments:
   - {fileID: 100020, guid: 67d565e42eacd464381f5c30ae750772, type: 2}
 --- !u!23 &1897705300
