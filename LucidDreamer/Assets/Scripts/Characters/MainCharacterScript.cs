@@ -23,7 +23,11 @@ public class MainCharacterScript : MonoBehaviour {
 	public Transform groundCheck;
 	float groundRadius = 0.2f;
 	public LayerMask ground;
-
+	
+	public AudioClip jumpSound;
+	public AudioClip deathSound;
+	public AudioClip injuredSound;
+	
 	void Start() {
 		this.currentJumpForce = jumpForce;
 	}
@@ -43,11 +47,13 @@ public class MainCharacterScript : MonoBehaviour {
 
 	// Jumps
 	void Jump() {
+		PlayJumpSound ();
 		addJumpForce (currentJumpForce);
 	}
 
 	// Performs a double jump
 	void DoubleJump() {
+		PlayJumpSound ();
 		hasDoubleJumped = true;
 		addJumpForce (doubleJumpForce);
 	}
@@ -79,6 +85,26 @@ public class MainCharacterScript : MonoBehaviour {
 
 	public void endSuperJump() {
 		this.currentJumpForce = jumpForce;
+	}
+	
+	public void PlayDeathSound() {
+		PlaySound (deathSound);
+	}
+	
+	public void PlayInjuredSound() {
+		PlaySound (injuredSound);
+	}
+	
+	public void PlayJumpSound() {
+		PlaySound (jumpSound);
+	}
+	
+	void PlaySound(AudioClip sound) {
+		if (! this.jumpSound) {
+			Debug.Log ("Sound is not initialized in inspector.");
+		} else {
+			AudioSource.PlayClipAtPoint(jumpSound, this.transform.position);
+		}
 	}
 
 }

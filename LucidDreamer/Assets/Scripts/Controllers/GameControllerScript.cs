@@ -194,6 +194,13 @@ public class GameControllerScript : MonoBehaviour
 						}
 						// Resets time scale to normal
 						timeScale.reset();
+						
+						// Plays injured/death sound
+						if (lives == 0) {
+							mainCharacterScript.PlayDeathSound();
+						} else {
+							mainCharacterScript.PlayInjuredSound();
+						}
 				} else if (objectTag.StartsWith ("Collectable")) {
 						Debug.Log ("Collided with collectable");
 						Collectable collectable = col.gameObject.GetComponent<Collectable> ();

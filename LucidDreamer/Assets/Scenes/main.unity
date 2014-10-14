@@ -165,6 +165,49 @@ Transform:
   - {fileID: 1632117712}
   m_Father: {fileID: 1785797978}
   m_RootOrder: 0
+--- !u!1 &138912931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 138912933}
+  - 114: {fileID: 138912932}
+  m_Layer: 0
+  m_Name: SoundEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &138912932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 138912931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3455d36adfa8648238f2e328f1788df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  injured: {fileID: 0}
+  death: {fileID: 0}
+  jump: {fileID: 0}
+  coinPickUp: {fileID: 0}
+--- !u!4 &138912933
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 138912931}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.66408587, y: -2.28016996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1001 &160179881
 Prefab:
   m_ObjectHideFlags: 0
@@ -342,7 +385,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 278581934}
-  m_LocalRotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
+  m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
   m_LocalPosition: {x: -1.26370169e-16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1203,8 +1246,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 1728986873}
   m_AABB:
-    m_Center: {x: 0, y: .326439083, z: .0427111983}
-    m_Extent: {x: .563277006, y: .84456569, z: .559841871}
+    m_Center: {x: 5.96046448e-08, y: .326438844, z: .0427111387}
+    m_Extent: {x: .563276827, y: .844565451, z: .559841812}
   m_DirtyAABB: 0
 --- !u!1 &1728986872
 GameObject:
