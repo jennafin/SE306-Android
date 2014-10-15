@@ -72,4 +72,21 @@ public abstract class Collectable : MonoBehaviour {
 	protected virtual void RevokeCollectableBehaviour (GameControllerScript gameController)
 	{
 	}
+	
+	/**
+	 * This should be overridden to be the sound to be played when this collectable is collected.
+	 *
+	 * Defaults to null.
+	 */
+	public AudioClip sound;
+	
+	/**
+	 * Play this collectables sound.
+	 */
+	public void PlayCollectedSound ()
+	{
+		if (sound) {
+			AudioSource.PlayClipAtPoint(sound, this.transform.position, 2.0f);
+		}
+	}
 }
