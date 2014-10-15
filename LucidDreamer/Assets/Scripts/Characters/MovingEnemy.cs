@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MovingEnemyScript : MonoBehaviour
+public class MovingEnemy : Enemy
 {
 
 		public float walkSpeed = 5.0f;
@@ -10,11 +10,6 @@ public class MovingEnemyScript : MonoBehaviour
 		float walkingDirection = 1.0f;
 		Vector3 walkAmount;
 
-		void Start ()
-		{
-	
-		}
-	
 		// Move enemy to the left
 		void Update ()
 		{
@@ -29,10 +24,9 @@ public class MovingEnemyScript : MonoBehaviour
 				transform.Translate (walkAmount);
 		}
 
-		// Detect collisions
-		void OnCollisionEnter2D (Collision2D coll)
+		public override void CollisionBehaviour (GameControllerScript gameController)
 		{
-				if (coll.gameObject.tag == "Player")
-						Debug.Log ("Collision Detected on mover");
+				// TODO: Implement Moving Enemy Collision Behaviour
+				return;
 		}
 }

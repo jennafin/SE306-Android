@@ -5,7 +5,6 @@ public class Weapon : MonoBehaviour
 {
 
 		public PathedProjectile projectile;
-		public Transform target;
 		public float fireRate;
 		public float speed = 1;
 
@@ -26,6 +25,6 @@ public class Weapon : MonoBehaviour
 
 				timeToFire = fireRate;
 				var Projectile = (PathedProjectile)Instantiate (projectile, transform.position, transform.rotation);
-				Projectile.Initialize (speed, target);
+				Projectile.Initialize (speed);
 		}
 }
