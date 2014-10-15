@@ -103,7 +103,7 @@ public class MainCharacterScript : MonoBehaviour {
 		if (! this.jumpSound) {
 			Debug.Log ("Sound is not initialized in inspector.");
 		} else {
-			AudioSource.PlayClipAtPoint(jumpSound, this.transform.position);
+			AudioSource.PlayClipAtPoint(jumpSound, this.transform.position, 2.0f);
 		}
 	}
 
