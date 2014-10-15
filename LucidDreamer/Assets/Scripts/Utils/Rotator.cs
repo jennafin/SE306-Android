@@ -3,22 +3,22 @@ using System.Collections;
 
 public class Rotator : MonoBehaviour
 {
-	public float speed = 1.0f;								// speed multiplier for rotation
-	public enum rotationAxis { X, Y, Z };					// enum to dictact axis of rotation
-	public rotationAxis axisOfRotation = rotationAxis.Y;	// 
-	private float x, y, z;									//
+	public float speed = 1.0f;						// speed multiplier for rotation
+	public enum Axis { X, Y, Z };					// enum to dictact axis of rotation
+	public Axis axisOfRotation = Axis.Y;	// 
+	private float x, y, z;							//
 
 	// initialise rotation axis
 	void Start () 
 	{	
 		switch (axisOfRotation) {
-		case rotationAxis.X:
+		case Axis.X:
 			x = 15f;
 			break;
-		case rotationAxis.Y:
+		case Axis.Y:
 			y = 15f;
 			break;
-		case rotationAxis.Z:
+		case Axis.Z:
 			z = 15f;
 			break;
 		}
