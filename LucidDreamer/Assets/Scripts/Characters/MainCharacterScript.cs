@@ -99,11 +99,11 @@ public class MainCharacterScript : MonoBehaviour {
 		PlaySound (jumpSound);
 	}
 	
-	void PlaySound(AudioClip sound) {
-		if (! this.jumpSound) {
+	private void PlaySound(AudioClip sound) {
+		if (! sound) {
 			Debug.Log ("Sound is not initialized in inspector.");
 		} else {
-			AudioSource.PlayClipAtPoint(jumpSound, this.transform.position, 2.0f);
+			AudioSource.PlayClipAtPoint(sound, this.transform.position, 2.0f);
 		}
 	}
 

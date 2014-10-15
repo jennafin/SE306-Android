@@ -73,7 +73,7 @@ public class GameControllerScript : MonoBehaviour
 		void Update ()
 		{
 				// Handles the game speeding up.
-				Time.timeScale = (float)timeScale.getCurrentSpeed ();
+				Time.timeScale = (float) timeScale.getCurrentSpeed ();
 				timeScale.incrementSpeed (timeScaleIncrement);
 
 				// exit game on escape/back button
@@ -200,7 +200,7 @@ public class GameControllerScript : MonoBehaviour
 						timeScale.reset();
 						
 						// Plays injured/death sound
-						if (lives == 0) {
+						if (lives < 0) {
 							mainCharacterScript.PlayDeathSound();
 						} else {
 							mainCharacterScript.PlayInjuredSound();
@@ -211,13 +211,18 @@ public class GameControllerScript : MonoBehaviour
 						this.currentCollectables.Add (collectable);
 						
 						// We keep the Collectable instance around, but remove its game object from the scene
+						collectable.PlayCollectedSound ();
 						Destroy (collectable.gameObject);
 				}
 		
 				if (lives < 0) {
-						scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
-						Application.LoadLevel ("GameOver");
+						LoadGameOverScreen (); // Loads game over screen after 1.5 seconds
 				}
+		}
+		
+		public void LoadGameOverScreen() {
+			scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
+			Application.LoadLevel ("GameOver");
 		}
 
 		public int GetCoinsCollected ()
