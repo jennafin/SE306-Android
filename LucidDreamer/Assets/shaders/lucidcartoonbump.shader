@@ -6,7 +6,7 @@
 		_BumpTex ("Bump/Spec/Opacity (RGB)", 2D) = "white"
 		_BumpSzX ("Bump/Spec/Opacity width", Float) = 512
 		_BumpSzY ("Bump/Spec/Opacity height", Float) = 512
-		_BumpSzZ ("Bump/Spec/Opacity depth", Float) = 16
+		_BumpSzZ ("Bump/Spec/Opacity depth", Float) = 1
 	}
 	SubShader
 	{
@@ -36,6 +36,7 @@
 		Pass
 		{
 			Tags {"LightMode" = "ForwardAdd"}
+			Fog {Color (0,0,0,0)}
 			Blend One One
 			CGPROGRAM
 			
