@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-public class GameControllerScript : MonoBehaviour
+public class GameControllerScript : MonoBehaviour, Shakeable
 {
 		private double maxTimeScale;
 		private double minTimeScale;
@@ -24,6 +24,15 @@ public class GameControllerScript : MonoBehaviour
 		// Life HUD
 		public GameObject LifeHUD;
 		private AchievementsList achievementsList = new AchievementsList ();
+
+		// Lucid HUD
+		public GameObject LucidHUD;
+
+		//Lucid power level
+		private float LucidPowerLevel;
+
+		//Shake detector
+		public GameObject ShakeDetector;
 
 		// Main Character
 		public Transform alexDreamer;
@@ -150,6 +159,11 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 				return currentTheme;
+		}
+
+		public void doShakeAction()
+		{
+
 		}
 
 		// Chooses and returns a new theme. The returned theme will be different from the current theme.

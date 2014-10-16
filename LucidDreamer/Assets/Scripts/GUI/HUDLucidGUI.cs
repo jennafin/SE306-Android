@@ -4,6 +4,7 @@ using System.Collections;
 public class HUDLucidGUI : MonoBehaviour {
 
 	private float barDisplay  = 0;
+	private bool usedPower = false;
 	public Vector2 pos  = new Vector2(20,40);
 	public Vector2 size = new Vector2(60,20);
 	public Texture2D progressBarEmpty;
@@ -26,9 +27,9 @@ public class HUDLucidGUI : MonoBehaviour {
 		
 	} 
 	
-	void Update()
+	void UpdateDisplay(float ammount)
 	{
-
-		barDisplay = Time.time * 0.05f;
+		barDisplay = ammount;
 	}
+
 }
