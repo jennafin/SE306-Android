@@ -1,15 +1,17 @@
-﻿Shader "Custom/lucidcartoon"
+﻿Shader "Custom/lucidcartoonglass"
 {
 	Properties
 	{
-		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_Colour ("Base Colour", Color) = (1,1,1,1)
 	}
 	SubShader
 	{
-		Tags {"Queue" = "Geometry" "RenderType" = "Opaque"}
+		Tags {"Queue" = "Transparent"}
 		
 		Pass
 		{
+			ZWrite Off
+			Blend One OneMinusSrcAlpha
 			Tags {"LightMode" = "ForwardBase"}
 			CGPROGRAM
 			
@@ -21,6 +23,8 @@
 			
 			#define LUCID_HAS_AMBIENT
 			#define LUCID_USE_BASE
+			#define LUCID_USE_NOTEX
+			#define LUCID_USE_GLASS
 			#include "lucidcartoonfuncs.inc"
 			
 			#include "lucidcartooncommon.inc"
@@ -30,7 +34,7 @@
 		
 		Pass
 		{
-			Tags {"LightMode" = "ForwardAdd"}
+			Tags {"Queue" = "Transparent" "LightMode" = "ForwardAdd"}
 			Fog {Color (0,0,0,0)}
 			Blend One One
 			CGPROGRAM
@@ -41,7 +45,8 @@
 			#include "UnityCG.cginc"
 			#include "AutoLight.cginc"
 			
-			#define LUCID_USE_BASE
+			#define LUCID_USE_NOTEX
+			#define LUCID_USE_GLASS
 			#include "lucidcartoonfuncs.inc"
 			
 			#include "lucidcartooncommon.inc"
