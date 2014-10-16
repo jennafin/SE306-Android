@@ -31,15 +31,15 @@ Material:
       data:
         first:
           name: _BumpSzX
-        second: 512
+        second: 256
       data:
         first:
           name: _BumpSzY
-        second: 512
+        second: 256
       data:
         first:
           name: _BumpSzZ
-        second: 1
+        second: .5
     m_Colors:
       data:
         first:

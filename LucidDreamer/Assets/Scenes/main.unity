@@ -165,6 +165,45 @@ Transform:
   - {fileID: 1632117712}
   m_Father: {fileID: 1785797978}
   m_RootOrder: 0
+--- !u!1 &138912931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 138912933}
+  - 114: {fileID: 138912932}
+  m_Layer: 0
+  m_Name: SoundEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &138912932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 138912931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3455d36adfa8648238f2e328f1788df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &138912933
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 138912931}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.66408587, y: -2.28016996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1001 &160179881
 Prefab:
   m_ObjectHideFlags: 0
@@ -898,7 +937,10 @@ MonoBehaviour:
   groundCheck: {fileID: 2016434741}
   ground:
     serializedVersion: 2
-    m_Bits: 4294965247
+    m_Bits: 1024
+  jumpSound: {fileID: 8300000, guid: ec4c9ed8ff0e9482e9bf57fe2474ae57, type: 3}
+  deathSound: {fileID: 8300000, guid: 8f53ad2d958c048e5a8e403a20d21df0, type: 3}
+  injuredSound: {fileID: 8300000, guid: 3ca121c001790493aac9f6aec90cfc06, type: 3}
 --- !u!58 &1286769720
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1276,7 +1318,6 @@ GameObject:
   - 4: {fileID: 1897705303}
   - 33: {fileID: 1897705302}
   - 64: {fileID: 1897705301}
-  - 23: {fileID: 1897705300}
   - 114: {fileID: 1897705299}
   - 114: {fileID: 1897705304}
   m_Layer: 0
@@ -1301,27 +1342,7 @@ MonoBehaviour:
   alexDreamer: {fileID: 1286769715}
   mainCharacterScript: {fileID: 1286769719}
   levelSegments:
-  - {fileID: 100020, guid: 67d565e42eacd464381f5c30ae750772, type: 2}
---- !u!23 &1897705300
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1897705298}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  - {fileID: 100070, guid: f71d992b66fd6714584e5175955b4942, type: 2}
 --- !u!64 &1897705301
 MeshCollider:
   m_ObjectHideFlags: 0
