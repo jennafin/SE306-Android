@@ -163,7 +163,10 @@ public class GameControllerScript : MonoBehaviour, Shakeable
 
 		public void doShakeAction()
 		{
-
+			if (LucidPowerLevel > 99) 	
+			{
+			LucidPowerLevel = 0;
+			}
 		}
 
 		// Chooses and returns a new theme. The returned theme will be different from the current theme.
