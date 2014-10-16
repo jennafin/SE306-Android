@@ -1319,6 +1319,7 @@ GameObject:
   - 33: {fileID: 1897705302}
   - 64: {fileID: 1897705301}
   - 114: {fileID: 1897705299}
+  - 114: {fileID: 1897705304}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1374,6 +1375,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1897705304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1897705298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f253621e1f9ca5045bd915fb308798cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 2800000, guid: 858ce4112b6ad2a43998c1d76d2c11e7, type: 3}
+  fadeSpeed: .800000012
 --- !u!1 &1942044728
 GameObject:
   m_ObjectHideFlags: 0
