@@ -107,11 +107,11 @@ public class MainMenuScript : MonoBehaviour
 											break;
 										case "HighscoresModel":
 											Debug.Log ("MainMenuScript: Highscores model hit");
-											Application.LoadLevel ("HighScores");
+											StartCoroutine (LoadSceneWithFade ("HighScores"));
 											break;
 										case "SettingsModel":
 											Debug.Log ("MainMenuScript: Settings model hit");
-											Application.LoadLevel ("Options");
+											StartCoroutine (LoadSceneWithFade ("Options"));
 											break;
 										case "LeaderboardsModel":
 											Debug.Log ("MainMenuScript: Leaderboards model hit");
