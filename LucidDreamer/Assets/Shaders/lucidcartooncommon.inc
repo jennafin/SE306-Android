@@ -47,7 +47,11 @@ fixed4 frag(PS_IN psInput) : COLOR
 
 	// Sample textures
 	float2 texCoord = psInput.tex0.xy;
-	float4 texCol = tex2D(_MainTex, texCoord);
+	#ifdef LUCID_USE_NOTEX
+		float4 texCol = _Colour;
+	#else
+		float4 texCol = tex2D(_MainTex, texCoord);
+	#endif
 	#ifdef LUCID_HAS_BUMPTEX
 		float4 bmpCol = tex2D(_BumpTex, texCoord);
 		
@@ -63,15 +67,23 @@ fixed4 frag(PS_IN psInput) : COLOR
 	#endif
 	
 	// Calculate the specularity of the sample
-	#ifdef LUCID_HAS_BUMPTEX
+	#if defined(LUCID_HAS_BUMPTEX)
 		float specularity = bmpCol.x;
+	#elif defined(LUCID_USE_NOTEX)
+		float specularity = _Colour.a;
 	#else
 		float specularity = 0.f;
 	#endif
 	 
 	// Get component parts
 	float attenuation = calcAttenuationCartoon(psInput.lVecObj);
-	float4 outDiff = _LightColor0 * shadeDiff(texCol.xyz, normal, lVector, attenuation);
+	float4 outDiff = _LightColor0;
+	outDiff *= shadeDiff(texCol.xyz, normal, lVector, attenuation);
+	
+	#ifdef LUCID_USE_GLOW
+		outDiff.rgb += texCol.xyz * bmpCol.b;
+	#endif
+	
 	float4 outSpec = _LightColor0 * shadeSpec(texCol.xyz, specularity, normal, lVector, vVector, attenuation);
 	
 	#ifdef LUCID_HAS_AMBIENT
