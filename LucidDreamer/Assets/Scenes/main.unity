@@ -1342,7 +1342,7 @@ MonoBehaviour:
   alexDreamer: {fileID: 1286769715}
   mainCharacterScript: {fileID: 1286769719}
   levelSegments:
-  - {fileID: 100082, guid: 4152ebd0697b0c4449aae14a7ec4e599, type: 2}
+  - {fileID: 100088, guid: ffd18fce5d859f24ca1bce9194cce2dc, type: 2}
 --- !u!64 &1897705301
 MeshCollider:
   m_ObjectHideFlags: 0
