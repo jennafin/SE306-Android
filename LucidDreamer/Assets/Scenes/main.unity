@@ -241,7 +241,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
       propertyPath: m_Controller
@@ -1342,7 +1342,7 @@ MonoBehaviour:
   alexDreamer: {fileID: 1286769715}
   mainCharacterScript: {fileID: 1286769719}
   levelSegments:
-  - {fileID: 100070, guid: f71d992b66fd6714584e5175955b4942, type: 2}
+  - {fileID: 100082, guid: 4152ebd0697b0c4449aae14a7ec4e599, type: 2}
 --- !u!64 &1897705301
 MeshCollider:
   m_ObjectHideFlags: 0
