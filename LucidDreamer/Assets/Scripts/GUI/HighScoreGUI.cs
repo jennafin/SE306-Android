@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
+[ExecuteInEditMode()]  
 public class HighScoreGUI : MonoBehaviour {
 
 	public GUIStyle gameOverStyle;
