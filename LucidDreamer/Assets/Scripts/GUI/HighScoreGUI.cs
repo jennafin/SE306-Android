@@ -85,7 +85,7 @@ public class HighScoreGUI : MonoBehaviour {
 		if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, screenHeight - buttonHeight - 20, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("ExitToMenu")
 		                , customButton)) {
-			GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("MainMenu");
+			LoadMainMenu();
 		}
 	}
 	
@@ -94,7 +94,11 @@ public class HighScoreGUI : MonoBehaviour {
 		// go to main menu on escape/back button
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Debug.Log ("GameOverScript: Escape key pressed");
-			Application.LoadLevel ("MainMenu");
+			LoadMainMenu();
 		}
 	}	
+
+	private void LoadMainMenu() {
+		GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("MainMenu");
+	}
 }
