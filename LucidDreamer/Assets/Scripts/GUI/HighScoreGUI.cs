@@ -21,7 +21,6 @@ public class HighScoreGUI : MonoBehaviour {
 
 	void Start ()
 	{
-
 		screenHeight = Screen.height;
 		screenWidth = Screen.width;
 
@@ -86,7 +85,7 @@ public class HighScoreGUI : MonoBehaviour {
 		if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, screenHeight - buttonHeight - 20, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("ExitToMenu")
 		                , customButton)) {
-			Application.LoadLevel ("MainMenu");
+			GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("MainMenu");
 		}
 	}
 	
