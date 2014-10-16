@@ -8,7 +8,9 @@ using System.IO;
 [ExecuteInEditMode()]  
 public class HighScoreGUI : MonoBehaviour {
 
-	public GUIStyle gameOverStyle;
+	public GUIStyle leftAlignedStyle;
+	public GUIStyle rightAlignedStyle;
+	public GUIStyle titleTextStyle;
 	private int screenHeight;
 	private int screenWidth;
 	private int buttonWidth;
@@ -22,9 +24,13 @@ public class HighScoreGUI : MonoBehaviour {
 
 		screenHeight = Screen.height;
 		screenWidth = Screen.width;
-		
-		gameOverStyle.fontSize = (int)(0.06 * screenHeight);
-		gameOverStyle.alignment = TextAnchor.MiddleCenter;
+
+		titleTextStyle.fontSize = (int)(0.16 * screenHeight);
+		leftAlignedStyle.fontSize = (int)(0.04 * screenHeight);
+		rightAlignedStyle.fontSize = (int)(0.04 * screenHeight);
+		titleTextStyle.alignment = TextAnchor.MiddleCenter;
+		leftAlignedStyle.alignment = TextAnchor.MiddleLeft;
+		rightAlignedStyle.alignment = TextAnchor.MiddleRight;
 		buttonWidth = screenWidth / 5;
 		buttonHeight = screenHeight / 10;
 		highScores.Load ();
@@ -47,28 +53,30 @@ public class HighScoreGUI : MonoBehaviour {
 
 	void OnGUI ()
 	{
-		GUI.Label (new Rect ((screenWidth / 2 - 50), 50, 80, 30)
+		GUI.Label (new Rect (0, screenHeight / 10, screenWidth, 0)
 		           , LanguageManager.GetText ("HighScores")
-		           , gameOverStyle);
+		           , titleTextStyle);
 
 		if (topScores.Count == 0) {
 						GUI.Label (new Rect ((screenWidth / 2 - 50), screenHeight / 4, 80, 30)
 						           , LanguageManager.GetText ("NoHighScores")
-						           , gameOverStyle);
+						           , leftAlignedStyle);
 				} else {
-						
-						int height = 0;
+						int minHeight = (int)(screenHeight / 4.5);
+						int deltaHeight = 0;
+						int verticalPadding = 0;
+						int horizontalPadding = screenWidth / 10;
 						int i = 1;
 						foreach (ScoreEntry score in topScores) {
-								GUI.Label (new Rect((screenWidth / 4), (screenHeight / 4)-30+height, 80, 30), i.ToString(), gameOverStyle);
-								GUI.Label (new Rect ((screenWidth / 2 - 60), (screenHeight / 4)-30+height, 80, 30)
+						GUI.Label (new Rect(horizontalPadding * 2, minHeight + deltaHeight, 0, 0), i.ToString(), rightAlignedStyle);
+				GUI.Label (new Rect (horizontalPadding * 2 + 50, minHeight + deltaHeight, 0, 0)
 			           				, score.name
-			           				, gameOverStyle);
-								GUI.Label (new Rect ((screenWidth / 2 + 70), (screenHeight / 4)-30+height, 80, 30)
+			           				, leftAlignedStyle);
+				GUI.Label (new Rect (horizontalPadding * 8, minHeight + deltaHeight, 0, 0)
 								           , score.score.ToString()
-								           , gameOverStyle);
-								height = height + screenHeight/15;
-								i = i + 1;
+								           , rightAlignedStyle);
+						deltaHeight = deltaHeight + screenHeight/15;
+						i = i + 1;
 						}
 				}
 		
