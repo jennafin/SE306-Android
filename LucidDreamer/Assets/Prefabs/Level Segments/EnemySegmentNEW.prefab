@@ -678,7 +678,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
@@ -702,7 +702,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!4 &400006
 Transform:
   m_ObjectHideFlags: 1
@@ -718,8 +718,8 @@ Transform:
   - {fileID: 400012}
   - {fileID: 400014}
   - {fileID: 400016}
-  - {fileID: 400000}
   - {fileID: 400004}
+  - {fileID: 400000}
   - {fileID: 400002}
   - {fileID: 400018}
   - {fileID: 400020}
