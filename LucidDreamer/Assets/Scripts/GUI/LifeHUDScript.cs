@@ -34,7 +34,7 @@ public class LifeHUDScript : MonoBehaviour {
 		lifeStyle.normal.textColor = Color.red;
 		
 		Vector2 size = lifeStyle.CalcSize(new GUIContent(score.ToString()));
-		Debug.Log ("String size: " + size.x + " " + size.y);
+		//Debug.Log ("String size: " + size.x + " " + size.y);
 		
 		GUI.TextArea(new Rect(Screen.width - size.x - firstHeartStartX, firstHeartStartY / 2, size.x, size.y), score.ToString(), lifeStyle);
 	}

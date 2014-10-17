@@ -222,6 +222,11 @@ public class GameControllerScript : MonoBehaviour
 				return this.coinsCollected;
 		}
 
+		public int GetScore()
+		{
+			return scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x));
+		}
+
 		void GameOver ()
 		{
 				scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));

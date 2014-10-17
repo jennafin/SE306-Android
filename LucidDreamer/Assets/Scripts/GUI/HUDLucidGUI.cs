@@ -27,7 +27,7 @@ public class HUDLucidGUI : MonoBehaviour {
 		
 	} 
 	
-	void UpdateDisplay(float ammount)
+	public void UpdateDisplay(float ammount)
 	{
 		barDisplay = ammount;
 	}
