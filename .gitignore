@@ -74,3 +74,5 @@ obj/
 
 # Don't want to track the keystore
 *.keystore
+
+Thumbs.db
