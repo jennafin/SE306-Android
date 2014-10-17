@@ -5,6 +5,7 @@ uniform sampler2D _BumpTex;
 uniform half _BumpSzX;
 uniform half _BumpSzY;
 uniform half _BumpSzZ;
+fixed4 _Colour;
 fixed4 _LightColor0;
 
 float posterise2(float rawValue, float step0, float step1)
