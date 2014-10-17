@@ -1,4 +1,4 @@
-﻿Shader "Custom/lucidcartoon"
+﻿Shader "Custom/lucidcartoonpearl"
 {
 	Properties
 	{
@@ -20,7 +20,7 @@
 			#include "AutoLight.cginc"
 			
 			#define LUCID_HAS_AMBIENT
-			#define LUCID_USE_BASE
+			#define LUCID_USE_PEARL 
 			#include "lucidcartoonfuncs.inc"
 			
 			#include "lucidcartooncommon.inc"
@@ -41,7 +41,7 @@
 			#include "UnityCG.cginc"
 			#include "AutoLight.cginc"
 			
-			#define LUCID_USE_BASE
+			#define LUCID_USE_PEARL
 			#include "lucidcartoonfuncs.inc"
 			
 			#include "lucidcartooncommon.inc"

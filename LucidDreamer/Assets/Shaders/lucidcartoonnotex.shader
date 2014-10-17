@@ -2,7 +2,7 @@
 {
 	Properties
 	{
-		_Colour ("Cloud Colour", Color) = (1,1,1,1)
+		_Colour ("Base Colour", Color) = (1,1,1,1)
 	}
 	SubShader
 	{

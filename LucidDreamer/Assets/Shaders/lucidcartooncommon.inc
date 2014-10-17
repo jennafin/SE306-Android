@@ -47,11 +47,6 @@ fixed4 frag(PS_IN psInput) : COLOR
 
 	// Sample textures
 	float2 texCoord = psInput.tex0.xy;
-	#ifdef LUCID_USE_NOTEX
-		float4 texCol = _Colour;
-	#else
-		float4 texCol = tex2D(_MainTex, texCoord);
-	#endif
 	#ifdef LUCID_HAS_BUMPTEX
 		float4 bmpCol = tex2D(_BumpTex, texCoord);
 		
@@ -64,6 +59,13 @@ fixed4 frag(PS_IN psInput) : COLOR
 		float3 normal = sampleNormal(texCoord);
 	#else
 		float3 normal  = float3(0.f, 0.f, 1.f);//normalize(psInput.nrm);
+	#endif
+	#if defined(LUCID_USE_NOTEX)
+		float4 texCol = _Colour;
+	#elif defined(LUCID_USE_PEARL)
+		float4 texCol = tex2D(_MainTex, float2(dot(normal,vVector), dot(normal, lVector)));
+	#else
+		float4 texCol = tex2D(_MainTex, texCoord);
 	#endif
 	
 	// Calculate the specularity of the sample
@@ -81,13 +83,19 @@ fixed4 frag(PS_IN psInput) : COLOR
 	outDiff *= shadeDiff(texCol.xyz, normal, lVector, attenuation);
 	
 	#ifdef LUCID_USE_GLOW
-		outDiff.rgb += texCol.xyz * bmpCol.b;
+		outDiff.rgb += texCol.rgb * bmpCol.b;
+	#endif
+	#ifdef LUCID_HAS_AMBIENT
+		outDiff.rgb += UNITY_LIGHTMODEL_AMBIENT.rgb * texCol.rgb;
 	#endif
 	
-	float4 outSpec = _LightColor0 * shadeSpec(texCol.xyz, specularity, normal, lVector, vVector, attenuation);
-	
-	#ifdef LUCID_HAS_AMBIENT
-		outDiff.xyz += UNITY_LIGHTMODEL_AMBIENT.xyz * texCol.xyz;
+	#if defined(LUCID_USE_GLASS)
+		texCol.a = lerp(texCol.a, 1.f, calcFresnelFactorCartoon(normal, vVector));
+		float4 outSpec = _LightColor0 * shadeSpecPrecompFresnel(texCol.xyz, specularity, normal, lVector, vVector, attenuation, texCol.a);
+		
+		outDiff *= texCol.a;
+	#else
+		float4 outSpec = _LightColor0 * shadeSpec(texCol.xyz, specularity, normal, lVector, vVector, attenuation);
 	#endif
 	
 	// Mix component parts
@@ -102,6 +110,8 @@ fixed4 frag(PS_IN psInput) : COLOR
 			finalColour.rgb *= bmpCol.z;
 			finalColour.a = 1.f;
 		#endif
+	#elif defined(LUCID_USE_GLASS)
+		finalColour.a = texCol.a;
 	#else
 		finalColour.a = 1.f;
 	#endif
