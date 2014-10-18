@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: MovingMathEnemySpawner
+  m_Name: StationaryEnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73470beacd27042eda6bd92172ad2925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 100006, guid: 31240428c951c8b4b8b92cc8b8238fa1, type: 2}
+  prefab: {fileID: 100006, guid: 09dcb8a0681f8de4aa401024bd4d3d42, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
