@@ -1,34 +1,44 @@
 fileFormatVersion: 2
-guid: 63a2aae8b017c7342bb32465ebb587e1
+guid: 1feb9ccd84b68a44fa990270fcf0f44e
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Armature
-    100004: Armature|root
-    100006: Cube
-    100008: Plane
-    400000: //RootNode
-    400002: Armature
-    400004: Armature|root
-    400006: Cube
-    400008: Plane
-    2300000: //RootNode
-    2300002: Plane
-    3300000: //RootNode
-    3300002: Plane
-    4300000: Cube
-    4300002: Plane
-    7400000: Plane|Walk2MperS
-    7400002: Plane|Walk2MperS.001
+    100000: FlaskGlass
+    100002: FlaskLiquid
+    100004: //RootNode
+    100006: Armature
+    100008: Armature|Flask
+    100010: Armature|LevelL
+    100012: Armature|LevelR
+    100014: Armature|Liquid
+    100016: Grid
+    400000: FlaskGlass
+    400002: FlaskLiquid
+    400004: //RootNode
+    400006: Armature
+    400008: Armature|Flask
+    400010: Armature|LevelL
+    400012: Armature|LevelR
+    400014: Armature|Liquid
+    400016: Grid
+    2300000: FlaskGlass
+    2300002: FlaskLiquid
+    2300004: Grid
+    3300000: FlaskGlass
+    3300002: FlaskLiquid
+    3300004: Grid
+    4300000: FlaskLiquid
+    4300002: FlaskGlass
+    4300004: Grid
+    7400000: Grid|GridAction
+    7400002: Armature|GridAction
     7400004: Armature|Run2mpers
-    7400006: Armature|Walk2MperS
-    7400008: Armature|Walk2MperS.001
-    7400010: Cube|Walk2MperS
-    7400012: Cube|Walk2MperS.001
-    7400014: Armature|StandMenacingly
+    7400006: Armature|StandMenacingly
+    7400008: FlaskLiquid|GridAction
+    7400010: FlaskGlass|GridAction
     9500000: //RootNode
-    13700000: Cube
+    13700000: FlaskGlass
+    13700002: FlaskLiquid
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,10 +56,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|StandMenacingly
-      takeName: Armature|StandMenacingly
+      name: Armature|Run2mpers
+      takeName: Armature|Run2mpers
       firstFrame: 0
-      lastFrame: 27
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -57,7 +67,7 @@ ModelImporter:
       loop: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 1
+      loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
@@ -73,15 +83,23 @@ ModelImporter:
         weight: 1
       - path: Armature
         weight: 1
-      - path: Armature/Armature|root
+      - path: Armature/Armature|Flask
         weight: 1
-      - path: Cube
+      - path: Armature/Armature|Flask/Armature|Liquid
+        weight: 1
+      - path: Armature/Armature|Flask/Armature|Liquid/Armature|LevelL
+        weight: 1
+      - path: Armature/Armature|Flask/Armature|Liquid/Armature|LevelR
+        weight: 1
+      - path: FlaskGlass
+        weight: 1
+      - path: FlaskLiquid
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Armature|Run2mpers
-      takeName: Armature|Run2mpers
+      name: Armature|StandMenacingly
+      takeName: Armature|StandMenacingly
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -91,7 +109,7 @@ ModelImporter:
       loop: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 1
+      loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
@@ -107,9 +125,17 @@ ModelImporter:
         weight: 1
       - path: Armature
         weight: 1
-      - path: Armature/Armature|root
+      - path: Armature/Armature|Flask
         weight: 1
-      - path: Cube
+      - path: Armature/Armature|Flask/Armature|Liquid
+        weight: 1
+      - path: Armature/Armature|Flask/Armature|Liquid/Armature|LevelL
+        weight: 1
+      - path: Armature/Armature|Flask/Armature|Liquid/Armature|LevelR
+        weight: 1
+      - path: FlaskGlass
+        weight: 1
+      - path: FlaskLiquid
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
