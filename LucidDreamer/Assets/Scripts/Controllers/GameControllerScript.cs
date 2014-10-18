@@ -233,9 +233,9 @@ public class GameControllerScript : MonoBehaviour
 				return this.coinsCollected;
 		}
 
-		public int GetScore()
+		public float GetDistance()
 		{
-			return scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x));
+			return alexPosition.x;
 		}
 
 		void GameOver ()
