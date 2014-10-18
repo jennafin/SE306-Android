@@ -11,6 +11,7 @@ public class HighScoreGUI : MonoBehaviour {
 	public GUIStyle leftAlignedStyle;
 	public GUIStyle rightAlignedStyle;
 	public GUIStyle titleTextStyle;
+	public GUIStyle buttonStyle;
 	private int screenHeight;
 	private int screenWidth;
 	private int buttonWidth;
@@ -27,6 +28,7 @@ public class HighScoreGUI : MonoBehaviour {
 		titleTextStyle.fontSize = (int)(0.16 * screenHeight);
 		leftAlignedStyle.fontSize = (int)(0.04 * screenHeight);
 		rightAlignedStyle.fontSize = (int)(0.04 * screenHeight);
+		buttonStyle.fontSize = screenHeight / 15;
 		titleTextStyle.alignment = TextAnchor.MiddleCenter;
 		leftAlignedStyle.alignment = TextAnchor.MiddleLeft;
 		rightAlignedStyle.alignment = TextAnchor.MiddleRight;
@@ -79,12 +81,9 @@ public class HighScoreGUI : MonoBehaviour {
 						}
 				}
 		
-		GUIStyle customButton = new GUIStyle ("button");
-		customButton.fontSize = screenHeight / 13;
-		
 		if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, screenHeight - buttonHeight - 20, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("ExitToMenu")
-		                , customButton)) {
+		                , buttonStyle)) {
 			LoadMainMenu();
 		}
 	}
