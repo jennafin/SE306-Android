@@ -10,6 +10,8 @@ Retry = Retry?
 
 ExitToMenu = Exit to Menu
 
+Back = Back
+
 SelectLanguage = Select Language
 
 Name = Name
@@ -17,6 +19,12 @@ Name = Name
 TopScore = Top Score:  
 
 HighScores = High Scores
+
+Options = Options
+
+Music = Music
+
+SoundEffects = Sound Effects
 
 NoHighScores = No high scores yet
 
