@@ -111,14 +111,14 @@ public class OptionsScript : MonoBehaviour {
 		if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 2.7f * screenHeight / 4, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("SelectLanguage")
 		                , buttonStyle)) {
-			Application.LoadLevel ("SelectLanguage");
+			LoadLanguageMenu();
 		}
 			
 		if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 3.5f * screenHeight / 4, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("ExitToMenu")
 		                , buttonStyle)) {
 
-			Application.LoadLevel ("MainMenu");
+			LoadMainMenu();
 		}
 	}
 	
@@ -128,11 +128,22 @@ public class OptionsScript : MonoBehaviour {
 		// go to main menu on escape/back button
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Debug.Log ("OptionsScript: Escape key pressed");
-			Application.LoadLevel ("MainMenu");
+			LoadMainMenu();
 		}
 	}
 
+	private void persistOptions() {
+		PlayerPrefs.SetInt (MUSIC_OPTION_KEY, musicOption ? 1 : 0);
+		PlayerPrefs.SetInt (SOUND_EFFECTS_OPTION_KEY, soundEffectsOption ? 1 : 0);
+	}
+
 	private void LoadMainMenu() {
+		persistOptions ();
 		GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("MainMenu");
+	}
+
+	private void LoadLanguageMenu() {
+		persistOptions ();
+		GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("SelectLanguage");
 	}
 }
