@@ -18,6 +18,12 @@ TopScore = Top Score:
 
 HighScores = punteggi più alti
 
+Options = Opzioni
+
+Music = Musica
+
+SoundEffects = Effetti Sonori
+
 NoHighScores = Ancora nessuna punteggi più alti
 
 english = inglese (English)

@@ -18,6 +18,12 @@ TopScore = 最高分：
 
 HighScores = 高分
 
+Options = 选项
+
+Music = 音乐
+
+SoundEffects = 音效
+
 NoHighScores = 没有高分又
 
 

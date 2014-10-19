@@ -18,6 +18,12 @@ TopScore = Top Score:
 
 HighScores = High Scores
 
+Options = Options
+
+Music = Music
+
+SoundEffects = Sound Effects
+
 NoHighScores = No high scores yet
 
 english = English

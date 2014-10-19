@@ -12,13 +12,19 @@ ExitToMenu = Sortie au menu
 
 SelectLanguage = Sélectionnez la langue
 
-Name = nom
+Name = Nom
 
 TopScore = Top Score: 
 
 HighScores = High Scores
 
 NoHighScores = Pas de scores encore
+
+Options = Options de
+
+Music = Musique
+
+SoundEffects = Bruitage
 
 english = anglaise (English)
 

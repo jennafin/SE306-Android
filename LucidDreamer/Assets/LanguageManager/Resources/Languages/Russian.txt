@@ -18,6 +18,12 @@ TopScore = Рекорды:
 
 HighScores = Лучшие результаты
 
+Options = Опции
+
+Music = Музыка
+
+SoundEffects = Звуковые эффекты
+
 NoHighScores = Нет высокие баллы еще
 
 english = Английский (English)
