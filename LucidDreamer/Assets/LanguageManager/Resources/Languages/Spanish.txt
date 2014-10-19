@@ -10,6 +10,8 @@ Retry = Reintentar?
 
 ExitToMenu = Salir al Menú
 
+Back = Volver
+
 SelectLanguage = Selecciona Idioma
 
 Name = Nombre
