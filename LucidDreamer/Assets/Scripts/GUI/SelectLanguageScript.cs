@@ -55,54 +55,58 @@ public class SelectLanguageScript : MonoBehaviour {
 		           , LanguageManager.GetText ("SelectLanguage")
 		           , titleTextStyle);
 
-		GUILayout.BeginArea (new Rect (screenWidth / 10 , 3 * screenHeight / 10, 8* screenWidth/10, screenHeight));
+		GUILayout.BeginArea (new Rect (screenWidth / 10 , 2.5f * screenHeight / 10, 8* screenWidth/10, screenHeight));
 		GUILayout.BeginVertical ();
 		GUILayout.BeginHorizontal ();
 		if (GUILayout.Button (LanguageManager.GetText ("english")
 			                , selectLanguageStyle
-		                    , GUILayout.Width(buttonWidth))) {
+		                    , GUILayout.Width(buttonWidth - 10)
+		                    , GUILayout.Height(buttonHeight))) {
 				ChangeLanguage (Language.English);
 			}
-
+		GUILayout.Space (20);
 		if (GUILayout.Button (LanguageManager.GetText ("spanish")
-		                	, selectLanguageStyle
-		                    , GUILayout.Width(buttonWidth))) {
+		                	  , selectLanguageStyle
+		                      , GUILayout.Height(buttonHeight))) {
 			ChangeLanguage (Language.Spanish);
 		}
 		GUILayout.EndHorizontal ();
-		GUILayout.Space (buttonHeight/4);
+		GUILayout.Space (buttonHeight/3);
 		GUILayout.BeginHorizontal ();
 		if (GUILayout.Button (LanguageManager.GetText ("spanish")
 		                      , selectLanguageStyle
-		    				  , GUILayout.Width(buttonWidth))) {
+		    				  , GUILayout.Width(buttonWidth - 10)
+		                      , GUILayout.Height(buttonHeight))) {
 			ChangeLanguage (Language.Spanish);
 		}
-		
+		GUILayout.Space (20);
 		if (GUILayout.Button (LanguageManager.GetText ("french")
 		                      , selectLanguageStyle
-		                      , GUILayout.Width(buttonWidth))) {
+		                      , GUILayout.Height(buttonHeight))) {
 			ChangeLanguage (Language.French);
 		}
 		GUILayout.EndHorizontal ();
-		GUILayout.Space (buttonHeight/4);
+		GUILayout.Space (buttonHeight/3);
 		GUILayout.BeginHorizontal ();
 		if (GUILayout.Button (LanguageManager.GetText ("russian")
 		                      , selectLanguageStyle
-		                      , GUILayout.Width(buttonWidth))) {
+		                      , GUILayout.Width(buttonWidth - 10)
+		                      , GUILayout.Height(buttonHeight))) {
 			ChangeLanguage (Language.Russian);
 		}
-		
+		GUILayout.Space (20);
 		if (GUILayout.Button (LanguageManager.GetText ("italian")
 		                      , selectLanguageStyle
-		                      , GUILayout.Width(buttonWidth))) {
+		                      , GUILayout.Height(buttonHeight))) {
 			ChangeLanguage (Language.Italian);
 		}
 		GUILayout.EndHorizontal ();
-		GUILayout.Space (buttonHeight/4);
+		GUILayout.Space (buttonHeight/3);
 		GUILayout.BeginHorizontal ();
 		if (GUILayout.Button (LanguageManager.GetText ("chinese")
 		                      , selectLanguageStyle
-		                      , GUILayout.Width(buttonWidth))) {
+		                      , GUILayout.Width(buttonWidth - 10)
+		                      , GUILayout.Height(buttonHeight))) {
 			ChangeLanguage (Language.Chinese);
 		}
 
@@ -137,6 +141,7 @@ public class SelectLanguageScript : MonoBehaviour {
 		}
 	}
 
+	// Loads the options menu scene using the SceneFader script
 	private void LoadOptionsMenu() {
 		GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("Options");
 	}
