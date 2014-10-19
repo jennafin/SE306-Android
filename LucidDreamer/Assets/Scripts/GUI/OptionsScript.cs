@@ -53,17 +53,7 @@ public class OptionsScript : MonoBehaviour {
 		buttonHeight = screenHeight / 10;
 		padding = screenWidth / 8;
 
-
-		if (PlayerPrefs.HasKey (MUSIC_OPTION_KEY)) {
-			musicOption = PlayerPrefs.GetInt(MUSIC_OPTION_KEY) != 0;
-		} else {
-			musicOption = true;
-		}
-		if (PlayerPrefs.HasKey (SOUND_EFFECTS_OPTION_KEY)) {
-			soundEffectsOption = PlayerPrefs.GetInt(SOUND_EFFECTS_OPTION_KEY) != 0;
-		} else {
-			soundEffectsOption = true;
-		} 
+		RetrieveSettings ();
 
 	}
 
@@ -72,8 +62,6 @@ public class OptionsScript : MonoBehaviour {
 		GUI.Label (new Rect (0, screenHeight / 10, screenWidth, 0)
 		           , LanguageManager.GetText ("Options")
 		           , titleTextStyle);
-
-//		musicOption = GUI.Toggle(new Rect(0, 0, 50,25), musicOption, "", toggleStyle);
 
 		GUILayout.BeginArea (new Rect (screenWidth / 2 - screenWidth / 4, 3 * screenHeight / 10, screenWidth, screenHeight));
 		GUILayout.BeginVertical ();
@@ -132,18 +120,34 @@ public class OptionsScript : MonoBehaviour {
 		}
 	}
 
+	// Saves options to PlayerPrefs
 	private void persistOptions() {
 		PlayerPrefs.SetInt (MUSIC_OPTION_KEY, musicOption ? 1 : 0);
 		PlayerPrefs.SetInt (SOUND_EFFECTS_OPTION_KEY, soundEffectsOption ? 1 : 0);
 	}
 
+	// Persists options on screen and loads Main Menu scene
 	private void LoadMainMenu() {
 		persistOptions ();
 		GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("MainMenu");
 	}
 
+	// Persists options on screen and loads the Select Language scene
 	private void LoadLanguageMenu() {
 		persistOptions ();
 		GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("SelectLanguage");
+	}
+
+	private void RetrieveSettings() {
+		if (PlayerPrefs.HasKey (MUSIC_OPTION_KEY)) {
+			musicOption = PlayerPrefs.GetInt(MUSIC_OPTION_KEY) != 0;
+		} else {
+			musicOption = true;
+		}
+		if (PlayerPrefs.HasKey (SOUND_EFFECTS_OPTION_KEY)) {
+			soundEffectsOption = PlayerPrefs.GetInt(SOUND_EFFECTS_OPTION_KEY) != 0;
+		} else {
+			soundEffectsOption = true;
+		} 
 	}
 }

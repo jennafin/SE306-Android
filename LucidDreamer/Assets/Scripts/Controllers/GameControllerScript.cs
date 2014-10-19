@@ -46,6 +46,11 @@ public class GameControllerScript : MonoBehaviour
 		// Current power-ups (or could be coins)
 		private List<Collectable> currentCollectables = new List<Collectable> ();
 
+		// Settings
+		private bool musicOn;
+		private bool soundEffectsOn;
+
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -58,6 +63,14 @@ public class GameControllerScript : MonoBehaviour
 				// Player starts with 3 lives
 				lives = MAX_NUMBER_OF_LIVES;
 
+				// Retrieve settings
+				RetrieveSettings ();	
+				
+				// turn on (unmute) music if turned on
+				if (musicOn) {
+					AudioSource music = GameObject.Find ("Main Camera").GetComponent<AudioSource> ();
+					music.mute = false;
+				}
 
 				//Instantiate score tracker
 				scoreTracker = new ScoreTrackingSystem ();
@@ -200,18 +213,23 @@ public class GameControllerScript : MonoBehaviour
 						timeScale.reset();
 						
 						// Plays injured/death sound
-						if (lives < 0) {
-							mainCharacterScript.PlayDeathSound();
-						} else {
-							mainCharacterScript.PlayInjuredSound();
+						if (soundEffectsOn) {
+							if (lives < 0) {
+								mainCharacterScript.PlayDeathSound();
+							} else {
+								mainCharacterScript.PlayInjuredSound();
+							}
 						}
+						
 				} else if (objectTag.StartsWith ("Collectable")) {
 						Debug.Log ("Collided with collectable");
 						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
 						this.currentCollectables.Add (collectable);
 						
 						// We keep the Collectable instance around, but remove its game object from the scene
-						collectable.PlayCollectedSound ();
+						if (soundEffectsOn) {
+							collectable.PlayCollectedSound ();
+						}
 						Destroy (collectable.gameObject);
 				}
 		
@@ -289,4 +307,18 @@ public class GameControllerScript : MonoBehaviour
 						this.currentCollectables.RemoveAt (expiredCollectableIndexes [i]);
 				}
 		}
+
+		// retrieve persisted settings for music and sound effects
+		private void RetrieveSettings() {
+			if (PlayerPrefs.HasKey ("MusicOption")) {
+				musicOn = PlayerPrefs.GetInt("MusicOption") != 0;
+				} else {
+					musicOn = true;
+				}
+			if (PlayerPrefs.HasKey ("SoundEffectsOption")) {
+				soundEffectsOn = PlayerPrefs.GetInt("SoundEffectsOption") != 0;
+				} else {
+					soundEffectsOn = true;
+				}
+		}	
 }
