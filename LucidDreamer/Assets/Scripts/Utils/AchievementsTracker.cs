@@ -15,11 +15,11 @@ public class AchievementsTracker {
 	public bool ran1000Meters = false;
 	public bool ran1250Meters = false;
 	public bool ran1500Meters = false;
-	public bool ran2000Total = false;
-	public bool ran5000Total = false;
-	public bool ran10000Total = false;
-	public bool ran20000Total = false;
-	public bool ran50000Total = false;
+	public bool score2000Total = false;
+	public bool score5000Total = false;
+	public bool score10000Total = false;
+	public bool score20000Total = false;
+	public bool score50000Total = false;
 	
 
 	public void SetRan10Meters(bool val) {
@@ -32,10 +32,6 @@ public class AchievementsTracker {
 	
 	public void SetRan30Meters(bool val) {
 		this.ran30Meters = val;
-	}
-	
-	public void SetRan40Meters(bool val) {
-		this.ran40Meters = val;
 	}
 	
 	public void SetRan40Meters(bool val) {
@@ -70,7 +66,23 @@ public class AchievementsTracker {
 		this.ran1500Meters = val;
 	}
 	
-	public void SetRan2000Total(bool val) {
-		this.ran2000Total = val;
+	public void SetScore2000Total(bool val) {
+		this.score2000Total = val;
+	}
+	
+	public void SetScore5000Total(bool val) {
+		this.score5000Total = val;
+	}
+	
+	public void SetScore10000Total(bool val) {
+		this.score10000Total = val;
+	}
+	
+	public void SetSore20000Total(bool val) {
+		this.score20000Total = val;
+	}
+	
+	public void SetScore50000Total(bool val) {
+		this.score50000Total = val;
 	}
 }

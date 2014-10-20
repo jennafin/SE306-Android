@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public class GameControllerScript : MonoBehaviour
 {
@@ -54,8 +55,12 @@ public class GameControllerScript : MonoBehaviour
 		// Settings
 		private bool musicOn;
 		private bool soundEffectsOn;
-
-
+		
+		//Stopwatch for finding time since app began
+		Stopwatch stopWatch;
+		
+		//Tracks achievemens
+		AchievementsManager achievementManager = new AchievementsManager();
 
 		// Use this for initialization
 		void Start ()
@@ -86,6 +91,11 @@ public class GameControllerScript : MonoBehaviour
 				// Below here is temp stuff until there is a bedroom scene
 				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity);
 				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
+				
+				achievementManager.Load();
+				
+				stopWatch = new Stopwatch();
+				stopWatch.Start();
 		}
 
 		// Update is called once per frame
@@ -99,6 +109,16 @@ public class GameControllerScript : MonoBehaviour
 				if (Input.GetKeyDown (KeyCode.Escape)) {
 
 						Application.LoadLevel ("MainMenu");
+				}
+				
+				int time = stopWatch.Elapsed.Seconds;
+				//print (stopWatch.Elapsed.Seconds);
+				if (time == 2) {
+					//print ("IN TIME!!!!!!!!");
+					achievementManager.CheckDistanceAchievements(alexPosition.x);
+					achievementManager.CheckScoreAchievements((int)Math.Floor (alexPosition.x));
+					stopWatch.Reset();
+					stopWatch.Start();
 				}
 
 				ApplyCollectableBehaviours ();
@@ -249,6 +269,9 @@ public class GameControllerScript : MonoBehaviour
 
 		public void LoadGameOverScreen() {
 			scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
+			achievementManager.CheckDistanceAchievements(alexPosition.x);
+			achievementManager.CheckScoreAchievements((int)Math.Floor (alexPosition.x));
+			achievementManager.SaveTotalScore();
 			Application.LoadLevel ("GameOver");
 		}
 

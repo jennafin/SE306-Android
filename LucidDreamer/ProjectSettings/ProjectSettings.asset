@@ -99,7 +99,8 @@ PlayerSettings:
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: lucidrunner.keystore
+  AndroidKeystoreName: C:/Users/Hugo/Documents/University/Engineering/Papers/2014
+    S2/SOFTENG306/lucidrunner.keystore
   AndroidKeyaliasName: lucidrunner
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:

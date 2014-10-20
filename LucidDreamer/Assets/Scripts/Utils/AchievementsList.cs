@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms;
 public  class AchievementsList {
 
 // Yes the default value is false, http://msdn.microsoft.com/en-us/library/c8f5xwh7.aspx
-private bool[] executed = new bool[     12];
+private bool[] executed = new bool[17];
 
 	public void GetUnityWorks() {
 		if (!executed[0]) {
@@ -117,4 +117,48 @@ private bool[] executed = new bool[     12];
 		}
 	}
 	
+	public void GetScore2000Total() {
+		if (!executed[12]) {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEw", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[12] = true;
+		}
+	}
+	
+	public void GetScore5000Total() {
+		if (!executed[13]) {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQDg\t", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[13] = true;
+		}
+	}
+	
+	public void GetScore10000Total() {
+		if (!executed[14]) {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEA", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[14] = true;
+		}
+	}
+	
+	public void GetScore20000Total() {
+		if (!executed[15]) {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEQ", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[15] = true;
+		}
+	}
+	
+	public void GetScore50000Total() {
+		if (!executed[16]) {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEg", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[16] = true;
+		}
+	}
 }

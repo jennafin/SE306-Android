@@ -12,6 +12,7 @@ public class AchievementsTrackerManager : MonoBehaviour {
 	
 	public void Load()
 	{
+		print(Application.persistentDataPath);
 		//If not blank then load it
 		if(File.Exists(Application.persistentDataPath + "/achievementsTracker.dat"))
 		{
@@ -23,11 +24,11 @@ public class AchievementsTrackerManager : MonoBehaviour {
 			achievementsTracker = (AchievementsTracker)bf.Deserialize(f);
 			f.Close();
 		}
-		else 
+		else
 		{
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream f = File.Create (Application.persistentDataPath + "/achievementsTracker.dat");
-			achievementsTracker = new AchievementsTracker(0);
+			achievementsTracker = new AchievementsTracker();
 			bf.Serialize(f, achievementsTracker);
 			f.Close();
 		}
