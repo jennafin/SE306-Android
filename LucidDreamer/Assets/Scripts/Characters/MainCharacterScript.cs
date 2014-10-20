@@ -101,7 +101,7 @@ public class MainCharacterScript : MonoBehaviour {
 	
 	private void PlaySound(AudioClip sound) {
 		if (! sound) {
-			Debug.Log ("Sound is not initialized in inspector.");
+			
 		} else {
 			AudioSource.PlayClipAtPoint(sound, this.transform.position, 2.0f);
 		}

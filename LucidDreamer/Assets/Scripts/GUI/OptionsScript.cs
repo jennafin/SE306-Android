@@ -15,7 +15,7 @@ public class OptionsScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Debug.Log ("OptionsScript: Start");
+		
 		// Initialise language file
 		// If not blank then load it
 		if(File.Exists(Application.persistentDataPath + "/language.dat"))
@@ -61,7 +61,7 @@ public class OptionsScript : MonoBehaviour {
 	{
 		// go to main menu on escape/back button
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-			Debug.Log ("OptionsScript: Escape key pressed");
+			
 			Application.LoadLevel ("MainMenu");
 		}
 	}

@@ -79,7 +79,7 @@ public class GameControllerScript : MonoBehaviour
 
 				// exit game on escape/back button
 				if (Input.GetKeyDown (KeyCode.Escape)) {
-						Debug.Log ("GameControllerScript: Escape key pressed");
+						
 						Application.LoadLevel ("MainMenu");
 				}
 
@@ -185,7 +185,7 @@ public class GameControllerScript : MonoBehaviour
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
 						if (objectName.Contains ("Enemy")) {
-								Debug.Log ("Collided with enemy");
+								
 								col.gameObject.GetComponent<Enemy> ().OnCollision (this);
 						}
 						if (this.mainCharacterScript.isInvincible) {
@@ -209,7 +209,7 @@ public class GameControllerScript : MonoBehaviour
 							mainCharacterScript.PlayInjuredSound();
 						}
 				} else if (objectTag.StartsWith ("Collectable")) {
-						Debug.Log ("Collided with collectable");
+						
 						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
 						this.currentCollectables.Add (collectable);
 
@@ -248,7 +248,7 @@ public class GameControllerScript : MonoBehaviour
 		public void IncrementCoins (int amount)
 		{
 				this.coinsCollected += amount;
-				//		Debug.Log ("GameController: Incremented coins by " + amount + ". Now have: " + this.coinsCollected, this);
+				//		
 				scoreTracker.AddPoints (amount);
 		}
 
