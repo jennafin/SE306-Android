@@ -23,12 +23,12 @@ public class HUDLucidGUI : MonoBehaviour {
 	{
 
 		// draw the background:
-		GUI.BeginGroup (new Rect (0, Screen.height-20, Screen.width, 20));
-		GUI.Box (new Rect (0,0, Screen.width, 20),progressBarEmpty);
+		GUI.BeginGroup (new Rect (0, Screen.height-Screen.height/16, Screen.width, Screen.height/16));
+		GUI.Box (new Rect (0,0, Screen.width, Screen.height/16),progressBarEmpty);
 		
 		// draw the filled-in part:
-		GUI.BeginGroup (new Rect (0, 0, Screen.width * barDisplay, 20));
-		GUI.Box (new Rect (0,0, Screen.width, 20),progressBarFull);
+		GUI.BeginGroup (new Rect (0, 0, Screen.width * barDisplay, Screen.height/16));
+		GUI.Box (new Rect (0,0, Screen.width, Screen.height/16),progressBarFull);
 		GUI.EndGroup ();
 		
 		GUI.EndGroup ();
