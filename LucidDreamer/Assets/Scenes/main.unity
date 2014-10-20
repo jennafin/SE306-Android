@@ -541,7 +541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LucidHUDObject: {fileID: 2095973032}
   gameControllerObject: {fileID: 1897705298}
-  scorePowerRatio: .000250000012
+  distancePowerRatio: .00999999978
   PowerDownRatio: .75
   avrgTime: .5
   peakLevel: .600000024
