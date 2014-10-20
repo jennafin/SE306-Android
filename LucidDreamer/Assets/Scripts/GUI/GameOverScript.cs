@@ -8,7 +8,9 @@ public class GameOverScript : MonoBehaviour
 {
 		public Language language = Language.English;
 		public GUIStyle gameOverStyle;
+		public GUIStyle rightAlignStyle;
 		public GUIStyle titleTextStyle;
+		public GUIStyle scoreTextStyle;
 		public GUIStyle buttonStyle;
 		public GUIStyle inputBoxStyle;
 		private int score = 0;
@@ -34,10 +36,14 @@ public class GameOverScript : MonoBehaviour
 				titleTextStyle.fontSize = (int)(0.16 * screenHeight);
 				titleTextStyle.alignment = TextAnchor.MiddleCenter;
 				gameOverStyle.fontSize = (int)(0.06 * screenHeight);
-				gameOverStyle.alignment = TextAnchor.MiddleCenter;
+				gameOverStyle.alignment = TextAnchor.UpperLeft;
+				rightAlignStyle.fontSize = (int)(0.06 * screenHeight);
+				rightAlignStyle.alignment = TextAnchor.UpperRight;
+				scoreTextStyle.fontSize = screenHeight / 7;
+				scoreTextStyle.alignment = TextAnchor.MiddleCenter;
 				buttonStyle.fontSize =  screenHeight / 13;
 				buttonStyle.alignment = TextAnchor.MiddleCenter;
-				inputBoxStyle.fontSize = screenHeight / 13;
+				inputBoxStyle.fontSize = (int)(0.06 * screenHeight);
 				inputBoxStyle.alignment = TextAnchor.MiddleCenter;
 
 				buttonWidth = screenWidth / 5;
@@ -61,31 +67,44 @@ public class GameOverScript : MonoBehaviour
 	
 		void OnGUI ()
 		{
-					GUI.Label (new Rect (0, screenHeight / 10, screenWidth, 0)
+				GUI.Label (new Rect (0, screenHeight / 10, screenWidth, 0)
 		           , LanguageManager.GetText ("GameOverScreenMessage")
 		           , titleTextStyle);
-
-				GUI.Label (new Rect ((screenWidth / 2 - 50), screenHeight / 4, 80, 30)
-		           , LanguageManager.GetText ("Score") + score
-		           , gameOverStyle);
-
-				GUI.Label (new Rect ((screenWidth / 2 - 50), 1.5f * screenHeight / 4, 80, 30)
-		          , LanguageManager.GetText ("TopScore") + highScores.GetTopScore().name + "  " + highScores.GetTopScore().score
-		          , gameOverStyle);
-
+	           
+	            GUI.Label(new Rect (0, 3 * screenHeight / 9, screenWidth, 0)
+	           		, "" + score
+	           		, scoreTextStyle);
 		
+		
+				GUILayout.BeginArea (new Rect (screenWidth / 2 - screenWidth / 4, 5.5f * screenHeight / 13, screenWidth, screenHeight));
+				GUILayout.BeginVertical ();
+				
+				GUILayout.BeginHorizontal ();
+				GUILayout.BeginArea(new Rect(0,0, buttonWidth, buttonHeight));
+				GUI.Label (new Rect (0, 0, 0, 0)
+				           , LanguageManager.GetText ("TopScore")
+				           , gameOverStyle);
+				GUILayout.EndArea ();
+				
+				GUILayout.BeginArea (new Rect(buttonWidth * 1.5f, 0, buttonWidth*4, buttonHeight));
+				GUI.Label(new Rect(0, 0, buttonWidth ,buttonHeight)
+				          , highScores.GetTopScore().score + ""
+				          , rightAlignStyle);
+				GUILayout.EndArea ();
+				GUILayout.EndHorizontal ();
+				
+				GUILayout.EndVertical ();
+				GUILayout.EndArea ();
 
-				if (GUI.Button (new Rect ((screenWidth / 2 - (buttonWidth / 2)), 3.5f * screenHeight / 5, buttonWidth, buttonHeight)
+				userName = GUI.TextField(new Rect ((screenWidth / 2 - (buttonWidth * (userName.Length / 10f) / 2)), 2.6f * screenHeight / 5, buttonWidth * (userName.Length / 10f), buttonHeight)
+	                    , userName, 25, inputBoxStyle);
+		
+				if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 3.5f * screenHeight / 5, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("Retry")
 		                , buttonStyle)) {
 						SaveScore();
 						LoadGame();
 				}
-
-
-				userName = GUI.TextField(new Rect ((screenWidth / 2 - (buttonWidth * (userName.Length / 7.5f) / 2)), 2 * screenHeight / 4, buttonWidth * (userName.Length / 7.5f), buttonHeight)
-		                         , userName, 25, inputBoxStyle);
-
 
 				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, screenHeight - buttonHeight - 20, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("ExitToMenu")
@@ -100,7 +119,6 @@ public class GameOverScript : MonoBehaviour
 			PlayerPrefs.SetString ("CurrentUserName", userName);
 			highScores.AddScore(userName, score);
 			highScores.SaveScores();
-
 		}
 		
 		void Update ()
