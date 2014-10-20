@@ -38,9 +38,13 @@ public class TotalScoreManager : MonoBehaviour {
 		totalScore.score += score;
 	}
 	
-	public TotalScoreEntry GetTotalScore()
+	public TotalScoreEntry GetTotalScoreEntry()
 	{
 		return totalScore;
+	}
+	
+	public int GetTotalScore() {
+		return totalScore.score;
 	}
 	
 	public void SaveTotalScore()
