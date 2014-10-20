@@ -39,9 +39,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c993d31e6313a7b4094f9afeaabcc7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mathsObject: {fileID: 100006, guid: 09dcb8a0681f8de4aa401024bd4d3d42, type: 2}
-  scienceObject: {fileID: 100000, guid: 3ab50256e0a3aca4da019e2ab1b88b5a, type: 2}
-  artObject: {fileID: 100010, guid: 02e994379525a74429bfea1633674023, type: 2}
+  mathsObject: {fileID: 100006, guid: f2b753b304e13cf4bae10824a7c90b61, type: 2}
+  scienceObject: {fileID: 100000, guid: 0fb93c20bfcc8864bb7db3c2f61ef293, type: 2}
+  artObject: {fileID: 100010, guid: eb6e34de3c7c6fe4e95981e73d5b8a60, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
