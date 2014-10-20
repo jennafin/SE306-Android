@@ -702,7 +702,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1286769715}
   distanceBehind: 5
-  distanceAbove: 3
+  distanceAboveTarget: 3
+  distanceAboveMax: 4
+  distanceAboveMin: 0
   verticalFluidity: .00999999978
 --- !u!82 &1160922492
 AudioSource:

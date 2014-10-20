@@ -6,7 +6,9 @@ public class Camera3DMoveScript : MonoBehaviour
 
 	public Transform player;
 	public float distanceBehind;
-	public float distanceAbove;
+	public float distanceAboveTarget;
+	public float distanceAboveMax;
+	public float distanceAboveMin;
 	public float verticalFluidity;
 	
 	void Start ()
@@ -22,11 +24,15 @@ public class Camera3DMoveScript : MonoBehaviour
 
 	void UpdateOffsets ()
 	{
-		float verticalTarget = player.position.y + distanceAbove;
-		float verticalDelta = verticalTarget - transform.position.y;
-		float verticalPosition = verticalTarget - verticalDelta * Mathf.Pow (verticalFluidity, Time.deltaTime);
+		float verticalTarget = player.position.y + distanceAboveTarget;
+		float verticalDelta = transform.position.y - verticalTarget;
+		verticalDelta *= Mathf.Pow (verticalFluidity, Time.deltaTime);
+
+		// Constrain
+		verticalDelta = Mathf.Min (verticalDelta, distanceAboveMax - distanceAboveTarget);
+		verticalDelta = Mathf.Max (verticalDelta, distanceAboveMin - distanceAboveTarget);
 
 		// Update the camera transform to follow the player
-		transform.position = new Vector3 (player.position.x - distanceBehind, verticalPosition, player.position.z);
+		transform.position = new Vector3 (player.position.x - distanceBehind, verticalTarget + verticalDelta, player.position.z);
 	}
 }
