@@ -5,9 +5,9 @@ public class CameraMoveScript : MonoBehaviour
 {
 
 	public Transform player;
-	public float distanceAhead;
-	public float distanceBehind;
-	public float yOffset;
+	public float distanceAhead = 22f;
+	public float distanceBehind = 4f;
+	public float yOffset = 3f;
 	public float smooth = 0.1f;
 	public float minHeight;
 	private float xOffset;
