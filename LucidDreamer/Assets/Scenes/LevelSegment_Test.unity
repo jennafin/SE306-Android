@@ -516,6 +516,7 @@ MonoBehaviour:
   mainCharacterScript: {fileID: 859361785}
   levelSegments:
   - {fileID: 100014, guid: c01a03ebe356d534db88b680fa08e195, type: 2}
+  - {fileID: 100014, guid: 8f476dc35dd699549b3f1ab74a9b183a, type: 2}
 --- !u!64 &879874036
 MeshCollider:
   m_ObjectHideFlags: 0
