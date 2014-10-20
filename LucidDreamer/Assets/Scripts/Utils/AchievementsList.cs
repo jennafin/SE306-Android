@@ -5,10 +5,10 @@ using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
 
 public  class AchievementsList {
-
-// Yes the default value is false, http://msdn.microsoft.com/en-us/library/c8f5xwh7.aspx
-private bool[] executed = new bool[17];
-
+	
+	// Yes the default value is false, http://msdn.microsoft.com/en-us/library/c8f5xwh7.aspx
+	private bool[] executed = new bool[     17];
+	
 	public void GetUnityWorks() {
 		if (!executed[0]) {
 			Social.ReportProgress ("CgkIj8PyxKwKEAIQAg", 100.0f, (bool success) => {
@@ -63,7 +63,7 @@ private bool[] executed = new bool[17];
 		}
 	}
 	
-	public void GetRan250Meters() {
+	public void GetSprinter() {
 		if (!executed[6]) {
 			Social.ReportProgress ("CgkIj8PyxKwKEAIQCA", 100.0f, (bool success) => {
 				// handle success or failure
@@ -90,7 +90,7 @@ private bool[] executed = new bool[17];
 		}
 	}
 	
-	public void GetRan1000Meters() {
+	public void GetLucidRunner() {
 		if (!executed[9]) {
 			Social.ReportProgress ("CgkIj8PyxKwKEAIQCw", 100.0f, (bool success) => {
 				// handle success or failure
@@ -117,48 +117,49 @@ private bool[] executed = new bool[17];
 		}
 	}
 	
-	public void GetScore2000Total() {
+	public void GetCumulativeScoreOver10000() {
 		if (!executed[12]) {
-			Social.ReportProgress ("CgkIj8PyxKwKEAIQEw", 100.0f, (bool success) => {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEA", 100.0f, (bool success) => {
 				// handle success or failure
 			});
 			executed[12] = true;
 		}
 	}
 	
-	public void GetScore5000Total() {
+	public void GetCumulativeScoreOver20000() {
 		if (!executed[13]) {
-			Social.ReportProgress ("CgkIj8PyxKwKEAIQDg\t", 100.0f, (bool success) => {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEQ", 100.0f, (bool success) => {
 				// handle success or failure
 			});
 			executed[13] = true;
 		}
 	}
 	
-	public void GetScore10000Total() {
+	public void GetCumulativeScoreOver50000() {
 		if (!executed[14]) {
-			Social.ReportProgress ("CgkIj8PyxKwKEAIQEA", 100.0f, (bool success) => {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEg", 100.0f, (bool success) => {
 				// handle success or failure
 			});
 			executed[14] = true;
 		}
 	}
 	
-	public void GetScore20000Total() {
+	public void GetCumulativeScoreOver80000() {
 		if (!executed[15]) {
-			Social.ReportProgress ("CgkIj8PyxKwKEAIQEQ", 100.0f, (bool success) => {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEw", 100.0f, (bool success) => {
 				// handle success or failure
 			});
 			executed[15] = true;
 		}
 	}
 	
-	public void GetScore50000Total() {
+	public void GetCumulativeScoreOver100000() {
 		if (!executed[16]) {
-			Social.ReportProgress ("CgkIj8PyxKwKEAIQEg", 100.0f, (bool success) => {
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQDg", 100.0f, (bool success) => {
 				// handle success or failure
 			});
 			executed[16] = true;
 		}
 	}
+	
 }

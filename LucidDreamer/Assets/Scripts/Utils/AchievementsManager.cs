@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class AchievementsManager : MonoBehaviour {
@@ -13,103 +13,75 @@ public class AchievementsManager : MonoBehaviour {
 		// Load total score
 		totalScore.Load();
 		total = totalScore.GetTotalScore();
+		print ("Initial total: " + totalScore.GetTotalScore());
 		
 		// Load achievements status
 		achievements.Load ();
 	}
 	
+	// check all the distance achievements
 	public void CheckDistanceAchievements(float x) {
 	
-		if (x >= 10 && achievements.achievementsTracker.ran10Meters) {
-			achievementsList.GetRan10Meters ();
-			achievements.achievementsTracker.SetRan10Meters(true);
+		if (x >= 100 && achievements.achievementsTracker.ran100Meters) {
+			achievementsList.GetRan100Meters ();
+			achievements.achievementsTracker.SetRan100Meters(true);
 		}
 		
-		if (x >= 20 && achievements.achievementsTracker.ran20Meters) {
-			achievementsList.GetRan20Meters ();
-			achievements.achievementsTracker.SetRan20Meters(true);
-		}
-		
-		if (x >= 30 && achievements.achievementsTracker.ran30Meters) {
-			achievementsList.GetRan30Meters ();
-			achievements.achievementsTracker.SetRan30Meters(true);
-		}
-		
-		if (x >= 40 && achievements.achievementsTracker.ran40Meters) {
-			achievementsList.GetRan40Meters ();
-			achievements.achievementsTracker.SetRan40Meters(true);
-		}
-		
-		if (x >= 50 && achievements.achievementsTracker.ran50Meters) {
-			achievementsList.GetRan50Meters ();
-			achievements.achievementsTracker.SetRan50Meters(true);
-		}
-		
-		if (x >= 250 && achievements.achievementsTracker.ran250Meters) {
-			achievementsList.GetRan250Meters ();
-			achievements.achievementsTracker.SetRan250Meters(true);
-		}
-		
-		if (x >= 500 && achievements.achievementsTracker.ran500Meters) {
-			achievementsList.GetRan500Meters ();
-			achievements.achievementsTracker.SetRan500Meters(true);
-		}
-		
-		if (x >= 750 && achievements.achievementsTracker.ran750Meters) {
-			achievementsList.GetRan750Meters ();
-			achievements.achievementsTracker.SetRan750Meters(true);
-		}
-		
-		if (x >= 1000 && achievements.achievementsTracker.ran1000Meters) {
+		if (x >= 20 && achievements.achievementsTracker.ran1000Meters) {
 			achievementsList.GetRan1000Meters ();
 			achievements.achievementsTracker.SetRan1000Meters(true);
 		}
 		
-		if (x >= 1250 && achievements.achievementsTracker.ran1250Meters) {
-			achievementsList.GetRan1250Meters ();
-			achievements.achievementsTracker.SetRan1250Meters(true);
+		if (x >= 30 && achievements.achievementsTracker.ran10000Meters) {
+			achievementsList.GetRan10000Meters ();
+			achievements.achievementsTracker.SetRan10000Meters(true);
 		}
 		
-		if (x >= 1500 && achievements.achievementsTracker.ran1500Meters) {
-			achievementsList.GetRan1500Meters ();
-			achievements.achievementsTracker.SetRan1500Meters(true);
+		if (x >= 40 && achievements.achievementsTracker.ran20000Meters) {
+			achievementsList.GetRan20000Meters ();
+			achievements.achievementsTracker.SetRan20000Meters(true);
 		}
 	}
 	
+	// check all the score achievements
 	public void CheckScoreAchievements(int x) {
 		score += x;
 		total += score;
 		
-		if (total >= 2000 && achievements.achievementsTracker.score2000Total) {
-			achievementsList.GetScore2000Total ();
-			achievements.achievementsTracker.SetScore2000Total(true);
-		}
-		
-		if (total >= 5000 && achievements.achievementsTracker.score5000Total) {
-			achievementsList.GetScore5000Total ();
-			achievements.achievementsTracker.SetScore5000Total(true);
-		}
+		print (total);
 		
 		if (total >= 10000 && achievements.achievementsTracker.score10000Total) {
-			achievementsList.GetScore10000Total ();
+			achievementsList.GetCumulativeScoreOver10000 ();
 			achievements.achievementsTracker.SetScore10000Total(true);
 		}
 		
 		if (total >= 20000 && achievements.achievementsTracker.score20000Total) {
-			achievementsList.GetScore20000Total ();
-			achievements.achievementsTracker.SetScore2000Total(true);
+			achievementsList.GetCumulativeScoreOver20000 ();
+			achievements.achievementsTracker.SetSore20000Total(true);
 		}
 		
 		if (total >= 50000 && achievements.achievementsTracker.score50000Total) {
-			achievementsList.GetScore5000Total ();
+			achievementsList.GetCumulativeScoreOver50000 ();
 			achievements.achievementsTracker.SetScore50000Total(true);
+		}
+		
+		if (total >= 80000 && achievements.achievementsTracker.score80000Total) {
+			achievementsList.GetCumulativeScoreOver80000 ();
+			achievements.achievementsTracker.SetScore80000Total(true);
+		}
+		
+		if (total >= 100000 && achievements.achievementsTracker.score100000Total) {
+			achievementsList.GetCumulativeScoreOver100000 ();
+			achievements.achievementsTracker.SetScore100000Total(true);
 		}
 		
 	}
 	
-	//Make sure this is working in develop when he dies
+	//Save scores 
 	public void SaveTotalScore()
 	{
+		print ("Score: " + score + "total: " + total);
+		print ("achievement manager total: " + totalScore.GetTotalScore());
 		totalScore.UpdateScore (score);
 		totalScore.SaveTotalScore ();
 	}

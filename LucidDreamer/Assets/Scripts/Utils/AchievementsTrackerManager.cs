@@ -12,7 +12,6 @@ public class AchievementsTrackerManager : MonoBehaviour {
 	
 	public void Load()
 	{
-		print(Application.persistentDataPath);
 		//If not blank then load it
 		if(File.Exists(Application.persistentDataPath + "/achievementsTracker.dat"))
 		{

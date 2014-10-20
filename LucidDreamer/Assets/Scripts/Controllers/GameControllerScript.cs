@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -112,11 +112,9 @@ public class GameControllerScript : MonoBehaviour
 				}
 				
 				int time = stopWatch.Elapsed.Seconds;
-				//print (stopWatch.Elapsed.Seconds);
-				if (time == 2) {
-					//print ("IN TIME!!!!!!!!");
+				if (time == 1) {
 					achievementManager.CheckDistanceAchievements(alexPosition.x);
-					achievementManager.CheckScoreAchievements((int)Math.Floor (alexPosition.x));
+					achievementManager.CheckScoreAchievements(scoreTracker.currentScorePoints);
 					stopWatch.Reset();
 					stopWatch.Start();
 				}
@@ -143,29 +141,7 @@ public class GameControllerScript : MonoBehaviour
 						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
 				}
 
-				checkAchievements (alexPosition.x);
-
 				LifeHUD.GetComponent<LifeHUDScript> ().SetScore (scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x)));
-		}
-
-		void checkAchievements (float x)
-		{
-				if (x >= 10) {
-						achievementsList.GetRan10Meters ();
-				}
-				if (x >= 20) {
-						achievementsList.GetRan20Meters ();
-				}
-				if (x >= 30) {
-						achievementsList.GetRan30Meters ();
-				}
-				if (x >= 40) {
-						achievementsList.GetRan40Meters ();
-				}
-				if (x >= 50) {
-						achievementsList.GetRan50Meters ();
-				}
-
 		}
 
 		// Uses the LevelFactory to create the next level segment
@@ -270,7 +246,7 @@ public class GameControllerScript : MonoBehaviour
 		public void LoadGameOverScreen() {
 			scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
 			achievementManager.CheckDistanceAchievements(alexPosition.x);
-			achievementManager.CheckScoreAchievements((int)Math.Floor (alexPosition.x));
+			achievementManager.CheckScoreAchievements(scoreTracker.currentScorePoints);
 			achievementManager.SaveTotalScore();
 			Application.LoadLevel ("GameOver");
 		}
