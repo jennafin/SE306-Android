@@ -99,7 +99,7 @@ PlayerSettings:
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: /Users/akshaykalyan/Documents/dev/lucidrunner.keystore
+  AndroidKeystoreName: E:/User/Documents/dev/uni/lucidrunner.keystore
   AndroidKeyaliasName: lucidrunner
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
@@ -157,9 +157,9 @@ PlayerSettings:
   flashStrippingLevel: 2
   spritePackerPolicy: 
   scriptingDefineSymbols:
-    1: CROSS_PLATFORM_INPUT
+    1: 
     2: CROSS_PLATFORM_INPUT
-    4: CROSS_PLATFORM_INPUT
+    4: 
     7: CROSS_PLATFORM_INPUT
     15: CROSS_PLATFORM_INPUT
     16: CROSS_PLATFORM_INPUT
