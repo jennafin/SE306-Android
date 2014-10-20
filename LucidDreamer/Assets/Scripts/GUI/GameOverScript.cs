@@ -98,14 +98,14 @@ public class GameOverScript : MonoBehaviour
 		{
 			totalScore.UpdateScore (score);
 			totalScore.SaveTotalScore ();
-			Debug.Log ("Total Score: " + totalScore.GetTotalScore().score);
+			
 		}
 		
 		void Update ()
 		{
 			// go to main menu on escape/back button
 			if (Input.GetKeyDown (KeyCode.Escape)) {
-					Debug.Log ("GameOverScript: Escape key pressed");
+					
 					SaveScore();
 					Application.LoadLevel ("MainMenu");
 			}

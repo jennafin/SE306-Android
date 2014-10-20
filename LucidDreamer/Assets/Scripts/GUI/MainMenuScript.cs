@@ -15,7 +15,7 @@ public class MainMenuScript : MonoBehaviour
 
 		void Start ()
 		{
-				Debug.Log ("MainMenuScript: Start");
+				
 
 				// Initialise language file
 				// If not blank then load it
@@ -38,11 +38,11 @@ public class MainMenuScript : MonoBehaviour
 				// authenticate user
 				Social.localUser.Authenticate ((bool success) => {
 						if (success) {
-								Debug.Log ("Google Play Login Success");
+								
 								isLoggedIn = true;
 						} else {
 								((PlayGamesPlatform)Social.Active).SignOut ();
-								Debug.Log ("Google Play Login Failed");
+								
 						}
 				});
 
@@ -72,33 +72,33 @@ public class MainMenuScript : MonoBehaviour
 		{
 				// exit game on escape/back button
 				if (Input.GetKeyDown (KeyCode.Escape)) {
-						Debug.Log ("MainMenuScript: Escape key pressed");
+						
 						Application.Quit ();
 				}
 
 				// select menu option
 				if (Input.GetMouseButtonDown (0)) {
-						Debug.Log ("MainMenuScript: Touch input received");
+						
 
 						// check intersection of touch and objects of interest
 						ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 						if (Physics.Raycast (ray, out hit)) {
 								if (hit.transform.name == "TrophyModel") {
-										Debug.Log ("MainMenuScript: Achievement model hit");
+										
 										Social.ShowAchievementsUI ();
 								} else if (hit.transform.name == "PlayModel") {
-										Debug.Log ("MainMenuScript: Play model hit");
+										
 										Application.LoadLevel ("main");
 								} else if (hit.transform.name == "HighscoresModel") {
-										Debug.Log ("MainMenuScript: Highscores model hit");
+										
 										// TODO
 										Application.LoadLevel ("HighScores");
 								} else if (hit.transform.name == "SettingsModel") {
-										Debug.Log ("MainMenuScript: Settings model hit");
+										
 										// TODO
 										Application.LoadLevel ("Options");
 								} else if (hit.transform.name == "LeaderboardsModel") {
-										Debug.Log ("MainMenuScript: Leaderboards model hit");
+										
 										Social.ShowLeaderboardUI ();
 								}
 						}
