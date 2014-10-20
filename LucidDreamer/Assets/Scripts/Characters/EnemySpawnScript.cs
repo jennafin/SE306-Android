@@ -5,27 +5,34 @@ public class EnemySpawnScript : MonoBehaviour
 {
 		public GameObject mathsObject;
 		public GameObject scienceObject;
+		public GameObject artObject;
 				
-		public void SpawnWithTheme (Theme theme)
+		public GameObject SpawnWithTheme (Theme theme)
 		{
+			GameObject obj;
 			switch (theme) {
 				case Theme.Maths:
-					Instantiate (mathsObject);
+					obj = Instantiate (mathsObject);
 					break;
 				case Theme.Science:
-					Instantiate (scienceObject);
+					obj = Instantiate (scienceObject);
+					break;
+				case Theme.Art:
+					obj = Instantiate (artObject);
 					break;
 				default:
-					Instantiate (mathsObject);
+					obj = Instantiate (mathsObject);
 					break;
 			}
-	
+			return obj;
 		}
 		
-		void Instantiate(GameObject obj)
+		GameObject Instantiate(GameObject obj)
 		{
+			GameObject newObject = null;
 			if (obj) {
-				Instantiate (obj, transform.position, Quaternion.identity);
+				newObject = (GameObject) Instantiate (obj, transform.position, Quaternion.identity);
 			}
+			return newObject;
 		}
 }

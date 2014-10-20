@@ -3,7 +3,7 @@
  */
 public enum Theme
 {
-		//Art,
+		Art,
 		//Bedroom,
 		//History,
 		Maths,
