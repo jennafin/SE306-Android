@@ -369,5 +369,15 @@ public class GameControllerScript : MonoBehaviour
 					soundEffectsOn = true;
 				}
 		}	
+
+		// pause the game
+		public void PauseGame() {
+			timeScale.pause ();
+		}
+
+		// unpause the game
+		public void UnpauseGame() {
+			timeScale.unpause ();
+		}
 }
 
