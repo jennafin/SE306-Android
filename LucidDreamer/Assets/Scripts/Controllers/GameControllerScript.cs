@@ -303,6 +303,8 @@ public class GameControllerScript : MonoBehaviour
 		 */
 		public void CollectAllCollectables ()
 		{
+
+		Debug.Log ("Collect All Collectables");
 			GameObject[] coins = GameObject.FindGameObjectsWithTag("CollectableCoin");
 			GameObject[] powerUps = GameObject.FindGameObjectsWithTag("CollectablePowerUp");
 			
@@ -318,6 +320,7 @@ public class GameControllerScript : MonoBehaviour
 				
 				if (collectableGameObject.renderer.isVisible)
 				{
+					
 					currentCollectables.Add(collectable);
 					Destroy(collectable.gameObject);
 				}
