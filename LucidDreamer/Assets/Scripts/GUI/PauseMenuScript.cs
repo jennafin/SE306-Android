@@ -8,11 +8,11 @@ public class PauseMenuScript : MonoBehaviour {
 
 	public GUIStyle buttonStyle;
 	public GUIStyle titleTextStyle;
+	public GUIStyle pausedButtonStyle;
 	public Texture fadeOverlayTexture;				// texture for the pause menu's background
 	public Language language = Language.English;
 	
 	private bool isPaused = false;			
-	private GUIStyle pausedButtonStyle;
 	private int screenHeight;
 	private int screenWidth;
 	private int buttonWidth;
@@ -40,8 +40,8 @@ public class PauseMenuScript : MonoBehaviour {
 
 		buttonStyle.fontSize =  screenHeight / 13;
 		buttonStyle.alignment = TextAnchor.MiddleCenter;
-		pausedButtonStyle = buttonStyle;
 		pausedButtonStyle.fontSize = screenHeight / 25;
+		pausedButtonStyle.alignment = TextAnchor.MiddleCenter;
 		titleTextStyle.fontSize = (int)(0.16 * screenHeight);
 		titleTextStyle.alignment = TextAnchor.MiddleCenter;
 
@@ -57,11 +57,13 @@ public class PauseMenuScript : MonoBehaviour {
 	           			, titleTextStyle);
 
 			GUILayout.BeginArea (new Rect (screenWidth / 2 - screenWidth / 4
-											, 5.5f * screenHeight / 13
+											, 5f * screenHeight / 13
 											, screenWidth / 2
 											, screenHeight));
 			GUILayout.BeginVertical ();
-			if (GUILayout.Button (LanguageManager.GetText ("Resume"), buttonStyle)) {
+			if (GUILayout.Button (LanguageManager.GetText ("Resume")
+									, buttonStyle
+									, GUILayout.Height(buttonHeight))) {
 				isPaused = false;
 				FadeOut();
 				GameObject.Find ("GameController").GetComponent<GameControllerScript> ().UnpauseGame();
@@ -70,7 +72,9 @@ public class PauseMenuScript : MonoBehaviour {
 
 			GUILayout.Space (buttonHeight);
 
-			if (GUILayout.Button (LanguageManager.GetText ("ExitToMenu"), buttonStyle)) {
+			if (GUILayout.Button (LanguageManager.GetText ("ExitToMenu")
+									, buttonStyle
+									, GUILayout.Height(buttonHeight))) {
 				GameObject.Find ("GameController").GetComponent<GameControllerScript> ().UnpauseGame();
 				LoadMainMenu ();
 			}
