@@ -8,6 +8,10 @@ Score = счет:
 
 Retry = Повторить ?
 
+Paused = Приостановлено
+
+Resume = Pезюме
+
 ExitToMenu = Выход в меню
 
 Back = Вернуться

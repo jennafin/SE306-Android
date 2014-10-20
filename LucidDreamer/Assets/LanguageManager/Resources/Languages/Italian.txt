@@ -8,6 +8,10 @@ Score = Punteggio:
 
 Retry = Riprovare ?
 
+Paused = Pausa
+
+Resume = Riprendere
+
 ExitToMenu = Uscita Menu
 
 Back = Ritorno
