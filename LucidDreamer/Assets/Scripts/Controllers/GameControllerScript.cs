@@ -157,10 +157,9 @@ public class GameControllerScript : MonoBehaviour
 		// Returns the theme for the next level segment
 		Theme GetNextTheme ()
 		{
-				if (currentThemeSegmentCount >= 5) {
+				if (currentThemeSegmentCount >= 1) {
 						currentThemeSegmentCount = 0;
 						currentTheme = GetNewTheme ();
-						Debug.Log ("Picked theme: " + currentTheme);
 				}
 				currentThemeSegmentCount++;
 

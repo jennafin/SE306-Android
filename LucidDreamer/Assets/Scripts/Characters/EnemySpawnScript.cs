@@ -5,13 +5,10 @@ public class EnemySpawnScript : MonoBehaviour
 {
 		public GameObject mathsObject;
 		public GameObject scienceObject;
-		
-		Theme currentTheme;
-		
+				
 		public void SpawnWithTheme (Theme theme)
 		{
-			Debug.Log ("Spawning with theme: " + currentTheme);
-			switch (currentTheme) {
+			switch (theme) {
 				case Theme.Maths:
 					Instantiate (mathsObject);
 					break;
