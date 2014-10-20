@@ -17,6 +17,9 @@ public class EnemySpawnScript : MonoBehaviour
 				case Theme.Science:
 					obj = Instantiate (scienceObject);
 					break;
+				case Theme.Art:
+					obj = Instantiate (artObject);
+					break;
 				default:
 					obj = Instantiate (mathsObject);
 					break;
