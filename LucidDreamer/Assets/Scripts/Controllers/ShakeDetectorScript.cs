@@ -171,12 +171,16 @@ public class ShakeDetectorScript : MonoBehaviour {
 
 			for (int i = 0; i < enemies.Length; i++)
 			{
-				GameObject enemyGameObject = enemies[i].gameObject;
-
-				if (enemyGameObject.renderer.isVisible)
-				{
-					Destroy(enemyGameObject.gameObject);
-				}
+				GameObject enemyGameObject = enemies[i];
+        // Yes Cube, Josh thinks it makes sense, DON'T CHANGE IT
+        try {
+  				if (enemyGameObject.transform.Find("Cube").gameObject.renderer.isVisible)
+  				{
+  					Destroy(enemyGameObject);
+  				}
+        } catch (NullReferenceException e){
+          Destroy(enemyGameObject);
+        }
 
 			}
 
