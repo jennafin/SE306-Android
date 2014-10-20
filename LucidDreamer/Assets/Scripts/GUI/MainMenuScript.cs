@@ -100,21 +100,12 @@ public class MainMenuScript : MonoBehaviour
 											sceneFaderScript.LoadScene("main", 0.4f);
 											break;
 										case "HighscoresModel":
-<<<<<<< HEAD
-											
-											StartCoroutine (LoadSceneWithFade ("HighScores"));
-											break;
-										case "SettingsModel":
-											
-											StartCoroutine (LoadSceneWithFade ("Options"));
-=======
 											Debug.Log ("MainMenuScript: Highscores model hit");
 											sceneFaderScript.LoadScene("HighScores");
 											break;
 										case "SettingsModel":
 											Debug.Log ("MainMenuScript: Settings model hit");
 											sceneFaderScript.LoadScene("Options");
->>>>>>> develop
 											break;
 										case "LeaderboardsModel":
 											
