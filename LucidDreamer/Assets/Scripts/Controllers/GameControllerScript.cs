@@ -35,7 +35,7 @@ public class GameControllerScript : MonoBehaviour
 		public GameObject[] levelSegments;
 
 		// Current Theme
-		Theme currentTheme = Theme.Bedroom;
+		Theme currentTheme = Theme.Maths;
 
 		// The number of level segments for this theme
 		int currentThemeSegmentCount = 0;
@@ -47,8 +47,14 @@ public class GameControllerScript : MonoBehaviour
 		// Current power-ups (or could be coins)
 		private List<Collectable> currentCollectables = new List<Collectable> ();
 
+
 		// ShakeDetector to increase lucid power
 		public GameObject shakeDetector;
+
+		// Settings
+		private bool musicOn;
+		private bool soundEffectsOn;
+
 
 
 		// Use this for initialization
@@ -63,6 +69,14 @@ public class GameControllerScript : MonoBehaviour
 				// Player starts with 3 lives
 				lives = MAX_NUMBER_OF_LIVES;
 
+				// Retrieve settings
+				RetrieveSettings ();	
+				
+				// turn on (unmute) music if turned on
+				if (musicOn) {
+					AudioSource music = GameObject.Find ("Main Camera").GetComponent<AudioSource> ();
+					music.mute = false;
+				}
 
 				//Instantiate score tracker
 				scoreTracker = new ScoreTrackingSystem ();
@@ -149,10 +163,11 @@ public class GameControllerScript : MonoBehaviour
 		// Returns the theme for the next level segment
 		Theme GetNextTheme ()
 		{
-				if (currentThemeSegmentCount >= 5) {
+				if (currentThemeSegmentCount >= 1) {
 						currentThemeSegmentCount = 0;
 						currentTheme = GetNewTheme ();
 				}
+				currentThemeSegmentCount++;
 
 				return currentTheme;
 		}
@@ -167,7 +182,7 @@ public class GameControllerScript : MonoBehaviour
 				Theme nextTheme;
 				do {
 						nextTheme = (Theme)themes.GetValue (random.Next (themes.Length));
-				} while (nextTheme != currentTheme);
+				} while (nextTheme == currentTheme);
 				return nextTheme;
 		}
 
@@ -207,18 +222,23 @@ public class GameControllerScript : MonoBehaviour
 						timeScale.reset();
 
 						// Plays injured/death sound
-						if (lives < 0) {
-							mainCharacterScript.PlayDeathSound();
-						} else {
-							mainCharacterScript.PlayInjuredSound();
+						if (soundEffectsOn) {
+							if (lives < 0) {
+								mainCharacterScript.PlayDeathSound();
+							} else {
+								mainCharacterScript.PlayInjuredSound();
+							}
 						}
+						
 				} else if (objectTag.StartsWith ("Collectable")) {
 
 						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
 						this.currentCollectables.Add (collectable);
 
 						// We keep the Collectable instance around, but remove its game object from the scene
-						collectable.PlayCollectedSound ();
+						if (soundEffectsOn) {
+							collectable.PlayCollectedSound ();
+						}
 						Destroy (collectable.gameObject);
 				}
 
@@ -333,4 +353,21 @@ public class GameControllerScript : MonoBehaviour
 		public void AddLucidPower(float power) {
 			shakeDetector.GetComponent<ShakeDetectorScript>().AddLucidPower(power);
 		}
+
+
+
+		// retrieve persisted settings for music and sound effects
+		private void RetrieveSettings() {
+			if (PlayerPrefs.HasKey ("MusicOption")) {
+				musicOn = PlayerPrefs.GetInt("MusicOption") != 0;
+				} else {
+					musicOn = true;
+				}
+			if (PlayerPrefs.HasKey ("SoundEffectsOption")) {
+				soundEffectsOn = PlayerPrefs.GetInt("SoundEffectsOption") != 0;
+				} else {
+					soundEffectsOn = true;
+				}
+		}	
 }
+

@@ -23,13 +23,15 @@ public class MainCharacterScript : MonoBehaviour {
 	public Transform groundCheck;
 	float groundRadius = 0.2f;
 	public LayerMask ground;
-	
+
 	public AudioClip jumpSound;
 	public AudioClip deathSound;
 	public AudioClip injuredSound;
+	private bool soundEffectsOn;
 	
 	void Start() {
 		this.currentJumpForce = jumpForce;
+		RetrieveSettings ();
 	}
 
 	void Update() {
@@ -101,10 +103,19 @@ public class MainCharacterScript : MonoBehaviour {
 	
 	private void PlaySound(AudioClip sound) {
 		if (! sound) {
-			
-		} else {
+			Debug.Log ("Sound is not initialized in inspector.");
+		} else if (soundEffectsOn) {
 			AudioSource.PlayClipAtPoint(sound, this.transform.position, 2.0f);
 		}
 	}
+
+	// Retrieves persisted settings regarding the activation of sound effects
+	private void RetrieveSettings() {
+		if (PlayerPrefs.HasKey ("SoundEffectsOption")) {
+			soundEffectsOn = PlayerPrefs.GetInt("SoundEffectsOption") != 0;
+		} else {
+			soundEffectsOn = true;
+		}
+	}	
 
 }

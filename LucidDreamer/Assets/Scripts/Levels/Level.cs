@@ -14,7 +14,7 @@ public class Level
 		float height;
 
 		public Level (GameObject prefab, Theme theme, Vector3 position, Quaternion rotation)
-		{
+		{	
 				this.prefab = MonoBehaviour.Instantiate (prefab, position, rotation) as GameObject;
 
 				// Calculate width and height
@@ -22,6 +22,11 @@ public class Level
 
 				foreach (var r in this.prefab.GetComponentsInChildren<Renderer>()) {
 						this.bounds.Encapsulate (r.bounds);
+				}
+				
+				foreach (var r in this.prefab.GetComponentsInChildren<EnemySpawnScript>()) {
+					Debug.Log ("Sup dudeeeeeeerreee");
+					r.SpawnWithTheme(theme);
 				}
 
 				this.maxX = bounds.max.x;

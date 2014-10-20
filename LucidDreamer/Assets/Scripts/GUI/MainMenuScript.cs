@@ -16,7 +16,7 @@ public class MainMenuScript : MonoBehaviour
 		float lerpTime = 1f;							// for linearly interpolating alex between start and end positions
 		float currentLerpTime;							// 
 		public Language language = Language.English;	// default language 
-		
+		private SceneFader sceneFaderScript;
 			
 		// Initialisation of script includes:
 		// 		- Loading language file
@@ -52,18 +52,12 @@ public class MainMenuScript : MonoBehaviour
 								
 						}
 				});
-
-				// set font size relative to screen height
-				int updatedFontSize = Screen.height / 16;
-//				GameObject.Find ("PlayText").guiText.fontSize = updatedFontSize;
-//				GameObject.Find ("AchievementsText").guiText.fontSize = updatedFontSize;
-//				GameObject.Find ("HighscoresText").guiText.fontSize = updatedFontSize;
-//				GameObject.Find ("SettingsText").guiText.fontSize = updatedFontSize;
-//				GameObject.Find ("LeaderboardsText").guiText.fontSize = updatedFontSize;
-
+		
 				// set alex' start and end position vectors
 				alexStartPosition = alexModel.transform.position;
 				alexEndPosition = new Vector3 (alexStartPosition.x + 5, alexStartPosition.y, alexStartPosition.z);
+
+				sceneFaderScript = (SceneFader) GameObject.Find ("MainMenuController").GetComponent<SceneFader> ();
 		}
 	
 		void Update ()
@@ -103,15 +97,24 @@ public class MainMenuScript : MonoBehaviour
 										case "PlayModel":
 											
 											MakeAlexRun();
-											StartCoroutine (LoadSceneWithFade ("main", 0.4f));
+											sceneFaderScript.LoadScene("main", 0.4f);
 											break;
 										case "HighscoresModel":
+<<<<<<< HEAD
 											
 											StartCoroutine (LoadSceneWithFade ("HighScores"));
 											break;
 										case "SettingsModel":
 											
 											StartCoroutine (LoadSceneWithFade ("Options"));
+=======
+											Debug.Log ("MainMenuScript: Highscores model hit");
+											sceneFaderScript.LoadScene("HighScores");
+											break;
+										case "SettingsModel":
+											Debug.Log ("MainMenuScript: Settings model hit");
+											sceneFaderScript.LoadScene("Options");
+>>>>>>> develop
 											break;
 										case "LeaderboardsModel":
 											
@@ -120,15 +123,6 @@ public class MainMenuScript : MonoBehaviour
 								}
 						}
 				}
-		}
-
-		// fade out the main menu scene and load the scene as per the parameter sceneLabel
-		private IEnumerator LoadSceneWithFade (string sceneLabel, float delay = 0f)
-		{
-				yield return new WaitForSeconds (delay);
-				float fadeTime = GameObject.Find ("MainMenuController").GetComponent<SceneFader> ().BeginFade (1);
-				yield return new WaitForSeconds (fadeTime);
-				Application.LoadLevel (sceneLabel);
 		}
 
 		// set alex's model to the running animation, rotates him to face the right and 

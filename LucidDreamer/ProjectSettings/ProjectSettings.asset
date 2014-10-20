@@ -160,9 +160,9 @@ PlayerSettings:
   flashStrippingLevel: 2
   spritePackerPolicy: 
   scriptingDefineSymbols:
-    1: CROSS_PLATFORM_INPUT
+    1: 
     2: CROSS_PLATFORM_INPUT
-    4: CROSS_PLATFORM_INPUT
+    4: 
     7: CROSS_PLATFORM_INPUT
     15: CROSS_PLATFORM_INPUT
     16: CROSS_PLATFORM_INPUT
