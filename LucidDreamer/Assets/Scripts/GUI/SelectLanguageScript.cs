@@ -18,7 +18,7 @@ public class SelectLanguageScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Debug.Log ("SelectLanguageScript: Start");
+		
 		// Initialise language file
 		// If not blank then load it
 		if(File.Exists(Application.persistentDataPath + "/language.dat"))

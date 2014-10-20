@@ -26,7 +26,6 @@ public class ScoreTrackingSystem {
 	public void AddPoints(int addMe)
 	{
 		pointsToBeAdded = pointsToBeAdded + addMe;
-		Debug.Log ("Added points");
 	}
 
 	public void AddMultiplier(int multiplierToAdd)
@@ -48,7 +47,7 @@ public class ScoreTrackingSystem {
 	{
 		currentScorePoints = currentScorePoints + (pointsToBeAdded * multiplier);
 		pointsToBeAdded = 0;
-		Debug.Log (currentScorePoints.ToString());
+		//
 		return distance + currentScorePoints;
 	}
 
