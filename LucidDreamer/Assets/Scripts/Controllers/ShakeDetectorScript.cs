@@ -137,27 +137,20 @@ public class ShakeDetectorScript : MonoBehaviour {
 		}
 
   }
-	//for testing
+
+	/* For testing
 	void OnGUI(){
 
 		if (GUI.Button (new Rect (100,100,80,20), "Use Lucid")) {
 						phoneShake ();
 				}
-		}
+	}*/
 
   // Notify subscribers
   private void phoneShake() {
 		//if there is enough lucid power
 		if (lucidPower > 0.99) {
-//			foreach (Shakeable obj in subscribers) {
-//				//if the object is visible on screen
-//				//Note isVisible might  be triggered by scene view camera
-//				if(obj.isOnScreen()){
-//					obj.doShakeAction ();
-//				}
-//			}
 			PowerDown = true;
-//			Debug.Log ("hahaha");
 			gameController.CollectAllCollectables();
 			deleteAllEnemies();
 
@@ -171,12 +164,16 @@ public class ShakeDetectorScript : MonoBehaviour {
 
 			for (int i = 0; i < enemies.Length; i++)
 			{
-				GameObject enemyGameObject = enemies[i].gameObject;
-
-				if (enemyGameObject.renderer.isVisible)
-				{
-					Destroy(enemyGameObject.gameObject);
-				}
+				GameObject enemyGameObject = enemies[i];
+        // Yes Cube, Josh thinks it makes sense, DON'T CHANGE IT
+        try {
+  				if (enemyGameObject.transform.Find("Cube").gameObject.renderer.isVisible)
+  				{
+  					Destroy(enemyGameObject);
+  				}
+        } catch (NullReferenceException e){
+          Destroy(enemyGameObject);
+        }
 
 			}
 
