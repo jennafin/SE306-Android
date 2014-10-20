@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Equations
+  m_Name: Blank
   m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -17,29 +17,10 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: fffbee7340ea30c469c6a0d6855a09d6, type: 3}
+          m_Texture: {fileID: 2800000, guid: b0936f2cc79ae9745947c763be1829cc, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _BumpTex
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats:
-      data:
-        first:
-          name: _BumpSzX
-        second: 512
-      data:
-        first:
-          name: _BumpSzY
-        second: 512
-      data:
-        first:
-          name: _BumpSzZ
-        second: 1
+    m_Floats: {}
     m_Colors:
       data:
         first:
