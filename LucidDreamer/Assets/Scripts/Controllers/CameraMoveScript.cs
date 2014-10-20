@@ -8,7 +8,7 @@ public class CameraMoveScript : MonoBehaviour
 	public float distanceAhead;
 	public float distanceBehind;
 	public float yOffset;
-	public float smooth = 1f;
+	public float smooth = 0.1f;
 	public float minHeight;
 	private float xOffset;
 	private float zOffset;
