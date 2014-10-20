@@ -704,6 +704,7 @@ MonoBehaviour:
   distanceAhead: 16
   distanceBehind: 8
   yOffset: 3
+  smooth: .100000001
   minHeight: 10
 --- !u!82 &1160922492
 AudioSource:
