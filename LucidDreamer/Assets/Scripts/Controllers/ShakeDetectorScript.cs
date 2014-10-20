@@ -159,9 +159,28 @@ public class ShakeDetectorScript : MonoBehaviour {
 			PowerDown = true;
 //			Debug.Log ("hahaha");
 			gameController.CollectAllCollectables();
+			deleteAllEnemies();
 
 		}
   }
+
+	public void deleteAllEnemies(){
+
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Dangerous");
+
+		
+			for (int i = 0; i < enemies.Length; i++)
+			{
+				GameObject enemyGameObject = enemies[i].gameObject;
+				
+				if (enemyGameObject.renderer.isVisible)
+				{
+					Destroy(enemyGameObject.gameObject);
+				}
+				
+			}
+
+		}
 
   public void Subscribe(Shakeable obj) {
     subscribers.Add(obj);
