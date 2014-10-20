@@ -47,6 +47,10 @@ public class GameControllerScript : MonoBehaviour
 		// Current power-ups (or could be coins)
 		private List<Collectable> currentCollectables = new List<Collectable> ();
 
+		// ShakeDetector to increase lucid power
+		public GameObject shakeDetector;
+
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -79,7 +83,7 @@ public class GameControllerScript : MonoBehaviour
 
 				// exit game on escape/back button
 				if (Input.GetKeyDown (KeyCode.Escape)) {
-						
+
 						Application.LoadLevel ("MainMenu");
 				}
 
@@ -185,7 +189,7 @@ public class GameControllerScript : MonoBehaviour
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
 						if (objectName.Contains ("Enemy")) {
-								
+
 								col.gameObject.GetComponent<Enemy> ().OnCollision (this);
 						}
 						if (this.mainCharacterScript.isInvincible) {
@@ -209,7 +213,7 @@ public class GameControllerScript : MonoBehaviour
 							mainCharacterScript.PlayInjuredSound();
 						}
 				} else if (objectTag.StartsWith ("Collectable")) {
-						
+
 						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
 						this.currentCollectables.Add (collectable);
 
@@ -248,7 +252,7 @@ public class GameControllerScript : MonoBehaviour
 		public void IncrementCoins (int amount)
 		{
 				this.coinsCollected += amount;
-				//		
+				//
 				scoreTracker.AddPoints (amount);
 		}
 
@@ -324,5 +328,9 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 			}
+		}
+
+		public void AddLucidPower(float power) {
+			shakeDetector.GetComponent<ShakeDetectorScript>().AddLucidPower(power);
 		}
 }

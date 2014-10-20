@@ -11,7 +11,7 @@ public class ShakeDetectorScript : MonoBehaviour {
 	private float previousDistance = 0;
 
 
-  //Lucid power level
+  //Lucid power level lucidPower useful range [0,1]
 	private  float lucidPower =1;
 
 	//HUD
@@ -124,8 +124,8 @@ public class ShakeDetectorScript : MonoBehaviour {
 
 			lucidPower += (current - previousDistance) * distancePowerRatio;
 			previousDistance = current;
-//			
-//			
+//
+//
 			LucidHUD.UpdateDisplay (lucidPower);
 		} else {
 			lucidPower = lucidPower * PowerDownRatio;
@@ -168,21 +168,25 @@ public class ShakeDetectorScript : MonoBehaviour {
 
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Dangerous");
 
-		
+
 			for (int i = 0; i < enemies.Length; i++)
 			{
 				GameObject enemyGameObject = enemies[i].gameObject;
-				
+
 				if (enemyGameObject.renderer.isVisible)
 				{
 					Destroy(enemyGameObject.gameObject);
 				}
-				
+
 			}
 
 		}
 
   public void Subscribe(Shakeable obj) {
     subscribers.Add(obj);
+  }
+
+  public void AddLucidPower(float power) {
+    lucidPower += power;
   }
 }
