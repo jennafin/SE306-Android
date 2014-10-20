@@ -106,6 +106,9 @@ public class ShakeDetectorScript : MonoBehaviour {
   }
 
   void Update() {
+		if (Input.GetKeyDown (KeyCode.J)) {
+			phoneShake ();
+				}
     if (ShakeDetector()){ // call ShakeDetector every Update!
       // the device was shaken up and the count is in shakeCount
       // the direction of the first shake is in shakeDir (1 or -1)
