@@ -85,7 +85,7 @@ public class HighScoreGUI : MonoBehaviour {
 	{
 		// go to main menu on escape/back button
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-			Debug.Log ("GameOverScript: Escape key pressed");
+			
 			Application.LoadLevel ("MainMenu");
 		}
 	}	
