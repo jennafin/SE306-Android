@@ -18,7 +18,7 @@ private bool[] executed = new bool[17];
 		}
 	}
 	
-	public void GetRan10Meters() {
+	public void GetRan100Meters() {
 		if (!executed[1]) {
 			Social.ReportProgress ("CgkIj8PyxKwKEAIQAw", 100.0f, (bool success) => {
 				// handle success or failure
@@ -27,7 +27,7 @@ private bool[] executed = new bool[17];
 		}
 	}
 	
-	public void GetRan20Meters() {
+	public void GetRan1000Meters() {
 		if (!executed[2]) {
 			Social.ReportProgress ("CgkIj8PyxKwKEAIQBA", 100.0f, (bool success) => {
 				// handle success or failure
@@ -36,7 +36,7 @@ private bool[] executed = new bool[17];
 		}
 	}
 	
-	public void GetRan30Meters() {
+	public void GetRan10000Meters() {
 		if (!executed[3]) {
 			Social.ReportProgress ("CgkIj8PyxKwKEAIQBQ", 100.0f, (bool success) => {
 				// handle success or failure
@@ -45,7 +45,7 @@ private bool[] executed = new bool[17];
 		}
 	}
 	
-	public void GetRan40Meters() {
+	public void GetRan20000Meters() {
 		if (!executed[4]) {
 			Social.ReportProgress ("CgkIj8PyxKwKEAIQBg", 100.0f, (bool success) => {
 				// handle success or failure
