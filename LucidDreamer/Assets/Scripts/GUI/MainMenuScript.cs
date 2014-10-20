@@ -24,7 +24,7 @@ public class MainMenuScript : MonoBehaviour
 		//		- Setting Alex's start and end positions for his run
 		void Start ()
 		{
-				Debug.Log ("MainMenuScript: Start");
+				
 
 				// Initialise language file
 				// If not blank then load it
@@ -46,10 +46,10 @@ public class MainMenuScript : MonoBehaviour
 				// authenticate user
 				Social.localUser.Authenticate ((bool success) => {
 						if (success) {
-								Debug.Log ("MainMenuScript: Google Play Login Success");
+								
 						} else {
 								((PlayGamesPlatform)Social.Active).SignOut ();
-								Debug.Log ("MainMenuScript: Google Play Login Failed");
+								
 						}
 				});
 
@@ -83,13 +83,13 @@ public class MainMenuScript : MonoBehaviour
 		{
 				// exit game on escape/back button
 				if (Input.GetKeyDown (KeyCode.Escape)) {
-						Debug.Log ("MainMenuScript: Escape key pressed");
+						
 						Application.Quit ();
 				}
 
 				// select menu option
 				if (Input.GetMouseButtonDown (0)) {
-						Debug.Log ("MainMenuScript: Touch input received");
+						
 
 						// check intersection of touch with objects of interest
 						ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -97,24 +97,24 @@ public class MainMenuScript : MonoBehaviour
 								string hitTransformName = hit.transform.name;
 								switch (hitTransformName) {
 										case "TrophyModel":
-											Debug.Log ("MainMenuScript: Achievement model hit");
+											
 											Social.ShowAchievementsUI ();
 											break;
 										case "PlayModel":
-											Debug.Log ("MainMenuScript: Play model hit");
+											
 											MakeAlexRun();
 											StartCoroutine (LoadSceneWithFade ("main", 0.4f));
 											break;
 										case "HighscoresModel":
-											Debug.Log ("MainMenuScript: Highscores model hit");
+											
 											StartCoroutine (LoadSceneWithFade ("HighScores"));
 											break;
 										case "SettingsModel":
-											Debug.Log ("MainMenuScript: Settings model hit");
+											
 											StartCoroutine (LoadSceneWithFade ("Options"));
 											break;
 										case "LeaderboardsModel":
-											Debug.Log ("MainMenuScript: Leaderboards model hit");
+											
 											Social.ShowLeaderboardUI ();
 											break;
 								}
