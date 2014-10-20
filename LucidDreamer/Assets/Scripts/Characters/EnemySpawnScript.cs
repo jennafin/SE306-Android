@@ -3,23 +3,36 @@ using System.Collections;
 
 public class EnemySpawnScript : MonoBehaviour
 {
-
-		public GameObject[] obj;
-		public float spawnMax = 5f;
-		public float spawnMin = 4f;
-
-		void Start ()
+		public GameObject mathsObject;
+		public GameObject scienceObject;
+		public GameObject artObject;
+				
+		public GameObject SpawnWithTheme (Theme theme)
 		{
-
-				Spawn ();
-	
+			GameObject obj;
+			switch (theme) {
+				case Theme.Maths:
+					obj = Instantiate (mathsObject);
+					break;
+				case Theme.Science:
+					obj = Instantiate (scienceObject);
+					break;
+				case Theme.Art:
+					obj = Instantiate (artObject);
+					break;
+				default:
+					obj = Instantiate (mathsObject);
+					break;
+			}
+			return obj;
 		}
-	
-		void Spawn ()
+		
+		GameObject Instantiate(GameObject obj)
 		{
-
-				Instantiate (obj [Random.Range (0, obj.Length)], transform.position, Quaternion.identity);
-				Invoke ("Spawn", Random.Range (spawnMin, spawnMax));
-
+			GameObject newObject = null;
+			if (obj) {
+				newObject = (GameObject) Instantiate (obj, transform.position, Quaternion.identity);
+			}
+			return newObject;
 		}
 }

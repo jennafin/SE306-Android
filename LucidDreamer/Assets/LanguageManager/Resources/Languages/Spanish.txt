@@ -10,6 +10,8 @@ Retry = Reintentar?
 
 ExitToMenu = Salir al Menú
 
+Back = Volver
+
 SelectLanguage = Selecciona Idioma
 
 Name = Nombre
@@ -17,6 +19,12 @@ Name = Nombre
 TopScore = Mejor Puntuación: 
 
 HighScores = puntuaciones más altas
+
+Options = Opciones
+
+Music = Música
+
+SoundEffects = Efectos De Sonido
 
 NoHighScores = No hay altos puntajes todavía
 

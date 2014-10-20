@@ -26,7 +26,10 @@ public class ScoreTrackingSystem {
 	public void AddPoints(int addMe)
 	{
 		pointsToBeAdded = pointsToBeAdded + addMe;
+<<<<<<< HEAD
 		
+=======
+>>>>>>> develop
 	}
 
 	public void AddMultiplier(int multiplierToAdd)
@@ -48,7 +51,11 @@ public class ScoreTrackingSystem {
 	{
 		currentScorePoints = currentScorePoints + (pointsToBeAdded * multiplier);
 		pointsToBeAdded = 0;
+<<<<<<< HEAD
 		
+=======
+		//
+>>>>>>> develop
 		return distance + currentScorePoints;
 	}
 

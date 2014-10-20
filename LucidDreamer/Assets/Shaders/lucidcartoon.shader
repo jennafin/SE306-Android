@@ -31,6 +31,7 @@
 		Pass
 		{
 			Tags {"LightMode" = "ForwardAdd"}
+			Fog {Color (0,0,0,0)}
 			Blend One One
 			CGPROGRAM
 			
@@ -40,6 +41,7 @@
 			#include "UnityCG.cginc"
 			#include "AutoLight.cginc"
 			
+			#define LUCID_USE_BASE
 			#include "lucidcartoonfuncs.inc"
 			
 			#include "lucidcartooncommon.inc"

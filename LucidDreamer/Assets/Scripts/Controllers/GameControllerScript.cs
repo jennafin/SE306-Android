@@ -25,6 +25,7 @@ public class GameControllerScript : MonoBehaviour
 		public GameObject LifeHUD;
 		private AchievementsList achievementsList = new AchievementsList ();
 
+
 		// Main Character
 		public Transform alexDreamer;
 		public MainCharacterScript mainCharacterScript;
@@ -34,7 +35,7 @@ public class GameControllerScript : MonoBehaviour
 		public GameObject[] levelSegments;
 
 		// Current Theme
-		Theme currentTheme = Theme.Bedroom;
+		Theme currentTheme = Theme.Maths;
 
 		// The number of level segments for this theme
 		int currentThemeSegmentCount = 0;
@@ -45,6 +46,16 @@ public class GameControllerScript : MonoBehaviour
 
 		// Current power-ups (or could be coins)
 		private List<Collectable> currentCollectables = new List<Collectable> ();
+
+
+		// ShakeDetector to increase lucid power
+		public GameObject shakeDetector;
+
+		// Settings
+		private bool musicOn;
+		private bool soundEffectsOn;
+
+
 
 		// Use this for initialization
 		void Start ()
@@ -58,6 +69,14 @@ public class GameControllerScript : MonoBehaviour
 				// Player starts with 3 lives
 				lives = MAX_NUMBER_OF_LIVES;
 
+				// Retrieve settings
+				RetrieveSettings ();	
+				
+				// turn on (unmute) music if turned on
+				if (musicOn) {
+					AudioSource music = GameObject.Find ("Main Camera").GetComponent<AudioSource> ();
+					music.mute = false;
+				}
 
 				//Instantiate score tracker
 				scoreTracker = new ScoreTrackingSystem ();
@@ -73,12 +92,12 @@ public class GameControllerScript : MonoBehaviour
 		void Update ()
 		{
 				// Handles the game speeding up.
-				Time.timeScale = (float)timeScale.getCurrentSpeed ();
+				Time.timeScale = (float) timeScale.getCurrentSpeed ();
 				timeScale.incrementSpeed (timeScaleIncrement);
 
 				// exit game on escape/back button
 				if (Input.GetKeyDown (KeyCode.Escape)) {
-						
+
 						Application.LoadLevel ("MainMenu");
 				}
 
@@ -126,24 +145,6 @@ public class GameControllerScript : MonoBehaviour
 				if (x >= 50) {
 						achievementsList.GetRan50Meters ();
 				}
-				if (x >= 250) {
-						achievementsList.GetRan250Meters ();
-				}
-				if (x >= 500) {
-						achievementsList.GetRan500Meters ();
-				}
-				if (x >= 750) {
-						achievementsList.GetRan750Meters ();
-				}
-				if (x >= 1000) {
-						achievementsList.GetRan1000Meters ();
-				}
-				if (x >= 1250) {
-						achievementsList.GetRan1250Meters ();
-				}
-				if (x >= 1500) {
-						achievementsList.GetRan1500Meters ();
-				}
 
 		}
 
@@ -162,13 +163,16 @@ public class GameControllerScript : MonoBehaviour
 		// Returns the theme for the next level segment
 		Theme GetNextTheme ()
 		{
-				if (currentThemeSegmentCount >= 5) {
+				if (currentThemeSegmentCount >= 1) {
 						currentThemeSegmentCount = 0;
 						currentTheme = GetNewTheme ();
 				}
+				currentThemeSegmentCount++;
 
 				return currentTheme;
 		}
+
+
 
 		// Chooses and returns a new theme. The returned theme will be different from the current theme.
 		Theme GetNewTheme ()
@@ -178,7 +182,7 @@ public class GameControllerScript : MonoBehaviour
 				Theme nextTheme;
 				do {
 						nextTheme = (Theme)themes.GetValue (random.Next (themes.Length));
-				} while (nextTheme != currentTheme);
+				} while (nextTheme == currentTheme);
 				return nextTheme;
 		}
 
@@ -200,7 +204,7 @@ public class GameControllerScript : MonoBehaviour
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
 						if (objectName.Contains ("Enemy")) {
-								
+
 								col.gameObject.GetComponent<Enemy> ().OnCollision (this);
 						}
 						if (this.mainCharacterScript.isInvincible) {
@@ -215,26 +219,47 @@ public class GameControllerScript : MonoBehaviour
 
 
 						// Resets time scale to normal
-						timeScale.reset ();
+						timeScale.reset();
 
-				} else if (objectTag.StartsWith ("Collectable")) {
+						// Plays injured/death sound
+						if (soundEffectsOn) {
+							if (lives < 0) {
+								mainCharacterScript.PlayDeathSound();
+							} else {
+								mainCharacterScript.PlayInjuredSound();
+							}
+						}
 						
+				} else if (objectTag.StartsWith ("Collectable")) {
+
 						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
 						this.currentCollectables.Add (collectable);
 
 						// We keep the Collectable instance around, but remove its game object from the scene
+						if (soundEffectsOn) {
+							collectable.PlayCollectedSound ();
+						}
 						Destroy (collectable.gameObject);
 				}
 
 				if (lives < 0) {
-						scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
-						Application.LoadLevel ("GameOver");
+						LoadGameOverScreen (); // Loads game over screen after 1.5 seconds
 				}
+		}
+
+		public void LoadGameOverScreen() {
+			scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
+			Application.LoadLevel ("GameOver");
 		}
 
 		public int GetCoinsCollected ()
 		{
 				return this.coinsCollected;
+		}
+
+		public float GetDistance()
+		{
+			return alexPosition.x;
 		}
 
 		void GameOver ()
@@ -247,7 +272,7 @@ public class GameControllerScript : MonoBehaviour
 		public void IncrementCoins (int amount)
 		{
 				this.coinsCollected += amount;
-				//		
+				//
 				scoreTracker.AddPoints (amount);
 		}
 
@@ -280,20 +305,69 @@ public class GameControllerScript : MonoBehaviour
 		// Iterate through any current collectables and apply their behaviours
 		private void ApplyCollectableBehaviours ()
 		{
-				List<int> expiredCollectableIndexes = new List<int> ();
+				List<Collectable> expiredCollectables = new List<Collectable> ();
 
 				for (int i = 0; i < this.currentCollectables.Count; i++) {
 						Collectable collectable = this.currentCollectables [i];
 						bool stillHasLife = collectable.UseOneFrame (this);
 
 						if (!stillHasLife) {
-								expiredCollectableIndexes.Add (i);
+								expiredCollectables.Add (collectable);
 						}
 				}
 
 				// Remove any expired collectables
-				for (int i = 0; i < expiredCollectableIndexes.Count; i++) {
-						this.currentCollectables.RemoveAt (expiredCollectableIndexes [i]);
+				for (int i = 0; i < expiredCollectables.Count; i++) {
+						this.currentCollectables.Remove (expiredCollectables [i]);
 				}
 		}
+
+		/**
+		 * Add all of the collectables on screen to currentCollectables, then destroy their GameObjects
+		 */
+		public void CollectAllCollectables ()
+		{
+
+			GameObject[] coins = GameObject.FindGameObjectsWithTag("CollectableCoin");
+			GameObject[] powerUps = GameObject.FindGameObjectsWithTag("CollectablePowerUp");
+
+			// Combine these collectables into one array
+			GameObject[] collectables = new GameObject[coins.Length + powerUps.Length];
+			coins.CopyTo(collectables, 0);
+			powerUps.CopyTo(collectables, coins.Length);
+
+			for (int i = 0; i < collectables.Length; i++)
+			{
+				GameObject collectableGameObject = collectables[i].gameObject;
+				Collectable collectable = collectableGameObject.GetComponent<Collectable>();
+
+				if (collectableGameObject.renderer.isVisible)
+				{
+					currentCollectables.Add(collectable);
+					Destroy(collectable.gameObject);
+				}
+
+			}
+		}
+
+		public void AddLucidPower(float power) {
+			shakeDetector.GetComponent<ShakeDetectorScript>().AddLucidPower(power);
+		}
+
+
+
+		// retrieve persisted settings for music and sound effects
+		private void RetrieveSettings() {
+			if (PlayerPrefs.HasKey ("MusicOption")) {
+				musicOn = PlayerPrefs.GetInt("MusicOption") != 0;
+				} else {
+					musicOn = true;
+				}
+			if (PlayerPrefs.HasKey ("SoundEffectsOption")) {
+				soundEffectsOn = PlayerPrefs.GetInt("SoundEffectsOption") != 0;
+				} else {
+					soundEffectsOn = true;
+				}
+		}	
 }
+

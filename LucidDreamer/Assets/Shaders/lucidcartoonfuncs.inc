@@ -5,6 +5,7 @@ uniform sampler2D _BumpTex;
 uniform half _BumpSzX;
 uniform half _BumpSzY;
 uniform half _BumpSzZ;
+fixed4 _Colour;
 fixed4 _LightColor0;
 
 float posterise2(float rawValue, float step0, float step1)
@@ -35,6 +36,14 @@ float2 calcSpecFactorsCartoon(float albedo, float3 norm, float3 lVec, float3 vVe
 	return step(float2(0.3333f, 0.6667f), rimLight);//float2(step(0.3333f, rimLight), step(0.6667f, rimLight));
 }
 
+float2 calcSpecFactorsCartoonPrecompFresnel(float albedo, float3 norm, float3 lVec, float3 vVec, float attenuation, float fresnel)
+{
+	float rimLight	 = lerp(albedo, 1.f, fresnel);
+	rimLight		*= lerp(0.f, 1.f, dot(reflect(-lVec, norm), vVec));
+	rimLight		*= attenuation;
+	return step(float2(0.3333f, 0.6667f), rimLight);//float2(step(0.3333f, rimLight), step(0.6667f, rimLight));
+}
+
 float calcDiffuseFactor(float3 norm, float3 lVec, float attenuation)
 {
 	return saturate(dot(norm, lVec)) * attenuation;
@@ -58,6 +67,14 @@ float4 shadeDiff(float3 diff, float3 norm, float3 lVec, float attenuation)
 float4 shadeSpec(float3 diff, float albedo, float3 norm, float3 lVec, float3 vVec, float attenuation)
 {
 	float2 specOut = calcSpecFactorsCartoon(albedo, norm, lVec, vVec, attenuation);
+	float3 outCol = lerp(diff, 1.f, specOut.y) * specOut.x;
+	
+	return float4(outCol, 1.0);
+}
+
+float4 shadeSpecPrecompFresnel(float3 diff, float albedo, float3 norm, float3 lVec, float3 vVec, float attenuation, float fresnel)
+{
+	float2 specOut = calcSpecFactorsCartoonPrecompFresnel(albedo, norm, lVec, vVec, attenuation, fresnel);
 	float3 outCol = lerp(diff, 1.f, specOut.y) * specOut.x;
 	
 	return float4(outCol, 1.0);
