@@ -27,7 +27,7 @@ public class ShakeDetectorScript : MonoBehaviour {
 	private HUDLucidGUI LucidHUD;
 
 	//Raio of score to lucid power
-	public float distancePowerRatio = 0.01f;
+	public float distancePowerRatio = 0.0005f;
 
 	//Decrement speed
 	public float PowerDownRatio = 0.999f;

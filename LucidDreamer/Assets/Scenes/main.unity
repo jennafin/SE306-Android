@@ -541,7 +541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LucidHUDObject: {fileID: 2095973032}
   gameControllerObject: {fileID: 1897705298}
-  distancePowerRatio: .00999999978
+  distancePowerRatio: .000500000024
   PowerDownRatio: .75
   avrgTime: .5
   peakLevel: .600000024
@@ -1603,8 +1603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e84955f978ba48bd8b87e9986c17c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pos: {x: 20, y: 40}
-  size: {x: 60, y: 20}
   progressBarEmpty: {fileID: 0}
   progressBarFull: {fileID: 0}
 --- !u!4 &2095973034
