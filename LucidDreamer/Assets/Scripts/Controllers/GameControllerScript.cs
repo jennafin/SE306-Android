@@ -34,7 +34,7 @@ public class GameControllerScript : MonoBehaviour
 		public GameObject[] levelSegments;
 
 		// Current Theme
-		Theme currentTheme = Theme.Bedroom;
+		Theme currentTheme = Theme.Maths;
 
 		// The number of level segments for this theme
 		int currentThemeSegmentCount = 0;
@@ -157,10 +157,11 @@ public class GameControllerScript : MonoBehaviour
 		// Returns the theme for the next level segment
 		Theme GetNextTheme ()
 		{
-				if (currentThemeSegmentCount >= 5) {
+				if (currentThemeSegmentCount >= 1) {
 						currentThemeSegmentCount = 0;
 						currentTheme = GetNewTheme ();
 				}
+				currentThemeSegmentCount++;
 
 				return currentTheme;
 		}
@@ -173,7 +174,7 @@ public class GameControllerScript : MonoBehaviour
 				Theme nextTheme;
 				do {
 						nextTheme = (Theme)themes.GetValue (random.Next (themes.Length));
-				} while (nextTheme != currentTheme);
+				} while (nextTheme == currentTheme);
 				return nextTheme;
 		}
 

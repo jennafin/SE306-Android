@@ -3,9 +3,9 @@
  */
 public enum Theme
 {
-		Art,
-		Bedroom,
-		History,
+		//Art,
+		//Bedroom,
+		//History,
 		Maths,
 		Science
 }
