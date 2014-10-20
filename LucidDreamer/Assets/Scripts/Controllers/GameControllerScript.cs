@@ -24,7 +24,7 @@ public class GameControllerScript : MonoBehaviour
 		// Life HUD
 		public GameObject LifeHUD;
 		private AchievementsList achievementsList = new AchievementsList ();
-	
+
 
 		// Main Character
 		public Transform alexDreamer;
@@ -201,7 +201,7 @@ public class GameControllerScript : MonoBehaviour
 
 						// Resets time scale to normal
 						timeScale.reset();
-						
+
 						// Plays injured/death sound
 						if (lives < 0) {
 							mainCharacterScript.PlayDeathSound();
@@ -222,7 +222,7 @@ public class GameControllerScript : MonoBehaviour
 						LoadGameOverScreen (); // Loads game over screen after 1.5 seconds
 				}
 		}
-		
+
 		public void LoadGameOverScreen() {
 			scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
 			Application.LoadLevel ("GameOver");
@@ -297,7 +297,7 @@ public class GameControllerScript : MonoBehaviour
 						this.currentCollectables.Remove (expiredCollectables [i]);
 				}
 		}
-		
+
 		/**
 		 * Add all of the collectables on screen to currentCollectables, then destroy their GameObjects
 		 */
@@ -305,23 +305,24 @@ public class GameControllerScript : MonoBehaviour
 		{
 			GameObject[] coins = GameObject.FindGameObjectsWithTag("CollectableCoin");
 			GameObject[] powerUps = GameObject.FindGameObjectsWithTag("CollectablePowerUp");
-			
+
 			// Combine these collectables into one array
 			GameObject[] collectables = new GameObject[coins.Length + powerUps.Length];
 			coins.CopyTo(collectables, 0);
 			powerUps.CopyTo(collectables, coins.Length);
-			
+
 			for (int i = 0; i < collectables.Length; i++)
 			{
 				GameObject collectableGameObject = collectables[i].gameObject;
 				Collectable collectable = collectableGameObject.GetComponent<Collectable>();
-				
+
 				if (collectableGameObject.renderer.isVisible)
 				{
+					Debug.Log("It's being rendered!!!");
 					currentCollectables.Add(collectable);
 					Destroy(collectable.gameObject);
 				}
-				
+
 			}
 		}
 }
