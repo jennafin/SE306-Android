@@ -156,7 +156,7 @@ public class ShakeDetectorScript : MonoBehaviour {
 //					obj.doShakeAction ();
 //				}
 //			}
-//			PowerDown = true;
+			PowerDown = true;
 //			Debug.Log ("hahaha");
 			gameController.CollectAllCollectables();
 
