@@ -149,15 +149,16 @@ public class ShakeDetectorScript : MonoBehaviour {
   private void phoneShake() {
 		//if there is enough lucid power
 		if (lucidPower > 0.99) {
-			foreach (Shakeable obj in subscribers) {
-				//if the object is visible on screen
-				//Note isVisible might  be triggered by scene view camera
-				if(obj.isOnScreen()){
-					obj.doShakeAction ();
-				}
-			}
-			PowerDown = true;
-			Debug.Log ("hahaha");
+//			foreach (Shakeable obj in subscribers) {
+//				//if the object is visible on screen
+//				//Note isVisible might  be triggered by scene view camera
+//				if(obj.isOnScreen()){
+//					obj.doShakeAction ();
+//				}
+//			}
+//			PowerDown = true;
+//			Debug.Log ("hahaha");
+			gameController.CollectAllCollectables();
 
 		}
   }
