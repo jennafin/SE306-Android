@@ -10,6 +10,8 @@ Retry = Повторить ?
 
 ExitToMenu = Выход в меню
 
+Back = Вернуться
+
 SelectLanguage = Выбор языка
 
 Name = Имя
@@ -17,6 +19,12 @@ Name = Имя
 TopScore = Рекорды: 
 
 HighScores = Лучшие результаты
+
+Options = Опции
+
+Music = Музыка
+
+SoundEffects = Звуковые эффекты
 
 NoHighScores = Нет высокие баллы еще
 

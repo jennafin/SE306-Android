@@ -30,6 +30,20 @@ public class SceneFader : MonoBehaviour {
 		return fadeSpeed;
 	}
 
+	// Coroutine wrapper for LoadSceneWithFade
+	public void LoadScene(string sceneLabel, float delay = 0f) {
+		StartCoroutine(LoadSceneWithFade(sceneLabel, delay));
+	}
+
+	// fade out the main menu scene and load the scene as per the parameter sceneLabel
+	private IEnumerator LoadSceneWithFade (string sceneLabel, float delay = 0f)
+	{
+		yield return new WaitForSeconds (delay);
+		float fadeTime = this.BeginFade (1);
+		yield return new WaitForSeconds (fadeTime);
+		Application.LoadLevel (sceneLabel);
+	}
+
 	// Called when scene is loaded. Carries out a fade out 
 	void OnLevelWasLoaded() {
 		BeginFade (-1);

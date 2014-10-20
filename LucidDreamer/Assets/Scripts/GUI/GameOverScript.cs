@@ -72,7 +72,7 @@ public class GameOverScript : MonoBehaviour
 				}
 
 				userName = GUI.TextField(new Rect ((screenWidth / 2 - (buttonWidth / 2)), 2 * screenHeight / 4, buttonWidth, buttonHeight)
-				              , userName, customButton);
+				              , userName, 25, customButton);
 
 
 				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 3 * screenHeight / 4, buttonWidth * 2, buttonHeight)
