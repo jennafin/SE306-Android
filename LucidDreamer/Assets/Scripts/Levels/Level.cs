@@ -25,8 +25,8 @@ public class Level
 				}
 				
 				foreach (var r in this.prefab.GetComponentsInChildren<EnemySpawnScript>()) {
-					Debug.Log ("Sup dudeeeeeeerreee");
-					r.SpawnWithTheme(theme);
+					GameObject enemy = r.SpawnWithTheme(theme);
+					enemy.gameObject.transform.parent = this.prefab.transform;
 				}
 
 				this.maxX = bounds.max.x;
