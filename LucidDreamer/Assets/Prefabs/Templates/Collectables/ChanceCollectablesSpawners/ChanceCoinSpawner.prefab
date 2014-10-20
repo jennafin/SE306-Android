@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593cffbc959b4424484c04024a73df7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 100000, guid: 4d92bfd0bbb0b4b2394962e756cf4722, type: 2}
   spawnChance: 50
 --- !u!1001 &100100000
 Prefab:
