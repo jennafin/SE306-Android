@@ -157,6 +157,7 @@ public class ShakeDetectorScript : MonoBehaviour {
 				}
 			}
 			PowerDown = true;
+			Debug.Log ("hahaha");
 
 		}
   }
