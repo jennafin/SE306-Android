@@ -281,20 +281,47 @@ public class GameControllerScript : MonoBehaviour
 		// Iterate through any current collectables and apply their behaviours
 		private void ApplyCollectableBehaviours ()
 		{
-				List<int> expiredCollectableIndexes = new List<int> ();
+				List<Collectable> expiredCollectables = new List<Collectable> ();
 
 				for (int i = 0; i < this.currentCollectables.Count; i++) {
 						Collectable collectable = this.currentCollectables [i];
 						bool stillHasLife = collectable.UseOneFrame (this);
 
 						if (!stillHasLife) {
-								expiredCollectableIndexes.Add (i);
+								expiredCollectables.Add (collectable);
 						}
 				}
 
 				// Remove any expired collectables
-				for (int i = 0; i < expiredCollectableIndexes.Count; i++) {
-						this.currentCollectables.RemoveAt (expiredCollectableIndexes [i]);
+				for (int i = 0; i < expiredCollectables.Count; i++) {
+						this.currentCollectables.Remove (expiredCollectables [i]);
 				}
+		}
+		
+		/**
+		 * Add all of the collectables on screen to currentCollectables, then destroy their GameObjects
+		 */
+		public void CollectAllCollectables ()
+		{
+			GameObject[] coins = GameObject.FindGameObjectsWithTag("CollectableCoin");
+			GameObject[] powerUps = GameObject.FindGameObjectsWithTag("CollectablePowerUp");
+			
+			// Combine these collectables into one array
+			GameObject[] collectables = new GameObject[coins.Length + powerUps.Length];
+			coins.CopyTo(collectables, 0);
+			powerUps.CopyTo(collectables, coins.Length);
+			
+			for (int i = 0; i < collectables.Length; i++)
+			{
+				GameObject collectableGameObject = collectables[i].gameObject;
+				Collectable collectable = collectableGameObject.GetComponent<Collectable>();
+				
+				if (collectableGameObject.renderer.isVisible)
+				{
+					currentCollectables.Add(collectable);
+					Destroy(collectable.gameObject);
+				}
+				
+			}
 		}
 }

@@ -26,7 +26,6 @@ public class ScoreTrackingSystem {
 	public void AddPoints(int addMe)
 	{
 		pointsToBeAdded = pointsToBeAdded + addMe;
-		Debug.Log ("Added points");
 	}
 
 	public void AddMultiplier(int multiplierToAdd)
