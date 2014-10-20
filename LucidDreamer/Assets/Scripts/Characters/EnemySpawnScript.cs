@@ -5,6 +5,7 @@ public class EnemySpawnScript : MonoBehaviour
 {
 		public GameObject mathsObject;
 		public GameObject scienceObject;
+		public GameObject artObject;
 				
 		public void SpawnWithTheme (Theme theme)
 		{
