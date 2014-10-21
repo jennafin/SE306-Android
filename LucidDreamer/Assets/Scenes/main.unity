@@ -2222,7 +2222,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 46
+    m_FontSize: 36
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2281,7 +2281,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 2ce8338171fec944ba1d26fb75c30405, type: 3}
-    m_FontSize: 96
+    m_FontSize: 76
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2340,7 +2340,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 24
+    m_FontSize: 19
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
