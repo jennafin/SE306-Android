@@ -19,7 +19,10 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	void Start () {
 		// Get level width/height
 		imageWidth = defaultBackground.renderer.bounds.size.x;
-		imageHeight = defaultBackground.renderer.bounds.size.y;
+		imageHeight = defaultBackground.renderer.bounds.size.z;
+		
+		Debug.Log ("Height: " + imageHeight);
+		Debug.Log ("Width: " + imageWidth);
 		
 		// Create the first 9 screens
 		InstantiateLevels();
@@ -31,15 +34,12 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (RightIsVisible()) {
-			Debug.Log("Right is Visible");
 			MoveRight();
 		}
 		
-		if (UpIsVisible()) {
-			Debug.Log("Up is visible");
+		if (UpIsVisible() && !DownIsVisible()) {
 			MoveUp ();
-		} else if (DownIsVisible()) {
-			Debug.Log("Down is visible");
+		} else if (DownIsVisible() && !UpIsVisible()) {
 			MoveDown ();
 		}
 	}
