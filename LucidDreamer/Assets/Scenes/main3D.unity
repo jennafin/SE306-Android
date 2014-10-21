@@ -2156,7 +2156,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 36
+    m_FontSize: 46
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2215,7 +2215,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 2ce8338171fec944ba1d26fb75c30405, type: 3}
-    m_FontSize: 76
+    m_FontSize: 96
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2274,7 +2274,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 19
+    m_FontSize: 24
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2816,7 +2816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1286769715}
   distanceBehind: 5
-  distanceAboveTarget: 3
+  distanceAboveTarget: 2
   distanceAboveMax: 4
   distanceAboveMin: 0
   verticalFluidity: .00999999978
@@ -2915,7 +2915,7 @@ Camera:
     y: 0
     width: 1.5
     height: 1
-  near clip plane: 2.5
+  near clip plane: 2
   far clip plane: 100
   field of view: 50
   orthographic: 0
@@ -2937,8 +2937,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1985296155}
-  m_LocalRotation: {x: .122787811, y: .696364284, z: -.122787811, w: .696364284}
-  m_LocalPosition: {x: -8.81999969, y: 6.25, z: 1.75}
+  m_LocalRotation: {x: .0455080792, y: .705640972, z: -.0455080867, w: .705640852}
+  m_LocalPosition: {x: 63, y: 2, z: 1.75}
   m_LocalScale: {x: 1, y: .99999994, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
