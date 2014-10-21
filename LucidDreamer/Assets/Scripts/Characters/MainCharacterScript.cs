@@ -8,7 +8,7 @@ public class MainCharacterScript : MonoBehaviour {
 
 	float jumpForce = 600f;
 	float doubleJumpForce = 600f;
-	float superJumpForce = 800f;
+	float superJumpForce = 700f;
 
 	float currentJumpForce;
 	

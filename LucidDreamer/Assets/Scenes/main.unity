@@ -381,7 +381,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 278581934}
-  m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
+  m_LocalRotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
   m_LocalPosition: {x: -1.26370169e-16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -701,9 +701,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1286769715}
-  distanceAhead: 16
-  distanceBehind: 8
+  distanceAhead: 22
+  distanceBehind: 4
   yOffset: 3
+  smooth: .100000001
   minHeight: 10
 --- !u!82 &1160922492
 AudioSource:
@@ -723,7 +724,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: -.00999999978
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -1511,8 +1512,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 1728986873}
   m_AABB:
-    m_Center: {x: 5.96046448e-08, y: .326438844, z: .0427111387}
-    m_Extent: {x: .563276827, y: .844565451, z: .559841812}
+    m_Center: {x: 0, y: .326439083, z: .0427111983}
+    m_Extent: {x: .563277006, y: .84456569, z: .559841871}
   m_DirtyAABB: 0
 --- !u!1 &1728986872
 GameObject:
