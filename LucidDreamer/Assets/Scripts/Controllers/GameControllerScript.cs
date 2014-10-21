@@ -10,7 +10,7 @@ public class GameControllerScript : MonoBehaviour
 		private SpeedHandle timeScale;
 
 		// Keep track of how many lives the player has
-		private const int MAX_NUMBER_OF_LIVES = 3;
+		private int MAX_NUMBER_OF_LIVES = 3;
 		private int	lives;
 		private int coinsCollected = 0;
 
@@ -70,8 +70,8 @@ public class GameControllerScript : MonoBehaviour
 				lives = MAX_NUMBER_OF_LIVES;
 
 				// Retrieve settings
-				RetrieveSettings ();	
-				
+				RetrieveSettings ();
+
 				// turn on (unmute) music if turned on
 				if (musicOn) {
 						AudioSource music = GameObject.Find ("Main Camera").GetComponent<AudioSource> ();
@@ -86,6 +86,15 @@ public class GameControllerScript : MonoBehaviour
 				// Below here is temp stuff until there is a bedroom scene
 				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity);
 				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
+
+				// Get the maximum amount of lives
+				PurchaseManager purchaseManager = new PurchaseManager();
+				purchaseManager.Load();
+				if (purchaseManager.Get5Lives()) {
+					MAX_NUMBER_OF_LIVES = 5;
+				} else if (purchaseManager.Get4Lives()) {
+					MAX_NUMBER_OF_LIVES = 4;
+				}
 		}
 
 		// Update is called once per frame
@@ -106,8 +115,8 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 				float tmpPos = Camera.main.WorldToScreenPoint (new Vector3 (previousLevel.MaxX (), 0, 0)).x;
-				
-				
+
+
 				bool isVisible = false;
 				foreach (Renderer r in previousLevel.Prefab().GetComponentsInChildren<Renderer>()) {
 						if (r.isVisible) {
@@ -115,8 +124,8 @@ public class GameControllerScript : MonoBehaviour
 								break;
 						}
 				}
-		
-		
+
+
 				if (tmpPos < 0 && ! isVisible) {
 
 						Vector3 levelSpawnPosition = new Vector3 (currentLevel.MaxX (), 0, 0);
@@ -208,7 +217,7 @@ public class GameControllerScript : MonoBehaviour
 
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
-						
+
 						if (objectName.Contains ("Enemy")) {
 								Enemy enemy = col.gameObject.GetComponent<Enemy> ();
 								if (this.mainCharacterScript.isInvincible)
@@ -220,7 +229,7 @@ public class GameControllerScript : MonoBehaviour
 								{
 									enemy.OnCollision (this);
 								}
-								
+
 						}
 						if (this.mainCharacterScript.isInvincible) {
 								return;
@@ -244,9 +253,9 @@ public class GameControllerScript : MonoBehaviour
 										mainCharacterScript.PlayInjuredSound ();
 								}
 						}
-						
+
 						mainCharacterScript.HitByEnemy();
-						
+
 				} else if (objectTag.StartsWith ("Collectable")) {
 
 						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
@@ -376,7 +385,7 @@ public class GameControllerScript : MonoBehaviour
 				} else {
 						soundEffectsOn = true;
 				}
-		}	
+		}
 
 		// pause the game – make relevant calls to halt background operations
 		public void PauseGame ()
@@ -394,4 +403,3 @@ public class GameControllerScript : MonoBehaviour
 				mainCharacterScript.UnpauseJumpAbility ();
 		}
 }
-

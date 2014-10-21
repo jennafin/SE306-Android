@@ -46,11 +46,11 @@ public class PurchaseManager {
 		purchases.Lives_5 = enabled;
 	}
 
-	public bool Get4Lives(bool enabled) {
+	public bool Get4Lives() {
 		return purchases.Lives_4;
 	}
 
-	public bool Get5Lives(bool enabled) {
+	public bool Get5Lives() {
 		return purchases.Lives_5;
 	}
 }
