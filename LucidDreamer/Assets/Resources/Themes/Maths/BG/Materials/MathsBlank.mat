@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: No Name
+  m_Name: MathsBlank
   m_Shader: {fileID: 4800000, guid: c36a613131275eb47a24e971ca6ea274, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -17,7 +17,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 70987c15cefcdd840b0af03e83d7780c, type: 3}
+          m_Texture: {fileID: 2800000, guid: 661ba7cdae37bca4b93d2cc422bb71c5, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats: {}
