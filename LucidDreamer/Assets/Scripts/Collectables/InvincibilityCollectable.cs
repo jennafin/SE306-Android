@@ -8,12 +8,19 @@ public class InvincibilityCollectable : Collectable {
 		get { return 1000; }
 	}
 	
+	protected override Color ParticleEmitterColor
+	{
+		get { return Color.red; }
+	}
+	
 	protected override void InitiateCollectableBehaviour (GameControllerScript gameController) {
-		gameController.getMainCharacter ().isInvincible = true;
+		MainCharacterScript mainCharacter = gameController.getMainCharacter ();
+		mainCharacter.isInvincible = true;
 	}
 	
 	protected override void RevokeCollectableBehaviour (GameControllerScript gameController) {
-		gameController.getMainCharacter ().isInvincible = false;
+		MainCharacterScript mainCharacter = gameController.getMainCharacter ();
+		mainCharacter.isInvincible = false;
 	}
 	
 }

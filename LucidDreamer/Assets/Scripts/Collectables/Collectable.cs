@@ -10,6 +10,11 @@ public abstract class Collectable : MonoBehaviour {
 	{
 		get { return DEFAULT_LIFE_SPAN; }
 	}
+	
+	protected virtual Color ParticleEmitterColor
+	{
+		get { return Color.clear; }
+	}
 
 	// Keeps track of how long this collectable has left to live.
 	// A negative value signifies the collectable hasn't been used yet.
@@ -30,19 +35,24 @@ public abstract class Collectable : MonoBehaviour {
 	public bool UseOneFrame(GameControllerScript gameController) {
 		if (framesOfLifeRemaining == LifeSpan)
 		{
+			// First time using the collectable
 			InitiateCollectableBehaviour(gameController);
+			StartParticleEmitter(gameController);
 			framesOfLifeRemaining -= 1;
 			return true;
 		}
 		else if (framesOfLifeRemaining > 0)
 		{
+			// Neither first nor last time using the collectable
 			UpdateCollectableBehaviour(gameController, framesOfLifeRemaining);
 			framesOfLifeRemaining -= 1;
 			return true;
 		}
 		else
 		{
+			// Last time using the collectable
 			RevokeCollectableBehaviour(gameController);
+			StopParticleEmitter(gameController);
 			return false;
 		}
 	}
@@ -72,6 +82,29 @@ public abstract class Collectable : MonoBehaviour {
 	protected virtual void RevokeCollectableBehaviour (GameControllerScript gameController)
 	{
 	}
+	
+	/**
+	 * Start the main character's particle emitter, using this collectable's emitter color.
+	 * Only start the emitter if this Collectable's emitter color is not set to Color.clear  
+	 */
+	private void StartParticleEmitter (GameControllerScript gameController)
+	{
+		if (this.ParticleEmitterColor != Color.clear)
+		{
+			gameController.getMainCharacter().StartParticleEmitter(this.ParticleEmitterColor);
+		}
+	}
+	
+	/**
+	 * Stop the main character's particle emitter.
+	 */
+	 private void StopParticleEmitter (GameControllerScript gameController)
+	 {
+		if (this.ParticleEmitterColor != Color.clear)
+		{
+	 		gameController.getMainCharacter().StopParticleEmitter();
+	 	}
+	 }
 	
 	/**
 	 * This should be overridden to be the sound to be played when this collectable is collected.
