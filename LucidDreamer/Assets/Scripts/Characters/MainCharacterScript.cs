@@ -29,8 +29,13 @@ public class MainCharacterScript : MonoBehaviour {
 	public AudioClip injuredSound;
 	private bool soundEffectsOn;
 	
+	private ParticleSystem particleSystem;
+	
 	void Start() {
 		this.currentJumpForce = jumpForce;
+		
+		this.particleSystem = GetComponentInChildren<ParticleSystem>();
+		StopParticleEmitter();
 		RetrieveSettings ();
 	}
 
@@ -116,6 +121,22 @@ public class MainCharacterScript : MonoBehaviour {
 		} else {
 			soundEffectsOn = true;
 		}
-	}	
+	}
+	
+	public void StartParticleEmitter(Color color)
+	{
+		this.particleSystem.startColor = color;
+		this.particleSystem.enableEmission = true;
+	}
+	
+	public void StopParticleEmitter()
+	{
+		this.particleSystem.enableEmission = false;
+	}
+	
+	public bool IsEmittingParticles()
+	{
+		return this.particleSystem.enableEmission;
+	}
 
 }
