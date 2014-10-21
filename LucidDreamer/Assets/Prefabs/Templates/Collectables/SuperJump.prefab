@@ -80,6 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139c8fbf191f44deebcbe0404e8a0f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound:
+  - {fileID: 8300000, guid: 70e54f52aa8304de197a7782cddbce73, type: 3}
+  - {fileID: 8300000, guid: e8451eb3ce93e4cb1a469fda169e450d, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
