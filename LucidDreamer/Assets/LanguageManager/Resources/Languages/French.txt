@@ -8,6 +8,12 @@ Score = Score:
 
 Retry = Réessayer?
 
+Restart = Recommencer
+
+Paused = Pause
+
+Resume = Reprendre
+
 ExitToMenu = Sortie au menu
 
 Back = Retour

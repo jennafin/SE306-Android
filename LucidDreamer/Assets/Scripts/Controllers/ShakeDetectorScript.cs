@@ -34,6 +34,9 @@ public class ShakeDetectorScript : MonoBehaviour {
 
 	//If lucid power has just been used
 	private bool PowerDown = false;
+	
+	//If game is paused
+	private bool isPaused = false;
 
   public float avrgTime = 0.5f;
   public float peakLevel = 0.6f;
@@ -152,7 +155,7 @@ public class ShakeDetectorScript : MonoBehaviour {
   // Notify subscribers
   private void phoneShake() {
 		//if there is enough lucid power
-		if (lucidPower > 0.99) {
+		if (lucidPower > 0.99 && !isPaused) {
 			PowerDown = true;
 			gameController.CollectAllCollectables();
 			deleteAllEnemies();
@@ -188,5 +191,13 @@ public class ShakeDetectorScript : MonoBehaviour {
 
   public void AddLucidPower(float power) {
     lucidPower += power;
+  }
+  
+  public void PauseDetection() {
+  	isPaused = true;
+  }
+  
+  public void UnpauseDetection() {
+  	isPaused = false;
   }
 }
