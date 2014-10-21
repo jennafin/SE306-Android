@@ -64,10 +64,7 @@ public class PauseMenuScript : MonoBehaviour {
 			if (GUILayout.Button (LanguageManager.GetText ("Resume")
 									, buttonStyle
 									, GUILayout.Height(buttonHeight))) {
-				isPaused = false;
-				FadeOut();
-				GameObject.Find ("GameController").GetComponent<GameControllerScript> ().UnpauseGame();
-
+				UnpauseGame();
 			}
 
 			GUILayout.Space (buttonHeight);
@@ -89,9 +86,7 @@ public class PauseMenuScript : MonoBehaviour {
 										, buttonHeight)
 										, " ▌▌"
 										, pausedButtonStyle)) {
-				isPaused = true;
-				FadeIn();
-				GameObject.Find ("GameController").GetComponent<GameControllerScript> ().PauseGame();
+				PauseGame();
 			}
 		}
 
@@ -115,5 +110,17 @@ public class PauseMenuScript : MonoBehaviour {
 	// sets the alpha value of the pause overlay to zero
 	private void FadeOut() {
 		alpha = 0.0f;
+	}
+	
+	private void PauseGame() {
+		isPaused = true;
+		FadeIn();
+		GameObject.Find ("GameController").GetComponent<GameControllerScript> ().PauseGame();
+	}
+	
+	private void UnpauseGame() {
+		isPaused = false;
+		FadeOut();
+		GameObject.Find ("GameController").GetComponent<GameControllerScript> ().UnpauseGame();
 	}
 }

@@ -373,11 +373,13 @@ public class GameControllerScript : MonoBehaviour
 		// pause the game
 		public void PauseGame() {
 			timeScale.pause ();
+			shakeDetector.GetComponent<ShakeDetectorScript>().PauseDetection();
 		}
 
 		// unpause the game
 		public void UnpauseGame() {
 			timeScale.unpause ();
+			shakeDetector.GetComponent<ShakeDetectorScript>().UnpauseDetection();
 		}
 }
 
