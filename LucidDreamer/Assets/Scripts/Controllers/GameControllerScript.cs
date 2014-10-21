@@ -104,12 +104,6 @@ public class GameControllerScript : MonoBehaviour
 				// Handles the game speeding up.
 				Time.timeScale = (float)timeScale.getCurrentSpeed ();
 				timeScale.incrementSpeed (timeScaleIncrement);
-
-				// exit game on escape/back button
-				if (Input.GetKeyDown (KeyCode.Escape)) {
-
-						Application.LoadLevel ("MainMenu");
-				}
 				
 				int time = stopWatch.Elapsed.Seconds;
 				if (time == 1) {
@@ -120,7 +114,6 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 				ApplyCollectableBehaviours ();
-
 
 				alexPosition = alexDreamer.position;
 
