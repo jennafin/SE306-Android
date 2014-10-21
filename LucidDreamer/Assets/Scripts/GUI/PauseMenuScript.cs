@@ -107,7 +107,7 @@ public class PauseMenuScript : MonoBehaviour {
 	}
 	
 	void Update() {
-		// exit game on escape/back button
+		// toggle pause menu on escape/back button
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			if (isPaused) {
 				UnpauseGame();
