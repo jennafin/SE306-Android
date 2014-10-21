@@ -3,9 +3,9 @@ using System.Collections;
 
 public class SuperJumpCollectable : Collectable {
 
-	protected override int LifeSpan 
+	protected override float LifeSpan 
 	{
-		get { return 400; }
+		get { return 5; }
 	}
 	
 	protected override Color ParticleEmitterColor
@@ -15,6 +15,10 @@ public class SuperJumpCollectable : Collectable {
 	
 	protected override void InitiateCollectableBehaviour (GameControllerScript gameController) {
 		gameController.getMainCharacter ().startSuperJump ();
+	}
+	
+	protected override void UpdateCollectableBehaviour (GameControllerScript gameController) {
+		gameController.getMainCharacter().startSuperJump ();
 	}
 
 	protected override void RevokeCollectableBehaviour (GameControllerScript gameController) {

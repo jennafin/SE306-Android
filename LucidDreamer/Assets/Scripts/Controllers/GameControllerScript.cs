@@ -53,7 +53,7 @@ public class GameControllerScript : MonoBehaviour
 
 		// Settings
 		private bool musicOn;
-		private bool soundEffectsOn;
+		public bool soundEffectsOn;
 
 
 
@@ -214,9 +214,19 @@ public class GameControllerScript : MonoBehaviour
 
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
+						
 						if (objectName.Contains ("Enemy")) {
-
-								col.gameObject.GetComponent<Enemy> ().OnCollision (this);
+								Enemy enemy = col.gameObject.GetComponent<Enemy> ();
+								if (this.mainCharacterScript.isInvincible)
+								{
+									enemy.OnDeath();
+									return;
+								}
+								else
+								{
+									enemy.OnCollision (this);
+								}
+								
 						}
 						if (this.mainCharacterScript.isInvincible) {
 								return;
@@ -240,6 +250,8 @@ public class GameControllerScript : MonoBehaviour
 										mainCharacterScript.PlayInjuredSound ();
 								}
 						}
+						
+						mainCharacterScript.HitByEnemy();
 						
 				} else if (objectTag.StartsWith ("Collectable")) {
 

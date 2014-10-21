@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public abstract class Collectable : MonoBehaviour {
 
-	// Length of time that this collectable lasts (in frames) 
-	private int DEFAULT_LIFE_SPAN = 1;
+	// Length of time that this collectable lasts (in seconds) 
+	private float DEFAULT_LIFE_SPAN = 0;
 
 	/**
 	 * This should be overridden to be the sound to be played when this collectable is collected.
@@ -14,7 +14,7 @@ public abstract class Collectable : MonoBehaviour {
 	 */
 	public List<AudioClip> sound = new List<AudioClip>();
 
-	protected virtual int LifeSpan 
+	protected virtual float LifeSpan 
 	{
 		get { return DEFAULT_LIFE_SPAN; }
 	}
@@ -26,11 +26,11 @@ public abstract class Collectable : MonoBehaviour {
 
 	// Keeps track of how long this collectable has left to live.
 	// A negative value signifies the collectable hasn't been used yet.
-	protected int framesOfLifeRemaining;
+	protected float secondsOfLifeRemaining;
 
 	public Collectable() 
 	{
-		this.framesOfLifeRemaining = this.LifeSpan;
+		this.secondsOfLifeRemaining = this.LifeSpan;
 	}
 
 	/**
@@ -41,20 +41,20 @@ public abstract class Collectable : MonoBehaviour {
 	 *         false if this collectable has been used up
 	 */
 	public bool UseOneFrame(GameControllerScript gameController) {
-		if (framesOfLifeRemaining == LifeSpan)
+		if (secondsOfLifeRemaining == LifeSpan)
 		{
 			// First time using the collectable
 			InitiateCollectableBehaviour(gameController);
 			StartParticleEmitter(gameController);
-			framesOfLifeRemaining -= 1;
+			secondsOfLifeRemaining -= Time.deltaTime;
 			return true;
 		}
-		else if (framesOfLifeRemaining > 0)
+		else if (secondsOfLifeRemaining > 0)
 		{
 			// Neither first nor last time using the collectable
 			UpdateCollectableBehaviour(gameController);
 			RestartParticleEmitter(gameController);
-			framesOfLifeRemaining -= 1;
+			secondsOfLifeRemaining -= Time.deltaTime;
 			return true;
 		}
 		else
@@ -134,7 +134,7 @@ public abstract class Collectable : MonoBehaviour {
 	{
 		if (sound.Count >= 1) {
 			System.Random random = new System.Random ();
-			int number = random.Next(sound.Count-1);
+			int number = random.Next(sound.Count);
 			if (sound[number] != null){
 				AudioSource.PlayClipAtPoint(sound[number], this.transform.position, 2.0f);
 			}

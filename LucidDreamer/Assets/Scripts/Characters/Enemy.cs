@@ -11,4 +11,17 @@ public abstract class Enemy : MonoBehaviour
 		}
 	
 		public abstract void CollisionBehaviour (GameControllerScript gameController);
+		
+		public void OnDeath()
+		{
+			Debug.Log("Oops, I died");
+			rigidbody2D.velocity = new Vector3(20, 4, 0);
+			rigidbody2D.angularVelocity = 100;
+			Invoke("DestroyGameObject", 0.5F);
+		}
+		
+		private void DestroyGameObject()
+		{
+			Destroy(gameObject);
+		}
 }
