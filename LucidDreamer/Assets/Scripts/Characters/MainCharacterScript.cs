@@ -29,13 +29,25 @@ public class MainCharacterScript : MonoBehaviour {
 	public AudioClip injuredSound;
 	private bool soundEffectsOn;
 	
+	// Number of times to flash visibility off
+	public int flashingAnimationCountTotal = 3;
+	private int remainingFlashingAnimations = 0;
+	// The number of frames to show/hide Alex for
+	public int flashingAnimationDuration = 1;
+	private int remainingFramesUntilToggleVisibility = 0;
+	
+	private Renderer characterRenderer;
+	
+	
 	void Start() {
 		this.currentJumpForce = jumpForce;
+		this.characterRenderer = this.GetComponentInChildren<SkinnedMeshRenderer>();
 		RetrieveSettings ();
 	}
 
 	void Update() {
 		updateIsGrounded ();
+		UpdateFlashingAnimation ();
 		bool userPressJump = Input.GetButtonDown ("Jump") || Input.GetButtonDown ("Fire1");
 		if (userPressJump) {
 			if (isGrounded) {
@@ -116,6 +128,50 @@ public class MainCharacterScript : MonoBehaviour {
 		} else {
 			soundEffectsOn = true;
 		}
-	}	
-
+	}
+	
+	public void HitByEnemy()
+	{
+		StartFlashingAnimation();
+	}
+	
+	private void StartFlashingAnimation()
+	{
+		remainingFlashingAnimations = flashingAnimationCountTotal;
+		remainingFramesUntilToggleVisibility = flashingAnimationDuration;
+		isInvincible = true;	
+	}
+	
+	private void UpdateFlashingAnimation()
+	{
+		if (remainingFlashingAnimations > 0)
+		{
+			if (remainingFramesUntilToggleVisibility == 0)
+			{
+				ToggleVisibilityForFlashingAnimation();
+				remainingFramesUntilToggleVisibility = flashingAnimationDuration;
+			} 
+			else 
+			{
+				remainingFramesUntilToggleVisibility -= 1;
+			}
+		}
+	}
+	
+	private void ToggleVisibilityForFlashingAnimation()
+	{
+		if (characterRenderer.enabled)
+		{
+			// Alex is visible, hide him
+			characterRenderer.enabled = false;
+		}
+		else
+		{
+			// Alex is hidden, show him
+			characterRenderer.enabled = true;
+			remainingFlashingAnimations -= 1; // We've just completed one full flashing animation
+			isInvincible = false;
+		}
+	}
+	
 }

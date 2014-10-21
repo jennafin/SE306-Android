@@ -230,6 +230,8 @@ public class GameControllerScript : MonoBehaviour
 							}
 						}
 						
+						mainCharacterScript.HitByEnemy();
+						
 				} else if (objectTag.StartsWith ("Collectable")) {
 
 						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
