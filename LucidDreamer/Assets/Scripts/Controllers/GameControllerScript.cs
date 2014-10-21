@@ -95,12 +95,6 @@ public class GameControllerScript : MonoBehaviour
 				Time.timeScale = (float)timeScale.getCurrentSpeed ();
 				timeScale.incrementSpeed (timeScaleIncrement);
 
-				// exit game on escape/back button
-				if (Input.GetKeyDown (KeyCode.Escape)) {
-
-						Application.LoadLevel ("MainMenu");
-				}
-
 				ApplyCollectableBehaviours ();
 
 

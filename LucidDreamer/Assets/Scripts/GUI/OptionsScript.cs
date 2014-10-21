@@ -16,7 +16,6 @@ public class OptionsScript : MonoBehaviour {
 	private int screenWidth;
 	private int buttonWidth;
 	private int buttonHeight;
-	private int padding;
 	private int toggleHeight;
 	private int toggleWidth;
 	private bool musicOption;
@@ -51,7 +50,6 @@ public class OptionsScript : MonoBehaviour {
 		buttonStyle.fontSize = screenHeight / 13;
 		buttonWidth = screenWidth / 5;
 		buttonHeight = screenHeight / 10;
-		padding = screenWidth / 8;
 
 		RetrieveSettings ();
 
