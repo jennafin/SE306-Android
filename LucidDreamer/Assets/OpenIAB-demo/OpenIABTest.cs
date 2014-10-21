@@ -26,6 +26,8 @@ public class OpenIABTest : MonoBehaviour
     const string LIVES_4 = "4_lives";
     const string LIVES_5 = "5_lives";
 
+    private string lastAttempedPurchase = "";
+
     string _label = "";
     bool _isInitialized = false;
 
@@ -34,24 +36,24 @@ public class OpenIABTest : MonoBehaviour
         // Listen to all events for illustration purposes
         OpenIABEventManager.billingSupportedEvent += billingSupportedEvent;
         OpenIABEventManager.billingNotSupportedEvent += billingNotSupportedEvent;
-        OpenIABEventManager.queryInventorySucceededEvent += queryInventorySucceededEvent;
-        OpenIABEventManager.queryInventoryFailedEvent += queryInventoryFailedEvent;
+        //OpenIABEventManager.queryInventorySucceededEvent += queryInventorySucceededEvent;
+        //OpenIABEventManager.queryInventoryFailedEvent += queryInventoryFailedEvent;
         OpenIABEventManager.purchaseSucceededEvent += purchaseSucceededEvent;
         OpenIABEventManager.purchaseFailedEvent += purchaseFailedEvent;
-        OpenIABEventManager.consumePurchaseSucceededEvent += consumePurchaseSucceededEvent;
-        OpenIABEventManager.consumePurchaseFailedEvent += consumePurchaseFailedEvent;
+        //OpenIABEventManager.consumePurchaseSucceededEvent += consumePurchaseSucceededEvent;
+        //OpenIABEventManager.consumePurchaseFailedEvent += consumePurchaseFailedEvent;
     }
     private void OnDisable()
     {
         // Remove all event handlers
         OpenIABEventManager.billingSupportedEvent -= billingSupportedEvent;
         OpenIABEventManager.billingNotSupportedEvent -= billingNotSupportedEvent;
-        OpenIABEventManager.queryInventorySucceededEvent -= queryInventorySucceededEvent;
-        OpenIABEventManager.queryInventoryFailedEvent -= queryInventoryFailedEvent;
+        //OpenIABEventManager.queryInventorySucceededEvent -= queryInventorySucceededEvent;
+        //OpenIABEventManager.queryInventoryFailedEvent -= queryInventoryFailedEvent;
         OpenIABEventManager.purchaseSucceededEvent -= purchaseSucceededEvent;
         OpenIABEventManager.purchaseFailedEvent -= purchaseFailedEvent;
-        OpenIABEventManager.consumePurchaseSucceededEvent -= consumePurchaseSucceededEvent;
-        OpenIABEventManager.consumePurchaseFailedEvent -= consumePurchaseFailedEvent;
+        //OpenIABEventManager.consumePurchaseSucceededEvent -= consumePurchaseSucceededEvent;
+        //OpenIABEventManager.consumePurchaseFailedEvent -= consumePurchaseFailedEvent;
     }
 
     private void Start()
@@ -59,9 +61,6 @@ public class OpenIABTest : MonoBehaviour
         // Map skus for different stores
         OpenIAB.mapSku(LIVES_4, OpenIAB_Android.STORE_GOOGLE, LIVES_4);
         OpenIAB.mapSku(LIVES_5, OpenIAB_Android.STORE_GOOGLE, LIVES_5);
-        /*OpenIAB.mapSku(SKU, OpenIAB_Android.STORE_AMAZON, "sku");
-        OpenIAB.mapSku(SKU, OpenIAB_iOS.STORE, "sku");
-        OpenIAB.mapSku(SKU, OpenIAB_WP8.STORE, "sku");*/
     }
 
     const float X_OFFSET = 10.0f;
@@ -127,8 +126,13 @@ public class OpenIABTest : MonoBehaviour
 
         if (Button("Purchase 4 lives"))
         {
-            OpenIAB.purchaseProduct(LIVES_4);
+            purchaseProduct(LIVES_4);
         }
+    }
+
+    private void purchaseProduct(string product) {
+      OpenIAB.purchaseProduct(product);
+      lastAttempedPurchase = product;
     }
 
     private void billingSupportedEvent()
@@ -140,7 +144,8 @@ public class OpenIABTest : MonoBehaviour
     {
         Debug.Log("billingNotSupportedEvent: " + error);
     }
-    private void queryInventorySucceededEvent(Inventory inventory)
+
+    /*private void queryInventorySucceededEvent(Inventory inventory)
     {
         Debug.Log("queryInventorySucceededEvent: " + inventory);
         if (inventory != null)
@@ -150,19 +155,35 @@ public class OpenIABTest : MonoBehaviour
     {
         Debug.Log("queryInventoryFailedEvent: " + error);
         _label = error;
-    }
+    }*/
+
     private void purchaseSucceededEvent(Purchase purchase)
     {
         Debug.Log("purchaseSucceededEvent: " + purchase);
         _label = "PURCHASED:" + purchase.ToString();
+
+        // Handle product purchase
+        if (purchase.Sku.Equals(LIVES_4)) {
+
+        } else if (purchase.Sku.Equals(LIVES_4)) {
+
+        }
     }
+
     private void purchaseFailedEvent(int errorCode, string errorMessage)
     {
         Debug.Log("purchaseFailedEvent: " + errorMessage);
         Debug.Log("purchaseFailedEvent error code: " + errorCode);
         _label = "Purchase Failed: " + errorMessage;
+
+        // If the error code is 7 then the user has already purchased the product
+        if (errorCode == 7) {
+          // Enable product purchase
+        }
+
     }
-    private void consumePurchaseSucceededEvent(Purchase purchase)
+
+    /*private void consumePurchaseSucceededEvent(Purchase purchase)
     {
         Debug.Log("consumePurchaseSucceededEvent: " + purchase);
         _label = "CONSUMED: " + purchase.ToString();
@@ -171,5 +192,5 @@ public class OpenIABTest : MonoBehaviour
     {
         Debug.Log("consumePurchaseFailedEvent: " + error);
         _label = "Consume Failed: " + error;
-    }
+    }*/
 }
