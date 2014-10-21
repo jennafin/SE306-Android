@@ -8,6 +8,12 @@ Score = 评分:
 
 Retry = 重试吗？
 
+Restart = 再开始
+
+Paused = 已暂停
+
+Resume = 简历
+
 ExitToMenu = 退出菜单
 
 Back = 返回

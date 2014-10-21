@@ -10,10 +10,14 @@ public class SelectLanguageScript : MonoBehaviour {
 	public GUIStyle selectLanguageStyle;
 	public GUIStyle exitButtonStyle;
 	public GUIStyle titleTextStyle;
+
 	private int screenHeight;
 	private int screenWidth;
 	private int buttonWidth;
 	private int buttonHeight;
+	private int drawDepth = -1000;			// texture's drawing order in hierarchy - lower number renders to top
+	private float alpha = 1.0f;				// texture's alpha
+	private int fadeDir = -1;				// direction to fade: in = -1, out = 1
 
 	// Use this for initialization
 	void Start () 
