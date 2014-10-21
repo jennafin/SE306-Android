@@ -30,13 +30,12 @@ public class LifeHUDScript : MonoBehaviour {
 	}
 	
 	void drawScore() {
-		lifeStyle.fontSize = (int) Mathf.Ceil(0.05f * Screen.height);
-		lifeStyle.normal.textColor = Color.red;
+		lifeStyle.fontSize = (int) Mathf.Ceil(0.08f * Screen.height);
 		
 		Vector2 size = lifeStyle.CalcSize(new GUIContent(score.ToString()));
 		//
 		
-		GUI.TextArea(new Rect(Screen.width - size.x - firstHeartStartX, firstHeartStartY / 2, size.x, size.y), score.ToString(), lifeStyle);
+		GUI.TextArea(new Rect(Screen.width - size.x - firstHeartStartX*2, firstHeartStartY / 2, size.x, size.y), score.ToString(), lifeStyle);
 	}
 	
 	void drawLives() {
