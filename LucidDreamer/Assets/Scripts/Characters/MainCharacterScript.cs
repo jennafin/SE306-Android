@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class MainCharacterScript : MonoBehaviour {
@@ -24,21 +25,29 @@ public class MainCharacterScript : MonoBehaviour {
 	float groundRadius = 0.2f;
 	public LayerMask ground;
 
-	public AudioClip jumpSound;
+	public List<AudioClip> jumpSound = new List<AudioClip>();
 	public AudioClip deathSound;
-	public AudioClip injuredSound;
+	public List<AudioClip> injuredSound = new List<AudioClip>();
 	private bool soundEffectsOn;
+	
+	// Number of times to flash visibility off
+	public int flashingAnimationCountTotal = 3;
+	private int remainingFlashingAnimations = 0;
+	// The amount of time to show/hide Alex for
+	public float flashingAnimationDuration = 1.0F;
+	private float remainingTimeUntilToggleVisibility = 0.0F;
+	
+	private Renderer characterRenderer;
 	
 	private bool isPaused = false;	// Whether the game is paused currently or not
 	private Rect touchArea;
-
-	private ParticleSystem particleSystem;
-
+	
+	private ParticleSystem characterParticleSystem;
 	
 	void Start() {
 		this.currentJumpForce = jumpForce;
-		
-		this.particleSystem = GetComponentInChildren<ParticleSystem>();
+		this.characterRenderer = this.GetComponentInChildren<SkinnedMeshRenderer>();
+		this.characterParticleSystem = GetComponentInChildren<ParticleSystem>();
 		StopParticleEmitter();
 		RetrieveSettings ();
 		touchArea = new Rect(0, 0, Screen.width, (Screen.height - Screen.height/5));
@@ -46,6 +55,7 @@ public class MainCharacterScript : MonoBehaviour {
 
 	void Update() {
 		updateIsGrounded ();
+		UpdateFlashingAnimation ();
 		bool userPressJump = (Input.GetButtonDown ("Jump") || JumpAreaTouched()) && !isPaused;
 		if (userPressJump) {
 			if (isGrounded) {
@@ -104,18 +114,18 @@ public class MainCharacterScript : MonoBehaviour {
 	}
 	
 	public void PlayInjuredSound() {
-		PlaySound (injuredSound);
+		PlaySound (injuredSound[Random.Range(0,injuredSound.Count-1)]);
 	}
 	
 	public void PlayJumpSound() {
-		PlaySound (jumpSound);
+		PlaySound (jumpSound[Random.Range(0,jumpSound.Count-1)]);
 	}
 	
 	private void PlaySound(AudioClip sound) {
 		if (! sound) {
 			Debug.Log ("Sound is not initialized in inspector.");
 		} else if (soundEffectsOn) {
-			AudioSource.PlayClipAtPoint(sound, this.transform.position, 2.0f);
+			AudioSource.PlayClipAtPoint(sound, this.transform.position, 1.0f);
 		}
 	}
 
@@ -125,6 +135,48 @@ public class MainCharacterScript : MonoBehaviour {
 			soundEffectsOn = PlayerPrefs.GetInt("SoundEffectsOption") != 0;
 		} else {
 			soundEffectsOn = true;
+		}
+	}
+	
+	public void HitByEnemy()
+	{
+		StartFlashingAnimation();
+	}
+	
+	private void StartFlashingAnimation()
+	{
+		remainingFlashingAnimations = flashingAnimationCountTotal;
+		remainingTimeUntilToggleVisibility = flashingAnimationDuration;
+	}
+	
+	private void UpdateFlashingAnimation()
+	{
+		if (remainingFlashingAnimations > 0)
+		{
+			if (remainingTimeUntilToggleVisibility < 0)
+			{
+				ToggleVisibilityForFlashingAnimation();
+				remainingTimeUntilToggleVisibility = flashingAnimationDuration;
+			} 
+			else 
+			{
+				remainingTimeUntilToggleVisibility -= Time.deltaTime;
+			}
+		}
+	}
+	
+	private void ToggleVisibilityForFlashingAnimation()
+	{
+		if (characterRenderer.enabled)
+		{
+			// Alex is visible, hide him
+			characterRenderer.enabled = false;
+		}
+		else
+		{
+			// Alex is hidden, show him
+			characterRenderer.enabled = true;
+			remainingFlashingAnimations -= 1; // We've just completed one full flashing animation
 		}
 	}	
 	
@@ -150,17 +202,17 @@ public class MainCharacterScript : MonoBehaviour {
 	
 	public void StartParticleEmitter(Color color)
 	{
-		this.particleSystem.startColor = color;
-		this.particleSystem.enableEmission = true;
+		this.characterParticleSystem.startColor = color;
+		this.characterParticleSystem.enableEmission = true;
 	}
 	
 	public void StopParticleEmitter()
 	{
-		this.particleSystem.enableEmission = false;
+		this.characterParticleSystem.enableEmission = false;
 	}
 	
 	public bool IsEmittingParticles()
 	{
-		return this.particleSystem.enableEmission;
+		return this.characterParticleSystem.enableEmission;
 	}
 }
