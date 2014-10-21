@@ -157,8 +157,10 @@ public class MainMenuScript : MonoBehaviour
 			yield return new WaitForSeconds (fadeTime);
 			if (gameMode == GameMode.SIDE_ON) {
 				Application.LoadLevel("main");
+				PlayerPrefs.SetString("mode", "2D");
 			} else {
 				Application.LoadLevel("main3D");
+				PlayerPrefs.SetString("mode", "3D");
 			}
 		}
 }
