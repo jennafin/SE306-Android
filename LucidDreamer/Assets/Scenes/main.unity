@@ -2106,13 +2106,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   jumpSound:
-  - {fileID: 8300000, guid: 1c12613a3e43a4d6a995868aa26ecef5, type: 3}
-  - {fileID: 8300000, guid: 57fd69aea7deb4fce80ea8bbd86febdb, type: 3}
-  - {fileID: 8300000, guid: 5a3336791bdcf4871bfa22a74da2c146, type: 3}
-  deathSound: {fileID: 8300000, guid: 021613dedcd3e452fb9b654e9bf4a4c3, type: 3}
+  - {fileID: 8300000, guid: 2f74de6799041445ea8cbf1563ef548c, type: 3}
+  - {fileID: 8300000, guid: 3fddd2b5d0a234aef8c324c0935b0125, type: 3}
+  - {fileID: 8300000, guid: cc8bbfbe525e843d39654cfef07fc65e, type: 3}
+  - {fileID: 8300000, guid: 0f3004e7babae462a8ab4810ff978eb9, type: 3}
+  - {fileID: 8300000, guid: a5e9a0a097b554e3a997c8683ea012ce, type: 3}
+  - {fileID: 8300000, guid: dc7f198bf65b7418cbfbcc15cae69c49, type: 3}
+  deathSound: {fileID: 8300000, guid: d9a691a55ca9a43cfa3412b98d5144d1, type: 3}
   injuredSound:
-  - {fileID: 8300000, guid: 811d01e450c1747f8b347c39e3e9379e, type: 3}
-  - {fileID: 8300000, guid: c5f93bc02bb374af9b8f3eb26b9ad2fb, type: 3}
+  - {fileID: 8300000, guid: 4d26c0c6fe04f41a5a41609bb0d8b530, type: 3}
+  - {fileID: 8300000, guid: b0e26cd1b18fc4b36bb92cd5402eb6fc, type: 3}
 --- !u!58 &1286769720
 CircleCollider2D:
   m_ObjectHideFlags: 0

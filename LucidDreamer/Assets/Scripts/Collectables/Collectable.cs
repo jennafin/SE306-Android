@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class Collectable : MonoBehaviour {
 
@@ -122,15 +123,15 @@ public abstract class Collectable : MonoBehaviour {
 	 *
 	 * Defaults to null.
 	 */
-	public AudioClip sound;
+	public List<AudioClip> sound = new List<AudioClip>();
 	
 	/**
 	 * Play this collectables sound.
 	 */
 	public void PlayCollectedSound ()
 	{
-		if (sound) {
-			AudioSource.PlayClipAtPoint(sound, this.transform.position, 2.0f);
+		if (sound.Count != 0) {
+			AudioSource.PlayClipAtPoint(sound[Random.Range(0,sound.Count-1)], this.transform.position, 2.0f);
 		}
 	}
 }
