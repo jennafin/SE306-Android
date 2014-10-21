@@ -31,10 +31,10 @@ public class BackgroundSpawnScript : MonoBehaviour {
 		}
 		
 		if (UpIsVisible()) {
+			Debug.Log("Up is visible");
 			MoveUp ();
-		}
-		
-		if (DownIsVisible()) {
+		} else if (DownIsVisible()) {
+			Debug.Log("Down is visible");
 			MoveDown ();
 		}
 	}
@@ -75,19 +75,19 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	bool RightIsVisible() {
 		return currentImages[2, 0].renderer.isVisible
 				|| currentImages[2, 1].renderer.isVisible
-				||	currentImages[2, 2].renderer.isVisible;
+				|| currentImages[2, 2].renderer.isVisible;
 	}
 	
 	bool UpIsVisible() {
 		return currentImages[0, 0].renderer.isVisible
 				|| currentImages[1, 0].renderer.isVisible
-				||	currentImages[2, 0].renderer.isVisible;
+				|| currentImages[2, 0].renderer.isVisible;
 	}
 	
 	bool DownIsVisible() {
 		return currentImages[0, 2].renderer.isVisible
 				|| currentImages[1, 2].renderer.isVisible
-				||	currentImages[2, 2].renderer.isVisible;
+				|| currentImages[2, 2].renderer.isVisible;
 	}
 	
 	void InstantiateLevels() {
