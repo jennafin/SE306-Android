@@ -30,7 +30,9 @@ public class GameControllerScript : MonoBehaviour
 		public Transform alexDreamer;
 		public MainCharacterScript mainCharacterScript;
 
-
+		// The tutorial level to start on.
+		public GameObject startLevel;
+		
 		// The Prefab level segments that can be chosen from
 		public GameObject[] levelSegments;
 
@@ -54,7 +56,6 @@ public class GameControllerScript : MonoBehaviour
 		// Settings
 		private bool musicOn;
 		private bool soundEffectsOn;
-
 
 
 		// Use this for initialization
@@ -84,7 +85,7 @@ public class GameControllerScript : MonoBehaviour
 				// TODO: Load bedroom scene
 
 				// Below here is temp stuff until there is a bedroom scene
-				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity);
+				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity, startLevel);
 				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
 		}
 
@@ -162,13 +163,17 @@ public class GameControllerScript : MonoBehaviour
 		// Uses the LevelFactory to create the next level segment
 		Level GetNextLevel (Vector3 position, Quaternion rotation)
 		{
-				LevelFactory factory = new LevelFactory ();
-				factory.setTheme (GetNextTheme ());
-				factory.setLevelSegment (GetNextPrefab ());
-				factory.setPosition (position);
-				factory.setRotation (rotation);
-
-				return factory.build ();
+				return GetNextLevel(position, rotation, GetNextPrefab());
+		}
+		
+		Level GetNextLevel (Vector3 position, Quaternion rotation, GameObject levelSegment) {
+			LevelFactory factory = new LevelFactory ();
+			factory.setTheme (GetNextTheme ());
+			factory.setLevelSegment (levelSegment);
+			factory.setPosition (position);
+			factory.setRotation (rotation);
+			
+			return factory.build ();
 		}
 
 		// Returns the theme for the next level segment
