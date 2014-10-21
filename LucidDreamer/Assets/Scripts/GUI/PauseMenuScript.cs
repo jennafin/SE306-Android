@@ -57,7 +57,7 @@ public class PauseMenuScript : MonoBehaviour {
 	           			, titleTextStyle);
 
 			GUILayout.BeginArea (new Rect (screenWidth / 2 - screenWidth / 4
-											, 5f * screenHeight / 13
+											, 4f * screenHeight / 13
 											, screenWidth / 2
 											, screenHeight));
 			GUILayout.BeginVertical ();
@@ -68,7 +68,16 @@ public class PauseMenuScript : MonoBehaviour {
 			}
 
 			GUILayout.Space (buttonHeight);
-
+			
+			if (GUILayout.Button (LanguageManager.GetText ("Restart")
+			                      , buttonStyle
+			                      , GUILayout.Height(buttonHeight))) {
+				GameObject.Find ("GameController").GetComponent<GameControllerScript> ().UnpauseGame();
+				LoadGame ();
+			}
+			
+			GUILayout.Space (buttonHeight);
+			
 			if (GUILayout.Button (LanguageManager.GetText ("ExitToMenu")
 									, buttonStyle
 									, GUILayout.Height(buttonHeight))) {
@@ -102,6 +111,10 @@ public class PauseMenuScript : MonoBehaviour {
 		GameObject.Find ("GameController").GetComponent<SceneFader> ().LoadScene("MainMenu");
 	}
 
+	// loads the main (the game) scene using the SceneFade script attached to the GameController GameObject
+	private void LoadGame() {
+		GameObject.Find ("GameController").GetComponent<SceneFader> ().LoadScene("main");
+	}
 	// sets the alpha value of the pause overlay texture to be visible
 	private void FadeIn() {
 		alpha = 0.3f;
