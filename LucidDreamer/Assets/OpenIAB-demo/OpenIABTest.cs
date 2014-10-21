@@ -23,7 +23,8 @@ using System.Collections.Generic;
  */
 public class OpenIABTest : MonoBehaviour
 {
-    const string SKU = "4_lives";
+    const string LIVES_4 = "4_lives";
+    const string LIVES_5 = "5_lives";
 
     string _label = "";
     bool _isInitialized = false;
@@ -56,10 +57,11 @@ public class OpenIABTest : MonoBehaviour
     private void Start()
     {
         // Map skus for different stores
-        OpenIAB.mapSku(SKU, OpenIAB_Android.STORE_GOOGLE, "4_lives");
-        OpenIAB.mapSku(SKU, OpenIAB_Android.STORE_AMAZON, "4_lives");
-        OpenIAB.mapSku(SKU, OpenIAB_iOS.STORE, "4_lives");
-        OpenIAB.mapSku(SKU, OpenIAB_WP8.STORE, "4_lives");
+        OpenIAB.mapSku(LIVES_4, OpenIAB_Android.STORE_GOOGLE, LIVES_4);
+        OpenIAB.mapSku(LIVES_5, OpenIAB_Android.STORE_GOOGLE, LIVES_5);
+        /*OpenIAB.mapSku(SKU, OpenIAB_Android.STORE_AMAZON, "sku");
+        OpenIAB.mapSku(SKU, OpenIAB_iOS.STORE, "sku");
+        OpenIAB.mapSku(SKU, OpenIAB_WP8.STORE, "sku");*/
     }
 
     const float X_OFFSET = 10.0f;
@@ -125,7 +127,7 @@ public class OpenIABTest : MonoBehaviour
 
         if (Button("Purchase 4 lives"))
         {
-            OpenIAB.purchaseProduct(SKU);
+            OpenIAB.purchaseProduct(LIVES_4);
         }
     }
 
@@ -157,6 +159,7 @@ public class OpenIABTest : MonoBehaviour
     private void purchaseFailedEvent(int errorCode, string errorMessage)
     {
         Debug.Log("purchaseFailedEvent: " + errorMessage);
+        Debug.Log("purchaseFailedEvent error code: " + errorCode);
         _label = "Purchase Failed: " + errorMessage;
     }
     private void consumePurchaseSucceededEvent(Purchase purchase)
