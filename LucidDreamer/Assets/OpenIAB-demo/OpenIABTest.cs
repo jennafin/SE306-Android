@@ -56,10 +56,10 @@ public class OpenIABTest : MonoBehaviour
     private void Start()
     {
         // Map skus for different stores
-        OpenIAB.mapSku(SKU, OpenIAB_Android.STORE_GOOGLE, "sku");
-        OpenIAB.mapSku(SKU, OpenIAB_Android.STORE_AMAZON, "sku");
-        OpenIAB.mapSku(SKU, OpenIAB_iOS.STORE, "sku");
-        OpenIAB.mapSku(SKU, OpenIAB_WP8.STORE, "sku");
+        OpenIAB.mapSku(SKU, OpenIAB_Android.STORE_GOOGLE, "4_lives");
+        OpenIAB.mapSku(SKU, OpenIAB_Android.STORE_AMAZON, "4_lives");
+        OpenIAB.mapSku(SKU, OpenIAB_iOS.STORE, "4_lives");
+        OpenIAB.mapSku(SKU, OpenIAB_WP8.STORE, "4_lives");
     }
 
     const float X_OFFSET = 10.0f;
