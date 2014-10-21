@@ -3,9 +3,9 @@ using System.Collections;
 
 public class MultiplierCollectable : Collectable {
 
-	protected override int LifeSpan 
+	protected override float LifeSpan 
 	{
-		get { return 400; }
+		get { return 5; }
 	}
 	
 	protected override Color ParticleEmitterColor
