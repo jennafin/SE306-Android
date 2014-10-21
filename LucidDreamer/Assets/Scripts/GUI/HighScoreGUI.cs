@@ -65,7 +65,6 @@ public class HighScoreGUI : MonoBehaviour {
 				} else {
 						int minHeight = (int)(screenHeight / 4.5);
 						int deltaHeight = 0;
-						int verticalPadding = 0;
 						int horizontalPadding = screenWidth / 10;
 						int i = 1;
 						foreach (ScoreEntry score in topScores) {

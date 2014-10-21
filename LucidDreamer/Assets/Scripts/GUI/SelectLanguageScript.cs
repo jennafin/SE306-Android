@@ -10,6 +10,7 @@ public class SelectLanguageScript : MonoBehaviour {
 	public GUIStyle selectLanguageStyle;
 	public GUIStyle exitButtonStyle;
 	public GUIStyle titleTextStyle;
+
 	private int screenHeight;
 	private int screenWidth;
 	private int buttonWidth;

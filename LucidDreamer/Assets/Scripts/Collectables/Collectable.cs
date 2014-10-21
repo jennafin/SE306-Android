@@ -1,23 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class Collectable : MonoBehaviour {
 
-	// Length of time that this collectable lasts (in frames) 
-	private int DEFAULT_LIFE_SPAN = 1;
+	// Length of time that this collectable lasts (in seconds) 
+	private float DEFAULT_LIFE_SPAN = 0;
 
-	protected virtual int LifeSpan 
+	/**
+	 * This should be overridden to be the sound to be played when this collectable is collected.
+	 *
+	 * Defaults to null.
+	 */
+	public List<AudioClip> sound = new List<AudioClip>();
+
+	protected virtual float LifeSpan 
 	{
 		get { return DEFAULT_LIFE_SPAN; }
+	}
+	
+	protected virtual Color ParticleEmitterColor
+	{
+		get { return Color.clear; }
 	}
 
 	// Keeps track of how long this collectable has left to live.
 	// A negative value signifies the collectable hasn't been used yet.
-	private int framesOfLifeRemaining;
+	protected float secondsOfLifeRemaining;
 
 	public Collectable() 
 	{
-		this.framesOfLifeRemaining = this.LifeSpan;
+		this.secondsOfLifeRemaining = this.LifeSpan;
 	}
 
 	/**
@@ -28,21 +41,27 @@ public abstract class Collectable : MonoBehaviour {
 	 *         false if this collectable has been used up
 	 */
 	public bool UseOneFrame(GameControllerScript gameController) {
-		if (framesOfLifeRemaining == LifeSpan)
+		if (secondsOfLifeRemaining == LifeSpan)
 		{
+			// First time using the collectable
 			InitiateCollectableBehaviour(gameController);
-			framesOfLifeRemaining -= 1;
+			StartParticleEmitter(gameController);
+			secondsOfLifeRemaining -= Time.deltaTime;
 			return true;
 		}
-		else if (framesOfLifeRemaining > 0)
+		else if (secondsOfLifeRemaining > 0)
 		{
-			UpdateCollectableBehaviour(gameController, framesOfLifeRemaining);
-			framesOfLifeRemaining -= 1;
+			// Neither first nor last time using the collectable
+			UpdateCollectableBehaviour(gameController);
+			RestartParticleEmitter(gameController);
+			secondsOfLifeRemaining -= Time.deltaTime;
 			return true;
 		}
 		else
 		{
+			// Last time using the collectable
 			RevokeCollectableBehaviour(gameController);
+			StopParticleEmitter(gameController);
 			return false;
 		}
 	}
@@ -56,11 +75,11 @@ public abstract class Collectable : MonoBehaviour {
 	protected abstract void InitiateCollectableBehaviour (GameControllerScript gameController);
 
 	/**
-	 * Make any changes to the game controller, dependent on this collectables remaining life.
+	 * Make any changes to the game controller that might depend on the collectables remaining life.
 	 * 
 	 * This does not have to be overriden by subclasses. By default it does nothing.
 	 */
-	protected virtual void UpdateCollectableBehaviour (GameControllerScript gameController, int framesOfLifeRemaining)
+	protected virtual void UpdateCollectableBehaviour (GameControllerScript gameController)
 	{
 	}
 
@@ -74,19 +93,51 @@ public abstract class Collectable : MonoBehaviour {
 	}
 	
 	/**
-	 * This should be overridden to be the sound to be played when this collectable is collected.
-	 *
-	 * Defaults to null.
+	 * Start the main character's particle emitter, using this collectable's emitter color.
+	 * Only start the emitter if this Collectable's emitter color is not set to Color.clear  
 	 */
-	public AudioClip sound;
+	private void StartParticleEmitter (GameControllerScript gameController)
+	{
+		if (this.ParticleEmitterColor != Color.clear)
+		{
+			gameController.getMainCharacter().StartParticleEmitter(this.ParticleEmitterColor);
+		}
+	}
 	
+	private void RestartParticleEmitter (GameControllerScript gameController)
+	{
+		MainCharacterScript mainCharacter = gameController.getMainCharacter();
+		
+		if (!mainCharacter.IsEmittingParticles())
+		{
+			StartParticleEmitter(gameController);
+		}
+	}
+	
+	/**
+	 * Stop the main character's particle emitter.
+	 */
+	 private void StopParticleEmitter (GameControllerScript gameController)
+	 {
+		if (this.ParticleEmitterColor != Color.clear)
+		{
+	 		gameController.getMainCharacter().StopParticleEmitter();
+	 	}
+	 }
+	
+
+
 	/**
 	 * Play this collectables sound.
 	 */
 	public void PlayCollectedSound ()
 	{
-		if (sound) {
-			AudioSource.PlayClipAtPoint(sound, this.transform.position, 2.0f);
+		if (sound.Count >= 1) {
+			System.Random random = new System.Random ();
+			int number = random.Next(sound.Count);
+			if (sound[number] != null){
+				AudioSource.PlayClipAtPoint(sound[number], this.transform.position, 2.0f);
+			}
 		}
 	}
 }
