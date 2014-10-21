@@ -8,6 +8,12 @@ Score = Puntuación:
 
 Retry = Reintentar?
 
+Restart = Reanudar
+
+Paused = En Pausa
+
+Resume = Reanudar
+
 ExitToMenu = Salir al Menú
 
 Back = Volver
