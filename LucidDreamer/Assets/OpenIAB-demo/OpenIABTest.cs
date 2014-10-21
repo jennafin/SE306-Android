@@ -131,8 +131,14 @@ public class OpenIABTest : MonoBehaviour
       if (productId != null)
         if (productId.Equals(LIVES_4)) {
           //Enable 4 lives
+          PurchaseManager purchaseManager = new PurchaseManager();
+          purchaseManager.Load();
+          purchaseManager.Set4Lives(true);
         } else if (productId.Equals(LIVES_5)) {
           //Enable 5 lives
+          PurchaseManager purchaseManager = new PurchaseManager();
+          purchaseManager.Load();
+          purchaseManager.Set5Lives(true);
         }
     }
 
