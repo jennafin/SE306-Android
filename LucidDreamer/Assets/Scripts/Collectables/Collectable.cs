@@ -134,7 +134,7 @@ public abstract class Collectable : MonoBehaviour {
 	{
 		if (sound.Count >= 1) {
 			System.Random random = new System.Random ();
-			int number = random.Next(sound.Count-1);
+			int number = random.Next(sound.Count);
 			if (sound[number] != null){
 				AudioSource.PlayClipAtPoint(sound[number], this.transform.position, 2.0f);
 			}
