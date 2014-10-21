@@ -53,7 +53,7 @@ public class GameControllerScript : MonoBehaviour
 
 		// Settings
 		private bool musicOn;
-		private bool soundEffectsOn;
+		public bool soundEffectsOn;
 
 
 
