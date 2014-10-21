@@ -32,9 +32,9 @@ public class MainCharacterScript : MonoBehaviour {
 	// Number of times to flash visibility off
 	public int flashingAnimationCountTotal = 3;
 	private int remainingFlashingAnimations = 0;
-	// The number of frames to show/hide Alex for
-	public int flashingAnimationDuration = 1;
-	private int remainingFramesUntilToggleVisibility = 0;
+	// The amount of time to show/hide Alex for
+	public float flashingAnimationDuration = 1.0F;
+	private float remainingTimeUntilToggleVisibility = 0.0F;
 	
 	private Renderer characterRenderer;
 	
@@ -138,7 +138,7 @@ public class MainCharacterScript : MonoBehaviour {
 	private void StartFlashingAnimation()
 	{
 		remainingFlashingAnimations = flashingAnimationCountTotal;
-		remainingFramesUntilToggleVisibility = flashingAnimationDuration;
+		remainingTimeUntilToggleVisibility = flashingAnimationDuration;
 		isInvincible = true;	
 	}
 	
@@ -146,14 +146,14 @@ public class MainCharacterScript : MonoBehaviour {
 	{
 		if (remainingFlashingAnimations > 0)
 		{
-			if (remainingFramesUntilToggleVisibility == 0)
+			if (remainingTimeUntilToggleVisibility < 0)
 			{
 				ToggleVisibilityForFlashingAnimation();
-				remainingFramesUntilToggleVisibility = flashingAnimationDuration;
+				remainingTimeUntilToggleVisibility = flashingAnimationDuration;
 			} 
 			else 
 			{
-				remainingFramesUntilToggleVisibility -= 1;
+				remainingTimeUntilToggleVisibility -= Time.deltaTime;
 			}
 		}
 	}
