@@ -701,8 +701,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1286769715}
-  distanceAhead: 16
-  distanceBehind: 8
+  distanceAhead: 22
+  distanceBehind: 4
   yOffset: 3
   smooth: .100000001
   minHeight: 10
