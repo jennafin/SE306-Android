@@ -112,7 +112,16 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 				float tmpPos = Camera.main.WorldToScreenPoint (new Vector3 (previousLevel.MaxX (), 0, 0)).x;
-				if (tmpPos < 0) {
+				
+				bool isVisible = false;
+				foreach (Renderer r in previousLevel.Prefab().gameObject.GetComponentsInChildren<Renderer>()) {
+					if (r.isVisible) {
+						isVisible = true;
+						break;
+					}
+				}
+		
+				if (tmpPos < 0 && ! isVisible) {
 
 						Vector3 levelSpawnPosition = new Vector3 (currentLevel.MaxX (), 0, 0);
 
