@@ -8,6 +8,12 @@ Score = Score:
 
 Retry = Retry?
 
+Restart = Restart
+
+Paused = Paused
+
+Resume = Resume
+
 ExitToMenu = Exit to Menu
 
 Back = Back

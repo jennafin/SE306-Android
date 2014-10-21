@@ -355,8 +355,6 @@ public class GameControllerScript : MonoBehaviour
 			shakeDetector.GetComponent<ShakeDetectorScript>().AddLucidPower(power);
 		}
 
-
-
 		// retrieve persisted settings for music and sound effects
 		private void RetrieveSettings() {
 			if (PlayerPrefs.HasKey ("MusicOption")) {
@@ -370,5 +368,19 @@ public class GameControllerScript : MonoBehaviour
 					soundEffectsOn = true;
 				}
 		}	
+
+		// pause the game – make relevant calls to halt background operations
+		public void PauseGame() {
+			timeScale.pause ();
+			shakeDetector.GetComponent<ShakeDetectorScript>().PauseDetection();
+			mainCharacterScript.PauseJumpAbility();
+		}
+
+		// unpause the game – make relevant calls to resume background operations
+		public void UnpauseGame() {
+			timeScale.unpause ();
+			shakeDetector.GetComponent<ShakeDetectorScript>().UnpauseDetection();
+			mainCharacterScript.UnpauseJumpAbility();
+		}
 }
 
