@@ -123,43 +123,10 @@ public class OpenIABTest : MonoBehaviour
         if (!_isInitialized)
             return;
 
-        if (Button("Query Inventory"))
-        {
-            OpenIAB.queryInventory(new string[] { SKU });
-        }
-
-        if (Button("Purchase Product"))
+        if (Button("Purchase 4 lives"))
         {
             OpenIAB.purchaseProduct(SKU);
         }
-
-        if (Button("Consume Product"))
-        {
-            OpenIAB.consumeProduct(Purchase.CreateFromSku(SKU));
-        }
-
-// Android specific buttons
-#if UNITY_ANDROID
-        if (Button("Test Purchase"))
-        {
-            OpenIAB.purchaseProduct("android.test.purchased");
-        }
-
-        if (Button("Test Refund"))
-        {
-            OpenIAB.purchaseProduct("android.test.refunded");
-        }
-
-        if (Button("Test Item Unavailable"))
-        {
-            OpenIAB.purchaseProduct("android.test.item_unavailable");
-        }
-
-        if (Button("Test Purchase Canceled"))
-        {
-            OpenIAB.purchaseProduct("android.test.canceled");
-        }
-#endif
     }
 
     private void billingSupportedEvent()
