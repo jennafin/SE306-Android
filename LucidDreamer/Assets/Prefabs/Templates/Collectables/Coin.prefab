@@ -81,7 +81,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c554caffb21e4408380941d6952f85ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: ad03aba1a1583422b87a3966c8f741d3, type: 3}
+  sound:
+  - {fileID: 8300000, guid: 41f9a3f94d3f74a2b82331920a1a9f8a, type: 3}
+  - {fileID: 8300000, guid: acec328b6dec2491aa1f6af116a7fdef, type: 3}
+  - {fileID: 8300000, guid: afbe31883a3f54f1088fa7924fa9097b, type: 3}
+  - {fileID: 8300000, guid: e6d17c1dca89b42d58fea902a3d07f91, type: 3}
+  - {fileID: 8300000, guid: acec328b6dec2491aa1f6af116a7fdef, type: 3}
+  - {fileID: 8300000, guid: acec328b6dec2491aa1f6af116a7fdef, type: 3}
+  - {fileID: 8300000, guid: acec328b6dec2491aa1f6af116a7fdef, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

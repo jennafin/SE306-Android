@@ -13,8 +13,7 @@ public class AchievementsManager : MonoBehaviour {
 		// Load total score
 		totalScore.Load();
 		total = totalScore.GetTotalScore();
-		print ("Initial total: " + totalScore.GetTotalScore());
-		
+	
 		// Load achievements status
 		achievements.Load ();
 	}
@@ -45,10 +44,8 @@ public class AchievementsManager : MonoBehaviour {
 	
 	// check all the score achievements
 	public void CheckScoreAchievements(int x) {
-		score += x;
+		score = x;
 		total += score;
-		
-		print (total);
 		
 		if (total >= 10000 && achievements.achievementsTracker.score10000Total) {
 			achievementsList.GetCumulativeScoreOver10000 ();
@@ -73,15 +70,12 @@ public class AchievementsManager : MonoBehaviour {
 		if (total >= 100000 && achievements.achievementsTracker.score100000Total) {
 			achievementsList.GetCumulativeScoreOver100000 ();
 			achievements.achievementsTracker.SetScore100000Total(true);
-		}
-		
+		}	
 	}
 	
 	//Save scores 
 	public void SaveTotalScore()
 	{
-		print ("Score: " + score + "total: " + total);
-		print ("achievement manager total: " + totalScore.GetTotalScore());
 		totalScore.UpdateScore (score);
 		totalScore.SaveTotalScore ();
 	}
