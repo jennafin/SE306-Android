@@ -50,9 +50,15 @@ public class PersistenceManager : MonoBehaviour {
 	public int GetTotalTime() {
 		return persistence.timePlayed;
 	}
+
+	public void UpdateTime(int time)
+	{
+		persistence.timePlayed += time;
+	}
 	
 	public void SavePersistence()
 	{
+		print ("Persistence time played!!: " + persistence.timePlayed);
 		//Get a binary formatter
 		BinaryFormatter bf = new BinaryFormatter();
 		//Create a file

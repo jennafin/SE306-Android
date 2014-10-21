@@ -7,6 +7,7 @@ public class AchievementsManager : MonoBehaviour {
 	private PersistenceManager persistence = new PersistenceManager();
 	private AchievementsTrackerManager achievements = new AchievementsTrackerManager();
 	private int score = 0;
+	private int timePlayed = 0;
 	private int total;
 	private int timeSum;
 	
@@ -15,7 +16,6 @@ public class AchievementsManager : MonoBehaviour {
 		persistence.Load();
 		total = persistence.GetTotalScore();
 		timeSum = persistence.GetTotalTime();
-		
 	
 		// Load achievements status
 		achievements.Load ();
@@ -80,33 +80,37 @@ public class AchievementsManager : MonoBehaviour {
 	// check all the score achievements
 	public void CheckTimePlayedAchievements(int x) {
 		
-		int timePlayed = x;		
+		timePlayed = x;
+		int timeTest = timeSum + timePlayed;
+
+		print ("Current Time Sum: " + timeTest);
 		
-		if (timePlayed >= 1 && !achievements.achievementsTracker.played1Minutes) {
+		if (timeTest >= 1 && !achievements.achievementsTracker.played1Minutes) {
 			//achievementsList.GetCumulativeScoreOver10000 ();
 			achievements.achievementsTracker.SetPlayed1Minutes(true);
 		}
 		
-		if (timePlayed >= 10 && !achievements.achievementsTracker.played10Minutes) {
+		if (timeTest >= 10 && !achievements.achievementsTracker.played10Minutes) {
 			//achievementsList.GetCumulativeScoreOver10000 ();
 			achievements.achievementsTracker.SetPlayed10Minutes(true);
 		}
 		
-		if (timePlayed >= 60 && !achievements.achievementsTracker.played60Minutes) {
+		if (timeTest >= 60 && !achievements.achievementsTracker.played60Minutes) {
 			//achievementsList.GetCumulativeScoreOver10000 ();
 			achievements.achievementsTracker.SetPlayed60Minutes(true);
 		}
 		
-		if (timePlayed >= 120 && !achievements.achievementsTracker.played120Minutes) {
+		if (timeTest >= 120 && !achievements.achievementsTracker.played120Minutes) {
 			//achievementsList.GetCumulativeScoreOver10000 ();
 			achievements.achievementsTracker.SetPlayed120Minutes(true);
 		}
 	}
 	
 	//Save scores 
-	public void SaveTotalScore()
+	public void SavePersistence()
 	{
 		persistence.UpdateScore (score);
+		persistence.UpdateTime (timePlayed);
 		persistence.SavePersistence ();
 	}
 }

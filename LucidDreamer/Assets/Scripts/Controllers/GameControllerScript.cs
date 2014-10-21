@@ -58,6 +58,7 @@ public class GameControllerScript : MonoBehaviour
 		
 		//Stopwatch for finding time since app began
 		Stopwatch stopWatch;
+		Stopwatch totalTimeWatch;
 		
 		//Tracks achievemens
 		AchievementsManager achievementManager = new AchievementsManager();
@@ -95,7 +96,9 @@ public class GameControllerScript : MonoBehaviour
 				achievementManager.Load();
 				
 				stopWatch = new Stopwatch();
+				totalTimeWatch = new Stopwatch();
 				stopWatch.Start();
+				totalTimeWatch.Start ();
 		}
 
 		// Update is called once per frame
@@ -107,11 +110,13 @@ public class GameControllerScript : MonoBehaviour
 				
 				int time = stopWatch.Elapsed.Seconds;
 				if (time == 1) {
+					achievementManager.CheckTimePlayedAchievements(totalTimeWatch.Elapsed.Seconds);
 					achievementManager.CheckDistanceAchievements(alexPosition.x);
 					achievementManager.CheckScoreAchievements(scoreTracker.GetCurrentScore((int)Math.Floor (alexPosition.x)));
 					stopWatch.Reset();
 					stopWatch.Start();
 				}
+				
 
 				ApplyCollectableBehaviours ();
 
@@ -261,9 +266,10 @@ public class GameControllerScript : MonoBehaviour
 
 		public void LoadGameOverScreen() {
 			scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
+			achievementManager.CheckTimePlayedAchievements(totalTimeWatch.Elapsed.Seconds);
 			achievementManager.CheckDistanceAchievements(alexPosition.x);
 			achievementManager.CheckScoreAchievements(scoreTracker.GetCurrentScore((int)Math.Floor (alexPosition.x)));
-			achievementManager.SaveTotalScore();
+			achievementManager.SavePersistence();
 			Application.LoadLevel ("GameOver");
 		}
 
@@ -280,9 +286,10 @@ public class GameControllerScript : MonoBehaviour
 		void GameOver ()
 		{
 				scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
+				achievementManager.CheckTimePlayedAchievements(totalTimeWatch.Elapsed.Seconds);
 				achievementManager.CheckDistanceAchievements(alexPosition.x);
 				achievementManager.CheckScoreAchievements(scoreTracker.GetCurrentScore((int)Math.Floor (alexPosition.x)));
-				achievementManager.SaveTotalScore();
+				achievementManager.SavePersistence();
 				Application.LoadLevel ("GameOver");
 		}
 
