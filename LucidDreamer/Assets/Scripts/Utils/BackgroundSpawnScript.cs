@@ -3,7 +3,12 @@ using System.Collections;
 
 public class BackgroundSpawnScript : MonoBehaviour {
 	
-	public GameObject[] backgroundImages;
+	public GameObject defaultBackground;
+	public GameObject[] mathBackgrounds;
+	public GameObject[] artBackgrounds;
+	public GameObject[] scienceBackgrounds;
+	
+	public GameControllerScript gameController;
 	
 	GameObject[,] currentImages = new GameObject[3,3];
 	
@@ -13,8 +18,8 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// Get level width/height
-		imageWidth = backgroundImages[0].renderer.bounds.size.x;
-		imageHeight = backgroundImages[0].renderer.bounds.size.y;
+		imageWidth = defaultBackground.renderer.bounds.size.x;
+		imageHeight = defaultBackground.renderer.bounds.size.y;
 		
 		// Create the first 9 screens
 		InstantiateLevels();
@@ -106,7 +111,28 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	}
 	
 	GameObject ChooseBackgroundImage() {
+		Theme theme = gameController.GetCurrentTheme();
+		switch (theme) {
+			case Theme.Art:
+				return ChooseBackgroundImage(artBackgrounds);
+				break;
+			case Theme.Maths:
+				return ChooseBackgroundImage(mathBackgrounds);
+				break;
+			case Theme.Science:
+				return ChooseBackgroundImage(scienceBackgrounds);
+				break;
+		}
+		return defaultBackground;
+		
+	}
+	
+	GameObject ChooseBackgroundImage(GameObject[] backgroundImages) {
 		System.Random random = new System.Random ();
-		return backgroundImages[random.Next(backgroundImages.Length)];
+		try {
+			return backgroundImages[random.Next(backgroundImages.Length)];
+		} catch {
+			return defaultBackground;
+		}
 	}
 }
