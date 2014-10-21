@@ -41,12 +41,12 @@ public class MainCharacterScript : MonoBehaviour {
 	private bool isPaused = false;	// Whether the game is paused currently or not
 	private Rect touchArea;
 	
-	private ParticleSystem particleSystem;
+	private ParticleSystem characterParticleSystem;
 	
 	void Start() {
 		this.currentJumpForce = jumpForce;
 		this.characterRenderer = this.GetComponentInChildren<SkinnedMeshRenderer>();
-		this.particleSystem = GetComponentInChildren<ParticleSystem>();
+		this.characterParticleSystem = GetComponentInChildren<ParticleSystem>();
 		StopParticleEmitter();
 		RetrieveSettings ();
 		touchArea = new Rect(0, 0, Screen.width, (Screen.height - Screen.height/5));
@@ -203,17 +203,17 @@ public class MainCharacterScript : MonoBehaviour {
 	
 	public void StartParticleEmitter(Color color)
 	{
-		this.particleSystem.startColor = color;
-		this.particleSystem.enableEmission = true;
+		this.characterParticleSystem.startColor = color;
+		this.characterParticleSystem.enableEmission = true;
 	}
 	
 	public void StopParticleEmitter()
 	{
-		this.particleSystem.enableEmission = false;
+		this.characterParticleSystem.enableEmission = false;
 	}
 	
 	public bool IsEmittingParticles()
 	{
-		return this.particleSystem.enableEmission;
+		return this.characterParticleSystem.enableEmission;
 	}
 }
