@@ -17,6 +17,8 @@ public class MainMenuScript : MonoBehaviour
 		float currentLerpTime;							// 
 		public Language language = Language.English;	// default language 
 		private SceneFader sceneFaderScript;
+		public enum GameMode { SIDE_ON, THIRD_PERSON };		// Enum to indicate game mode
+		private GameMode gameMode = GameMode.THIRD_PERSON;	// Enum to dictact which game mode to load
 			
 		// Initialisation of script includes:
 		// 		- Loading language file
@@ -95,9 +97,10 @@ public class MainMenuScript : MonoBehaviour
 											Social.ShowAchievementsUI ();
 											break;
 										case "PlayModel":
-											
+											if (!isAlexRunning) {
+												StartCoroutine(LoadGame());	
+											}
 											MakeAlexRun();
-											sceneFaderScript.LoadScene("main", 0.4f);
 											break;
 										case "HighscoresModel":
 											Debug.Log ("MainMenuScript: Highscores model hit");
@@ -128,6 +131,13 @@ public class MainMenuScript : MonoBehaviour
 
 				// set boolean to translate alex off screen in Update()
 				isAlexRunning = true;
+				
+				// toggle game mode
+				if (gameMode == GameMode.SIDE_ON) {
+					gameMode = GameMode.THIRD_PERSON;
+				} else {
+					gameMode = GameMode.SIDE_ON;
+				} 
 		}
 
 		// Translates alex between alexStartPosition and alexEndPosition
@@ -138,5 +148,17 @@ public class MainMenuScript : MonoBehaviour
 				}
 				float perc = currentLerpTime / lerpTime;
 				alexModel.transform.position = Vector3.Lerp (alexStartPosition, alexEndPosition, perc * 0.7f);
+		}
+		
+		// Loads the toggled game mode with a leading fade
+		private IEnumerator LoadGame() {
+			yield return new WaitForSeconds (0.4f);
+			float fadeTime = sceneFaderScript.BeginFade (1);
+			yield return new WaitForSeconds (fadeTime);
+			if (gameMode == GameMode.SIDE_ON) {
+				Application.LoadLevel("main");
+			} else {
+				Application.LoadLevel("main3D");
+			}
 		}
 }
