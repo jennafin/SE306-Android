@@ -2105,9 +2105,14 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 1024
-  jumpSound: {fileID: 8300000, guid: ec4c9ed8ff0e9482e9bf57fe2474ae57, type: 3}
-  deathSound: {fileID: 8300000, guid: 8f53ad2d958c048e5a8e403a20d21df0, type: 3}
-  injuredSound: {fileID: 8300000, guid: 3ca121c001790493aac9f6aec90cfc06, type: 3}
+  jumpSound:
+  - {fileID: 8300000, guid: 1c12613a3e43a4d6a995868aa26ecef5, type: 3}
+  - {fileID: 8300000, guid: 57fd69aea7deb4fce80ea8bbd86febdb, type: 3}
+  - {fileID: 8300000, guid: 5a3336791bdcf4871bfa22a74da2c146, type: 3}
+  deathSound: {fileID: 8300000, guid: 021613dedcd3e452fb9b654e9bf4a4c3, type: 3}
+  injuredSound:
+  - {fileID: 8300000, guid: 811d01e450c1747f8b347c39e3e9379e, type: 3}
+  - {fileID: 8300000, guid: c5f93bc02bb374af9b8f3eb26b9ad2fb, type: 3}
 --- !u!58 &1286769720
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2243,7 +2248,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 28
+    m_FontSize: 36
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2302,7 +2307,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 2ce8338171fec944ba1d26fb75c30405, type: 3}
-    m_FontSize: 60
+    m_FontSize: 76
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2361,7 +2366,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 15
+    m_FontSize: 19
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class MainCharacterScript : MonoBehaviour {
@@ -24,9 +25,9 @@ public class MainCharacterScript : MonoBehaviour {
 	float groundRadius = 0.2f;
 	public LayerMask ground;
 
-	public AudioClip jumpSound;
+	public List<AudioClip> jumpSound = new List<AudioClip>();
 	public AudioClip deathSound;
-	public AudioClip injuredSound;
+	public List<AudioClip> injuredSound = new List<AudioClip>();
 	private bool soundEffectsOn;
 	
 	private bool isPaused = false;	// Whether the game is paused currently or not
@@ -104,11 +105,11 @@ public class MainCharacterScript : MonoBehaviour {
 	}
 	
 	public void PlayInjuredSound() {
-		PlaySound (injuredSound);
+		PlaySound (injuredSound[Random.Range(0,injuredSound.Count-1)]);
 	}
 	
 	public void PlayJumpSound() {
-		PlaySound (jumpSound);
+		PlaySound (jumpSound[Random.Range(0,jumpSound.Count-1)]);
 	}
 	
 	private void PlaySound(AudioClip sound) {
