@@ -133,5 +133,10 @@ public class MainCharacterScript : MonoBehaviour {
 	{
 		this.particleSystem.enableEmission = false;
 	}
+	
+	public bool IsEmittingParticles()
+	{
+		return this.particleSystem.enableEmission;
+	}
 
 }

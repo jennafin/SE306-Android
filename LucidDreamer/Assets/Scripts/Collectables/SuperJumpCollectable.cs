@@ -5,7 +5,12 @@ public class SuperJumpCollectable : Collectable {
 
 	protected override int LifeSpan 
 	{
-		get { return 1000; }
+		get { return 400; }
+	}
+	
+	protected override Color ParticleEmitterColor
+	{
+		get { return Color.yellow; }
 	}
 	
 	protected override void InitiateCollectableBehaviour (GameControllerScript gameController) {

@@ -45,6 +45,7 @@ public abstract class Collectable : MonoBehaviour {
 		{
 			// Neither first nor last time using the collectable
 			UpdateCollectableBehaviour(gameController, framesOfLifeRemaining);
+			RestartParticleEmitter(gameController);
 			framesOfLifeRemaining -= 1;
 			return true;
 		}
@@ -92,6 +93,16 @@ public abstract class Collectable : MonoBehaviour {
 		if (this.ParticleEmitterColor != Color.clear)
 		{
 			gameController.getMainCharacter().StartParticleEmitter(this.ParticleEmitterColor);
+		}
+	}
+	
+	private void RestartParticleEmitter (GameControllerScript gameController)
+	{
+		MainCharacterScript mainCharacter = gameController.getMainCharacter();
+		
+		if (!mainCharacter.IsEmittingParticles())
+		{
+			StartParticleEmitter(gameController);
 		}
 	}
 	
