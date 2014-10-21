@@ -2719,6 +2719,8 @@ MonoBehaviour:
   - {fileID: 100000, guid: 27636ea95d0344cc3bb9020fc646243c, type: 2}
   shakeDetector: {fileID: 836679848}
   soundEffectsOn: 0
+  playerLayerId: 11
+  enemiesLayerId: 12
 --- !u!114 &1897705300
 MonoBehaviour:
   m_ObjectHideFlags: 0

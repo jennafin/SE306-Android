@@ -55,8 +55,6 @@ public class GameControllerScript : MonoBehaviour
 		private bool musicOn;
 		public bool soundEffectsOn;
 
-
-
 		// Use this for initialization
 		void Start ()
 		{
