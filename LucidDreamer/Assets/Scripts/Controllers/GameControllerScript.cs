@@ -393,5 +393,11 @@ public class GameControllerScript : MonoBehaviour
 				shakeDetector.GetComponent<ShakeDetectorScript> ().UnpauseDetection ();
 				mainCharacterScript.UnpauseJumpAbility ();
 		}
+
+	public int Lives {
+		get {
+			return lives;
+		}
+	}
 }
 
