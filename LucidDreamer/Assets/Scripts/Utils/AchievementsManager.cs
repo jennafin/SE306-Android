@@ -21,22 +21,25 @@ public class AchievementsManager : MonoBehaviour {
 	// check all the distance achievements
 	public void CheckDistanceAchievements(float x) {
 	
-		if (x >= 100 && achievements.achievementsTracker.ran100Meters) {
+		print(x);
+		print ("Ran 100 Meters: " + achievements.achievementsTracker.ran100Meters);
+	
+		if (x >= 100 && !achievements.achievementsTracker.ran100Meters) {
 			achievementsList.GetRan100Meters ();
 			achievements.achievementsTracker.SetRan100Meters(true);
 		}
 		
-		if (x >= 20 && achievements.achievementsTracker.ran1000Meters) {
+		if (x >= 20 && !achievements.achievementsTracker.ran1000Meters) {
 			achievementsList.GetRan1000Meters ();
 			achievements.achievementsTracker.SetRan1000Meters(true);
 		}
 		
-		if (x >= 30 && achievements.achievementsTracker.ran10000Meters) {
+		if (x >= 30 && !achievements.achievementsTracker.ran10000Meters) {
 			achievementsList.GetRan10000Meters ();
 			achievements.achievementsTracker.SetRan10000Meters(true);
 		}
 		
-		if (x >= 40 && achievements.achievementsTracker.ran20000Meters) {
+		if (x >= 40 && !achievements.achievementsTracker.ran20000Meters) {
 			achievementsList.GetRan20000Meters ();
 			achievements.achievementsTracker.SetRan20000Meters(true);
 		}
@@ -47,27 +50,28 @@ public class AchievementsManager : MonoBehaviour {
 		score = x;
 		total += score;
 		
-		if (total >= 10000 && achievements.achievementsTracker.score10000Total) {
+		
+		if (total >= 10000 && !achievements.achievementsTracker.score10000Total) {
 			achievementsList.GetCumulativeScoreOver10000 ();
 			achievements.achievementsTracker.SetScore10000Total(true);
 		}
 		
-		if (total >= 20000 && achievements.achievementsTracker.score20000Total) {
+		if (total >= 20000 && !achievements.achievementsTracker.score20000Total) {
 			achievementsList.GetCumulativeScoreOver20000 ();
 			achievements.achievementsTracker.SetSore20000Total(true);
 		}
 		
-		if (total >= 50000 && achievements.achievementsTracker.score50000Total) {
+		if (total >= 50000 && !achievements.achievementsTracker.score50000Total) {
 			achievementsList.GetCumulativeScoreOver50000 ();
 			achievements.achievementsTracker.SetScore50000Total(true);
 		}
 		
-		if (total >= 80000 && achievements.achievementsTracker.score80000Total) {
+		if (total >= 80000 && !achievements.achievementsTracker.score80000Total) {
 			achievementsList.GetCumulativeScoreOver80000 ();
 			achievements.achievementsTracker.SetScore80000Total(true);
 		}
 		
-		if (total >= 100000 && achievements.achievementsTracker.score100000Total) {
+		if (total >= 100000 && !achievements.achievementsTracker.score100000Total) {
 			achievementsList.GetCumulativeScoreOver100000 ();
 			achievements.achievementsTracker.SetScore100000Total(true);
 		}	
@@ -77,6 +81,7 @@ public class AchievementsManager : MonoBehaviour {
 	public void SaveTotalScore()
 	{
 		totalScore.UpdateScore (score);
+		Debug.Log ("TOtal: " + totalScore.GetTotalScore());
 		totalScore.SaveTotalScore ();
 	}
 }
