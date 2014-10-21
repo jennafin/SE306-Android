@@ -166,7 +166,7 @@ public class GameControllerScript : MonoBehaviour
 		// Returns the theme for the next level segment
 		Theme GetNextTheme ()
 		{
-				if (currentThemeSegmentCount >= 1) {
+				if (currentThemeSegmentCount >= 5) {
 						currentThemeSegmentCount = 0;
 						currentTheme = GetNewTheme ();
 				}
@@ -280,7 +280,7 @@ public class GameControllerScript : MonoBehaviour
 
 		void GameOver ()
 		{
-				scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
+				scoreTracker.gameOver ((int) Math.Floor (alexPosition.x));
 				Application.LoadLevel ("GameOver");
 		}
 
@@ -390,6 +390,10 @@ public class GameControllerScript : MonoBehaviour
 				timeScale.unpause ();
 				shakeDetector.GetComponent<ShakeDetectorScript> ().UnpauseDetection ();
 				mainCharacterScript.UnpauseJumpAbility ();
+		}
+		
+		public Theme GetCurrentTheme() {
+			return currentTheme;
 		}
 }
 
