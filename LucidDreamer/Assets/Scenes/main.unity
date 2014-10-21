@@ -165,45 +165,6 @@ Transform:
   - {fileID: 1632117712}
   m_Father: {fileID: 1785797978}
   m_RootOrder: 0
---- !u!1 &138912931
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 138912933}
-  - 114: {fileID: 138912932}
-  m_Layer: 0
-  m_Name: SoundEffects
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &138912932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 138912931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3455d36adfa8648238f2e328f1788df8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &138912933
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 138912931}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.66408587, y: -2.28016996, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
 --- !u!1001 &160179881
 Prefab:
   m_ObjectHideFlags: 0
@@ -1665,7 +1626,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0ede2e61fff77491ea491d1bebb937ee, type: 3}
   LucidHUDObject: {fileID: 2095973032}
   gameControllerObject: {fileID: 1897705298}
-  distancePowerRatio: .00999999978
+  distancePowerRatio: .00200000009
   PowerDownRatio: .75
   avrgTime: .5
   peakLevel: .600000024
@@ -2261,7 +2222,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 25
+    m_FontSize: 46
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2320,7 +2281,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 2ce8338171fec944ba1d26fb75c30405, type: 3}
-    m_FontSize: 52
+    m_FontSize: 96
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2379,7 +2340,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 13
+    m_FontSize: 24
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2404,7 +2365,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1404520410
 GameObject:
   m_ObjectHideFlags: 0
