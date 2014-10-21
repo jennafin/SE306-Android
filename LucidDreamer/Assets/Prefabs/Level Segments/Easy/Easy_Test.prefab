@@ -26,7 +26,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 114: {fileID: 11400002}
   m_Layer: 0
-  m_Name: SuperJumpSpawner
+  m_Name: PointsBoostSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 1170012219, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73470beacd27042eda6bd92172ad2925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 100000, guid: 190e955e3f4fe422f90bdc6bd3f5e59d, type: 2}
+  prefab: {fileID: 100000, guid: 3ff801de7e5444f9da1ad4e8017365f4, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
