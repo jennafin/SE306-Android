@@ -108,8 +108,8 @@ public class GameControllerScript : MonoBehaviour
 				int time = stopWatch.Elapsed.Seconds;
 				if (time == 1) {
 					achievementManager.CheckDistanceAchievements(alexPosition.x);
-					achievementManager.CheckScoreAchievements(scoreTracker.GetCurrentScore((int)Math.Floor (alexPosition.x)));
-					stopWatch.Reset();
+			achievementManager.CheckScoreAchievements(scoreTracker.GetCurrentScore((int)Math.Floor (alexPosition.x)));
+			stopWatch.Reset();
 					stopWatch.Start();
 				}
 

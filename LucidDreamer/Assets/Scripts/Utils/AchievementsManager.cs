@@ -21,9 +21,6 @@ public class AchievementsManager : MonoBehaviour {
 	// check all the distance achievements
 	public void CheckDistanceAchievements(float x) {
 	
-		print(x);
-		print ("Ran 100 Meters: " + achievements.achievementsTracker.ran100Meters);
-	
 		if (x >= 100 && !achievements.achievementsTracker.ran100Meters) {
 			achievementsList.GetRan100Meters ();
 			achievements.achievementsTracker.SetRan100Meters(true);
@@ -47,31 +44,31 @@ public class AchievementsManager : MonoBehaviour {
 	
 	// check all the score achievements
 	public void CheckScoreAchievements(int x) {
+	
 		score = x;
-		total += score;
+		int totalTest = total + x;		
 		
-		
-		if (total >= 10000 && !achievements.achievementsTracker.score10000Total) {
+		if (totalTest >= 10000 && !achievements.achievementsTracker.score10000Total) {
 			achievementsList.GetCumulativeScoreOver10000 ();
 			achievements.achievementsTracker.SetScore10000Total(true);
 		}
 		
-		if (total >= 20000 && !achievements.achievementsTracker.score20000Total) {
+		if (totalTest >= 20000 && !achievements.achievementsTracker.score20000Total) {
 			achievementsList.GetCumulativeScoreOver20000 ();
 			achievements.achievementsTracker.SetSore20000Total(true);
 		}
 		
-		if (total >= 50000 && !achievements.achievementsTracker.score50000Total) {
+		if (totalTest >= 50000 && !achievements.achievementsTracker.score50000Total) {
 			achievementsList.GetCumulativeScoreOver50000 ();
 			achievements.achievementsTracker.SetScore50000Total(true);
 		}
 		
-		if (total >= 80000 && !achievements.achievementsTracker.score80000Total) {
+		if (totalTest >= 80000 && !achievements.achievementsTracker.score80000Total) {
 			achievementsList.GetCumulativeScoreOver80000 ();
 			achievements.achievementsTracker.SetScore80000Total(true);
 		}
 		
-		if (total >= 100000 && !achievements.achievementsTracker.score100000Total) {
+		if (totalTest >= 100000 && !achievements.achievementsTracker.score100000Total) {
 			achievementsList.GetCumulativeScoreOver100000 ();
 			achievements.achievementsTracker.SetScore100000Total(true);
 		}	
@@ -81,7 +78,6 @@ public class AchievementsManager : MonoBehaviour {
 	public void SaveTotalScore()
 	{
 		totalScore.UpdateScore (score);
-		Debug.Log ("TOtal: " + totalScore.GetTotalScore());
 		totalScore.SaveTotalScore ();
 	}
 }
