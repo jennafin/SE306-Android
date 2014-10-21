@@ -18,7 +18,7 @@ public abstract class Collectable : MonoBehaviour {
 
 	// Keeps track of how long this collectable has left to live.
 	// A negative value signifies the collectable hasn't been used yet.
-	private int framesOfLifeRemaining;
+	protected int framesOfLifeRemaining;
 
 	public Collectable() 
 	{
@@ -44,7 +44,7 @@ public abstract class Collectable : MonoBehaviour {
 		else if (framesOfLifeRemaining > 0)
 		{
 			// Neither first nor last time using the collectable
-			UpdateCollectableBehaviour(gameController, framesOfLifeRemaining);
+			UpdateCollectableBehaviour(gameController);
 			RestartParticleEmitter(gameController);
 			framesOfLifeRemaining -= 1;
 			return true;
@@ -67,11 +67,11 @@ public abstract class Collectable : MonoBehaviour {
 	protected abstract void InitiateCollectableBehaviour (GameControllerScript gameController);
 
 	/**
-	 * Make any changes to the game controller, dependent on this collectables remaining life.
+	 * Make any changes to the game controller that might depend on the collectables remaining life.
 	 * 
 	 * This does not have to be overriden by subclasses. By default it does nothing.
 	 */
-	protected virtual void UpdateCollectableBehaviour (GameControllerScript gameController, int framesOfLifeRemaining)
+	protected virtual void UpdateCollectableBehaviour (GameControllerScript gameController)
 	{
 	}
 

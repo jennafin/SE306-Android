@@ -305,20 +305,12 @@ public class GameControllerScript : MonoBehaviour
 		// Iterate through any current collectables and apply their behaviours
 		private void ApplyCollectableBehaviours ()
 		{
-				List<Collectable> expiredCollectables = new List<Collectable> ();
-
-				for (int i = 0; i < this.currentCollectables.Count; i++) {
-						Collectable collectable = this.currentCollectables [i];
-						bool stillHasLife = collectable.UseOneFrame (this);
+				for (int i = this.currentCollectables.Count - 1; i >= 0 ; i--) {
+						bool stillHasLife = this.currentCollectables [i].UseOneFrame (this);
 
 						if (!stillHasLife) {
-								expiredCollectables.Add (collectable);
+								currentCollectables.RemoveAt(i);
 						}
-				}
-
-				// Remove any expired collectables
-				for (int i = 0; i < expiredCollectables.Count; i++) {
-						this.currentCollectables.Remove (expiredCollectables [i]);
 				}
 		}
 
