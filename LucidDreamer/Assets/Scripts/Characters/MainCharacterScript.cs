@@ -29,6 +29,8 @@ public class MainCharacterScript : MonoBehaviour {
 	public AudioClip injuredSound;
 	private bool soundEffectsOn;
 	
+	private bool isPaused = false;	// Whether the game is paused currently or not
+	
 	void Start() {
 		this.currentJumpForce = jumpForce;
 		RetrieveSettings ();
@@ -36,7 +38,7 @@ public class MainCharacterScript : MonoBehaviour {
 
 	void Update() {
 		updateIsGrounded ();
-		bool userPressJump = Input.GetButtonDown ("Jump") || Input.GetButtonDown ("Fire1");
+		bool userPressJump = (Input.GetButtonDown ("Jump") || Input.GetButtonDown ("Fire1")) && !isPaused;
 		if (userPressJump) {
 			if (isGrounded) {
 				Jump ();
@@ -117,5 +119,15 @@ public class MainCharacterScript : MonoBehaviour {
 			soundEffectsOn = true;
 		}
 	}	
+	
+	// set boolean to prevent the jump ability	
+	public void PauseJumpAbility() {
+		isPaused = true;
+	}
+	
+	// set boolean to allow the jump ability
+	public void UnpauseJumpAbility() {
+		isPaused = false;
+	}
 
 }

@@ -112,12 +112,14 @@ public class PauseMenuScript : MonoBehaviour {
 		alpha = 0.0f;
 	}
 	
+	// set boolean to pause the game and inform the Game Controller of this action	
 	private void PauseGame() {
 		isPaused = true;
 		FadeIn();
 		GameObject.Find ("GameController").GetComponent<GameControllerScript> ().PauseGame();
 	}
 	
+	// set boolean to unpause the game and inform the Game Controller of this action
 	private void UnpauseGame() {
 		isPaused = false;
 		FadeOut();
