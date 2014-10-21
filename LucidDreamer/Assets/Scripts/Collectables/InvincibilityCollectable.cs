@@ -3,9 +3,9 @@ using System.Collections;
 
 public class InvincibilityCollectable : Collectable {
 	
-	protected override int LifeSpan 
+	protected override float LifeSpan 
 	{
-		get { return 500; }
+		get { return 5; }
 	}
 	
 	protected override Color ParticleEmitterColor
@@ -14,13 +14,15 @@ public class InvincibilityCollectable : Collectable {
 	}
 	
 	protected override void InitiateCollectableBehaviour (GameControllerScript gameController) {
-		MainCharacterScript mainCharacter = gameController.getMainCharacter ();
-		mainCharacter.isInvincible = true;
+		gameController.getMainCharacter ().isInvincible = true;
+	}
+	
+	protected override void UpdateCollectableBehaviour (GameControllerScript gameController) {
+		gameController.getMainCharacter().isInvincible = true;
 	}
 	
 	protected override void RevokeCollectableBehaviour (GameControllerScript gameController) {
-		MainCharacterScript mainCharacter = gameController.getMainCharacter ();
-		mainCharacter.isInvincible = false;
+		gameController.getMainCharacter ().isInvincible = false;
 	}
 	
 }
