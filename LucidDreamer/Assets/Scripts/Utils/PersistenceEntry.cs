@@ -2,12 +2,13 @@
 using System.Collections;
 
 [System.Serializable]
-public class TotalScoreEntry {
+public class PersistenceEntry {
 
 	public int score;
+	public int timePlayed;
 	
-	public TotalScoreEntry( int s)
+	public PersistenceEntry()
 	{
-		this.score = s;
+	
 	}
 }

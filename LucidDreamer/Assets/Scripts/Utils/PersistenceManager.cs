@@ -5,9 +5,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Linq;
 
-public class TotalScoreManager : MonoBehaviour {
+public class PersistenceManager : MonoBehaviour {
 
-	private TotalScoreEntry totalScore;
+	private PersistenceEntry persistence;
 	
 	
 	public void Load()
@@ -20,41 +20,45 @@ public class TotalScoreManager : MonoBehaviour {
 			//Get the file
 			FileStream f = File.Open(Application.persistentDataPath + "/totalScore.dat", FileMode.Open);
 			//Load back the scores
-			totalScore = (TotalScoreEntry)bf.Deserialize(f);
+			persistence = (PersistenceEntry)bf.Deserialize(f);
 			f.Close();
 		}
 		else 
 		{
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream f = File.Create (Application.persistentDataPath + "/totalScore.dat");
-			totalScore = new TotalScoreEntry(0);
-			bf.Serialize(f, totalScore);
+			persistence = new PersistenceEntry();
+			bf.Serialize(f, persistence);
 			f.Close();
 		}
 	}
 	
 	public void UpdateScore(int score)
 	{
-		totalScore.score += score;
+		persistence.score += score;
 	}
 	
-	public TotalScoreEntry GetTotalScoreEntry()
+	public PersistenceEntry GetPersistenceEntry()
 	{
-		return totalScore;
+		return persistence;
 	}
 	
 	public int GetTotalScore() {
-		return totalScore.score;
+		return persistence.score;
 	}
 	
-	public void SaveTotalScore()
+	public int GetTotalTime() {
+		return persistence.timePlayed;
+	}
+	
+	public void SavePersistence()
 	{
 		//Get a binary formatter
 		BinaryFormatter bf = new BinaryFormatter();
 		//Create a file
 		FileStream f = File.Open(Application.persistentDataPath + "/totalScore.dat", FileMode.OpenOrCreate);
 		//Save the scores
-		bf.Serialize(f, totalScore);
+		bf.Serialize(f, persistence);
 		f.Close();
 	}
 	

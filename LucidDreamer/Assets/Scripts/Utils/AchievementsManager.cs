@@ -4,15 +4,18 @@ using System.Collections;
 public class AchievementsManager : MonoBehaviour {
 
 	private AchievementsList achievementsList = new AchievementsList ();
-	private TotalScoreManager totalScore = new TotalScoreManager();
+	private PersistenceManager persistence = new PersistenceManager();
 	private AchievementsTrackerManager achievements = new AchievementsTrackerManager();
 	private int score = 0;
 	private int total;
+	private int timeSum;
 	
 	public void Load () {
 		// Load total score
-		totalScore.Load();
-		total = totalScore.GetTotalScore();
+		persistence.Load();
+		total = persistence.GetTotalScore();
+		timeSum = persistence.GetTotalTime();
+		
 	
 		// Load achievements status
 		achievements.Load ();
@@ -74,10 +77,36 @@ public class AchievementsManager : MonoBehaviour {
 		}	
 	}
 	
+	// check all the score achievements
+	public void CheckTimePlayedAchievements(int x) {
+		
+		int timePlayed = x;		
+		
+		if (timePlayed >= 1 && !achievements.achievementsTracker.played1Minutes) {
+			//achievementsList.GetCumulativeScoreOver10000 ();
+			achievements.achievementsTracker.SetPlayed1Minutes(true);
+		}
+		
+		if (timePlayed >= 10 && !achievements.achievementsTracker.played10Minutes) {
+			//achievementsList.GetCumulativeScoreOver10000 ();
+			achievements.achievementsTracker.SetPlayed10Minutes(true);
+		}
+		
+		if (timePlayed >= 60 && !achievements.achievementsTracker.played60Minutes) {
+			//achievementsList.GetCumulativeScoreOver10000 ();
+			achievements.achievementsTracker.SetPlayed60Minutes(true);
+		}
+		
+		if (timePlayed >= 120 && !achievements.achievementsTracker.played120Minutes) {
+			//achievementsList.GetCumulativeScoreOver10000 ();
+			achievements.achievementsTracker.SetPlayed120Minutes(true);
+		}
+	}
+	
 	//Save scores 
 	public void SaveTotalScore()
 	{
-		totalScore.UpdateScore (score);
-		totalScore.SaveTotalScore ();
+		persistence.UpdateScore (score);
+		persistence.SavePersistence ();
 	}
 }

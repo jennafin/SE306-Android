@@ -13,6 +13,10 @@ public class AchievementsTracker {
 	public bool score50000Total = false;
 	public bool score80000Total = false;
 	public bool score100000Total = false;
+	public bool played1Minutes = false;
+	public bool played10Minutes = false;
+	public bool played60Minutes = false;
+	public bool played120Minutes = false;
 	
 
 	public void SetRan100Meters(bool val) {
@@ -49,5 +53,21 @@ public class AchievementsTracker {
 	
 	public void SetScore100000Total(bool val) {
 		this.score100000Total = val;
+	}
+	
+	public void SetPlayed1Minutes(bool val) {
+		this.played1Minutes = val;
+	}
+	
+	public void SetPlayed10Minutes(bool val) {
+		this.played10Minutes = val;
+	}
+	
+	public void SetPlayed60Minutes(bool val) {
+		this.played60Minutes = val;
+	}
+	
+	public void SetPlayed120Minutes(bool val) {
+		this.played120Minutes = val;
 	}
 }
