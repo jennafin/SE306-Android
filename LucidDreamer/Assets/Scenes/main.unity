@@ -989,8 +989,8 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: ec4c9ed8ff0e9482e9bf57fe2474ae57, type: 3}
   deathSound: {fileID: 8300000, guid: 8f53ad2d958c048e5a8e403a20d21df0, type: 3}
   injuredSound: {fileID: 8300000, guid: 3ca121c001790493aac9f6aec90cfc06, type: 3}
-  flashingAnimationCountTotal: 3
-  flashingAnimationDuration: 15
+  flashingAnimationCountTotal: 4
+  flashingAnimationDuration: 3
 --- !u!58 &1286769720
 CircleCollider2D:
   m_ObjectHideFlags: 0
