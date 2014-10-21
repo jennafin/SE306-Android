@@ -8,7 +8,7 @@ public class MainCharacterScript : MonoBehaviour {
 
 	float jumpForce = 600f;
 	float doubleJumpForce = 600f;
-	float superJumpForce = 800f;
+	float superJumpForce = 700f;
 
 	float currentJumpForce;
 	
@@ -38,17 +38,24 @@ public class MainCharacterScript : MonoBehaviour {
 	
 	private Renderer characterRenderer;
 	
+	private bool isPaused = false;	// Whether the game is paused currently or not
+	private Rect touchArea;
+	
+	private ParticleSystem particleSystem;
 	
 	void Start() {
 		this.currentJumpForce = jumpForce;
 		this.characterRenderer = this.GetComponentInChildren<SkinnedMeshRenderer>();
+		this.particleSystem = GetComponentInChildren<ParticleSystem>();
+		StopParticleEmitter();
 		RetrieveSettings ();
+		touchArea = new Rect(0, 0, Screen.width, (Screen.height - Screen.height/5));
 	}
 
 	void Update() {
 		updateIsGrounded ();
 		UpdateFlashingAnimation ();
-		bool userPressJump = Input.GetButtonDown ("Jump") || Input.GetButtonDown ("Fire1");
+		bool userPressJump = (Input.GetButtonDown ("Jump") || JumpAreaTouched()) && !isPaused;
 		if (userPressJump) {
 			if (isGrounded) {
 				Jump ();
@@ -172,6 +179,41 @@ public class MainCharacterScript : MonoBehaviour {
 			remainingFlashingAnimations -= 1; // We've just completed one full flashing animation
 			isInvincible = false;
 		}
+	}	
+	
+	// set boolean to prevent the jump ability	
+	public void PauseJumpAbility() {
+		isPaused = true;
 	}
 	
+	// set boolean to allow the jump ability
+	public void UnpauseJumpAbility() {
+		isPaused = false;
+	}
+	
+	// checks if user input is within bounds of the area for triggering a jump
+	private bool JumpAreaTouched() {
+		if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Began)) {
+			if (touchArea.Contains(Input.GetTouch(0).position)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void StartParticleEmitter(Color color)
+	{
+		this.particleSystem.startColor = color;
+		this.particleSystem.enableEmission = true;
+	}
+	
+	public void StopParticleEmitter()
+	{
+		this.particleSystem.enableEmission = false;
+	}
+	
+	public bool IsEmittingParticles()
+	{
+		return this.particleSystem.enableEmission;
+	}
 }

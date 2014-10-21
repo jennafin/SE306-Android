@@ -5,7 +5,12 @@ public class MultiplierCollectable : Collectable {
 
 	protected override int LifeSpan 
 	{
-		get { return 1000; }
+		get { return 400; }
+	}
+	
+	protected override Color ParticleEmitterColor
+	{
+		get { return Color.blue; }
 	}
 
 	public int multiplier = 10;
