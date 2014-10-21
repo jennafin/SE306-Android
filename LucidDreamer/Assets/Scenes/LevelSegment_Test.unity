@@ -1513,6 +1513,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  flashingAnimationCountTotal: 3
+  flashingAnimationDuration: 1
 --- !u!58 &859361786
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1635,8 +1637,9 @@ MonoBehaviour:
   alexDreamer: {fileID: 859361784}
   mainCharacterScript: {fileID: 859361785}
   levelSegments:
-  - {fileID: 100022, guid: 956d51ce479174dffaca18930c862776, type: 2}
+  - {fileID: 100000, guid: 27636ea95d0344cc3bb9020fc646243c, type: 2}
   shakeDetector: {fileID: 2045136515}
+  soundEffectsOn: 0
 --- !u!64 &879874036
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2469,6 +2472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdee62c421fb7b34abbe290a0ca10f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseLucidSounds: []
+  FullLucidSounds: []
   LucidHUDObject: {fileID: 0}
   gameControllerObject: {fileID: 879874033}
   distancePowerRatio: .000500000024
