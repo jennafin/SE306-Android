@@ -10,10 +10,15 @@ public abstract class Collectable : MonoBehaviour {
 	{
 		get { return DEFAULT_LIFE_SPAN; }
 	}
+	
+	protected virtual Color ParticleEmitterColor
+	{
+		get { return Color.clear; }
+	}
 
 	// Keeps track of how long this collectable has left to live.
 	// A negative value signifies the collectable hasn't been used yet.
-	private int framesOfLifeRemaining;
+	protected int framesOfLifeRemaining;
 
 	public Collectable() 
 	{
@@ -30,19 +35,25 @@ public abstract class Collectable : MonoBehaviour {
 	public bool UseOneFrame(GameControllerScript gameController) {
 		if (framesOfLifeRemaining == LifeSpan)
 		{
+			// First time using the collectable
 			InitiateCollectableBehaviour(gameController);
+			StartParticleEmitter(gameController);
 			framesOfLifeRemaining -= 1;
 			return true;
 		}
 		else if (framesOfLifeRemaining > 0)
 		{
-			UpdateCollectableBehaviour(gameController, framesOfLifeRemaining);
+			// Neither first nor last time using the collectable
+			UpdateCollectableBehaviour(gameController);
+			RestartParticleEmitter(gameController);
 			framesOfLifeRemaining -= 1;
 			return true;
 		}
 		else
 		{
+			// Last time using the collectable
 			RevokeCollectableBehaviour(gameController);
+			StopParticleEmitter(gameController);
 			return false;
 		}
 	}
@@ -56,11 +67,11 @@ public abstract class Collectable : MonoBehaviour {
 	protected abstract void InitiateCollectableBehaviour (GameControllerScript gameController);
 
 	/**
-	 * Make any changes to the game controller, dependent on this collectables remaining life.
+	 * Make any changes to the game controller that might depend on the collectables remaining life.
 	 * 
 	 * This does not have to be overriden by subclasses. By default it does nothing.
 	 */
-	protected virtual void UpdateCollectableBehaviour (GameControllerScript gameController, int framesOfLifeRemaining)
+	protected virtual void UpdateCollectableBehaviour (GameControllerScript gameController)
 	{
 	}
 
@@ -72,6 +83,39 @@ public abstract class Collectable : MonoBehaviour {
 	protected virtual void RevokeCollectableBehaviour (GameControllerScript gameController)
 	{
 	}
+	
+	/**
+	 * Start the main character's particle emitter, using this collectable's emitter color.
+	 * Only start the emitter if this Collectable's emitter color is not set to Color.clear  
+	 */
+	private void StartParticleEmitter (GameControllerScript gameController)
+	{
+		if (this.ParticleEmitterColor != Color.clear)
+		{
+			gameController.getMainCharacter().StartParticleEmitter(this.ParticleEmitterColor);
+		}
+	}
+	
+	private void RestartParticleEmitter (GameControllerScript gameController)
+	{
+		MainCharacterScript mainCharacter = gameController.getMainCharacter();
+		
+		if (!mainCharacter.IsEmittingParticles())
+		{
+			StartParticleEmitter(gameController);
+		}
+	}
+	
+	/**
+	 * Stop the main character's particle emitter.
+	 */
+	 private void StopParticleEmitter (GameControllerScript gameController)
+	 {
+		if (this.ParticleEmitterColor != Color.clear)
+		{
+	 		gameController.getMainCharacter().StopParticleEmitter();
+	 	}
+	 }
 	
 	/**
 	 * This should be overridden to be the sound to be played when this collectable is collected.

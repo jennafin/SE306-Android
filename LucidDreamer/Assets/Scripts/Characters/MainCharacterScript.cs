@@ -31,9 +31,15 @@ public class MainCharacterScript : MonoBehaviour {
 	
 	private bool isPaused = false;	// Whether the game is paused currently or not
 	private Rect touchArea;
+
+	private ParticleSystem particleSystem;
+
 	
 	void Start() {
 		this.currentJumpForce = jumpForce;
+		
+		this.particleSystem = GetComponentInChildren<ParticleSystem>();
+		StopParticleEmitter();
 		RetrieveSettings ();
 		touchArea = new Rect(0, 0, Screen.width, (Screen.height - Screen.height/5));
 	}
@@ -142,4 +148,19 @@ public class MainCharacterScript : MonoBehaviour {
 		return false;
 	}
 	
+	public void StartParticleEmitter(Color color)
+	{
+		this.particleSystem.startColor = color;
+		this.particleSystem.enableEmission = true;
+	}
+	
+	public void StopParticleEmitter()
+	{
+		this.particleSystem.enableEmission = false;
+	}
+	
+	public bool IsEmittingParticles()
+	{
+		return this.particleSystem.enableEmission;
+	}
 }
