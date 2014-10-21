@@ -82,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound:
   - {fileID: 8300000, guid: 45b7127776faa426d88ed41bb46195ff, type: 3}
+  - {fileID: 8300000, guid: 45b7127776faa426d88ed41bb46195ff, type: 3}
   points: 500
 --- !u!1001 &100100000
 Prefab:

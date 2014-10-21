@@ -7,6 +7,13 @@ public abstract class Collectable : MonoBehaviour {
 	// Length of time that this collectable lasts (in frames) 
 	private int DEFAULT_LIFE_SPAN = 1;
 
+	/**
+	 * This should be overridden to be the sound to be played when this collectable is collected.
+	 *
+	 * Defaults to null.
+	 */
+	public List<AudioClip> sound = new List<AudioClip>();
+
 	protected virtual int LifeSpan 
 	{
 		get { return DEFAULT_LIFE_SPAN; }
@@ -118,20 +125,22 @@ public abstract class Collectable : MonoBehaviour {
 	 	}
 	 }
 	
-	/**
-	 * This should be overridden to be the sound to be played when this collectable is collected.
-	 *
-	 * Defaults to null.
-	 */
-	public List<AudioClip> sound = new List<AudioClip>();
-	
+
+
 	/**
 	 * Play this collectables sound.
 	 */
 	public void PlayCollectedSound ()
 	{
-		if (sound.Count != 0) {
-			AudioSource.PlayClipAtPoint(sound[Random.Range(0,sound.Count-1)], this.transform.position, 2.0f);
+		if (sound.Count >= 1) {
+			System.Random random = new System.Random ();
+			int number = random.Next(sound.Count-1);
+			Debug.Log(number);
+			Debug.Log(sound.Count);
+			Debug.Log(sound[number]);
+			if (sound[number] != null){
+				AudioSource.PlayClipAtPoint(sound[number], this.transform.position, 2.0f);
+			}
 		}
 	}
 }
