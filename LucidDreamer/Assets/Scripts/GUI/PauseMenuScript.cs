@@ -105,6 +105,17 @@ public class PauseMenuScript : MonoBehaviour {
 		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), fadeOverlayTexture); // draw texture to fit entire screen
 			
 	}
+	
+	void Update() {
+		// exit game on escape/back button
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			if (isPaused) {
+				UnpauseGame();
+			} else {
+				PauseGame();
+			}
+		}
+	}
 
 	// loads the MainMenu scene using the SceneFade script attached to the GameController GameObject
 	private void LoadMainMenu() {
