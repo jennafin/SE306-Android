@@ -65,6 +65,8 @@ public class MainCharacterScript : MonoBehaviour {
 			}
 		};
 		rigidbody2D.velocity = new Vector2 (speed, rigidbody2D.velocity.y);
+		
+		Debug.Log("IsInvincible: " + isInvincible);
 	}
 
 	// Jumps
@@ -147,7 +149,6 @@ public class MainCharacterScript : MonoBehaviour {
 	{
 		remainingFlashingAnimations = flashingAnimationCountTotal;
 		remainingTimeUntilToggleVisibility = flashingAnimationDuration;
-		isInvincible = true;	
 	}
 	
 	private void UpdateFlashingAnimation()
@@ -178,7 +179,6 @@ public class MainCharacterScript : MonoBehaviour {
 			// Alex is hidden, show him
 			characterRenderer.enabled = true;
 			remainingFlashingAnimations -= 1; // We've just completed one full flashing animation
-			isInvincible = false;
 		}
 	}	
 	
