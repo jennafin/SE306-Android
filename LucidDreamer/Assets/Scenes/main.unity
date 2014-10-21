@@ -1640,11 +1640,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 836679848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0401058197, y: 1.97773218, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1897705303}
-  m_RootOrder: 0
+  m_Father: {fileID: 1286769715}
+  m_RootOrder: 4
 --- !u!114 &836679850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1656,9 +1656,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdee62c421fb7b34abbe290a0ca10f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseLucidSounds:
+  - {fileID: 8300000, guid: a017b072aec5540f2b285cbcdd59c2a5, type: 3}
+  - {fileID: 8300000, guid: a50732922f8f5407094ebed906275fe3, type: 3}
+  - {fileID: 8300000, guid: 53c9b1a9450d147188fbac16284da227, type: 3}
+  FullLucidSounds:
+  - {fileID: 8300000, guid: aefe63906a2594b87885e2e48b0d2b3c, type: 3}
+  - {fileID: 8300000, guid: 0ede2e61fff77491ea491d1bebb937ee, type: 3}
   LucidHUDObject: {fileID: 2095973032}
   gameControllerObject: {fileID: 1897705298}
-  distancePowerRatio: .000500000024
+  distancePowerRatio: .00999999978
   PowerDownRatio: .75
   avrgTime: .5
   peakLevel: .600000024
@@ -2044,6 +2051,7 @@ Transform:
   - {fileID: 278581935}
   - {fileID: 2016434741}
   - {fileID: 623477929}
+  - {fileID: 836679849}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!61 &1286769716
@@ -2713,6 +2721,7 @@ GameObject:
   - 64: {fileID: 1897705301}
   - 114: {fileID: 1897705299}
   - 114: {fileID: 1897705304}
+  - 114: {fileID: 1897705300}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2746,6 +2755,19 @@ MonoBehaviour:
   - {fileID: 100016, guid: a270fcea23ffe48fbbbd9b9494437a8a, type: 2}
   - {fileID: 100000, guid: 27636ea95d0344cc3bb9020fc646243c, type: 2}
   shakeDetector: {fileID: 836679848}
+--- !u!114 &1897705300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1897705298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1524c0eef44ad4618b5d3bd2596a11da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundImages:
+  - {fileID: 100000, guid: 00e09b4d2a2135648aab56eb4bac96cc, type: 3}
 --- !u!64 &1897705301
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2775,8 +2797,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.0401058197, y: -1.97773218, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 836679849}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!114 &1897705304
