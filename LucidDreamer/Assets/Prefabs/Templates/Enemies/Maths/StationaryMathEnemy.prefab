@@ -57,6 +57,7 @@ GameObject:
   - 95: {fileID: 9500000}
   - 61: {fileID: 6100000}
   - 114: {fileID: 11400000}
+  - 50: {fileID: 5000000}
   m_Layer: 0
   m_Name: StationaryMathEnemy
   m_TagString: Dangerous
@@ -108,13 +109,28 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 237.500214, y: 1.97780645, z: 0}
+  m_LocalScale: {x: .800000012, y: .800000012, z: 1}
   m_Children:
   - {fileID: 400004}
   - {fileID: 400002}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5000000
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!61 &6100000
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -124,8 +140,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .5, y: 2.5}
-  m_Center: {x: 0, y: 1.10000002}
+  m_Size: {x: .938261867, y: 2.17080784}
+  m_Center: {x: -.0847473145, y: 1.07563984}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
