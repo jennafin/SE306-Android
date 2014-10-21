@@ -6,6 +6,10 @@ public class ShakeDetectorScript : MonoBehaviour {
 
   private List<Shakeable> subscribers = new List<Shakeable>();
 
+	//Sound effects
+	public List<AudioClip> UseLucidSounds = new List<AudioClip> ();
+	public List<AudioClip> FullLucidSounds = new List<AudioClip> ();
+
   int currentShake = Environment.TickCount;
 
 	private float previousDistance = 0;
@@ -37,6 +41,9 @@ public class ShakeDetectorScript : MonoBehaviour {
 	
 	//If game is paused
 	private bool isPaused = false;
+
+	//play audio when full bool
+	private bool firstTimeAudio = true;
 
   public float avrgTime = 0.5f;
   public float peakLevel = 0.6f;
@@ -130,6 +137,17 @@ public class ShakeDetectorScript : MonoBehaviour {
 
 			lucidPower += (current - previousDistance) * distancePowerRatio;
 			previousDistance = current;
+
+			if (firstTimeAudio && lucidPower > 0.99){
+				firstTimeAudio = false;
+				if (gameController.soundEffectsOn){
+					System.Random random = new System.Random ();
+					int number = random.Next(FullLucidSounds.Count);
+					if (FullLucidSounds[number] != null){
+						AudioSource.PlayClipAtPoint(FullLucidSounds[number], this.transform.position, 2.0f);
+					}
+				}
+			}
 //
 //
 			LucidHUD.UpdateDisplay (lucidPower);
@@ -156,6 +174,14 @@ public class ShakeDetectorScript : MonoBehaviour {
   private void phoneShake() {
 		//if there is enough lucid power
 		if (lucidPower > 0.99 && !isPaused) {
+			firstTimeAudio = true;
+			if (gameController.soundEffectsOn){
+				System.Random random = new System.Random ();
+				int number = random.Next(UseLucidSounds.Count);
+				if (UseLucidSounds[number] != null){
+					AudioSource.PlayClipAtPoint(UseLucidSounds[number], this.transform.position, 2.0f);
+				}
+			}
 			PowerDown = true;
 			gameController.CollectAllCollectables();
 			deleteAllEnemies();
