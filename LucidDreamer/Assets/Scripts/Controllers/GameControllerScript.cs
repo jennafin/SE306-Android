@@ -74,8 +74,8 @@ public class GameControllerScript : MonoBehaviour
 				
 				// turn on (unmute) music if turned on
 				if (musicOn) {
-					AudioSource music = GameObject.Find ("Main Camera").GetComponent<AudioSource> ();
-					music.mute = false;
+						AudioSource music = GameObject.Find ("Main Camera").GetComponent<AudioSource> ();
+						music.mute = false;
 				}
 
 				//Instantiate score tracker
@@ -92,7 +92,7 @@ public class GameControllerScript : MonoBehaviour
 		void Update ()
 		{
 				// Handles the game speeding up.
-				Time.timeScale = (float) timeScale.getCurrentSpeed ();
+				Time.timeScale = (float)timeScale.getCurrentSpeed ();
 				timeScale.incrementSpeed (timeScaleIncrement);
 
 				ApplyCollectableBehaviours ();
@@ -107,13 +107,15 @@ public class GameControllerScript : MonoBehaviour
 
 				float tmpPos = Camera.main.WorldToScreenPoint (new Vector3 (previousLevel.MaxX (), 0, 0)).x;
 				
+				
 				bool isVisible = false;
-				foreach (Renderer r in previousLevel.Prefab().gameObject.GetComponentsInChildren<Renderer>()) {
-					if (r.isVisible) {
-						isVisible = true;
-						break;
-					}
+				foreach (Renderer r in previousLevel.Prefab().GetComponentsInChildren<Renderer>()) {
+						if (r.isVisible) {
+								isVisible = true;
+								break;
+						}
 				}
+		
 		
 				if (tmpPos < 0 && ! isVisible) {
 
@@ -222,15 +224,15 @@ public class GameControllerScript : MonoBehaviour
 
 
 						// Resets time scale to normal
-						timeScale.reset();
+						timeScale.reset ();
 
 						// Plays injured/death sound
 						if (soundEffectsOn) {
-							if (lives < 0) {
-								mainCharacterScript.PlayDeathSound();
-							} else {
-								mainCharacterScript.PlayInjuredSound();
-							}
+								if (lives < 0) {
+										mainCharacterScript.PlayDeathSound ();
+								} else {
+										mainCharacterScript.PlayInjuredSound ();
+								}
 						}
 						
 				} else if (objectTag.StartsWith ("Collectable")) {
@@ -240,7 +242,7 @@ public class GameControllerScript : MonoBehaviour
 
 						// We keep the Collectable instance around, but remove its game object from the scene
 						if (soundEffectsOn) {
-							collectable.PlayCollectedSound ();
+								collectable.PlayCollectedSound ();
 						}
 						Destroy (collectable.gameObject);
 				}
@@ -250,9 +252,10 @@ public class GameControllerScript : MonoBehaviour
 				}
 		}
 
-		public void LoadGameOverScreen() {
-			scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
-			Application.LoadLevel ("GameOver");
+		public void LoadGameOverScreen ()
+		{
+				scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
+				Application.LoadLevel ("GameOver");
 		}
 
 		public int GetCoinsCollected ()
@@ -260,9 +263,9 @@ public class GameControllerScript : MonoBehaviour
 				return this.coinsCollected;
 		}
 
-		public float GetDistance()
+		public float GetDistance ()
 		{
-			return alexPosition.x;
+				return alexPosition.x;
 		}
 
 		void GameOver ()
@@ -308,11 +311,11 @@ public class GameControllerScript : MonoBehaviour
 		// Iterate through any current collectables and apply their behaviours
 		private void ApplyCollectableBehaviours ()
 		{
-				for (int i = this.currentCollectables.Count - 1; i >= 0 ; i--) {
+				for (int i = this.currentCollectables.Count - 1; i >= 0; i--) {
 						bool stillHasLife = this.currentCollectables [i].UseOneFrame (this);
 
 						if (!stillHasLife) {
-								currentCollectables.RemoveAt(i);
+								currentCollectables.RemoveAt (i);
 						}
 				}
 		}
@@ -323,58 +326,60 @@ public class GameControllerScript : MonoBehaviour
 		public void CollectAllCollectables ()
 		{
 
-			GameObject[] coins = GameObject.FindGameObjectsWithTag("CollectableCoin");
-			GameObject[] powerUps = GameObject.FindGameObjectsWithTag("CollectablePowerUp");
+				GameObject[] coins = GameObject.FindGameObjectsWithTag ("CollectableCoin");
+				GameObject[] powerUps = GameObject.FindGameObjectsWithTag ("CollectablePowerUp");
 
-			// Combine these collectables into one array
-			GameObject[] collectables = new GameObject[coins.Length + powerUps.Length];
-			coins.CopyTo(collectables, 0);
-			powerUps.CopyTo(collectables, coins.Length);
+				// Combine these collectables into one array
+				GameObject[] collectables = new GameObject[coins.Length + powerUps.Length];
+				coins.CopyTo (collectables, 0);
+				powerUps.CopyTo (collectables, coins.Length);
 
-			for (int i = 0; i < collectables.Length; i++)
-			{
-				GameObject collectableGameObject = collectables[i].gameObject;
-				Collectable collectable = collectableGameObject.GetComponent<Collectable>();
+				for (int i = 0; i < collectables.Length; i++) {
+						GameObject collectableGameObject = collectables [i].gameObject;
+						Collectable collectable = collectableGameObject.GetComponent<Collectable> ();
 
-				if (collectableGameObject.renderer.isVisible)
-				{
-					currentCollectables.Add(collectable);
-					Destroy(collectable.gameObject);
+						if (collectableGameObject.renderer.isVisible) {
+								currentCollectables.Add (collectable);
+								Destroy (collectable.gameObject);
+						}
+
 				}
-
-			}
 		}
 
-		public void AddLucidPower(float power) {
-			shakeDetector.GetComponent<ShakeDetectorScript>().AddLucidPower(power);
+		public void AddLucidPower (float power)
+		{
+				shakeDetector.GetComponent<ShakeDetectorScript> ().AddLucidPower (power);
 		}
 
 		// retrieve persisted settings for music and sound effects
-		private void RetrieveSettings() {
-			if (PlayerPrefs.HasKey ("MusicOption")) {
-				musicOn = PlayerPrefs.GetInt("MusicOption") != 0;
+		private void RetrieveSettings ()
+		{
+				if (PlayerPrefs.HasKey ("MusicOption")) {
+						musicOn = PlayerPrefs.GetInt ("MusicOption") != 0;
 				} else {
-					musicOn = true;
+						musicOn = true;
 				}
-			if (PlayerPrefs.HasKey ("SoundEffectsOption")) {
-				soundEffectsOn = PlayerPrefs.GetInt("SoundEffectsOption") != 0;
+				if (PlayerPrefs.HasKey ("SoundEffectsOption")) {
+						soundEffectsOn = PlayerPrefs.GetInt ("SoundEffectsOption") != 0;
 				} else {
-					soundEffectsOn = true;
+						soundEffectsOn = true;
 				}
 		}	
 
 		// pause the game – make relevant calls to halt background operations
-		public void PauseGame() {
-			timeScale.pause ();
-			shakeDetector.GetComponent<ShakeDetectorScript>().PauseDetection();
-			mainCharacterScript.PauseJumpAbility();
+		public void PauseGame ()
+		{
+				timeScale.pause ();
+				shakeDetector.GetComponent<ShakeDetectorScript> ().PauseDetection ();
+				mainCharacterScript.PauseJumpAbility ();
 		}
 
 		// unpause the game – make relevant calls to resume background operations
-		public void UnpauseGame() {
-			timeScale.unpause ();
-			shakeDetector.GetComponent<ShakeDetectorScript>().UnpauseDetection();
-			mainCharacterScript.UnpauseJumpAbility();
+		public void UnpauseGame ()
+		{
+				timeScale.unpause ();
+				shakeDetector.GetComponent<ShakeDetectorScript> ().UnpauseDetection ();
+				mainCharacterScript.UnpauseJumpAbility ();
 		}
 }
 
