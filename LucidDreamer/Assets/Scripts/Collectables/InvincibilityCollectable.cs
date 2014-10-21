@@ -5,7 +5,7 @@ public class InvincibilityCollectable : Collectable {
 	
 	protected override int LifeSpan 
 	{
-		get { return 400; }
+		get { return 500; }
 	}
 	
 	protected override Color ParticleEmitterColor
