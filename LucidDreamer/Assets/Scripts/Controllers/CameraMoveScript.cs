@@ -5,16 +5,21 @@ public class CameraMoveScript : MonoBehaviour
 {
 
 	public Transform player;
-	public float distanceAhead;
-	public float distanceBehind;
-	public float yOffset;
+	public float distanceAhead = 22f;
+	public float distanceBehind = 4f;
+	public float yOffset = 3f;
+	public float smooth = 0.1f;
 	public float minHeight;
 	private float xOffset;
 	private float zOffset;
+	private float currentLerpTime;
+	private float startYPosition;
+	private float endYPosition;
 	
 	void Start ()
 	{
 		UpdateOffsets ();
+		startYPosition = player.position.y + yOffset;
 	}
 
 	void Update ()
@@ -24,8 +29,17 @@ public class CameraMoveScript : MonoBehaviour
 		UpdateOffsets();
 		#endif
 
+		// Mathf.Lerp is used to add a delay to the change in camera y position
+		currentLerpTime += Time.deltaTime;
+		if (currentLerpTime > smooth) {
+			currentLerpTime = 0f;
+			startYPosition = endYPosition;
+			endYPosition = player.position.y + yOffset;
+		}
+		float perc = currentLerpTime / smooth;
+
 		// Update the camera transform to follow the player
-		transform.position = new Vector3 (player.position.x + xOffset, yOffset, zOffset);
+		transform.position = new Vector3 (player.position.x + xOffset, Mathf.Lerp (startYPosition, endYPosition, perc), zOffset); 
 	}
 
 	void UpdateOffsets ()
