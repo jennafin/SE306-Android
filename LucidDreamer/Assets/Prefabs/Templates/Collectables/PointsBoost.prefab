@@ -81,7 +81,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6688daf39a3ab46ebbb7985fe1adcb14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 0}
+  sound:
+  - {fileID: 8300000, guid: 45b7127776faa426d88ed41bb46195ff, type: 3}
+  - {fileID: 8300000, guid: 45b7127776faa426d88ed41bb46195ff, type: 3}
   points: 500
 --- !u!114 &11400002
 MonoBehaviour:
