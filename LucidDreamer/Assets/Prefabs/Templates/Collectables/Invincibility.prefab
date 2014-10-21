@@ -13,6 +13,7 @@ GameObject:
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400000}
   - 60: {fileID: 6000000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Invincibility
   m_TagString: CollectablePowerUp
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -109,6 +110,19 @@ MonoBehaviour:
   sound:
   - {fileID: 8300000, guid: a6d844e007f6a4faa9a48bad3eed997a, type: 3}
   - {fileID: 8300000, guid: 2bf0add5ece4b4684bd4c994d0240c10, type: 3}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba361bb5808c464fa092dfff1828724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
+  axisOfRotation: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
