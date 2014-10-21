@@ -8,6 +8,8 @@ Score = 评分:
 
 Retry = 重试吗？
 
+Restart = 再开始
+
 Paused = 已暂停
 
 Resume = 简历

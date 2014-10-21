@@ -8,6 +8,8 @@ Score = счет:
 
 Retry = Повторить ?
 
+Restart = перезапуск
+
 Paused = Приостановлено
 
 Resume = Pезюме

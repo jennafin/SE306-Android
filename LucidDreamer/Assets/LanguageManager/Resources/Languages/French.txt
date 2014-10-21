@@ -8,6 +8,8 @@ Score = Score:
 
 Retry = Réessayer?
 
+Restart = Recommencer
+
 Paused = Pause
 
 Resume = Reprendre

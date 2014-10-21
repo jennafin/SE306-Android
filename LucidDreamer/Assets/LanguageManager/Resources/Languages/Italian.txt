@@ -8,6 +8,8 @@ Score = Punteggio:
 
 Retry = Riprovare ?
 
+Restart = Ripartire
+
 Paused = Pausa
 
 Resume = Riprendere
