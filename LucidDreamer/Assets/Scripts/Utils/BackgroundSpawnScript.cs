@@ -74,19 +74,19 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	
 	bool RightIsVisible() {
 		return currentImages[2, 0].renderer.isVisible
-			|| currentImages[2, 1].renderer.isVisible
+				|| currentImages[2, 1].renderer.isVisible
 				||	currentImages[2, 2].renderer.isVisible;
 	}
 	
 	bool UpIsVisible() {
 		return currentImages[0, 0].renderer.isVisible
-			|| currentImages[1, 0].renderer.isVisible
+				|| currentImages[1, 0].renderer.isVisible
 				||	currentImages[2, 0].renderer.isVisible;
 	}
 	
 	bool DownIsVisible() {
 		return currentImages[0, 2].renderer.isVisible
-			|| currentImages[1, 2].renderer.isVisible
+				|| currentImages[1, 2].renderer.isVisible
 				||	currentImages[2, 2].renderer.isVisible;
 	}
 	
