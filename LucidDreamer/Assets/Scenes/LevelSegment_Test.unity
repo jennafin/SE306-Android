@@ -515,7 +515,7 @@ MonoBehaviour:
   alexDreamer: {fileID: 859361784}
   mainCharacterScript: {fileID: 859361785}
   levelSegments:
-  - {fileID: 100000, guid: 27636ea95d0344cc3bb9020fc646243c, type: 2}
+  - {fileID: 100000, guid: 565a24c5693e3fa4b94d843cca65b3c1, type: 2}
   shakeDetector: {fileID: 0}
 --- !u!64 &879874036
 MeshCollider:
