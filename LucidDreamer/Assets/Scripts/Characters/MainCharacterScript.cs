@@ -111,6 +111,7 @@ public class MainCharacterScript : MonoBehaviour {
 		PlayJumpSound ();
 		hasDoubleJumped = true;
 		addJumpForce (doubleJumpForce);
+		setDoubleJumpAnimation();
 	}
 
 	// Adds a upwards jump force
@@ -267,5 +268,10 @@ public class MainCharacterScript : MonoBehaviour {
 	
 	private void setRunningAnimation() {
 		characterAnimator.SetBool("jumping", false);
+		characterAnimator.SetBool("superjump", false);
+	}
+	
+	private void setDoubleJumpAnimation() {
+		characterAnimator.SetBool("superjump", true);
 	}
 }
