@@ -71,7 +71,7 @@ PlayerSettings:
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: 07a996f3a1fa743948c9913c0cac8a72
   iPhoneBundleVersion: 1.0
-  AndroidBundleVersionCode: 3
+  AndroidBundleVersionCode: 7
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -99,13 +99,13 @@ PlayerSettings:
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: /Users/akshaykalyan/Documents/dev/lucidrunner.keystore
+  AndroidKeystoreName: lucidrunner.keystore
   AndroidKeyaliasName: lucidrunner
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: b51bcabdca3acfb4bb3b39e68aa2f852, type: 3}
+    - m_Icon: {fileID: 2800000, guid: c7afe394b24733a4fb519c35cc370c9a, type: 3}
       m_Size: 128
   m_BuildTargetBatching:
   - m_BuildTarget: Web

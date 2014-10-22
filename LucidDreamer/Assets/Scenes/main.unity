@@ -320,6 +320,18 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300002, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
+    - target: {fileID: 400002, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400056, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400056, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_RootGameObject: {fileID: 1286769714}
@@ -2069,6 +2081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameControllerScript: {fileID: 1897705299}
+  characterAnimator: {fileID: 1286769718}
   isInvincible: 0
   groundCheck: {fileID: 2016434741}
   ground:
@@ -2705,6 +2718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifeHUD: {fileID: 1165287227}
   alexDreamer: {fileID: 1286769715}
+  alexAnimator: {fileID: 1286769718}
   mainCharacterScript: {fileID: 1286769719}
   startLevel: {fileID: 100000, guid: 7267ecd2c7a6c44f8b400ed1f22e0828, type: 2}
   easyLevels:
