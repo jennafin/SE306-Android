@@ -124,7 +124,11 @@ public class PauseMenuScript : MonoBehaviour {
 
 	// loads the main (the game) scene using the SceneFade script attached to the GameController GameObject
 	private void LoadGame() {
-		Application.LoadLevel("main");
+		if (PlayerPrefs.GetString ("mode") == "3D") {
+			GameObject.Find ("GameController").GetComponent<SceneFader> ().LoadScene ("main3D");
+		} else {
+			GameObject.Find ("GameController").GetComponent<SceneFader> ().LoadScene ("main");
+		}
 	}
 	// sets the alpha value of the pause overlay texture to be visible
 	private void FadeIn() {
