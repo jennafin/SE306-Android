@@ -255,6 +255,6 @@ public class PurchaseMenu : MonoBehaviour
     }
     
     private void LoadMainMenu() {
-		Application.LoadLevel("MainMenu");
+		GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("MainMenu");
     }
 }

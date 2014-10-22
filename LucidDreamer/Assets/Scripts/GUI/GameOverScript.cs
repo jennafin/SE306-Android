@@ -143,8 +143,4 @@ public class GameOverScript : MonoBehaviour
 						GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene ("main");
 				}
 		}
-
-		private void LoadPurchaseMenu() {
-			GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("PurchaseMenu");
-		}
 }
