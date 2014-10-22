@@ -2706,7 +2706,7 @@ MonoBehaviour:
   LifeHUD: {fileID: 1165287227}
   alexDreamer: {fileID: 1286769715}
   mainCharacterScript: {fileID: 1286769719}
-  startLevel: {fileID: 100014, guid: 6d3c90e7ac37247da97d4709b9fc00e5, type: 2}
+  startLevel: {fileID: 100000, guid: 7267ecd2c7a6c44f8b400ed1f22e0828, type: 2}
   easyLevels:
   - {fileID: 100000, guid: 41cc4f359ed82468f9aa275be51e4c77, type: 2}
   - {fileID: 100072, guid: feb04bc9554e64709ab721cbb24f4043, type: 2}
