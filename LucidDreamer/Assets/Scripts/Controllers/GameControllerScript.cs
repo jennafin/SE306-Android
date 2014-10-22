@@ -118,7 +118,7 @@ public class GameControllerScript : MonoBehaviour
 
 				alexPosition = alexDreamer.position;
 
-				if (alexPosition.y < -5) {
+				if (alexPosition.y < (currentLevel.MinY () -7)) {
 						// Alex has fallen to his death
 						isAlexFalling = true;
 						GameOver ();
