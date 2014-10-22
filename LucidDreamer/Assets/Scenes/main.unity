@@ -158,9 +158,9 @@ Transform:
   m_PrefabParentObject: {fileID: 400024, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 91713754}
-  m_LocalRotation: {x: -.0220635161, y: .016875511, z: .0351684317, w: .998995304}
-  m_LocalPosition: {x: -6.51925802e-09, y: .197969094, z: 8.38190317e-09}
-  m_LocalScale: {x: .999999881, y: 1.00000012, z: .99999994}
+  m_LocalRotation: {x: -.0739482641, y: -.109410182, z: -.0373353511, w: .990538836}
+  m_LocalPosition: {x: -9.31322575e-10, y: .197969109, z: -1.44354999e-08}
+  m_LocalScale: {x: .99999994, y: 1.00000012, z: 1}
   m_Children:
   - {fileID: 1632117712}
   m_Father: {fileID: 1785797978}
@@ -358,7 +358,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 278581934}
-  m_LocalRotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
+  m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
   m_LocalPosition: {x: -1.26370169e-16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2738,7 +2738,7 @@ MonoBehaviour:
   alexDreamer: {fileID: 1286769715}
   alexAnimator: {fileID: 1286769718}
   mainCharacterScript: {fileID: 1286769719}
-  startLevel: {fileID: 100014, guid: 6d3c90e7ac37247da97d4709b9fc00e5, type: 2}
+  startLevel: {fileID: 100014, guid: 7267ecd2c7a6c44f8b400ed1f22e0828, type: 2}
   easyLevels:
   - {fileID: 100000, guid: 41cc4f359ed82468f9aa275be51e4c77, type: 2}
   - {fileID: 100072, guid: feb04bc9554e64709ab721cbb24f4043, type: 2}
