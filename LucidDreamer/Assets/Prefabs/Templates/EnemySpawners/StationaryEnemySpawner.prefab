@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mathsObject: {fileID: 100006, guid: 09dcb8a0681f8de4aa401024bd4d3d42, type: 2}
-  scienceObject: {fileID: 100000, guid: 3ab50256e0a3aca4da019e2ab1b88b5a, type: 2}
+  scienceObject: {fileID: 100000, guid: 3d4cc0e46c661aa4097a53cf7bf8eb8e, type: 2}
   artObject: {fileID: 100010, guid: 02e994379525a74429bfea1633674023, type: 2}
 --- !u!1001 &100100000
 Prefab:

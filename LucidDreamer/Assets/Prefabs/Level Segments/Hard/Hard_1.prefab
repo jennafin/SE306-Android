@@ -1628,7 +1628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mathsObject: {fileID: 100006, guid: 09dcb8a0681f8de4aa401024bd4d3d42, type: 2}
-  scienceObject: {fileID: 100000, guid: 3ab50256e0a3aca4da019e2ab1b88b5a, type: 2}
+  scienceObject: {fileID: 100000, guid: 3d4cc0e46c661aa4097a53cf7bf8eb8e, type: 2}
   artObject: {fileID: 100010, guid: 02e994379525a74429bfea1633674023, type: 2}
 --- !u!114 &11400010
 MonoBehaviour:
@@ -1666,7 +1666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mathsObject: {fileID: 100006, guid: 09dcb8a0681f8de4aa401024bd4d3d42, type: 2}
-  scienceObject: {fileID: 100000, guid: 3ab50256e0a3aca4da019e2ab1b88b5a, type: 2}
+  scienceObject: {fileID: 100000, guid: 3d4cc0e46c661aa4097a53cf7bf8eb8e, type: 2}
   artObject: {fileID: 100010, guid: 02e994379525a74429bfea1633674023, type: 2}
 --- !u!114 &11400016
 MonoBehaviour:
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mathsObject: {fileID: 100006, guid: 31240428c951c8b4b8b92cc8b8238fa1, type: 2}
-  scienceObject: {fileID: 100000, guid: d737011a02f0d32448d1812cae99c4fd, type: 2}
+  scienceObject: {fileID: 100000, guid: eaa4675bec4b14e49aab3010ec6c99c6, type: 2}
   artObject: {fileID: 100010, guid: 1d2b3e31d66d9d343b5f0c7ed3b33e8b, type: 2}
 --- !u!1001 &100100000
 Prefab:
