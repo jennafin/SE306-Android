@@ -21,10 +21,12 @@ while read item; do
   if [[ $name == achievement* ]]; then
 	echo "	public void Get${name:11}() {
 		if (!executed[$i]) {
-			Social.ReportProgress ($key, 100.0f, (bool success) => {
-				// handle success or failure
-			});
-			executed[$i] = true;
+			try {
+				Social.ReportProgress ($key, 100.0f, (bool success) => {
+					// handle success or failure
+				});
+				executed[$i] = true;
+			} catch {}
 		}
 	}
 	" >> AchievementsList.cs
