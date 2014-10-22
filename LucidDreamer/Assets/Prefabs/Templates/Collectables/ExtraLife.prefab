@@ -81,10 +81,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac5464e11bbf41f787d139625b2021b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound:
+  soundJamie:
+  - {fileID: 8300000, guid: 1b951659be0f14ac389505c3a5b1ad49, type: 3}
+  - {fileID: 8300000, guid: 3567543e25f7c48238767ef7bdb4cb90, type: 3}
+  - {fileID: 8300000, guid: fd7e2aa692bc74f0eacdfda751226cba, type: 3}
+  soundHugo:
+  - {fileID: 8300000, guid: 78876d76bd2664654a12fcef4c9b6a5e, type: 3}
   - {fileID: 8300000, guid: 0d755207726804716945eb4848ff2853, type: 3}
   - {fileID: 8300000, guid: 681c2eaf72a6b4ec182efa8dc2cf6a05, type: 3}
-  - {fileID: 8300000, guid: 78876d76bd2664654a12fcef4c9b6a5e, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
