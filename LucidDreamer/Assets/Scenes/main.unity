@@ -2850,6 +2850,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 84835e0eac20ead439584b5c3a0c0f5d, type: 2}
   - {fileID: 100000, guid: 5cf1be6d2b473bc4e9ed703b71902a23, type: 2}
   - {fileID: 100000, guid: bb8444e4f43a2d04fa9bd03c8ebae7f9, type: 2}
+  - {fileID: 100000, guid: 911ef65bf064cd044afbb1e25757865c, type: 2}
   artBackgrounds:
   - {fileID: 100000, guid: 83f7a7878a2d8354588f93ded22828fb, type: 2}
   - {fileID: 100000, guid: c758c65a013f4954fb3aa559c71a2570, type: 2}
