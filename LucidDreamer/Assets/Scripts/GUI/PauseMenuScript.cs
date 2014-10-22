@@ -90,7 +90,7 @@ public class PauseMenuScript : MonoBehaviour {
 		} else {
 			FadeOut();
 			if (GUI.Button(new Rect(screenWidth - (buttonWidth/3)
-										, buttonHeight
+			                        	, buttonHeight/4 - buttonHeight/10
 										, buttonWidth/4
 										, buttonHeight)
 										, " ▌▌"
