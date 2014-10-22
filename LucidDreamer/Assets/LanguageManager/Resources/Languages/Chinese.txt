@@ -57,3 +57,5 @@ ViewProducts = 查看产品
 Begin5Lives = 开始每场比赛有5个生命
 
 Begin4Lives = 开始每场比赛有4个生活
+
+PurchaseMenu = 购买菜单

@@ -115,7 +115,7 @@ public class GameOverScript : MonoBehaviour
 
 				// TODO use language manager to get string
 				if (GUI.Button (new Rect (screenWidth / 2, screenHeight - buttonHeight - 20, buttonWidth * 2, buttonHeight)
-										, "Purchase Menu"
+										, LanguageManager.GetText ("PurchaseMenu")
 										, buttonStyle)) {
 						SaveScore();
 						LoadPurchaseMenu();

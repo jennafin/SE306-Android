@@ -188,4 +188,12 @@ public class PurchaseMenu : MonoBehaviour
         }
 
     }
+
+    void Update ()
+    {
+      // go to main menu on escape/back button
+      if (Input.GetKeyDown (KeyCode.Escape)) {
+          Application.LoadLevel("GameOver");
+      }
+    }
 }

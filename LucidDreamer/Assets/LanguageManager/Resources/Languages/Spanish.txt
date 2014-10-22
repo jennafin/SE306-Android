@@ -56,3 +56,5 @@ ViewProducts = Ver Productos
 Begin5Lives = Comience cada juego con 5 vidas
 
 Begin4Lives = Comience cada juego con 4 vidas
+
+PurchaseMenu = Menú Compras
