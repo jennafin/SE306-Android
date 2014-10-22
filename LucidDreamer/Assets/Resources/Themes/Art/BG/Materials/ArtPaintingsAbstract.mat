@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ArtPainting
+  m_Name: ArtPaintingsAbstract
   m_Shader: {fileID: 4800000, guid: c36a613131275eb47a24e971ca6ea274, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
