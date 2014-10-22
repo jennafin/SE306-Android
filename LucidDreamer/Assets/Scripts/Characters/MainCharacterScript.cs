@@ -10,9 +10,9 @@ public class MainCharacterScript : MonoBehaviour {
 
 	float jumpForce = 600f;
 	float doubleJumpForce = 600f;
-	float superJumpForce = 700f;
-
-	float currentJumpForce;
+	float superJumpForce = 900f;
+	
+	bool isSuperJumping = false;
 	
 	float speed = 10f;
 
@@ -46,7 +46,6 @@ public class MainCharacterScript : MonoBehaviour {
 	private ParticleSystem characterParticleSystem;
 	
 	void Start() {
-		this.currentJumpForce = jumpForce;
 		this.characterRenderer = this.GetComponentInChildren<SkinnedMeshRenderer>();
 		this.characterParticleSystem = GetComponentInChildren<ParticleSystem>();
 		StopParticleEmitter();
@@ -73,7 +72,7 @@ public class MainCharacterScript : MonoBehaviour {
 	// Jumps
 	void Jump() {
 		PlayJumpSound ();
-		addJumpForce (currentJumpForce);
+		addJumpForce (jumpForce);
 	}
 
 	// Performs a double jump
@@ -85,6 +84,10 @@ public class MainCharacterScript : MonoBehaviour {
 
 	// Adds a upwards jump force
 	void addJumpForce(float force) {
+		if (isSuperJumping) {
+			force = superJumpForce;
+		}
+		
 		Vector3 velocity = rigidbody2D.velocity;
 		velocity.y = 0;
 		rigidbody2D.velocity = velocity;
@@ -109,11 +112,11 @@ public class MainCharacterScript : MonoBehaviour {
 	}
 
 	public void startSuperJump() {
-		this.currentJumpForce = superJumpForce;
+		this.isSuperJumping = true;
 	}
 
 	public void endSuperJump() {
-		this.currentJumpForce = jumpForce;
+		this.isSuperJumping = false;
 	}
 	
 	public void PlayDeathSound() {
