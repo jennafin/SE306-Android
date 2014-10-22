@@ -143,7 +143,11 @@ public class GameOverScript : MonoBehaviour
 		}
 
 		private void LoadGame() {
-			GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("main");
+			if (PlayerPrefs.GetString ("mode") == "3D") {
+						GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene ("main3D");
+				} else {
+						GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene ("main");
+				}
 		}
 
 		private void LoadPurchaseMenu() {

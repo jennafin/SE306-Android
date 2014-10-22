@@ -16,8 +16,8 @@ public class LifeHUDScript : MonoBehaviour {
 	
 
 	void Start() {
-		heartWidth = Screen.width * 0.02f;
-		heartHeight = Screen.height * 0.03f;
+		heartWidth = Screen.width * 0.05f;
+		heartHeight = Screen.height * 0.06f;
 		firstHeartStartX = heartWidth;
 		firstHeartStartY = heartHeight;
 		
@@ -44,7 +44,7 @@ public class LifeHUDScript : MonoBehaviour {
 			
 		} else {
 			for (int i = 0; i < numberOfLives; i++) {
-				GUI.DrawTexture(new Rect(firstHeartStartX + 1.5f * i * heartWidth, firstHeartStartY, heartWidth, heartHeight), heart, ScaleMode.ScaleAndCrop, true); 
+				GUI.DrawTexture(new Rect(firstHeartStartX + 1.1f * i * heartWidth, firstHeartStartY, heartWidth, heartHeight), heart, ScaleMode.ScaleToFit, true); 
 			}
 		}
 	}

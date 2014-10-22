@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 58: {fileID: 5800000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: ExtraLife
   m_TagString: CollectablePowerUp
@@ -84,6 +85,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0d755207726804716945eb4848ff2853, type: 3}
   - {fileID: 8300000, guid: 681c2eaf72a6b4ec182efa8dc2cf6a05, type: 3}
   - {fileID: 8300000, guid: 78876d76bd2664654a12fcef4c9b6a5e, type: 3}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba361bb5808c464fa092dfff1828724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 9
+  axisOfRotation: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
