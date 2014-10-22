@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 61: {fileID: 6100000}
-  - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
+  - 58: {fileID: 5800000}
   m_Layer: 0
   m_Name: PointsBoost
   m_TagString: CollectablePowerUp
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,7 +44,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9fb8456749a3b394a81cad7f79f57c23, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -58,35 +58,19 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!61 &6100000
-BoxCollider2D:
+  m_Mesh: {fileID: 4300000, guid: d8a0ff23cf24ac54eb5fa29c2d03ead3, type: 3}
+--- !u!58 &5800000
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 1.00000012, y: 2}
-  m_Center: {x: 5.96046448e-08, y: 0}
+  m_IsTrigger: 0
+  m_Radius: .366273284
+  m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6688daf39a3ab46ebbb7985fe1adcb14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundJamie:
-  - {fileID: 8300000, guid: 4fa1a0054ced44800af15019ccd2d96f, type: 3}
-  soundHugo:
-  - {fileID: 8300000, guid: 45b7127776faa426d88ed41bb46195ff, type: 3}
-  points: 500
---- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -97,8 +81,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba361bb5808c464fa092dfff1828724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundJamie:
+  - {fileID: 8300000, guid: 4fa1a0054ced44800af15019ccd2d96f, type: 3}
+  soundHugo:
+  - {fileID: 8300000, guid: 45b7127776faa426d88ed41bb46195ff, type: 3}
+  points: 500
   speed: 9
   axisOfRotation: 1
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6688daf39a3ab46ebbb7985fe1adcb14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+  - {fileID: 8300000, guid: 45b7127776faa426d88ed41bb46195ff, type: 3}
+  - {fileID: 8300000, guid: 45b7127776faa426d88ed41bb46195ff, type: 3}
+  points: 500
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
