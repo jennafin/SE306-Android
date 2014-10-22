@@ -99,22 +99,21 @@ public class GameOverScript : MonoBehaviour
 				userName = GUI.TextField(new Rect ((screenWidth / 2 - (buttonWidth * (userName.Length / 10f) / 2)), 2.6f * screenHeight / 5, buttonWidth * (userName.Length / 10f), buttonHeight)
 	                    , userName, 25, inputBoxStyle);
 
-				if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 3.5f * screenHeight / 5, buttonWidth * 2, buttonHeight)
+				if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 0.7f * screenHeight, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("Retry")
 		                , buttonStyle)) {
 						SaveScore();
 						LoadGame();
 				}
 
-				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, screenHeight - buttonHeight - 20, buttonWidth * 2, buttonHeight)
+				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 0.8f * screenHeight, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("ExitToMenu")
 		                , buttonStyle)) {
 						SaveScore();
 						LoadMainMenu();
 				}
 
-				// TODO use language manager to get string
-				if (GUI.Button (new Rect (screenWidth / 2, screenHeight - buttonHeight - 20, buttonWidth * 2, buttonHeight)
+				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 0.9f * screenHeight, buttonWidth * 2, buttonHeight)
 										, LanguageManager.GetText ("PurchaseMenu")
 										, buttonStyle)) {
 						SaveScore();

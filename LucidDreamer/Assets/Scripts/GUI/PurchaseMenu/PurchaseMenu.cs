@@ -21,8 +21,16 @@ using System.Collections.Generic;
 /**
  * Example of OpenIAB usage
  */
+[ExecuteInEditMode()]
 public class PurchaseMenu : MonoBehaviour
 {
+    // Style stuff
+    public GUIStyle buttonStyle;
+    private int screenHeight;
+    private int screenWidth;
+    private int buttonWidth;
+    private int buttonHeight;
+
     const string LIVES_4 = "4_lives";
     const string LIVES_5 = "5_lives";
 
@@ -55,6 +63,16 @@ public class PurchaseMenu : MonoBehaviour
         // Map skus for different stores
         OpenIAB.mapSku(LIVES_4, OpenIAB_Android.STORE_GOOGLE, LIVES_4);
         OpenIAB.mapSku(LIVES_5, OpenIAB_Android.STORE_GOOGLE, LIVES_5);
+
+        // Style stuff
+        screenHeight = Screen.height;
+        screenWidth = Screen.width;
+
+        buttonWidth = screenWidth / 5;
+        buttonHeight = screenHeight / 10;
+
+        buttonStyle.fontSize =  screenHeight / 13;
+        buttonStyle.alignment = TextAnchor.MiddleCenter;
     }
 
     const float X_OFFSET = 10.0f;
@@ -99,7 +117,10 @@ public class PurchaseMenu : MonoBehaviour
         GUI.skin.button.fontSize = (Screen.width >= SMALL_SCREEN_SIZE || Screen.height >= SMALL_SCREEN_SIZE) ? LARGE_FONT_SIZE : SMALL_FONT_SIZE;
 
         if (!_isInitialized)
-          if (Button(LanguageManager.GetText("ViewProducts")))
+          //if (Button(LanguageManager.GetText("ViewProducts")))
+          if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 3.5f * screenHeight / 5, buttonWidth * 2, buttonHeight)
+                      , LanguageManager.GetText ("ViewProducts")
+                      , buttonStyle))
           {
               // Application public key
               var publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi+blQ3BwJyNiPj6sVScE8z2kb4SQHr5yQ38fgd8VRpUvCRsiw2ZScKMt2kg5F3/elUvfqdoM9rmEfBAL57hCrSXreAOnYHTh0kSUvsFcj7Ezo6DSlVOVpPKKI+iON36PZslT0VhY61Y894XycdGeA5A3nu0E+EzCAeWhtpxu34z6Ev+HgXXeDSoYOW2sqPPHQ2BZobEm3Qyq2siFt9PmE6O41miVQ/AmfzR9A0cxKrn+JoDhkTIl4MbboM6TWtz8rUGmNH33JUhmfU+uiJ4YWlZZJHUlwNMWUOdcIcFBe2sIUAGsiN7uXv1w5FFL4aVOKCqjtx9rP875TKsIAa/bxwIDAQAB";
@@ -122,12 +143,18 @@ public class PurchaseMenu : MonoBehaviour
         purchaseManager = new PurchaseManager();
         purchaseManager.Load();
         if (purchaseManager.Get4Lives()) {
-          if (Button(LanguageManager.GetText("Begin5Lives")))
+          //if (Button(LanguageManager.GetText("Begin5Lives")))
+          if (GUI.Button (new Rect ((screenWidth / 2 - screenWidth / 3f), 3.5f * screenHeight / 5, screenWidth / 1.5f, buttonHeight)
+                      , LanguageManager.GetText ("Begin5Lives")
+                      , buttonStyle))
           {
               purchaseProduct(LIVES_5);
           }
         } else {
-          if (Button(LanguageManager.GetText("Begin4Lives")))
+          //if (Button(LanguageManager.GetText("Begin4Lives")))
+          if (GUI.Button (new Rect ((screenWidth / 2 - screenWidth / 3f), 3.5f * screenHeight / 5, screenWidth / 1.5f, buttonHeight)
+                      , LanguageManager.GetText ("Begin4Lives")
+                      , buttonStyle))
           {
               purchaseProduct(LIVES_4);
           }
