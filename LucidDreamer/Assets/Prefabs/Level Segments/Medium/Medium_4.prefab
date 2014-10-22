@@ -839,7 +839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593cffbc959b4424484c04024a73df7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 100000, guid: 67565d6cbc57b4c6482edf2af4bea51a, type: 2}
+  prefab: {fileID: 100000, guid: 3c65b3629234a844d8d166ff0a3e5f46, type: 2}
   spawnChance: 50
 --- !u!114 &11400004
 MonoBehaviour:
@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593cffbc959b4424484c04024a73df7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 100000, guid: 3ff801de7e5444f9da1ad4e8017365f4, type: 2}
+  prefab: {fileID: 100000, guid: b7dbf3041e3110043b86c40f37ef400c, type: 2}
   spawnChance: 50
 --- !u!114 &11400034
 MonoBehaviour:
