@@ -94,11 +94,34 @@ public class OptionsScript : MonoBehaviour {
 		GUILayout.EndArea ();
 
 
-		if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 2.7f * screenHeight / 4, buttonWidth * 2, buttonHeight)
-		                , LanguageManager.GetText ("SelectLanguage")
-		                , buttonStyle)) {
+		GUILayout.BeginArea (new Rect (screenWidth / 10, 7f * screenHeight / 10, 8 * screenWidth / 10, screenHeight));
+		GUILayout.BeginHorizontal ();
+
+		if (GUILayout.Button (LanguageManager.GetText ("SelectLanguage")
+		                      , buttonStyle
+		                      , GUILayout.Height(buttonHeight))) {
 			LoadLanguageMenu();
 		}
+
+		GUILayout.Space (20);
+
+		if (GUILayout.Button (LanguageManager.GetText ("SelectLanguage")
+			                      , buttonStyle
+			                     , GUILayout.Height(buttonHeight))) {
+			persistOptions ();
+			GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("SelectVoice");
+		}
+
+	
+		GUILayout.EndHorizontal ();
+		GUILayout.EndArea ();
+
+
+//		if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 2.7f * screenHeight / 4, buttonWidth * 2, buttonHeight)
+//		                , LanguageManager.GetText ("SelectLanguage")
+//		                , buttonStyle)) {
+//			LoadLanguageMenu();
+//		}
 			
 		if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 3.5f * screenHeight / 4, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("ExitToMenu")
