@@ -33,7 +33,7 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (RightIsVisible()) {
+		if (RightIsVisible() && !LeftIsVisible()) {
 			MoveRight();
 		}
 		
@@ -81,6 +81,12 @@ public class BackgroundSpawnScript : MonoBehaviour {
 		return currentImages[2, 0].renderer.isVisible
 				|| currentImages[2, 1].renderer.isVisible
 				|| currentImages[2, 2].renderer.isVisible;
+	}
+	
+	bool LeftIsVisible() {
+		return currentImages[0, 0].renderer.isVisible
+			    || currentImages[0, 1].renderer.isVisible
+				|| currentImages[0, 2].renderer.isVisible;
 	}
 	
 	bool UpIsVisible() {
