@@ -11,6 +11,8 @@ public class ShakeDetectorScript : MonoBehaviour {
 	public List<AudioClip> FullLucidSoundsHugo = new List<AudioClip> ();
 	public List<AudioClip> UseLucidSoundsJamie = new List<AudioClip> ();
 	public List<AudioClip> FullLucidSoundsJamie = new List<AudioClip> ();
+	public List<AudioClip> UseLucidSoundsNick = new List<AudioClip> ();
+	public List<AudioClip> FullLucidSoundsNick = new List<AudioClip> ();
 
 	private List<AudioClip> UseLucidSounds = new List<AudioClip> ();
 	private List<AudioClip> FullLucidSounds = new List<AudioClip> ();
@@ -74,7 +76,10 @@ public class ShakeDetectorScript : MonoBehaviour {
 			FullLucidSounds.AddRange(FullLucidSoundsHugo);
 		} else if (PlayerPrefs.GetString ("AudioName")=="Jamie") {
 			UseLucidSounds.AddRange(UseLucidSoundsJamie);
-			FullLucidSounds.AddRange(FullLucidSoundsJamie);;
+			FullLucidSounds.AddRange(FullLucidSoundsJamie);
+		} else if (PlayerPrefs.GetString ("AudioName")=="Nick") {
+			UseLucidSounds.AddRange(UseLucidSoundsNick);
+			FullLucidSounds.AddRange(FullLucidSoundsNick);
 		} else {
 			UseLucidSounds.AddRange(UseLucidSoundsHugo);
 			FullLucidSounds.AddRange(FullLucidSoundsHugo);
