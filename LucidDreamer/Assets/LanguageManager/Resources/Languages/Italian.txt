@@ -58,3 +58,5 @@ Begin5Lives = Iniziare ogni partita con 5 vite
 Begin4Lives = Iniziare ogni partita con 4 vite
 
 PurchaseMenu = Acquisto Menu
+
+SelectVoice = Selezionare la voce

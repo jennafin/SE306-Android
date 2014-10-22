@@ -58,3 +58,5 @@ Begin5Lives = Commencez chaque jeu avec 5 vies
 Begin4Lives = Commencez chaque match avec 4 vies
 
 PurchaseMenu = achat Menu
+
+SelectVoice = Sélectionnez voix
