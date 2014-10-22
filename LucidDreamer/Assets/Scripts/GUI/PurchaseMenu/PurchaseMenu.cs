@@ -21,7 +21,7 @@ using System.Collections.Generic;
 /**
  * Example of OpenIAB usage
  */
-public class OpenIABTest : MonoBehaviour
+public class PurchaseMenu : MonoBehaviour
 {
     const string LIVES_4 = "4_lives";
     const string LIVES_5 = "5_lives";

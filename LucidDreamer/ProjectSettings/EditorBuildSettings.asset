@@ -66,4 +66,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/main3D.unity
   - enabled: 1
-    path: Assets/OpenIAB-demo/OpenIAB-demo.unity
+    path: Assets/Scenes/PurchaseMenu.unity
