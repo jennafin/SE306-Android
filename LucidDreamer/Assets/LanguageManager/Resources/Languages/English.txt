@@ -58,3 +58,5 @@ Begin5Lives = Begin every game with 5 lives
 Begin4Lives = Begin every game with 4 lives
 
 PurchaseMenu = Purchase Menu
+
+SelectVoice = Select Voice

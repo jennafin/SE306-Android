@@ -158,9 +158,9 @@ Transform:
   m_PrefabParentObject: {fileID: 400024, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 91713754}
-  m_LocalRotation: {x: -.0739482641, y: -.109410182, z: -.0373353511, w: .990538836}
-  m_LocalPosition: {x: -9.31322575e-10, y: .197969109, z: -1.44354999e-08}
-  m_LocalScale: {x: .99999994, y: 1.00000012, z: 1}
+  m_LocalRotation: {x: -.0220635161, y: .016875511, z: .0351684317, w: .998995304}
+  m_LocalPosition: {x: -6.51925802e-09, y: .197969094, z: 8.38190317e-09}
+  m_LocalScale: {x: .999999881, y: 1.00000012, z: .99999994}
   m_Children:
   - {fileID: 1632117712}
   m_Father: {fileID: 1785797978}
@@ -1629,13 +1629,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdee62c421fb7b34abbe290a0ca10f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseLucidSounds:
+  UseLucidSoundsHugo:
   - {fileID: 8300000, guid: a017b072aec5540f2b285cbcdd59c2a5, type: 3}
   - {fileID: 8300000, guid: a50732922f8f5407094ebed906275fe3, type: 3}
   - {fileID: 8300000, guid: 53c9b1a9450d147188fbac16284da227, type: 3}
-  FullLucidSounds:
+  FullLucidSoundsHugo:
   - {fileID: 8300000, guid: aefe63906a2594b87885e2e48b0d2b3c, type: 3}
   - {fileID: 8300000, guid: 0ede2e61fff77491ea491d1bebb937ee, type: 3}
+  UseLucidSoundsJamie:
+  - {fileID: 8300000, guid: 5302966166f6b45cb85b3274e4411b48, type: 3}
+  - {fileID: 8300000, guid: cbbc670ec47614a8e92eed69311c5b35, type: 3}
+  - {fileID: 8300000, guid: cd0a6d609c4b34c95a2a015cb92481b8, type: 3}
+  FullLucidSoundsJamie:
+  - {fileID: 8300000, guid: 5d2be8a6131d94b65a1c693ccabbd407, type: 3}
+  - {fileID: 8300000, guid: 789a717718043426a989602d8e2d9142, type: 3}
   LucidHUDObject: {fileID: 2095973032}
   gameControllerObject: {fileID: 1897705298}
   distancePowerRatio: .00200000009
@@ -2087,17 +2094,28 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 1024
-  jumpSound:
-  - {fileID: 8300000, guid: 2f74de6799041445ea8cbf1563ef548c, type: 3}
-  - {fileID: 8300000, guid: 3fddd2b5d0a234aef8c324c0935b0125, type: 3}
-  - {fileID: 8300000, guid: cc8bbfbe525e843d39654cfef07fc65e, type: 3}
-  - {fileID: 8300000, guid: 0f3004e7babae462a8ab4810ff978eb9, type: 3}
+  jumpSoundJamie:
+  - {fileID: 8300000, guid: 4cbcaf0918f324fc99894e14e535706d, type: 3}
+  - {fileID: 8300000, guid: 776eaecde842849e39f4cefa6a4a90d6, type: 3}
+  - {fileID: 8300000, guid: a51ce6f4fdd874febb2f52e306ec374f, type: 3}
+  - {fileID: 8300000, guid: a83d84a53f9b84c3eaf19e48fa543844, type: 3}
+  - {fileID: 8300000, guid: f2a4622b374aa4dd6907555176b496a0, type: 3}
+  deathSoundJamie: {fileID: 8300000, guid: 586bb45f2a5044d9f8b55f4d37c0bc30, type: 3}
+  injuredSoundJamie:
+  - {fileID: 8300000, guid: d5cf3ecae5e504dc594c65a4057d687e, type: 3}
+  - {fileID: 8300000, guid: e5f9a7893e8184f0dbf66bc168489f11, type: 3}
+  - {fileID: 8300000, guid: f6faee546e38149959b8d141a5d3963b, type: 3}
+  jumpSoundHugo:
   - {fileID: 8300000, guid: a5e9a0a097b554e3a997c8683ea012ce, type: 3}
+  - {fileID: 8300000, guid: 3fddd2b5d0a234aef8c324c0935b0125, type: 3}
+  - {fileID: 8300000, guid: 2f74de6799041445ea8cbf1563ef548c, type: 3}
+  - {fileID: 8300000, guid: 0f3004e7babae462a8ab4810ff978eb9, type: 3}
   - {fileID: 8300000, guid: dc7f198bf65b7418cbfbcc15cae69c49, type: 3}
-  deathSound: {fileID: 8300000, guid: d9a691a55ca9a43cfa3412b98d5144d1, type: 3}
-  injuredSound:
-  - {fileID: 8300000, guid: 4d26c0c6fe04f41a5a41609bb0d8b530, type: 3}
+  - {fileID: 8300000, guid: cc8bbfbe525e843d39654cfef07fc65e, type: 3}
+  deathSoundHugo: {fileID: 8300000, guid: d9a691a55ca9a43cfa3412b98d5144d1, type: 3}
+  injuredSoundHugo:
   - {fileID: 8300000, guid: b0e26cd1b18fc4b36bb92cd5402eb6fc, type: 3}
+  - {fileID: 8300000, guid: 4d26c0c6fe04f41a5a41609bb0d8b530, type: 3}
   flashingAnimationCountTotal: 5
   flashingAnimationDuration: .0500000007
 --- !u!58 &1286769720
