@@ -59,7 +59,7 @@ public class ScoreTrackingSystem {
 	public int gameOver(int distance)
 	{
 		int finalScore = UpdateScore (distance);
-		Social.ReportScore (finalScore, "CgkIj8PyxKwKEAIQAQ", (bool success) => {
+		Social.ReportScore (finalScore, "CgkIj8PyxKwKEAIQFA", (bool success) => {
 			//TODO: handle success or failure
 		});
 		PlayerPrefs.SetInt ("Score", finalScore);
