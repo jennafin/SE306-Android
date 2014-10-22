@@ -106,19 +106,13 @@ public class GameOverScript : MonoBehaviour
 						LoadGame();
 				}
 
-				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 0.8f * screenHeight, buttonWidth * 2, buttonHeight)
+				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 0.85f * screenHeight, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("ExitToMenu")
 		                , buttonStyle)) {
 						SaveScore();
 						LoadMainMenu();
 				}
 
-				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 0.9f * screenHeight, buttonWidth * 2, buttonHeight)
-										, LanguageManager.GetText ("PurchaseMenu")
-										, buttonStyle)) {
-						SaveScore();
-						LoadPurchaseMenu();
-				}
 		}
 
 		void SaveScore()

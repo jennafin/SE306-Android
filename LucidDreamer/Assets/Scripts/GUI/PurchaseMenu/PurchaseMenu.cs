@@ -17,6 +17,9 @@
 using UnityEngine;
 using OnePF;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+
 
 /**
  * Example of OpenIAB usage
@@ -26,10 +29,13 @@ public class PurchaseMenu : MonoBehaviour
 {
     // Style stuff
     public GUIStyle buttonStyle;
+    public GUIStyle titleTextStyle;
     private int screenHeight;
     private int screenWidth;
     private int buttonWidth;
     private int buttonHeight;
+    
+	public Language language = Language.English;
 
     const string LIVES_4 = "4_lives";
     const string LIVES_5 = "5_lives";
@@ -73,6 +79,37 @@ public class PurchaseMenu : MonoBehaviour
 
         buttonStyle.fontSize =  screenHeight / 13;
         buttonStyle.alignment = TextAnchor.MiddleCenter;
+		
+		titleTextStyle.fontSize = (int)(0.16 * screenHeight);
+		titleTextStyle.alignment = TextAnchor.MiddleCenter;
+        
+		// Load language
+		if(File.Exists(Application.persistentDataPath + "/language.dat"))
+		{
+			//Binary formatter for loading back
+			BinaryFormatter bf = new BinaryFormatter();
+			//Get the file
+			FileStream f = File.Open(Application.persistentDataPath + "/language.dat", FileMode.Open);
+			//Load the language
+			language = (Language)bf.Deserialize(f);
+			f.Close();
+		}
+		LanguageManager.LoadLanguageFile(language);
+		
+		// Initialise IAP
+		// Application public key
+		var publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi+blQ3BwJyNiPj6sVScE8z2kb4SQHr5yQ38fgd8VRpUvCRsiw2ZScKMt2kg5F3/elUvfqdoM9rmEfBAL57hCrSXreAOnYHTh0kSUvsFcj7Ezo6DSlVOVpPKKI+iON36PZslT0VhY61Y894XycdGeA5A3nu0E+EzCAeWhtpxu34z6Ev+HgXXeDSoYOW2sqPPHQ2BZobEm3Qyq2siFt9PmE6O41miVQ/AmfzR9A0cxKrn+JoDhkTIl4MbboM6TWtz8rUGmNH33JUhmfU+uiJ4YWlZZJHUlwNMWUOdcIcFBe2sIUAGsiN7uXv1w5FFL4aVOKCqjtx9rP875TKsIAa/bxwIDAQAB";
+		
+		var options = new Options();
+		options.checkInventoryTimeoutMs = Options.INVENTORY_CHECK_TIMEOUT_MS * 2;
+		options.discoveryTimeoutMs = Options.DISCOVER_TIMEOUT_MS * 2;
+		options.checkInventory = false;
+		options.verifyMode = OptionsVerifyMode.VERIFY_SKIP;
+		options.prefferedStoreNames = new string[] { OpenIAB_Android.STORE_GOOGLE, OpenIAB_Android.STORE_AMAZON, OpenIAB_Android.STORE_YANDEX };
+		options.storeKeys = new Dictionary<string, string> { {OpenIAB_Android.STORE_GOOGLE, publicKey} };
+		
+		// Transmit options and start the service
+		OpenIAB.init(options);
     }
 
     const float X_OFFSET = 10.0f;
@@ -111,31 +148,24 @@ public class PurchaseMenu : MonoBehaviour
 
     private void OnGUI()
     {
+    
+    	// title
+		GUI.Label (new Rect (0, screenHeight / 10, screenWidth, 0)
+		           , LanguageManager.GetText ("ViewProducts")
+		           , titleTextStyle);
+    
+    	// back button
+		if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth/2, 7 * screenHeight / 8, buttonWidth, buttonHeight)
+		                , LanguageManager.GetText ("Back")
+		                , buttonStyle)) {
+			LoadMainMenu();
+		}
+    		
+    		
         _column = 0;
         _row = 0;
 
         GUI.skin.button.fontSize = (Screen.width >= SMALL_SCREEN_SIZE || Screen.height >= SMALL_SCREEN_SIZE) ? LARGE_FONT_SIZE : SMALL_FONT_SIZE;
-
-        if (!_isInitialized)
-          //if (Button(LanguageManager.GetText("ViewProducts")))
-          if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 3.5f * screenHeight / 5, buttonWidth * 2, buttonHeight)
-                      , LanguageManager.GetText ("ViewProducts")
-                      , buttonStyle))
-          {
-              // Application public key
-              var publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi+blQ3BwJyNiPj6sVScE8z2kb4SQHr5yQ38fgd8VRpUvCRsiw2ZScKMt2kg5F3/elUvfqdoM9rmEfBAL57hCrSXreAOnYHTh0kSUvsFcj7Ezo6DSlVOVpPKKI+iON36PZslT0VhY61Y894XycdGeA5A3nu0E+EzCAeWhtpxu34z6Ev+HgXXeDSoYOW2sqPPHQ2BZobEm3Qyq2siFt9PmE6O41miVQ/AmfzR9A0cxKrn+JoDhkTIl4MbboM6TWtz8rUGmNH33JUhmfU+uiJ4YWlZZJHUlwNMWUOdcIcFBe2sIUAGsiN7uXv1w5FFL4aVOKCqjtx9rP875TKsIAa/bxwIDAQAB";
-
-              var options = new Options();
-              options.checkInventoryTimeoutMs = Options.INVENTORY_CHECK_TIMEOUT_MS * 2;
-              options.discoveryTimeoutMs = Options.DISCOVER_TIMEOUT_MS * 2;
-              options.checkInventory = false;
-              options.verifyMode = OptionsVerifyMode.VERIFY_SKIP;
-              options.prefferedStoreNames = new string[] { OpenIAB_Android.STORE_GOOGLE, OpenIAB_Android.STORE_AMAZON, OpenIAB_Android.STORE_YANDEX };
-              options.storeKeys = new Dictionary<string, string> { {OpenIAB_Android.STORE_GOOGLE, publicKey} };
-
-              // Transmit options and start the service
-              OpenIAB.init(options);
-          }
 
         if (!_isInitialized)
             return;
@@ -144,7 +174,7 @@ public class PurchaseMenu : MonoBehaviour
         purchaseManager.Load();
         if (purchaseManager.Get4Lives()) {
           //if (Button(LanguageManager.GetText("Begin5Lives")))
-          if (GUI.Button (new Rect ((screenWidth / 2 - screenWidth / 3f), 3.5f * screenHeight / 5, screenWidth / 1.5f, buttonHeight)
+          if (GUI.Button (new Rect ((screenWidth / 2 - screenWidth / 3f), 2.5f * screenHeight / 5, screenWidth / 1.5f, buttonHeight)
                       , LanguageManager.GetText ("Begin5Lives")
                       , buttonStyle))
           {
@@ -152,7 +182,7 @@ public class PurchaseMenu : MonoBehaviour
           }
         } else {
           //if (Button(LanguageManager.GetText("Begin4Lives")))
-          if (GUI.Button (new Rect ((screenWidth / 2 - screenWidth / 3f), 3.5f * screenHeight / 5, screenWidth / 1.5f, buttonHeight)
+          if (GUI.Button (new Rect ((screenWidth / 2 - screenWidth / 3f), 2.5f * screenHeight / 5, screenWidth / 1.5f, buttonHeight)
                       , LanguageManager.GetText ("Begin4Lives")
                       , buttonStyle))
           {
@@ -220,7 +250,11 @@ public class PurchaseMenu : MonoBehaviour
     {
       // go to main menu on escape/back button
       if (Input.GetKeyDown (KeyCode.Escape)) {
-          Application.LoadLevel("GameOver");
+          LoadMainMenu();
       }
+    }
+    
+    private void LoadMainMenu() {
+		Application.LoadLevel("MainMenu");
     }
 }
