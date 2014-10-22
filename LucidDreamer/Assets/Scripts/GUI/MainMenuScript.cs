@@ -114,6 +114,9 @@ public class MainMenuScript : MonoBehaviour
 											
 											Social.ShowLeaderboardUI ();
 											break;
+										case "CoinModel":
+											sceneFaderScript.LoadScene("PurchaseMenu");
+											break;
 								}
 						}
 				}
