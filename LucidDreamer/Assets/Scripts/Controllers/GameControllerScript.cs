@@ -258,15 +258,10 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 				if (lives < 0) {
-						LoadGameOverScreen (); // Loads game over screen after 1.5 seconds
+						GameOver (); // Loads game over screen after 1.5 seconds
 				}
 		}
 
-		public void LoadGameOverScreen ()
-		{
-				scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
-				Application.LoadLevel ("GameOver");
-		}
 
 		public int GetCoinsCollected ()
 		{
