@@ -4,7 +4,7 @@
 GameOverScreenMessage = Alex si svegliò !
 
 
-Score = Punteggio: 
+Score = Punteggio:
 
 Retry = Riprovare ?
 
@@ -22,7 +22,7 @@ SelectLanguage = Scegli la lingua
 
 Name = nome
 
-TopScore = Top Score: 
+TopScore = Top Score:
 
 HighScores = punteggi più alti
 
@@ -51,4 +51,10 @@ italian = italiano (Italian)
 
 chinese = cinese (Chinese)
 
+ViewProducts = Guarda i Prodotti
 
+Begin5Lives = Iniziare ogni partita con 5 vite
+
+Begin4Lives = Iniziare ogni partita con 4 vite
+
+PurchaseMenu = Acquisto Menu
