@@ -5,7 +5,7 @@ public class SuperJumpCollectable : Collectable {
 
 	protected override float LifeSpan 
 	{
-		get { return 5; }
+		get { return 10; }
 	}
 	
 	protected override Color ParticleEmitterColor
