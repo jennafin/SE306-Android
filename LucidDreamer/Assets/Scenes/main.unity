@@ -165,45 +165,6 @@ Transform:
   - {fileID: 1632117712}
   m_Father: {fileID: 1785797978}
   m_RootOrder: 0
---- !u!1 &138912931
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 138912933}
-  - 114: {fileID: 138912932}
-  m_Layer: 0
-  m_Name: SoundEffects
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &138912932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 138912931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3455d36adfa8648238f2e328f1788df8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &138912933
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 138912931}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.66408587, y: -2.28016996, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
 --- !u!1001 &160179881
 Prefab:
   m_ObjectHideFlags: 0
@@ -385,7 +346,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 278581934}
-  m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
+  m_LocalRotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
   m_LocalPosition: {x: -1.26370169e-16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1665,7 +1626,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0ede2e61fff77491ea491d1bebb937ee, type: 3}
   LucidHUDObject: {fileID: 2095973032}
   gameControllerObject: {fileID: 1897705298}
-  distancePowerRatio: .00999999978
+  distancePowerRatio: .00200000009
   PowerDownRatio: .75
   avrgTime: .5
   peakLevel: .600000024
@@ -1778,7 +1739,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156896, g: .322623461, b: .474509835, a: .0196078438}
+  m_BackGroundColor: {r: .580392182, g: .580392182, b: .580392182, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1974,7 +1935,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  heart: {fileID: 2800000, guid: 83457376cab964c1bba9a5e112ce7fbd, type: 3}
+  heart: {fileID: 2800000, guid: cd500657d5881488fadcb483f078560a, type: 3}
 --- !u!4 &1165287229
 Transform:
   m_ObjectHideFlags: 0
@@ -2261,7 +2222,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 36
+    m_FontSize: 35
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2320,7 +2281,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 2ce8338171fec944ba1d26fb75c30405, type: 3}
-    m_FontSize: 76
+    m_FontSize: 74
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2379,7 +2340,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 19
+    m_FontSize: 18
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2404,7 +2365,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1404520410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,8 +2609,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 1728986873}
   m_AABB:
-    m_Center: {x: 5.96046448e-08, y: .326438844, z: .0427111387}
-    m_Extent: {x: .563276827, y: .844565451, z: .559841812}
+    m_Center: {x: 0, y: .326439083, z: .0427111983}
+    m_Extent: {x: .563277006, y: .84456569, z: .559841871}
   m_DirtyAABB: 0
 --- !u!1 &1728986872
 GameObject:
@@ -2769,8 +2730,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1524c0eef44ad4618b5d3bd2596a11da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundImages:
-  - {fileID: 100000, guid: 00e09b4d2a2135648aab56eb4bac96cc, type: 3}
+  defaultBackground: {fileID: 100000, guid: 1a40cc72047fec0418e7887b97ed2a50, type: 2}
+  mathBackgrounds:
+  - {fileID: 100000, guid: 84835e0eac20ead439584b5c3a0c0f5d, type: 2}
+  - {fileID: 100000, guid: 5cf1be6d2b473bc4e9ed703b71902a23, type: 2}
+  artBackgrounds:
+  - {fileID: 100000, guid: 83f7a7878a2d8354588f93ded22828fb, type: 2}
+  - {fileID: 100000, guid: c758c65a013f4954fb3aa559c71a2570, type: 2}
+  scienceBackgrounds:
+  - {fileID: 100000, guid: 1a40cc72047fec0418e7887b97ed2a50, type: 2}
+  - {fileID: 100000, guid: 1d9d1778a012a8341b4c0a240463c7eb, type: 2}
+  gameController: {fileID: 1897705299}
 --- !u!64 &1897705301
 MeshCollider:
   m_ObjectHideFlags: 0
