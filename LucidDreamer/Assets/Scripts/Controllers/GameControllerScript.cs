@@ -25,11 +25,11 @@ public class GameControllerScript : MonoBehaviour
 		public GameObject LifeHUD;
 		private AchievementsList achievementsList = new AchievementsList ();
 
-
 		// Main Character
 		public Transform alexDreamer;
+		public Animator alexAnimator;
 		public MainCharacterScript mainCharacterScript;
-
+		private bool isAlexFalling = false;
 
 		// The Prefab level segments that can be chosen from
 		public GameObject[] levelSegments;
@@ -46,7 +46,6 @@ public class GameControllerScript : MonoBehaviour
 
 		// Current power-ups (or could be coins)
 		private List<Collectable> currentCollectables = new List<Collectable> ();
-
 
 		// ShakeDetector to increase lucid power
 		public GameObject shakeDetector;
@@ -100,6 +99,7 @@ public class GameControllerScript : MonoBehaviour
 
 				if (alexPosition.y < -5) {
 						// Alex has fallen to his death
+						isAlexFalling = true;
 						GameOver ();
 				}
 
@@ -275,8 +275,22 @@ public class GameControllerScript : MonoBehaviour
 
 		void GameOver ()
 		{
+				// save score
 				scoreTracker.gameOver ((int) Math.Floor (alexPosition.x));
-				Application.LoadLevel ("GameOver");
+				
+				// if alex is falling, then load game over right-away, otherwise
+				// play death animation
+				if (isAlexFalling) {
+					GameObject.Find ("GameController").GetComponent<SceneFader> ().LoadScene("GameOver");
+				} else {
+					// stop alex moving and trigger death animation
+					mainCharacterScript.StopAlexMoving();
+					alexAnimator.SetBool ("dying", true);
+					
+					// fade in game over scene with a delayed fade to allow animation
+					// to be carried out in full
+					GameObject.Find ("GameController").GetComponent<SceneFader> ().LoadScene("GameOver", 1.3f);
+				}
 		}
 
 		// Increments the number of collected coins by the specified amount

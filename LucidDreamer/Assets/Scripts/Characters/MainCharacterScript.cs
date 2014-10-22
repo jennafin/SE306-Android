@@ -215,4 +215,8 @@ public class MainCharacterScript : MonoBehaviour {
 	{
 		return this.characterParticleSystem.enableEmission;
 	}
+	
+	public void StopAlexMoving() {
+		speed = 0f;
+	}
 }
