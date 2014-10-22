@@ -56,7 +56,7 @@ public class SelectLanguageScript : MonoBehaviour {
 		           , LanguageManager.GetText ("SelectLanguage")
 		           , titleTextStyle);
 
-		GUILayout.BeginArea (new Rect (screenWidth / 10 , 2.5f * screenHeight / 10, 8* screenWidth/10, screenHeight));
+		GUILayout.BeginArea (new Rect (screenWidth / 10, 3.0f * screenHeight / 10, 8* screenWidth/10, screenHeight));
 		GUILayout.BeginVertical ();
 		GUILayout.BeginHorizontal ();
 		if (GUILayout.Button (LanguageManager.GetText ("english")
@@ -74,11 +74,11 @@ public class SelectLanguageScript : MonoBehaviour {
 		GUILayout.EndHorizontal ();
 		GUILayout.Space (buttonHeight/3);
 		GUILayout.BeginHorizontal ();
-		if (GUILayout.Button (LanguageManager.GetText ("spanish")
+		if (GUILayout.Button (LanguageManager.GetText ("chinese")
 		                      , selectLanguageStyle
-		    				  , GUILayout.Width(buttonWidth - 10)
+		                      , GUILayout.Width(buttonWidth - 10)
 		                      , GUILayout.Height(buttonHeight))) {
-			ChangeLanguage (Language.Spanish);
+			ChangeLanguage (Language.Chinese);
 		}
 		GUILayout.Space (20);
 		if (GUILayout.Button (LanguageManager.GetText ("french")
@@ -104,12 +104,7 @@ public class SelectLanguageScript : MonoBehaviour {
 		GUILayout.EndHorizontal ();
 		GUILayout.Space (buttonHeight/3);
 		GUILayout.BeginHorizontal ();
-		if (GUILayout.Button (LanguageManager.GetText ("chinese")
-		                      , selectLanguageStyle
-		                      , GUILayout.Width(buttonWidth - 10)
-		                      , GUILayout.Height(buttonHeight))) {
-			ChangeLanguage (Language.Chinese);
-		}
+
 
 		GUILayout.EndHorizontal ();
 		GUILayout.EndVertical ();
