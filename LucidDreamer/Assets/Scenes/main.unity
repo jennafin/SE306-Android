@@ -1935,7 +1935,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  heart: {fileID: 2800000, guid: 83457376cab964c1bba9a5e112ce7fbd, type: 3}
+  heart: {fileID: 2800000, guid: cd500657d5881488fadcb483f078560a, type: 3}
 --- !u!4 &1165287229
 Transform:
   m_ObjectHideFlags: 0
@@ -2222,7 +2222,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 36
+    m_FontSize: 35
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2281,7 +2281,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 2ce8338171fec944ba1d26fb75c30405, type: 3}
-    m_FontSize: 76
+    m_FontSize: 74
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2340,7 +2340,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 19
+    m_FontSize: 18
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2719,8 +2719,6 @@ MonoBehaviour:
   - {fileID: 100000, guid: 27636ea95d0344cc3bb9020fc646243c, type: 2}
   shakeDetector: {fileID: 836679848}
   soundEffectsOn: 0
-  playerLayerId: 11
-  enemiesLayerId: 12
 --- !u!114 &1897705300
 MonoBehaviour:
   m_ObjectHideFlags: 0
