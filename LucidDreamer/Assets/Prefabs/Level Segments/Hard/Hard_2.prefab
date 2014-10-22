@@ -1447,7 +1447,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100048}
-  m_LocalRotation: {x: 0, y: 0, z: .382683456, w: .923879504}
+  m_LocalRotation: {x: 0, y: 0, z: .382683486, w: .923879564}
   m_LocalPosition: {x: 8, y: 2, z: 1.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2382,7 +2382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mathsObject: {fileID: 100006, guid: 09dcb8a0681f8de4aa401024bd4d3d42, type: 2}
-  scienceObject: {fileID: 100000, guid: 3ab50256e0a3aca4da019e2ab1b88b5a, type: 2}
+  scienceObject: {fileID: 100000, guid: 3d4cc0e46c661aa4097a53cf7bf8eb8e, type: 2}
   artObject: {fileID: 100010, guid: 02e994379525a74429bfea1633674023, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mathsObject: {fileID: 100006, guid: 09dcb8a0681f8de4aa401024bd4d3d42, type: 2}
-  scienceObject: {fileID: 100000, guid: 3ab50256e0a3aca4da019e2ab1b88b5a, type: 2}
+  scienceObject: {fileID: 100000, guid: 3d4cc0e46c661aa4097a53cf7bf8eb8e, type: 2}
   artObject: {fileID: 100010, guid: 02e994379525a74429bfea1633674023, type: 2}
 --- !u!114 &11400018
 MonoBehaviour:
