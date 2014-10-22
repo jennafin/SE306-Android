@@ -42,6 +42,11 @@ public class GUIVoiceSelector : MonoBehaviour {
 			PlayerPrefs.SetString("AudioName", "Jamie");
 		}
 
+		if (GUI.Button (new Rect(Screen.width/2 - Screen.width/8,Screen.height/2 + Screen.height/10*1.5f, Screen.width/4, Screen.height/10),"Nick", buttonStyle)) {
+			PlayerPrefs.SetString("AudioName", "Nick");
+		}
+
+
 		if (GUI.Button (new Rect (Screen.width / 2 - buttonWidth/2, 7 * Screen.height / 8, buttonWidth, buttonHeight)
 		                , LanguageManager.GetText ("Back")
 		                , buttonStyle)) {

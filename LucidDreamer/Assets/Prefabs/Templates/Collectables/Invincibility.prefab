@@ -113,6 +113,9 @@ MonoBehaviour:
   soundHugo:
   - {fileID: 8300000, guid: a6d844e007f6a4faa9a48bad3eed997a, type: 3}
   - {fileID: 8300000, guid: 2bf0add5ece4b4684bd4c994d0240c10, type: 3}
+  soundNick:
+  - {fileID: 8300000, guid: 8bc7dc74997a646c5b363409d826427a, type: 3}
+  - {fileID: 8300000, guid: 9bce26d51339f4cbcb5fcd4a2d523b2f, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

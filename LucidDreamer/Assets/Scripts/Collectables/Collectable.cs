@@ -16,13 +16,17 @@ public abstract class Collectable : MonoBehaviour {
 
 	public List<AudioClip> soundHugo = new List<AudioClip>();
 
+	public List<AudioClip> soundNick = new List<AudioClip>();
+
 	private List<AudioClip> sound = new List<AudioClip>();
 
 	void Start(){
-		if (PlayerPrefs.GetString ("AudioName")=="Hugo") {
-			sound.AddRange(soundHugo);
-		} else if (PlayerPrefs.GetString ("AudioName")=="Jamie") {
-			sound.AddRange(soundJamie);
+		if (PlayerPrefs.GetString ("AudioName") == "Hugo") {
+						sound.AddRange (soundHugo);
+				} else if (PlayerPrefs.GetString ("AudioName") == "Jamie") {
+						sound.AddRange (soundJamie);
+				} else if (PlayerPrefs.GetString("AudioName")== "Nick"){
+			sound.AddRange(soundNick);
 				} else {
 			sound.AddRange(soundHugo);
 				}

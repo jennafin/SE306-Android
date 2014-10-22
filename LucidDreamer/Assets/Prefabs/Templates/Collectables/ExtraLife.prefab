@@ -89,6 +89,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 78876d76bd2664654a12fcef4c9b6a5e, type: 3}
   - {fileID: 8300000, guid: 0d755207726804716945eb4848ff2853, type: 3}
   - {fileID: 8300000, guid: 681c2eaf72a6b4ec182efa8dc2cf6a05, type: 3}
+  soundNick:
+  - {fileID: 8300000, guid: 22bd8b610bb5141358e977903f4a53a1, type: 3}
+  - {fileID: 8300000, guid: 5931dc490ffe94bd2b82356e38cece29, type: 3}
+  - {fileID: 8300000, guid: 7547e3f7b84de4711a8eaa4da9e28fa4, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

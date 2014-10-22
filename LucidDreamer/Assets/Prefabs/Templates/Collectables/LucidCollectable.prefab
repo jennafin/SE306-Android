@@ -85,6 +85,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ef772499fe092438cb8a135bb65dddc2, type: 3}
   soundHugo:
   - {fileID: 8300000, guid: 1cf5589f1ceed4c3b8e3e7bbba09780a, type: 3}
+  soundNick:
+  - {fileID: 8300000, guid: d9a1a9385d70c4ab29d760600f3b8546, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

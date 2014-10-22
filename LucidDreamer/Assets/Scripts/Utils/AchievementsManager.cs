@@ -82,9 +82,7 @@ public class AchievementsManager : MonoBehaviour {
 		
 		timePlayed = x;
 		int timeTest = timeSum + timePlayed;
-
-		print ("Current Time Sum: " + timeTest);
-		
+				
 		if (timeTest >= 1 && !achievements.achievementsTracker.played1Minutes) {
 			//achievementsList.GetCumulativeScoreOver10000 ();
 			achievements.achievementsTracker.SetPlayed1Minutes(true);
