@@ -262,7 +262,6 @@ public class GameControllerScript : MonoBehaviour
 				}
 		}
 
-
 		public int GetCoinsCollected ()
 		{
 				return this.coinsCollected;

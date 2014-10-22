@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class MainCharacterScript : MonoBehaviour {
 
 	public GameControllerScript gameControllerScript;
+	public Animator characterAnimator;
 
 	float jumpForce = 600f;
 	float doubleJumpForce = 600f;
@@ -60,8 +61,10 @@ public class MainCharacterScript : MonoBehaviour {
 		if (userPressJump) {
 			if (isGrounded) {
 				Jump ();
+				hasJumped = true;
 			} else if (!isGrounded && !hasDoubleJumped) {
 				DoubleJump ();
+				hasJumped = true;
 			}
 		};
 		rigidbody2D.velocity = new Vector2 (speed, rigidbody2D.velocity.y);
@@ -92,7 +95,11 @@ public class MainCharacterScript : MonoBehaviour {
 	void updateIsGrounded () {
 		isGrounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, ground);
 		if (isGrounded) {
+			setRunningAnimation();
+			hasJumped = false;
 			hasDoubleJumped = false;
+		} else {
+			setJumpAnimation();
 		}
 	}
 	
@@ -218,5 +225,13 @@ public class MainCharacterScript : MonoBehaviour {
 	
 	public void StopAlexMoving() {
 		speed = 0f;
+	}
+	
+	private void setJumpAnimation() {
+		characterAnimator.SetBool("jumping", true);
+	}
+	
+	private void setRunningAnimation() {
+		characterAnimator.SetBool("jumping", false);
 	}
 }
