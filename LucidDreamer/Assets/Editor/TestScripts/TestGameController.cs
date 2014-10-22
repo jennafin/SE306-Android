@@ -47,5 +47,7 @@ namespace UnityTest
 			// Check that the change has been stored in the game controller
 			Assert.AreEqual (3, gameController.GetCoinsCollected());
 		}
+
+
 	}
 }

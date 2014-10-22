@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public class GameControllerScript : MonoBehaviour
 {
@@ -61,6 +62,13 @@ public class GameControllerScript : MonoBehaviour
 		private bool musicOn;
 		public bool soundEffectsOn;
 
+		//Stopwatch for finding time since app began
+		Stopwatch stopWatch;
+		Stopwatch totalTimeWatch;
+
+		//Tracks achievemens
+		AchievementsManager achievementManager = new AchievementsManager();
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -91,15 +99,20 @@ public class GameControllerScript : MonoBehaviour
 				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity, startLevel);
 				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
 
+				achievementManager.Load();
+
+				stopWatch = new Stopwatch();
+				totalTimeWatch = new Stopwatch();
+				stopWatch.Start();
+				totalTimeWatch.Start ();
+
 				// Get the maximum amount of lives
 				PurchaseManager purchaseManager = new PurchaseManager();
 				purchaseManager.Load();
 				if (purchaseManager.Get5Lives()) {
 					MAX_NUMBER_OF_LIVES = 5;
-					Debug.Log("Has 5 lives");
 				} else if (purchaseManager.Get4Lives()) {
 					MAX_NUMBER_OF_LIVES = 4;
-					Debug.Log("Has 4 lives");
 				}
 				// Player starts with MAX_NUMBER_OF_LIVES
 				lives = MAX_NUMBER_OF_LIVES;
@@ -113,8 +126,17 @@ public class GameControllerScript : MonoBehaviour
 				Time.timeScale = (float)timeScale.getCurrentSpeed ();
 				timeScale.incrementSpeed (timeScaleIncrement);
 
-				ApplyCollectableBehaviours ();
+				int time = stopWatch.Elapsed.Seconds;
+				if (time == 1) {
+					achievementManager.CheckTimePlayedAchievements(totalTimeWatch.Elapsed.Seconds);
+					achievementManager.CheckDistanceAchievements(alexPosition.x);
+					achievementManager.CheckScoreAchievements(scoreTracker.GetCurrentScore((int)Math.Floor (alexPosition.x)));
+					stopWatch.Reset();
+					stopWatch.Start();
+				}
 
+
+				ApplyCollectableBehaviours ();
 
 				alexPosition = alexDreamer.position;
 
@@ -147,29 +169,7 @@ public class GameControllerScript : MonoBehaviour
 						currentLevel = GetNextLevel (levelSpawnPosition, Quaternion.identity);
 				}
 
-				checkAchievements (alexPosition.x);
-
 				LifeHUD.GetComponent<LifeHUDScript> ().SetScore (scoreTracker.GetCurrentScore ((int)Math.Floor (alexPosition.x)));
-		}
-
-		void checkAchievements (float x)
-		{
-				if (x >= 10) {
-						achievementsList.GetRan10Meters ();
-				}
-				if (x >= 20) {
-						achievementsList.GetRan20Meters ();
-				}
-				if (x >= 30) {
-						achievementsList.GetRan30Meters ();
-				}
-				if (x >= 40) {
-						achievementsList.GetRan40Meters ();
-				}
-				if (x >= 50) {
-						achievementsList.GetRan50Meters ();
-				}
-
 		}
 
 		// Uses the LevelFactory to create the next level segment
@@ -286,6 +286,15 @@ public class GameControllerScript : MonoBehaviour
 				}
 		}
 
+		public void LoadGameOverScreen() {
+			scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
+			achievementManager.CheckTimePlayedAchievements(totalTimeWatch.Elapsed.Seconds);
+			achievementManager.CheckDistanceAchievements(alexPosition.x);
+			achievementManager.CheckScoreAchievements(scoreTracker.GetCurrentScore((int)Math.Floor (alexPosition.x)));
+			achievementManager.SavePersistence();
+			Application.LoadLevel ("GameOver");
+		}
+
 		public int GetCoinsCollected ()
 		{
 				return this.coinsCollected;
@@ -298,9 +307,13 @@ public class GameControllerScript : MonoBehaviour
 
 		void GameOver ()
 		{
+				achievementManager.CheckTimePlayedAchievements(totalTimeWatch.Elapsed.Seconds);
+				achievementManager.CheckDistanceAchievements(alexPosition.x);
+				achievementManager.CheckScoreAchievements(scoreTracker.GetCurrentScore((int)Math.Floor (alexPosition.x)));
+				achievementManager.SavePersistence();
 				// save score
 				scoreTracker.gameOver ((int) Math.Floor (alexPosition.x));
-				
+
 				// if alex is falling, then load game over right-away, otherwise
 				// play death animation
 				if (isAlexFalling) {
@@ -309,7 +322,7 @@ public class GameControllerScript : MonoBehaviour
 					// stop alex moving and trigger death animation
 					mainCharacterScript.StopAlexMoving();
 					alexAnimator.SetBool ("dying", true);
-					
+
 					// fade in game over scene with a delayed fade to allow animation
 					// to be carried out in full
 					GameObject.Find ("GameController").GetComponent<SceneFader> ().LoadScene("GameOver", 1.3f);

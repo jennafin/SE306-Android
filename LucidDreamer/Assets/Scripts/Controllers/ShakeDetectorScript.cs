@@ -7,8 +7,13 @@ public class ShakeDetectorScript : MonoBehaviour {
   private List<Shakeable> subscribers = new List<Shakeable>();
 
 	//Sound effects
-	public List<AudioClip> UseLucidSounds = new List<AudioClip> ();
-	public List<AudioClip> FullLucidSounds = new List<AudioClip> ();
+	public List<AudioClip> UseLucidSoundsHugo = new List<AudioClip> ();
+	public List<AudioClip> FullLucidSoundsHugo = new List<AudioClip> ();
+	public List<AudioClip> UseLucidSoundsJamie = new List<AudioClip> ();
+	public List<AudioClip> FullLucidSoundsJamie = new List<AudioClip> ();
+
+	private List<AudioClip> UseLucidSounds = new List<AudioClip> ();
+	private List<AudioClip> FullLucidSounds = new List<AudioClip> ();
 
   int currentShake = Environment.TickCount;
 
@@ -63,7 +68,21 @@ public class ShakeDetectorScript : MonoBehaviour {
 	void Start(){
 		gameController = gameControllerObject.GetComponent<GameControllerScript> ();
 		LucidHUD = LucidHUDObject.GetComponent<HUDLucidGUI> ();
+
+		if (PlayerPrefs.GetString ("AudioName")=="Hugo") {
+			UseLucidSounds.AddRange(UseLucidSoundsHugo);
+			FullLucidSounds.AddRange(FullLucidSoundsHugo);
+		} else if (PlayerPrefs.GetString ("AudioName")=="Jamie") {
+			UseLucidSounds.AddRange(UseLucidSoundsJamie);
+			FullLucidSounds.AddRange(FullLucidSoundsJamie);;
+		} else {
+			UseLucidSounds.AddRange(UseLucidSoundsHugo);
+			FullLucidSounds.AddRange(FullLucidSoundsHugo);
 		}
+	}
+
+
+		
 
   /* This method comes from unity forums
    * http://answers.unity3d.com/questions/427191/how-to-shake-phone-using-c.html

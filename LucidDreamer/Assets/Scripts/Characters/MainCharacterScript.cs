@@ -26,9 +26,18 @@ public class MainCharacterScript : MonoBehaviour {
 	float groundRadius = 0.2f;
 	public LayerMask ground;
 
-	public List<AudioClip> jumpSound = new List<AudioClip>();
-	public AudioClip deathSound;
-	public List<AudioClip> injuredSound = new List<AudioClip>();
+	public List<AudioClip> jumpSoundJamie = new List<AudioClip>();
+	public AudioClip deathSoundJamie;
+	public List<AudioClip> injuredSoundJamie = new List<AudioClip>();
+
+	public List<AudioClip> jumpSoundHugo = new List<AudioClip>();
+	public AudioClip deathSoundHugo;
+	public List<AudioClip> injuredSoundHugo = new List<AudioClip>();
+
+	private List<AudioClip> jumpSound = new List<AudioClip>();
+	private AudioClip deathSound;
+	private List<AudioClip> injuredSound = new List<AudioClip>();
+
 	private bool soundEffectsOn;
 	
 	// Number of times to flash visibility off
@@ -51,6 +60,20 @@ public class MainCharacterScript : MonoBehaviour {
 		StopParticleEmitter();
 		RetrieveSettings ();
 		touchArea = new Rect(0, 0, Screen.width, (Screen.height - Screen.height/5));
+
+		if (PlayerPrefs.GetString ("AudioName")=="Hugo") {
+			jumpSound.AddRange(jumpSoundHugo);
+			injuredSound.AddRange(injuredSoundHugo);
+			deathSound = deathSoundHugo;
+		} else if (PlayerPrefs.GetString ("AudioName")=="Jamie") {
+			jumpSound.AddRange(jumpSoundJamie);
+			injuredSound.AddRange(injuredSoundJamie);
+			deathSound = deathSoundJamie;
+		} else {
+			jumpSound.AddRange(jumpSoundHugo);
+			injuredSound.AddRange(injuredSoundHugo);
+			deathSound = deathSoundHugo;
+		}
 	}
 
 	void Update() {
