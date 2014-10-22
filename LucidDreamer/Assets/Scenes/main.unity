@@ -2116,6 +2116,16 @@ MonoBehaviour:
   injuredSoundHugo:
   - {fileID: 8300000, guid: b0e26cd1b18fc4b36bb92cd5402eb6fc, type: 3}
   - {fileID: 8300000, guid: 4d26c0c6fe04f41a5a41609bb0d8b530, type: 3}
+  jumpSoundNick:
+  - {fileID: 8300000, guid: aa5a60f136c254e11a6e215c6251417e, type: 3}
+  - {fileID: 8300000, guid: 7a5f44b422027412c99b369965c58984, type: 3}
+  - {fileID: 8300000, guid: 9fa8b1c2809c04c6bbdf8824f676a608, type: 3}
+  deathSoundNick: {fileID: 8300000, guid: 98f8869caa3704f1c8316f1b360543fb, type: 3}
+  injuredSoundNick:
+  - {fileID: 8300000, guid: 68c73bbabe8d4444599cd68e1a7d7d9e, type: 3}
+  - {fileID: 8300000, guid: 7d2f470c160c54c40824a77ba61732ec, type: 3}
+  - {fileID: 8300000, guid: 863ab80582b444200bead0c755d65316, type: 3}
+  - {fileID: 8300000, guid: d31da45a8bca04b8abf2de3805b86b36, type: 3}
   flashingAnimationCountTotal: 5
   flashingAnimationDuration: .0500000007
 --- !u!58 &1286769720
@@ -2253,7 +2263,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 37
+    m_FontSize: 49
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2312,7 +2322,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 2ce8338171fec944ba1d26fb75c30405, type: 3}
-    m_FontSize: 77
+    m_FontSize: 102
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -2371,7 +2381,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 19
+    m_FontSize: 25
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0

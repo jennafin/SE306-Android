@@ -34,6 +34,10 @@ public class MainCharacterScript : MonoBehaviour {
 	public AudioClip deathSoundHugo;
 	public List<AudioClip> injuredSoundHugo = new List<AudioClip>();
 
+	public List<AudioClip> jumpSoundNick = new List<AudioClip>();
+	public AudioClip deathSoundNick;
+	public List<AudioClip> injuredSoundNick = new List<AudioClip>();
+
 	private List<AudioClip> jumpSound = new List<AudioClip>();
 	private AudioClip deathSound;
 	private List<AudioClip> injuredSound = new List<AudioClip>();
@@ -69,6 +73,10 @@ public class MainCharacterScript : MonoBehaviour {
 			jumpSound.AddRange(jumpSoundJamie);
 			injuredSound.AddRange(injuredSoundJamie);
 			deathSound = deathSoundJamie;
+		} else if (PlayerPrefs.GetString ("AudioName")=="Nick") {
+			jumpSound.AddRange(jumpSoundNick);
+			injuredSound.AddRange(injuredSoundNick);
+			deathSound = deathSoundNick;
 		} else {
 			jumpSound.AddRange(jumpSoundHugo);
 			injuredSound.AddRange(injuredSoundHugo);
