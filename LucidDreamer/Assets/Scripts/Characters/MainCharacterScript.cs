@@ -7,9 +7,9 @@ public class MainCharacterScript : MonoBehaviour {
 
 	public GameControllerScript gameControllerScript;
 
-	float jumpForce = 600f;
+	float jumpForce = 650f;
 	float doubleJumpForce = 600f;
-	float superJumpForce = 700f;
+	float superJumpForce = 900f;
 
 	float currentJumpForce;
 	
