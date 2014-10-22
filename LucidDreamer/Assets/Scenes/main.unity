@@ -2795,6 +2795,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 1a40cc72047fec0418e7887b97ed2a50, type: 2}
   - {fileID: 100000, guid: 1d9d1778a012a8341b4c0a240463c7eb, type: 2}
   - {fileID: 100000, guid: da43053d5b1d56b489c9d17846906f28, type: 2}
+  - {fileID: 100000, guid: 06a0f3a1f9307144eb52241ad7f7db77, type: 2}
   gameController: {fileID: 1897705299}
 --- !u!64 &1897705301
 MeshCollider:
