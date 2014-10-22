@@ -31,7 +31,7 @@ public class PurchaseMenu : MonoBehaviour
     string _label = "";
     bool _isInitialized = false;
 
-    PurchaseManager purchaseManager;
+    PurchaseManager purchaseManager = new PurchaseManager();
 
     private void OnEnable()
     {
@@ -55,9 +55,6 @@ public class PurchaseMenu : MonoBehaviour
         // Map skus for different stores
         OpenIAB.mapSku(LIVES_4, OpenIAB_Android.STORE_GOOGLE, LIVES_4);
         OpenIAB.mapSku(LIVES_5, OpenIAB_Android.STORE_GOOGLE, LIVES_5);
-
-        purchaseManager = new PurchaseManager();
-        purchaseManager.Load();
     }
 
     const float X_OFFSET = 10.0f;
@@ -121,6 +118,8 @@ public class PurchaseMenu : MonoBehaviour
         if (!_isInitialized)
             return;
 
+        purchaseManager = new PurchaseManager();
+        purchaseManager.Load();
         if (purchaseManager.Get4Lives()) {
           if (Button("Purchase 5 lives"))
           {
@@ -146,11 +145,13 @@ public class PurchaseMenu : MonoBehaviour
           PurchaseManager purchaseManager = new PurchaseManager();
           purchaseManager.Load();
           purchaseManager.Set4Lives(true);
+          purchaseManager.Save();
         } else if (productId.Equals(LIVES_5)) {
           //Enable 5 lives
           PurchaseManager purchaseManager = new PurchaseManager();
           purchaseManager.Load();
           purchaseManager.Set5Lives(true);
+          purchaseManager.Save();
         }
     }
 

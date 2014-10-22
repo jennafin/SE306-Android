@@ -24,10 +24,12 @@ public class PurchaseManager {
 			//Load back the scores
 			purchases = (Purchases)bf.Deserialize(f);
 			f.Close();
+		} else {
+			purchases = new Purchases();
 		}
 	}
 
-	public void SavePurchases()
+	public void Save()
 	{
 		//Get a binary formatter
 		BinaryFormatter bf = new BinaryFormatter();
@@ -39,18 +41,30 @@ public class PurchaseManager {
 	}
 
 	public void Set4Lives(bool enabled) {
+		if (purchases == null) {
+			this.Load();
+		}
 		purchases.Lives_4 = enabled;
 	}
 
 	public void Set5Lives(bool enabled) {
+		if (purchases == null) {
+			this.Load();
+		}
 		purchases.Lives_5 = enabled;
 	}
 
 	public bool Get4Lives() {
+		if (purchases == null) {
+			this.Load();
+		}
 		return purchases.Lives_4;
 	}
 
 	public bool Get5Lives() {
+		if (purchases == null) {
+			this.Load();
+		}
 		return purchases.Lives_5;
 	}
 }

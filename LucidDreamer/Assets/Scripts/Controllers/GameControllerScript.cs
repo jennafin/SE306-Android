@@ -66,9 +66,6 @@ public class GameControllerScript : MonoBehaviour
 
 				timeScale = new DefaultSpeedHandle (minTimeScale, minTimeScale, maxTimeScale);
 
-				// Player starts with 3 lives
-				lives = MAX_NUMBER_OF_LIVES;
-
 				// Retrieve settings
 				RetrieveSettings ();
 
@@ -92,9 +89,14 @@ public class GameControllerScript : MonoBehaviour
 				purchaseManager.Load();
 				if (purchaseManager.Get5Lives()) {
 					MAX_NUMBER_OF_LIVES = 5;
+					Debug.Log("Has 5 lives");
 				} else if (purchaseManager.Get4Lives()) {
 					MAX_NUMBER_OF_LIVES = 4;
+					Debug.Log("Has 4 lives");
 				}
+				// Player starts with MAX_NUMBER_OF_LIVES
+				lives = MAX_NUMBER_OF_LIVES;
+				LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
 		}
 
 		// Update is called once per frame
