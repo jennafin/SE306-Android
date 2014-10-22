@@ -65,3 +65,5 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectLanguage.unity
   - enabled: 1
     path: Assets/Scenes/main3D.unity
+  - enabled: 1
+    path: Assets/Scenes/PurchaseMenu.unity
