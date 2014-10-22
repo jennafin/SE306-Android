@@ -55,8 +55,6 @@ public class GameControllerScript : MonoBehaviour
 		private bool musicOn;
 		public bool soundEffectsOn;
 
-
-
 		// Use this for initialization
 		void Start ()
 		{
@@ -94,12 +92,6 @@ public class GameControllerScript : MonoBehaviour
 				// Handles the game speeding up.
 				Time.timeScale = (float)timeScale.getCurrentSpeed ();
 				timeScale.incrementSpeed (timeScaleIncrement);
-
-				// exit game on escape/back button
-				if (Input.GetKeyDown (KeyCode.Escape)) {
-
-						Application.LoadLevel ("MainMenu");
-				}
 
 				ApplyCollectableBehaviours ();
 
@@ -174,7 +166,7 @@ public class GameControllerScript : MonoBehaviour
 		// Returns the theme for the next level segment
 		Theme GetNextTheme ()
 		{
-				if (currentThemeSegmentCount >= 1) {
+				if (currentThemeSegmentCount >= 5) {
 						currentThemeSegmentCount = 0;
 						currentTheme = GetNewTheme ();
 				}
@@ -288,7 +280,7 @@ public class GameControllerScript : MonoBehaviour
 
 		void GameOver ()
 		{
-				scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
+				scoreTracker.gameOver ((int) Math.Floor (alexPosition.x));
 				Application.LoadLevel ("GameOver");
 		}
 
@@ -398,6 +390,10 @@ public class GameControllerScript : MonoBehaviour
 				timeScale.unpause ();
 				shakeDetector.GetComponent<ShakeDetectorScript> ().UnpauseDetection ();
 				mainCharacterScript.UnpauseJumpAbility ();
+		}
+		
+		public Theme GetCurrentTheme() {
+			return currentTheme;
 		}
 }
 
