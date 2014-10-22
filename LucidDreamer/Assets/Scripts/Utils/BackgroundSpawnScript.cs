@@ -3,7 +3,12 @@ using System.Collections;
 
 public class BackgroundSpawnScript : MonoBehaviour {
 	
-	public GameObject[] backgroundImages;
+	public GameObject defaultBackground;
+	public GameObject[] mathBackgrounds;
+	public GameObject[] artBackgrounds;
+	public GameObject[] scienceBackgrounds;
+	
+	public GameControllerScript gameController;
 	
 	GameObject[,] currentImages = new GameObject[3,3];
 	
@@ -13,8 +18,11 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// Get level width/height
-		imageWidth = backgroundImages[0].renderer.bounds.size.x;
-		imageHeight = backgroundImages[0].renderer.bounds.size.y;
+		imageWidth = defaultBackground.renderer.bounds.size.x;
+		imageHeight = defaultBackground.renderer.bounds.size.z;
+		
+		Debug.Log ("Height: " + imageHeight);
+		Debug.Log ("Width: " + imageWidth);
 		
 		// Create the first 9 screens
 		InstantiateLevels();
@@ -25,16 +33,13 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (RightIsVisible()) {
-			Debug.Log("Right is Visible");
+		if (RightIsVisible() && !LeftIsVisible()) {
 			MoveRight();
 		}
 		
-		if (UpIsVisible()) {
+		if (UpIsVisible() && !DownIsVisible()) {
 			MoveUp ();
-		}
-		
-		if (DownIsVisible()) {
+		} else if (DownIsVisible() && !UpIsVisible()) {
 			MoveDown ();
 		}
 	}
@@ -75,19 +80,25 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	bool RightIsVisible() {
 		return currentImages[2, 0].renderer.isVisible
 				|| currentImages[2, 1].renderer.isVisible
-				||	currentImages[2, 2].renderer.isVisible;
+				|| currentImages[2, 2].renderer.isVisible;
+	}
+	
+	bool LeftIsVisible() {
+		return currentImages[0, 0].renderer.isVisible
+			    || currentImages[0, 1].renderer.isVisible
+				|| currentImages[0, 2].renderer.isVisible;
 	}
 	
 	bool UpIsVisible() {
 		return currentImages[0, 0].renderer.isVisible
 				|| currentImages[1, 0].renderer.isVisible
-				||	currentImages[2, 0].renderer.isVisible;
+				|| currentImages[2, 0].renderer.isVisible;
 	}
 	
 	bool DownIsVisible() {
 		return currentImages[0, 2].renderer.isVisible
 				|| currentImages[1, 2].renderer.isVisible
-				||	currentImages[2, 2].renderer.isVisible;
+				|| currentImages[2, 2].renderer.isVisible;
 	}
 	
 	void InstantiateLevels() {
@@ -106,7 +117,28 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	}
 	
 	GameObject ChooseBackgroundImage() {
+		Theme theme = gameController.GetCurrentTheme();
+		switch (theme) {
+			case Theme.Art:
+				return ChooseBackgroundImage(artBackgrounds);
+				break;
+			case Theme.Maths:
+				return ChooseBackgroundImage(mathBackgrounds);
+				break;
+			case Theme.Science:
+				return ChooseBackgroundImage(scienceBackgrounds);
+				break;
+		}
+		return defaultBackground;
+		
+	}
+	
+	GameObject ChooseBackgroundImage(GameObject[] backgroundImages) {
 		System.Random random = new System.Random ();
-		return backgroundImages[random.Next(backgroundImages.Length)];
+		try {
+			return backgroundImages[random.Next(backgroundImages.Length)];
+		} catch {
+			return defaultBackground;
+		}
 	}
 }
