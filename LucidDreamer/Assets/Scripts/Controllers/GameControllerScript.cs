@@ -33,8 +33,12 @@ public class GameControllerScript : MonoBehaviour
 		// The tutorial level to start on.
 		public GameObject startLevel;
 		
-		// The Prefab level segments that can be chosen from
-		public GameObject[] levelSegments;
+		// Easy, Medium and Hard Level Segments;
+		public GameObject[] easyLevels;
+		public GameObject[] mediumLevels;
+		public GameObject[] hardLevels;
+		
+		LevelPicker levelPicker;
 
 		// Current Theme
 		Theme currentTheme = Theme.Maths;
@@ -66,7 +70,10 @@ public class GameControllerScript : MonoBehaviour
 				timeScaleIncrement = 0.00005;
 
 				timeScale = new DefaultSpeedHandle (minTimeScale, minTimeScale, maxTimeScale);
-
+				
+				// In charge of choosing the next level segment
+				levelPicker = new LevelPicker(easyLevels, mediumLevels, hardLevels);
+				
 				// Player starts with 3 lives
 				lives = MAX_NUMBER_OF_LIVES;
 
@@ -199,8 +206,7 @@ public class GameControllerScript : MonoBehaviour
 		// Chooses and returns a new level segment.
 		GameObject GetNextPrefab ()
 		{
-				System.Random random = new System.Random ();
-				return levelSegments [random.Next (levelSegments.Length)];
+				return levelPicker.ChooseLevel(GetDistance());
 		}
 
 		// Duplicate method to allow loss of life with Collider object, should change later
