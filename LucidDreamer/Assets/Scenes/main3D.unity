@@ -221,7 +221,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1656,6 +1656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdee62c421fb7b34abbe290a0ca10f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseLucidSounds: []
+  FullLucidSounds: []
   LucidHUDObject: {fileID: 2095973032}
   gameControllerObject: {fileID: 1897705298}
   distancePowerRatio: .000500000024
@@ -1720,6 +1722,69 @@ Transform:
   - {fileID: 332502779}
   m_Father: {fileID: 1728986873}
   m_RootOrder: 2
+--- !u!1 &1087477505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1087477506}
+  - 108: {fileID: 1087477507}
+  m_Layer: 0
+  m_Name: Directional light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1087477506
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087477505}
+  m_LocalRotation: {x: .0251229275, y: .842469096, z: -.039435111, w: .536711812}
+  m_LocalPosition: {x: 0, y: -2.27999997, z: 2.88000011}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1286769715}
+  m_RootOrder: 4
+--- !u!108 &1087477507
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087477505}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: .5
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: .0500000007
+    m_Softness: 4
+    m_SoftnessFade: 1
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_ActuallyLightmapped: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 1
+  m_ShadowSamples: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_IndirectIntensity: 1
+  m_AreaSize: {x: 1, y: 1}
 --- !u!1 &1165287227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,13 +1941,14 @@ Transform:
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 1286769714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 1.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1708203033}
   - {fileID: 278581935}
   - {fileID: 2016434741}
   - {fileID: 623477929}
+  - {fileID: 1087477506}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!61 &1286769716
@@ -1944,9 +2010,17 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 1024
-  jumpSound: {fileID: 8300000, guid: ec4c9ed8ff0e9482e9bf57fe2474ae57, type: 3}
+  jumpSound:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   deathSound: {fileID: 8300000, guid: 8f53ad2d958c048e5a8e403a20d21df0, type: 3}
-  injuredSound: {fileID: 8300000, guid: 3ca121c001790493aac9f6aec90cfc06, type: 3}
+  injuredSound:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  flashingAnimationCountTotal: 5
+  flashingAnimationDuration: .0500000007
 --- !u!58 &1286769720
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2565,18 +2639,22 @@ MonoBehaviour:
   LifeHUD: {fileID: 1165287227}
   alexDreamer: {fileID: 1286769715}
   mainCharacterScript: {fileID: 1286769719}
-  levelSegments:
+  startLevel: {fileID: 100014, guid: 6d3c90e7ac37247da97d4709b9fc00e5, type: 2}
+  easyLevels:
   - {fileID: 100000, guid: 41cc4f359ed82468f9aa275be51e4c77, type: 2}
   - {fileID: 100072, guid: feb04bc9554e64709ab721cbb24f4043, type: 2}
   - {fileID: 100026, guid: bb86297727ff64afd9256bd084d36400, type: 2}
   - {fileID: 100000, guid: cf5ae575df3094820a8efc215f0dde49, type: 2}
   - {fileID: 100000, guid: 565a24c5693e3fa4b94d843cca65b3c1, type: 2}
+  mediumLevels:
   - {fileID: 100014, guid: 8f476dc35dd699549b3f1ab74a9b183a, type: 2}
   - {fileID: 100014, guid: c01a03ebe356d534db88b680fa08e195, type: 2}
   - {fileID: 100010, guid: e4408abf8c19b4b8daec9ce26f0f63ac, type: 2}
   - {fileID: 100016, guid: a270fcea23ffe48fbbbd9b9494437a8a, type: 2}
+  hardLevels:
   - {fileID: 100000, guid: 27636ea95d0344cc3bb9020fc646243c, type: 2}
   shakeDetector: {fileID: 836679848}
+  soundEffectsOn: 0
 --- !u!64 &1897705301
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2741,7 +2819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1286769715}
   distanceBehind: 5
-  distanceAboveTarget: 3
+  distanceAboveTarget: 2
   distanceAboveMax: 4
   distanceAboveMin: 0
   verticalFluidity: .00999999978
@@ -2840,7 +2918,7 @@ Camera:
     y: 0
     width: 1.5
     height: 1
-  near clip plane: 1
+  near clip plane: 2
   far clip plane: 100
   field of view: 50
   orthographic: 0
@@ -2862,8 +2940,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1985296155}
-  m_LocalRotation: {x: .122787811, y: .696364284, z: -.122787811, w: .696364284}
-  m_LocalPosition: {x: -8.81999969, y: 6.25, z: 1.75}
+  m_LocalRotation: {x: .0455080792, y: .705640972, z: -.0455080867, w: .705640852}
+  m_LocalPosition: {x: 63, y: 2, z: 1.75}
   m_LocalScale: {x: 1, y: .99999994, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -12,6 +12,8 @@ ModelImporter:
     100012: Armature|LevelR
     100014: Armature|Liquid
     100016: Grid
+    100018: Cylinder
+    100020: FlaskFace
     400000: FlaskGlass
     400002: FlaskLiquid
     400004: //RootNode
@@ -21,6 +23,8 @@ ModelImporter:
     400012: Armature|LevelR
     400014: Armature|Liquid
     400016: Grid
+    400018: Cylinder
+    400020: FlaskFace
     2300000: FlaskGlass
     2300002: FlaskLiquid
     2300004: Grid
@@ -30,6 +34,8 @@ ModelImporter:
     4300000: FlaskLiquid
     4300002: FlaskGlass
     4300004: Grid
+    4300006: Cylinder
+    4300008: FlaskFace
     7400000: Grid|GridAction
     7400002: Armature|GridAction
     7400004: Armature|Run2mpers
@@ -39,6 +45,8 @@ ModelImporter:
     9500000: //RootNode
     13700000: FlaskGlass
     13700002: FlaskLiquid
+    13700004: Cylinder
+    13700006: FlaskFace
   materials:
     importMaterials: 1
     materialName: 0

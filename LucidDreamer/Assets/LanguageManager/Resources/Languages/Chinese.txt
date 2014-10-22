@@ -4,7 +4,7 @@
 GameOverScreenMessage = 亚历克斯醒了！
 
 
-Score = 评分: 
+Score = 评分:
 
 Retry = 重试吗？
 
@@ -52,4 +52,10 @@ italian = 意大利 (Italian)
 
 chinese = 中國 (Chinese)
 
+ViewProducts = 查看产品
 
+Begin5Lives = 开始每场比赛有5个生命
+
+Begin4Lives = 开始每场比赛有4个生活
+
+PurchaseMenu = 购买菜单
