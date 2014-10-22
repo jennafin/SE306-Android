@@ -94,6 +94,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba361bb5808c464fa092dfff1828724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundJamie:
+  - {fileID: 8300000, guid: 6d2c274468e484db0bb5ec2b71f208b7, type: 3}
+  soundHugo:
+  - {fileID: 8300000, guid: d37d9e8a762c847c4a1062418f7408ba, type: 3}
+  multiplier: 10
   speed: 9
   axisOfRotation: 1
 --- !u!114 &11400002

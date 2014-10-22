@@ -12,7 +12,21 @@ public abstract class Collectable : MonoBehaviour {
 	 *
 	 * Defaults to null.
 	 */
-	public List<AudioClip> sound = new List<AudioClip>();
+	public List<AudioClip> soundJamie = new List<AudioClip>();
+
+	public List<AudioClip> soundHugo = new List<AudioClip>();
+
+	private List<AudioClip> sound = new List<AudioClip>();
+
+	void Start(){
+		if (PlayerPrefs.GetString ("AudioName")=="Hugo") {
+			sound.AddRange(soundHugo);
+		} else if (PlayerPrefs.GetString ("AudioName")=="Jamie") {
+			sound.AddRange(soundJamie);
+				} else {
+			sound.AddRange(soundHugo);
+				}
+		}
 
 	protected virtual float LifeSpan 
 	{
