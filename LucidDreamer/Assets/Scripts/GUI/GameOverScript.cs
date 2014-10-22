@@ -20,8 +20,8 @@ public class GameOverScript : MonoBehaviour
 		private int buttonHeight;
 		private string userName;
 		private HighScoreManager highScores = new HighScoreManager();
-		
-	
+
+
 		void Start ()
 		{
 				score = PlayerPrefs.GetInt ("Score");
@@ -64,53 +64,60 @@ public class GameOverScript : MonoBehaviour
 
 				highScores.Load();
 		}
-	
+
 		void OnGUI ()
 		{
 				GUI.Label (new Rect (0, screenHeight / 10, screenWidth, 0)
 		           , LanguageManager.GetText ("GameOverScreenMessage")
 		           , titleTextStyle);
-	           
+
 	            GUI.Label(new Rect (0, 3 * screenHeight / 9, screenWidth, 0)
 	           		, "" + score
 	           		, scoreTextStyle);
-		
-		
+
+
 				GUILayout.BeginArea (new Rect (screenWidth / 2 - screenWidth / 4, 5.5f * screenHeight / 13, screenWidth, screenHeight));
 				GUILayout.BeginVertical ();
-				
+
 				GUILayout.BeginHorizontal ();
 				GUILayout.BeginArea(new Rect(0,0, buttonWidth, buttonHeight));
 				GUI.Label (new Rect (0, 0, 0, 0)
 				           , LanguageManager.GetText ("TopScore")
 				           , gameOverStyle);
 				GUILayout.EndArea ();
-				
+
 				GUILayout.BeginArea (new Rect(buttonWidth * 1.5f, 0, buttonWidth*4, buttonHeight));
 				GUI.Label(new Rect(0, 0, buttonWidth ,buttonHeight)
 				          , highScores.GetTopScore().score + ""
 				          , rightAlignStyle);
 				GUILayout.EndArea ();
 				GUILayout.EndHorizontal ();
-				
+
 				GUILayout.EndVertical ();
 				GUILayout.EndArea ();
 
 				userName = GUI.TextField(new Rect ((screenWidth / 2 - (buttonWidth * (userName.Length / 10f) / 2)), 2.6f * screenHeight / 5, buttonWidth * (userName.Length / 10f), buttonHeight)
 	                    , userName, 25, inputBoxStyle);
-		
-				if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 3.5f * screenHeight / 5, buttonWidth * 2, buttonHeight)
+
+				if (GUI.Button (new Rect ((screenWidth / 2 - buttonWidth), 0.7f * screenHeight, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("Retry")
 		                , buttonStyle)) {
 						SaveScore();
 						LoadGame();
 				}
 
-				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, screenHeight - buttonHeight - 20, buttonWidth * 2, buttonHeight)
+				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 0.8f * screenHeight, buttonWidth * 2, buttonHeight)
 		                , LanguageManager.GetText ("ExitToMenu")
 		                , buttonStyle)) {
 						SaveScore();
 						LoadMainMenu();
+				}
+
+				if (GUI.Button (new Rect (screenWidth / 2 - buttonWidth, 0.9f * screenHeight, buttonWidth * 2, buttonHeight)
+										, LanguageManager.GetText ("PurchaseMenu")
+										, buttonStyle)) {
+						SaveScore();
+						LoadPurchaseMenu();
 				}
 		}
 
@@ -120,16 +127,16 @@ public class GameOverScript : MonoBehaviour
 			highScores.AddScore(userName, score);
 			highScores.SaveScores();
 		}
-		
+
 		void Update ()
 		{
 			// go to main menu on escape/back button
 			if (Input.GetKeyDown (KeyCode.Escape)) {
-					
+
 					SaveScore();
 					LoadMainMenu();
 			}
-		}	
+		}
 
 		private void LoadMainMenu() {
 			GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("MainMenu");
@@ -141,5 +148,9 @@ public class GameOverScript : MonoBehaviour
 				} else {
 						GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene ("main");
 				}
+		}
+
+		private void LoadPurchaseMenu() {
+			GameObject.Find ("Main Camera").GetComponent<SceneFader> ().LoadScene("PurchaseMenu");
 		}
 }

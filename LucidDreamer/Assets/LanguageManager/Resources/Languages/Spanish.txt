@@ -4,7 +4,7 @@
 GameOverScreenMessage = Alex despertó !
 
 
-Score = Puntuación: 
+Score = Puntuación:
 
 Retry = Reintentar?
 
@@ -22,7 +22,7 @@ SelectLanguage = Selecciona Idioma
 
 Name = Nombre
 
-TopScore = Mejor Puntuación: 
+TopScore = Mejor Puntuación:
 
 HighScores = puntuaciones más altas
 
@@ -51,4 +51,10 @@ italian = Italiano (Italian)
 
 chinese = Chino (Chinese)
 
+ViewProducts = Ver Productos
 
+Begin5Lives = Comience cada juego con 5 vidas
+
+Begin4Lives = Comience cada juego con 4 vidas
+
+PurchaseMenu = Menú Compras

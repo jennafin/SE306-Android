@@ -10,7 +10,7 @@ public class GameControllerScript : MonoBehaviour
 		private SpeedHandle timeScale;
 
 		// Keep track of how many lives the player has
-		private const int MAX_NUMBER_OF_LIVES = 3;
+		private int MAX_NUMBER_OF_LIVES = 3;
 		private int	lives;
 		private int coinsCollected = 0;
 
@@ -32,12 +32,12 @@ public class GameControllerScript : MonoBehaviour
 
 		// The tutorial level to start on.
 		public GameObject startLevel;
-		
+
 		// Easy, Medium and Hard Level Segments;
 		public GameObject[] easyLevels;
 		public GameObject[] mediumLevels;
 		public GameObject[] hardLevels;
-		
+
 		LevelPicker levelPicker;
 
 		// Current Theme
@@ -69,16 +69,13 @@ public class GameControllerScript : MonoBehaviour
 				timeScaleIncrement = 0.00005;
 
 				timeScale = new DefaultSpeedHandle (minTimeScale, minTimeScale, maxTimeScale);
-				
+
 				// In charge of choosing the next level segment
 				levelPicker = new LevelPicker(easyLevels, mediumLevels, hardLevels);
-				
-				// Player starts with 3 lives
-				lives = MAX_NUMBER_OF_LIVES;
 
 				// Retrieve settings
-				RetrieveSettings ();	
-				
+				RetrieveSettings ();
+
 				// turn on (unmute) music if turned on
 				if (musicOn) {
 						AudioSource music = GameObject.Find ("Main Camera").GetComponent<AudioSource> ();
@@ -93,6 +90,20 @@ public class GameControllerScript : MonoBehaviour
 				// Below here is temp stuff until there is a bedroom scene
 				this.previousLevel = GetNextLevel (new Vector3 (0f, 0f, 0f), Quaternion.identity, startLevel);
 				this.currentLevel = GetNextLevel (new Vector3 (previousLevel.MaxX (), 0f, 0f), Quaternion.identity);
+
+				// Get the maximum amount of lives
+				PurchaseManager purchaseManager = new PurchaseManager();
+				purchaseManager.Load();
+				if (purchaseManager.Get5Lives()) {
+					MAX_NUMBER_OF_LIVES = 5;
+					Debug.Log("Has 5 lives");
+				} else if (purchaseManager.Get4Lives()) {
+					MAX_NUMBER_OF_LIVES = 4;
+					Debug.Log("Has 4 lives");
+				}
+				// Player starts with MAX_NUMBER_OF_LIVES
+				lives = MAX_NUMBER_OF_LIVES;
+				LifeHUD.GetComponent<LifeHUDScript> ().SetLives (lives);
 		}
 
 		// Update is called once per frame
@@ -113,8 +124,8 @@ public class GameControllerScript : MonoBehaviour
 				}
 
 				float tmpPos = Camera.main.WorldToScreenPoint (new Vector3 (previousLevel.MaxX (), 0, 0)).x;
-				
-				
+
+
 				bool isVisible = false;
 				foreach (Renderer r in previousLevel.Prefab().GetComponentsInChildren<Renderer>()) {
 						if (r.isVisible) {
@@ -122,8 +133,8 @@ public class GameControllerScript : MonoBehaviour
 								break;
 						}
 				}
-		
-		
+
+
 				if (tmpPos < 0 && ! isVisible) {
 
 						Vector3 levelSpawnPosition = new Vector3 (currentLevel.MaxX (), 0, 0);
@@ -165,14 +176,14 @@ public class GameControllerScript : MonoBehaviour
 		{
 				return GetNextLevel(position, rotation, GetNextPrefab());
 		}
-		
+
 		Level GetNextLevel (Vector3 position, Quaternion rotation, GameObject levelSegment) {
 			LevelFactory factory = new LevelFactory ();
 			factory.setTheme (GetNextTheme ());
 			factory.setLevelSegment (levelSegment);
 			factory.setPosition (position);
 			factory.setRotation (rotation);
-			
+
 			return factory.build ();
 		}
 
@@ -218,7 +229,7 @@ public class GameControllerScript : MonoBehaviour
 
 				// cooldown after being hit, Alex won't be able to lose a life for some amount of secconds after being hit
 				if (objectTag == "Dangerous") {
-						
+
 						if (objectName.Contains ("Enemy")) {
 								Enemy enemy = col.gameObject.GetComponent<Enemy> ();
 								if (this.mainCharacterScript.isInvincible)
@@ -230,7 +241,7 @@ public class GameControllerScript : MonoBehaviour
 								{
 									enemy.OnCollision (this);
 								}
-								
+
 						}
 						if (this.mainCharacterScript.isInvincible) {
 								return;
@@ -254,9 +265,9 @@ public class GameControllerScript : MonoBehaviour
 										mainCharacterScript.PlayInjuredSound ();
 								}
 						}
-						
+
 						mainCharacterScript.HitByEnemy();
-						
+
 				} else if (objectTag.StartsWith ("Collectable")) {
 
 						Collectable collectable = col.gameObject.GetComponent<Collectable> ();
@@ -386,7 +397,7 @@ public class GameControllerScript : MonoBehaviour
 				} else {
 						soundEffectsOn = true;
 				}
-		}	
+		}
 
 		// pause the game – make relevant calls to halt background operations
 		public void PauseGame ()
@@ -403,9 +414,8 @@ public class GameControllerScript : MonoBehaviour
 				shakeDetector.GetComponent<ShakeDetectorScript> ().UnpauseDetection ();
 				mainCharacterScript.UnpauseJumpAbility ();
 		}
-		
+
 		public Theme GetCurrentTheme() {
 			return currentTheme;
 		}
 }
-
