@@ -49,8 +49,8 @@ public class AchievementsManager : MonoBehaviour {
 	public void CheckScoreAchievements(int x) {
 	
 		score = x;
-		int totalTest = total + x;		
-		
+		int totalTest = total + x;
+
 		if (totalTest >= 10000 && !achievements.achievementsTracker.score10000Total) {
 			achievementsList.GetCumulativeScoreOver10000 ();
 			achievements.achievementsTracker.SetScore10000Total(true);
@@ -83,23 +83,23 @@ public class AchievementsManager : MonoBehaviour {
 		timePlayed = x;
 		int timeTest = timeSum + timePlayed;
 				
-		if (timeTest >= 1 && !achievements.achievementsTracker.played1Minutes) {
-			//achievementsList.GetCumulativeScoreOver10000 ();
+		if (timeTest >= 60 && !achievements.achievementsTracker.played1Minutes) {
+			achievementsList.GetPlayed1MinutesTotal ();
 			achievements.achievementsTracker.SetPlayed1Minutes(true);
 		}
 		
-		if (timeTest >= 10 && !achievements.achievementsTracker.played10Minutes) {
-			//achievementsList.GetCumulativeScoreOver10000 ();
+		if (timeTest >= 600 && !achievements.achievementsTracker.played10Minutes) {
+			achievementsList.GetPlayed10MinutesTotal ();
 			achievements.achievementsTracker.SetPlayed10Minutes(true);
 		}
 		
-		if (timeTest >= 60 && !achievements.achievementsTracker.played60Minutes) {
-			//achievementsList.GetCumulativeScoreOver10000 ();
+		if (timeTest >= 3600 && !achievements.achievementsTracker.played60Minutes) {
+			achievementsList.GetPlayed60MinutesTotal ();
 			achievements.achievementsTracker.SetPlayed60Minutes(true);
 		}
 		
-		if (timeTest >= 120 && !achievements.achievementsTracker.played120Minutes) {
-			//achievementsList.GetCumulativeScoreOver10000 ();
+		if (timeTest >= 7200 && !achievements.achievementsTracker.played120Minutes) {
+			achievementsList.GetPlayedFor120MinutesTotal ();
 			achievements.achievementsTracker.SetPlayed120Minutes(true);
 		}
 	}
@@ -110,5 +110,6 @@ public class AchievementsManager : MonoBehaviour {
 		persistence.UpdateScore (score);
 		persistence.UpdateTime (timePlayed);
 		persistence.SavePersistence ();
+		achievements.SaveAchievements ();
 	}
 }

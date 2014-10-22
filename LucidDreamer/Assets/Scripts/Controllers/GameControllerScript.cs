@@ -69,6 +69,8 @@ public class GameControllerScript : MonoBehaviour
 		//Tracks achievemens
 		AchievementsManager achievementManager = new AchievementsManager();
 
+		private bool isAwake = false;
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -140,7 +142,7 @@ public class GameControllerScript : MonoBehaviour
 
 				alexPosition = alexDreamer.position;
 
-				if (alexPosition.y < -5) {
+				if (alexPosition.y < -5 && !isAlexFalling) {
 						// Alex has fallen to his death
 						isAlexFalling = true;
 						GameOver ();
@@ -281,16 +283,14 @@ public class GameControllerScript : MonoBehaviour
 						Destroy (collectable.gameObject);
 				}
 
-				if (lives < 0) {
+				if (lives < 0 && !isAwake) {
+						isAwake = true;
 						GameOver (); // Loads game over screen after 1.5 seconds
 				}
 		}
 
 		public void LoadGameOverScreen() {
 			scoreTracker.gameOver ((int)Math.Floor (alexPosition.x));
-			achievementManager.CheckTimePlayedAchievements(totalTimeWatch.Elapsed.Seconds);
-			achievementManager.CheckDistanceAchievements(alexPosition.x);
-			achievementManager.CheckScoreAchievements(scoreTracker.GetCurrentScore((int)Math.Floor (alexPosition.x)));
 			achievementManager.SavePersistence();
 			Application.LoadLevel ("GameOver");
 		}
