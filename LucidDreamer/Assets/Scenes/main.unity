@@ -2706,16 +2706,19 @@ MonoBehaviour:
   LifeHUD: {fileID: 1165287227}
   alexDreamer: {fileID: 1286769715}
   mainCharacterScript: {fileID: 1286769719}
-  levelSegments:
+  startLevel: {fileID: 100014, guid: 6d3c90e7ac37247da97d4709b9fc00e5, type: 2}
+  easyLevels:
   - {fileID: 100000, guid: 41cc4f359ed82468f9aa275be51e4c77, type: 2}
   - {fileID: 100072, guid: feb04bc9554e64709ab721cbb24f4043, type: 2}
   - {fileID: 100026, guid: bb86297727ff64afd9256bd084d36400, type: 2}
   - {fileID: 100000, guid: cf5ae575df3094820a8efc215f0dde49, type: 2}
   - {fileID: 100000, guid: 565a24c5693e3fa4b94d843cca65b3c1, type: 2}
+  mediumLevels:
   - {fileID: 100014, guid: 8f476dc35dd699549b3f1ab74a9b183a, type: 2}
   - {fileID: 100014, guid: c01a03ebe356d534db88b680fa08e195, type: 2}
   - {fileID: 100010, guid: e4408abf8c19b4b8daec9ce26f0f63ac, type: 2}
   - {fileID: 100016, guid: a270fcea23ffe48fbbbd9b9494437a8a, type: 2}
+  hardLevels:
   - {fileID: 100000, guid: 27636ea95d0344cc3bb9020fc646243c, type: 2}
   shakeDetector: {fileID: 836679848}
   soundEffectsOn: 0
