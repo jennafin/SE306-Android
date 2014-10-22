@@ -1637,7 +1637,7 @@ MonoBehaviour:
   alexDreamer: {fileID: 859361784}
   mainCharacterScript: {fileID: 859361785}
   levelSegments:
-  - {fileID: 100030, guid: 46321ebed890d4703bfb2e030f5716f1, type: 2}
+  - {fileID: 100014, guid: 6d3c90e7ac37247da97d4709b9fc00e5, type: 2}
   shakeDetector: {fileID: 2045136515}
   soundEffectsOn: 0
 --- !u!64 &879874036
