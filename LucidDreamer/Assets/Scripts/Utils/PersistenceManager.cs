@@ -12,6 +12,7 @@ public class PersistenceManager : MonoBehaviour {
 	
 	public void Load()
 	{
+		print (Application.persistentDataPath);
 		//If not blank then load it
 		if(File.Exists(Application.persistentDataPath + "/totalScore.dat"))
 		{
@@ -58,7 +59,6 @@ public class PersistenceManager : MonoBehaviour {
 	
 	public void SavePersistence()
 	{
-		print ("Persistence time played!!: " + persistence.timePlayed);
 		//Get a binary formatter
 		BinaryFormatter bf = new BinaryFormatter();
 		//Create a file

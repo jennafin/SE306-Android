@@ -5,194 +5,160 @@ using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
 
 public  class AchievementsList {
-
-// Yes the default value is false, http://msdn.microsoft.com/en-us/library/c8f5xwh7.aspx
-private bool[] executed = new bool[     17];
-
+	
+	// Yes the default value is false, http://msdn.microsoft.com/en-us/library/c8f5xwh7.aspx
+	private bool[] executed = new bool[     17];
+	
 	public void GetUnityWorks() {
 		if (!executed[0]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQAg", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[0] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQAg", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[0] = true;
 		}
 	}
 	
 	public void GetRan100Meters() {
 		if (!executed[1]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQAw", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[1] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQAw", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[1] = true;
 		}
 	}
 	
 	public void GetRan1000Meters() {
 		if (!executed[2]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQBA", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[2] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQBA", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[2] = true;
 		}
 	}
 	
 	public void GetRan10000Meters() {
 		if (!executed[3]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQBQ", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[3] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQBQ", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[3] = true;
 		}
 	}
 	
 	public void GetRan20000Meters() {
 		if (!executed[4]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQBg", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[4] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQBg", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[4] = true;
 		}
 	}
 	
-	public void GetRan50Meters() {
+	public void GetPlayed1MinutesTotal() {
 		if (!executed[5]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQBw", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[5] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQCA", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[5] = true;
 		}
 	}
 	
-	public void GetSprinter() {
+	public void GetPlayed10MinutesTotal() {
 		if (!executed[6]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQCA", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[6] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQBw", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[6] = true;
 		}
 	}
 	
-	public void GetRan500Meters() {
+	public void GetPlayed60MinutesTotal() {
 		if (!executed[7]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQCQ", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[7] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQCQ", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[7] = true;
 		}
 	}
 	
-	public void GetRan750Meters() {
+	public void GetPlayedFor120MinutesTotal() {
 		if (!executed[8]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQCg", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[8] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQCg", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[8] = true;
 		}
 	}
 	
 	public void GetLucidRunner() {
 		if (!executed[9]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQCw", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[9] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQCw", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[9] = true;
 		}
 	}
 	
 	public void GetRan1250Meters() {
 		if (!executed[10]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQDA", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[10] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQDA", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[10] = true;
 		}
 	}
 	
 	public void GetRan1500Meters() {
 		if (!executed[11]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQDQ", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[11] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQDQ", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[11] = true;
 		}
 	}
 	
 	public void GetCumulativeScoreOver10000() {
 		if (!executed[12]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQEA", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[12] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEA", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[12] = true;
 		}
 	}
 	
 	public void GetCumulativeScoreOver20000() {
 		if (!executed[13]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQEQ", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[13] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEQ", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[13] = true;
 		}
 	}
 	
 	public void GetCumulativeScoreOver50000() {
 		if (!executed[14]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQEg", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[14] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEg", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[14] = true;
 		}
 	}
 	
 	public void GetCumulativeScoreOver80000() {
 		if (!executed[15]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQEw", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[15] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQEw", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[15] = true;
 		}
 	}
 	
 	public void GetCumulativeScoreOver100000() {
 		if (!executed[16]) {
-			try {
-				Social.ReportProgress ("CgkIj8PyxKwKEAIQDg", 100.0f, (bool success) => {
-					// handle success or failure
-				});
-				executed[16] = true;
-			} catch {}
+			Social.ReportProgress ("CgkIj8PyxKwKEAIQDg", 100.0f, (bool success) => {
+				// handle success or failure
+			});
+			executed[16] = true;
 		}
 	}
 	
