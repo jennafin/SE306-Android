@@ -99,6 +99,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: acec328b6dec2491aa1f6af116a7fdef, type: 3}
   - {fileID: 8300000, guid: acec328b6dec2491aa1f6af116a7fdef, type: 3}
   - {fileID: 8300000, guid: acec328b6dec2491aa1f6af116a7fdef, type: 3}
+  soundNick:
+  - {fileID: 8300000, guid: 48c3842b8adea41508433c6df13765cd, type: 3}
+  - {fileID: 8300000, guid: 6bee4e55a7fd64b1f97958da43010347, type: 3}
+  - {fileID: 8300000, guid: bcdc9403101ea4561b2af0835c2bacc6, type: 3}
+  - {fileID: 8300000, guid: e5416273080464f39b1aa09173dd6c4a, type: 3}
+  - {fileID: 8300000, guid: e5416273080464f39b1aa09173dd6c4a, type: 3}
+  - {fileID: 8300000, guid: e5416273080464f39b1aa09173dd6c4a, type: 3}
+  - {fileID: 8300000, guid: e5416273080464f39b1aa09173dd6c4a, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
