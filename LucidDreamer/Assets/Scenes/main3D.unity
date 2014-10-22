@@ -358,7 +358,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 278581934}
-  m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
+  m_LocalRotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
   m_LocalPosition: {x: -1.26370169e-16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1680,7 +1680,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400036, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 846906424}
-  m_LocalRotation: {x: .215361923, y: .00162501901, z: -.0206124093, w: .976315439}
+  m_LocalRotation: {x: .215361908, y: .00162501889, z: -.0206124075, w: .976315379}
   m_LocalPosition: {x: 1.11758709e-08, y: .203082591, z: -3.7252903e-09}
   m_LocalScale: {x: 1, y: .999999762, z: 1.00000012}
   m_Children: []
@@ -2523,7 +2523,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .400000006
+  m_Intensity: 1.61000001
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2636,7 +2636,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400042, guid: 7a03201e2b9696b419bdadca87b67aed, type: 3}
   m_PrefabInternal: {fileID: 160179881}
   m_GameObject: {fileID: 1644668785}
-  m_LocalRotation: {x: .0495204441, y: -.00202079676, z: -.100682877, w: .993683398}
+  m_LocalRotation: {x: .0495204404, y: -.00202079653, z: -.10068287, w: .993683338}
   m_LocalPosition: {x: 2.98023224e-08, y: .195807651, z: -2.23517418e-08}
   m_LocalScale: {x: .99999994, y: .99999994, z: 1.00000012}
   m_Children: []
@@ -2720,8 +2720,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 1728986873}
   m_AABB:
-    m_Center: {x: 5.96046448e-08, y: .0225655735, z: -.330646217}
-    m_Extent: {x: .563276887, y: .522754431, z: .543278992}
+    m_Center: {x: 0, y: .0225653946, z: -.330646038}
+    m_Extent: {x: .563277185, y: .52275455, z: .543279171}
   m_DirtyAABB: 0
 --- !u!1 &1728986872
 GameObject:
