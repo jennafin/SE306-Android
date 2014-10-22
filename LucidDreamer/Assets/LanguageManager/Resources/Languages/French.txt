@@ -4,7 +4,7 @@
 GameOverScreenMessage = Alex se réveille !
 
 
-Score = Score: 
+Score = Score:
 
 Retry = Réessayer?
 
@@ -22,7 +22,7 @@ SelectLanguage = Sélectionnez la langue
 
 Name = Nom
 
-TopScore = Top Score: 
+TopScore = Top Score:
 
 HighScores = High Scores
 
@@ -51,4 +51,8 @@ italian = italienne (Italian)
 
 chinese = chinois (Chinese)
 
+ViewProducts = Voir les produits
 
+Begin5Lives = Commencez chaque jeu avec 5 vies
+
+Begin4Lives = Commencez chaque match avec 4 vies

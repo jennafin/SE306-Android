@@ -98,22 +98,23 @@ public class PurchaseMenu : MonoBehaviour
 
         GUI.skin.button.fontSize = (Screen.width >= SMALL_SCREEN_SIZE || Screen.height >= SMALL_SCREEN_SIZE) ? LARGE_FONT_SIZE : SMALL_FONT_SIZE;
 
-        if (Button("View products"))
-        {
-            // Application public key
-            var publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi+blQ3BwJyNiPj6sVScE8z2kb4SQHr5yQ38fgd8VRpUvCRsiw2ZScKMt2kg5F3/elUvfqdoM9rmEfBAL57hCrSXreAOnYHTh0kSUvsFcj7Ezo6DSlVOVpPKKI+iON36PZslT0VhY61Y894XycdGeA5A3nu0E+EzCAeWhtpxu34z6Ev+HgXXeDSoYOW2sqPPHQ2BZobEm3Qyq2siFt9PmE6O41miVQ/AmfzR9A0cxKrn+JoDhkTIl4MbboM6TWtz8rUGmNH33JUhmfU+uiJ4YWlZZJHUlwNMWUOdcIcFBe2sIUAGsiN7uXv1w5FFL4aVOKCqjtx9rP875TKsIAa/bxwIDAQAB";
+        if (!_isInitialized)
+          if (Button(LanguageManager.GetText("ViewProducts")))
+          {
+              // Application public key
+              var publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi+blQ3BwJyNiPj6sVScE8z2kb4SQHr5yQ38fgd8VRpUvCRsiw2ZScKMt2kg5F3/elUvfqdoM9rmEfBAL57hCrSXreAOnYHTh0kSUvsFcj7Ezo6DSlVOVpPKKI+iON36PZslT0VhY61Y894XycdGeA5A3nu0E+EzCAeWhtpxu34z6Ev+HgXXeDSoYOW2sqPPHQ2BZobEm3Qyq2siFt9PmE6O41miVQ/AmfzR9A0cxKrn+JoDhkTIl4MbboM6TWtz8rUGmNH33JUhmfU+uiJ4YWlZZJHUlwNMWUOdcIcFBe2sIUAGsiN7uXv1w5FFL4aVOKCqjtx9rP875TKsIAa/bxwIDAQAB";
 
-            var options = new Options();
-            options.checkInventoryTimeoutMs = Options.INVENTORY_CHECK_TIMEOUT_MS * 2;
-            options.discoveryTimeoutMs = Options.DISCOVER_TIMEOUT_MS * 2;
-            options.checkInventory = false;
-            options.verifyMode = OptionsVerifyMode.VERIFY_SKIP;
-            options.prefferedStoreNames = new string[] { OpenIAB_Android.STORE_GOOGLE, OpenIAB_Android.STORE_AMAZON, OpenIAB_Android.STORE_YANDEX };
-            options.storeKeys = new Dictionary<string, string> { {OpenIAB_Android.STORE_GOOGLE, publicKey} };
+              var options = new Options();
+              options.checkInventoryTimeoutMs = Options.INVENTORY_CHECK_TIMEOUT_MS * 2;
+              options.discoveryTimeoutMs = Options.DISCOVER_TIMEOUT_MS * 2;
+              options.checkInventory = false;
+              options.verifyMode = OptionsVerifyMode.VERIFY_SKIP;
+              options.prefferedStoreNames = new string[] { OpenIAB_Android.STORE_GOOGLE, OpenIAB_Android.STORE_AMAZON, OpenIAB_Android.STORE_YANDEX };
+              options.storeKeys = new Dictionary<string, string> { {OpenIAB_Android.STORE_GOOGLE, publicKey} };
 
-            // Transmit options and start the service
-            OpenIAB.init(options);
-        }
+              // Transmit options and start the service
+              OpenIAB.init(options);
+          }
 
         if (!_isInitialized)
             return;
@@ -121,12 +122,12 @@ public class PurchaseMenu : MonoBehaviour
         purchaseManager = new PurchaseManager();
         purchaseManager.Load();
         if (purchaseManager.Get4Lives()) {
-          if (Button("Purchase 5 lives"))
+          if (Button(LanguageManager.GetText("Begin5Lives")))
           {
               purchaseProduct(LIVES_5);
           }
         } else {
-          if (Button("Purchase 4 lives"))
+          if (Button(LanguageManager.GetText("Begin4Lives")))
           {
               purchaseProduct(LIVES_4);
           }
