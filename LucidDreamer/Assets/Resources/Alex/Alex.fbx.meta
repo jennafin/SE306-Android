@@ -70,6 +70,7 @@ ModelImporter:
     7400004: Armature|Run
     7400006: Armature|AlexDie
     7400008: Armature|AlexJump
+    7400010: Armature|Alexsomersault
     9500000: //RootNode
     13700000: Plane
     13700002: Alex
@@ -329,6 +330,80 @@ ModelImporter:
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Alex
+        weight: 0
+      - path: Armature
+        weight: 1
+      - path: Armature/Armature|hips
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000/Armature|spine.001
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000/Armature|spine.001/Armature|neck
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000/Armature|spine.001/Armature|neck/Armature|head
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000/Armature|spine.001/Armature|shoulder.L
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000/Armature|spine.001/Armature|shoulder.L/Armature|arm.L
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000/Armature|spine.001/Armature|shoulder.L/Armature|arm.L/Armature|forearm.L
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000/Armature|spine.001/Armature|shoulder.L/Armature|arm.L/Armature|forearm.L/Armature|wrist.L
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000/Armature|spine.001/Armature|shoulder.R
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000/Armature|spine.001/Armature|shoulder.R/Armature|arm.R
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000/Armature|spine.001/Armature|shoulder.R/Armature|arm.R/Armature|forearm.R
+        weight: 1
+      - path: Armature/Armature|hips/Armature|spine.000/Armature|spine.001/Armature|shoulder.R/Armature|arm.R/Armature|forearm.R/Armature|wrist.R
+        weight: 1
+      - path: Armature/Armature|hips/Armature|upperleg.L
+        weight: 1
+      - path: Armature/Armature|hips/Armature|upperleg.L/Armature|lowerleg.L
+        weight: 1
+      - path: Armature/Armature|hips/Armature|upperleg.L/Armature|lowerleg.L/Armature|foot.L
+        weight: 1
+      - path: Armature/Armature|hips/Armature|upperleg.L/Armature|lowerleg.L/Armature|foot.L/Armature|toes.L
+        weight: 1
+      - path: Armature/Armature|hips/Armature|upperleg.R
+        weight: 1
+      - path: Armature/Armature|hips/Armature|upperleg.R/Armature|lowerleg.R
+        weight: 1
+      - path: Armature/Armature|hips/Armature|upperleg.R/Armature|lowerleg.R/Armature|foot.R
+        weight: 1
+      - path: Armature/Armature|hips/Armature|upperleg.R/Armature|lowerleg.R/Armature|foot.R/Armature|toes.R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Armature|Alexsomersault
+      takeName: Armature|Alexsomersault
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
