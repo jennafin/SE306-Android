@@ -58,3 +58,5 @@ Begin5Lives = Начните каждую игру с 5 жизнями
 Begin4Lives = Начните каждую игру с 4 жизни
 
 PurchaseMenu = Покупка Меню
+
+SelectVoice = Выберите голос

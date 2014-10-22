@@ -105,7 +105,7 @@ public class OptionsScript : MonoBehaviour {
 
 		GUILayout.Space (20);
 
-		if (GUILayout.Button (LanguageManager.GetText ("SelectLanguage")
+		if (GUILayout.Button (LanguageManager.GetText ("SelectVoice")
 			                      , buttonStyle
 			                     , GUILayout.Height(buttonHeight))) {
 			persistOptions ();
