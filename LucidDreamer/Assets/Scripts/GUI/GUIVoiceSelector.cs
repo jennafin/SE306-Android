@@ -18,6 +18,18 @@ public class GUIVoiceSelector : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		// Initialise language file
+		// If not blank then load it
+		if(File.Exists(Application.persistentDataPath + "/language.dat"))
+		{
+			//Binary formatter for loading back
+			BinaryFormatter bf = new BinaryFormatter();
+			//Get the file
+			FileStream f = File.Open(Application.persistentDataPath + "/language.dat", FileMode.Open);
+			//Load the language
+			language = (Language)bf.Deserialize(f);
+			f.Close();
+		}
 		LanguageManager.LoadLanguageFile(language);
 		buttonStyle.alignment = TextAnchor.MiddleCenter;
 		buttonStyle.fontSize = Screen.height / 13;
