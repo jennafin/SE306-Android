@@ -81,6 +81,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba361bb5808c464fa092dfff1828724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundJamie:
+  - {fileID: 8300000, guid: 4fa1a0054ced44800af15019ccd2d96f, type: 3}
+  soundHugo:
+  - {fileID: 8300000, guid: 45b7127776faa426d88ed41bb46195ff, type: 3}
+  points: 500
   speed: 9
   axisOfRotation: 1
 --- !u!114 &11400002
