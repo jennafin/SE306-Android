@@ -89,7 +89,10 @@ public class MainCharacterScript : MonoBehaviour {
 		UpdateFlashingAnimation ();
 		bool userPressJump = (Input.GetButtonDown ("Jump") || JumpAreaTouched()) && !isPaused;
 		if (userPressJump) {
-			if (isGrounded) {
+			// Character can get stuck occasionally. 
+			// Allowing to alex to stump when he is stationary should stop alex getting permanently stuck.
+			bool isStationary = rigidbody2D.velocity.x == 0 && rigidbody2D.velocity.y == 0;
+			if (isGrounded || isStationary) {
 				Jump ();
 				hasJumped = true;
 			} else if (!isGrounded && !hasDoubleJumped) {

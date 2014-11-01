@@ -15,23 +15,15 @@ public class BackgroundSpawnScript : MonoBehaviour {
 	float imageWidth;
 	float imageHeight;
 	
-	// Use this for initialization
 	void Start () {
 		// Get level width/height
 		imageWidth = defaultBackground.renderer.bounds.size.x;
 		imageHeight = defaultBackground.renderer.bounds.size.z;
 		
-		Debug.Log ("Height: " + imageHeight);
-		Debug.Log ("Width: " + imageWidth);
-		
 		// Create the first 9 screens
 		InstantiateLevels();
-		
-		// Instantiate the 9 screens
-		
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate () {
 		if (RightIsVisible() && !LeftIsVisible()) {
 			MoveRight();
